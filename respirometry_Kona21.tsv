@@ -1,0 +1,261 @@
+Measurement	Specimen	Species	Stage	Zooid length (mm)	Number of zooids	Container	Treatment	Activity level	In-jar velocity (m/s)	Date	Experiment	Time point (min)	Sensor ID	O2 (mg/L)	Temperature (°C)	Organism notes	Measurement notes
+1	D4-BR-O-1	Brooksia rostrata	Oozoid	30	1	Plastic	Intact	Low		09/18	1	0	P1	6.21	NA	1cm stolon (DCI jar)	No temperature measured. Jars filled and closed in a bucket on land.
+2	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/18	1	0	P2	6.23	NA	Seawater	No temperature measured. Jars filled and closed in a bucket on land.
+3	D4-BR-O-2	Brooksia rostrata	Oozoid	35	1	Glass	Intact	High		09/18	1	0	G1	6.31	NA	7mm stolon (B jar)	No temperature measured. Jars filled and closed in a bucket on land.
+4	NA	NA	NA	NA	NA	Glass	Intact	NA		09/18	1	0	G2	6.3	NA	Seawater	No temperature measured. Jars filled and closed in a bucket on land.
+5	D4-BR-O-1	Brooksia rostrata	Oozoid	30	1	Plastic	Intact	Low		09/18	1	15	P1	6.18	NA	1cm stolon (DCI jar)	No temperature measured. Jars filled and closed in a bucket on land.
+6	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/18	1	15	P2	6.23	NA	Seawater	No temperature measured. Jars filled and closed in a bucket on land.
+7	D4-BR-O-2	Brooksia rostrata	Oozoid	35	1	Glass	Intact	High		09/18	1	15	G1	6.21	NA	7mm stolon (B jar)	No temperature measured. Jars filled and closed in a bucket on land.
+8	NA	NA	NA	NA	NA	Glass	Intact	NA		09/18	1	15	G2	6.24	NA	Seawater	No temperature measured. Jars filled and closed in a bucket on land.
+9	D4-BR-O-1	Brooksia rostrata	Oozoid	30	1	Plastic	Intact	Low		09/18	1	30	P1	6.15	NA	1cm stolon (DCI jar)	No temperature measured. Jars filled and closed in a bucket on land.
+10	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/18	1	30	P2	6.21	NA	Seawater	No temperature measured. Jars filled and closed in a bucket on land.
+11	D4-BR-O-2	Brooksia rostrata	Oozoid	35	1	Glass	Intact	High		09/18	1	30	G1	6.16	NA	7mm stolon (B jar)	No temperature measured. Jars filled and closed in a bucket on land.
+12	NA	NA	NA	NA	NA	Glass	Intact	NA		09/18	1	30	G2	6.18	NA	Seawater	No temperature measured. Jars filled and closed in a bucket on land.
+13	D4-BR-O-1	Brooksia rostrata	Oozoid	30	1	Plastic	Intact	Low		09/18	1	45	P1	6.07	NA	1cm stolon (DCI jar)	No temperature measured. Jars filled and closed in a bucket on land.
+14	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/18	1	45	P2	6.14	NA	Seawater	No temperature measured. Jars filled and closed in a bucket on land.
+15	D4-BR-O-2	Brooksia rostrata	Oozoid	35	1	Glass	Intact	High		09/18	1	45	G1	6.08	NA	7mm stolon (B jar)	No temperature measured. Jars filled and closed in a bucket on land.
+16	NA	NA	NA	NA	NA	Glass	Intact	NA		09/18	1	45	G2	6.14	NA	Seawater	No temperature measured. Jars filled and closed in a bucket on land.
+17	D4-BR-O-1	Brooksia rostrata	Oozoid	30	1	Plastic	Intact	Low		09/18	1	60	P1	6.05	NA	1cm stolon (DCI jar)	No temperature measured. Jars filled and closed in a bucket on land.
+18	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/18	1	60	P2	6.13	NA	Seawater	No temperature measured. Jars filled and closed in a bucket on land.
+19	D4-BR-O-2	Brooksia rostrata	Oozoid	35	1	Glass	Intact	High		09/18	1	60	G1	6.06	NA	7mm stolon (B jar)	No temperature measured. Jars filled and closed in a bucket on land.
+20	NA	NA	NA	NA	NA	Glass	Intact	NA		09/18	1	60	G2	6.1	NA	Seawater	No temperature measured. Jars filled and closed in a bucket on land.
+21	D4-CP-B-1	Cyclosalpa polae	Blastozooid	20	1	Plastic	Intact	Low		09/19	2	0	P1	5.89	NA	Different blatozooids from same colony	No temperature measured. Jars filled and closed in a bucket on land.
+22	D4-CP-B-1	Cyclosalpa polae	Blastozooid	20	1	Plastic	MgCl2	Very low		09/19	2	0	P2	6	NA	Different blatozooids from same colony	No temperature measured. Jars filled and closed in a bucket on land.
+23	D4-CP-B-1	Cyclosalpa polae	Blastozooid	20	1	Plastic	Intact			09/19	2	15	P1	5.91	NA	Different blatozooids from same colony	No temperature measured. Jars filled and closed in a bucket on land.
+24	D4-CP-B-1	Cyclosalpa polae	Blastozooid	20	1	Plastic	MgCl2			09/19	2	15	P2	6	NA	Different blatozooids from same colony	No temperature measured. Jars filled and closed in a bucket on land.
+25	D4-CP-B-1	Cyclosalpa polae	Blastozooid	20	1	Plastic	Intact			09/19	2	30	P1	5.92	NA	Different blatozooids from same colony	No temperature measured. Jars filled and closed in a bucket on land.
+26	D4-CP-B-1	Cyclosalpa polae	Blastozooid	20	1	Plastic	MgCl2			09/19	2	30	P2	6.01	NA	Different blatozooids from same colony	No temperature measured. Jars filled and closed in a bucket on land.
+27	D4-CP-B-1	Cyclosalpa polae	Blastozooid	20	1	Plastic	Intact			09/19	2	45	P1	5.92	NA	Different blatozooids from same colony	No temperature measured. Jars filled and closed in a bucket on land.
+28	D4-CP-B-1	Cyclosalpa polae	Blastozooid	20	1	Plastic	MgCl2			09/19	2	45	P2	5.98	NA	Different blatozooids from same colony	No temperature measured. Jars filled and closed in a bucket on land.
+29	D4-CP-B-1	Cyclosalpa polae	Blastozooid	20	1	Plastic	Intact			09/19	2	60	P1	5.88	NA	Different blatozooids from same colony	No temperature measured. Jars filled and closed in a bucket on land.
+30	D4-CP-B-1	Cyclosalpa polae	Blastozooid	20	1	Plastic	MgCl2			09/19	2	60	P2	5.89	NA	Different blatozooids from same colony	No temperature measured. Jars filled and closed in a bucket on land.
+31	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/19	2	0	P1	5.63	NA	Seawater control for the measurements 21-30	No temperature measured. Jars filled and closed in a bucket on land.
+32	NA	NA	NA	NA	NA	Plastic	MgCl2	NA		09/19	2	0	P2	5.7	NA	Seawater + MgCl2 control for the measurements 21-30	No temperature measured. Jars filled and closed in a bucket on land.
+33	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/19	2	15	P1	5.79	NA	Seawater control for the measurements 21-30	No temperature measured. Jars filled and closed in a bucket on land.
+34	NA	NA	NA	NA	NA	Plastic	MgCl2	NA		09/19	2	15	P2	5.8	NA	Seawater + MgCl2 control for the measurements 21-30	No temperature measured. Jars filled and closed in a bucket on land.
+35	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/19	2	30	P1	5.79	NA	Seawater control for the measurements 21-30	No temperature measured. Jars filled and closed in a bucket on land.
+36	NA	NA	NA	NA	NA	Plastic	MgCl2	NA		09/19	2	30	P2	5.78	NA	Seawater + MgCl2 control for the measurements 21-30	No temperature measured. Jars filled and closed in a bucket on land.
+37	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/19	2	45	P1	5.8	NA	Seawater control for the measurements 21-30	No temperature measured. Jars filled and closed in a bucket on land.
+38	NA	NA	NA	NA	NA	Plastic	MgCl2	NA		09/19	2	45	P2	5.73	NA	Seawater + MgCl2 control for the measurements 21-30	No temperature measured. Jars filled and closed in a bucket on land.
+39	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/19	2	60	P1	5.8	NA	Seawater control for the measurements 21-30	No temperature measured. Jars filled and closed in a bucket on land.
+40	NA	NA	NA	NA	NA	Plastic	MgCl2	NA		09/19	2	60	P2	5.73	NA	Seawater + MgCl2 control for the measurements 21-30	No temperature measured. Jars filled and closed in a bucket on land.
+41	D5-PC-B-1	Pegea confoederata	Blastozooid	25	5	Plastic	Intact	Moderate		09/19	3	0	P1	6.35	NA	Sapphirina included	No temperature measured.
+42	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/19	3	0	P2	6.42	NA	Control local seawater	No temperature measured.
+43	D5-PC-B-1	Pegea confoederata	Blastozooid	25	5	Plastic	Intact	Moderate		09/19	3	15	P1	6.34	NA	Sapphirina included	No temperature measured.
+44	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/19	3	15	P2	6.48	NA	Control local seawater	No temperature measured.
+45	D5-PC-B-1	Pegea confoederata	Blastozooid	25	5	Plastic	Intact	Moderate		09/19	3	30	P1	6.25	NA	Sapphirina included	No temperature measured.
+46	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/19	3	30	P2	6.42	NA	Control local seawater	No temperature measured.
+47	D5-PC-B-1	Pegea confoederata	Blastozooid	25	5	Plastic	Intact	Moderate		09/19	3	45	P1	6.21	NA	Sapphirina included	No temperature measured.
+48	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/19	3	45	P2	6.42	NA	Control local seawater	No temperature measured.
+49	D5-PC-B-1	Pegea confoederata	Blastozooid	25	5	Plastic	Intact	Moderate		09/19	3	60	P1	6.18	NA	Sapphirina included	No temperature measured.
+50	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/19	3	60	P2	6.42	NA	Control local seawater	No temperature measured.
+51	D5-PC-B-1	Pegea confoederata	Blastozooid	25	5	Plastic	Intact	Moderate		09/19	3	90	P1	6.12	NA	Sapphirina included	No temperature measured.
+52	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/19	3	90	P2	6.42	NA	Control local seawater	No temperature measured.
+53	D5-PC-B-1	Pegea confoederata	Blastozooid	25	5	Plastic	Intact	Moderate		09/19	3	120	P1	6.04	NA	Sapphirina included	No temperature measured.
+54	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/19	3	120	P2	6.42	NA	Control local seawater	No temperature measured.
+55	D5-PC-B-1	Pegea confoederata	Blastozooid	25	5	Plastic	Intact	Moderate		09/19	3	150	P1	5.98	NA	Sapphirina included	No temperature measured.
+56	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/19	3	150	P2	6.42	NA	Control local seawater	No temperature measured.
+57	D5-PC-B-1	Pegea confoederata	Blastozooid	25	5	Plastic	Intact	Moderate		09/19	3	180	P1	5.95	NA	Sapphirina included	No temperature measured.
+58	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/19	3	180	P2	6.42	NA	Control local seawater	No temperature measured.
+59	D5-PC-B-1	Pegea confoederata	Blastozooid	25	5	Plastic	Intact	Moderate		09/19	3	259	P1	5.84	NA	Sapphirina included	No temperature measured.
+60	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/19	3	259	P2	6.44	NA	Control local seawater	No temperature measured.
+61	D7-BR-B-1	Brooksia rostrata	Blastozooid	7	28	Plastic	Intact	Very active		09/20	4	0	P1	6.63	NA		"No temperature measured. Temperature adjusting to hot air outside, O2 saturation changes"
+62	D7-CA-B-1	Cyclosalpa affinis	Blastozooid	40	4	Plastic	Intact	Moderate		09/20	4	0	P2	6.27	NA		"No temperature measured. Temperature adjusting to hot air outside, O2 saturation changes"
+63	D7-BR-B-2	Brooksia rostrata	Blastozooid	8	24	Plastic	Intact	Very active		09/20	4	0	P4	6.63	NA		"No temperature measured. Temperature adjusting to hot air outside, O2 saturation changes"
+64	D7-BR-B-3	Brooksia rostrata	Blastozooid	8	19	Plastic	Intact	Very active		09/20	4	0	P5	6.63	NA		"No temperature measured. Temperature adjusting to hot air outside, O2 saturation changes"
+65	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/20	4	0	P3 control	6.71	NA	Control local seawater	"No temperature measured. Temperature adjusting to hot air outside, O2 saturation changes"
+66	D7-BR-B-1	Brooksia rostrata	Blastozooid	7	28	Plastic	Intact	Very active		09/20	4	15	P1	6.5	NA		"No temperature measured. Temperature adjusting to hot air outside, O2 saturation changes"
+67	D7-CA-B-1	Cyclosalpa affinis	Blastozooid	40	4	Plastic	Intact	Moderate		09/20	4	15	P2	5.81	NA		"No temperature measured. Temperature adjusting to hot air outside, O2 saturation changes"
+68	D7-BR-B-2	Brooksia rostrata	Blastozooid	8	24	Plastic	Intact	Very active		09/20	4	15	P4	6.49	NA		"No temperature measured. Temperature adjusting to hot air outside, O2 saturation changes"
+69	D7-BR-B-3	Brooksia rostrata	Blastozooid	8	19	Plastic	Intact	Very active		09/20	4	15	P5	6.53	NA		"No temperature measured. Temperature adjusting to hot air outside, O2 saturation changes"
+70	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/20	4	15	P3 control	6.66	NA	Control local seawater	"No temperature measured. Temperature adjusting to hot air outside, O2 saturation changes"
+71	D7-BR-B-1	Brooksia rostrata	Blastozooid	7	28	Plastic	Intact	Very active		09/20	4	30	P1	6.5	NA		No temperature measured.
+72	D7-CA-B-1	Cyclosalpa affinis	Blastozooid	40	4	Plastic	Intact	Moderate		09/20	4	30	P2	5.58	NA		No temperature measured.
+73	D7-BR-B-2	Brooksia rostrata	Blastozooid	8	24	Plastic	Intact	Very active		09/20	4	30	P4	6.48	NA		No temperature measured.
+74	D7-BR-B-3	Brooksia rostrata	Blastozooid	8	19	Plastic	Intact	Very active		09/20	4	30	P5	6.53	NA		No temperature measured.
+75	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/20	4	30	P3 control	6.66	NA	Control local seawater	No temperature measured.
+76	D7-BR-B-1	Brooksia rostrata	Blastozooid	7	28	Plastic	Intact	Very active		09/20	4	45	P1	6.48	NA		No temperature measured.
+77	D7-CA-B-1	Cyclosalpa affinis	Blastozooid	40	4	Plastic	Intact	Moderate		09/20	4	45	P2	5.36	NA		No temperature measured.
+78	D7-BR-B-2	Brooksia rostrata	Blastozooid	8	24	Plastic	Intact	Very active		09/20	4	45	P4	6.46	NA		No temperature measured.
+79	D7-BR-B-3	Brooksia rostrata	Blastozooid	8	19	Plastic	Intact	Very active		09/20	4	45	P5	6.51	NA		No temperature measured.
+80	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/20	4	45	P3 control	6.66	NA	Control local seawater	No temperature measured.
+81	D7-BR-B-1	Brooksia rostrata	Blastozooid	7	28	Plastic	Intact	Very active		09/20	4	60	P1	6.45	NA		No temperature measured.
+82	D7-CA-B-1	Cyclosalpa affinis	Blastozooid	40	4	Plastic	Intact	Moderate		09/20	4	60	P2	5.12	NA		No temperature measured.
+83	D7-BR-B-2	Brooksia rostrata	Blastozooid	8	24	Plastic	Intact	Very active		09/20	4	60	P4	6.38	NA		No temperature measured.
+84	D7-BR-B-3	Brooksia rostrata	Blastozooid	8	19	Plastic	Intact	Very active		09/20	4	60	P5	6.46	NA		No temperature measured.
+85	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/20	4	60	P3 control	6.61	NA	Control local seawater	No temperature measured.
+86	D7-BR-B-1	Brooksia rostrata	Blastozooid	7	28	Plastic	Intact	Very active		09/20	4	90	P1	6.36	NA		No temperature measured.
+87	D7-CA-B-1	Cyclosalpa affinis	Blastozooid	40	4	Plastic	Intact	Moderate		09/20	4	90	P2	4.66	NA		No temperature measured.
+88	D7-BR-B-2	Brooksia rostrata	Blastozooid	8	24	Plastic	Intact	Very active		09/20	4	90	P4	6.36	NA		No temperature measured.
+89	D7-BR-B-3	Brooksia rostrata	Blastozooid	8	19	Plastic	Intact	Very active		09/20	4	90	P5	6.44	NA		No temperature measured.
+90	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/20	4	90	P3 control	6.57	NA	Control local seawater	No temperature measured.
+91	D7-BR-B-1	Brooksia rostrata	Blastozooid	7	28	Plastic	Intact	Very active		09/20	4	120	P1	6.3	NA		No temperature measured.
+92	D7-CA-B-1	Cyclosalpa affinis	Blastozooid	40	4	Plastic	Intact	Moderate		09/20	4	120	P2	4.31	NA		No temperature measured.
+93	D7-BR-B-2	Brooksia rostrata	Blastozooid	8	24	Plastic	Intact	Very active		09/20	4	120	P4	6.3	NA		No temperature measured.
+94	D7-BR-B-3	Brooksia rostrata	Blastozooid	8	19	Plastic	Intact	Very active		09/20	4	120	P5	6.38	NA		No temperature measured.
+95	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/20	4	120	P3 control	6.53	NA	Control local seawater	No temperature measured.
+96	D7-BR-B-1	Brooksia rostrata	Blastozooid	7	28	Plastic	Intact	Very active		09/20	4	150	P1	6.28	NA		No temperature measured.
+97	D7-CA-B-1	Cyclosalpa affinis	Blastozooid	40	4	Plastic	Intact	Moderate		09/20	4	150	P2	4	NA		No temperature measured.
+98	D7-BR-B-2	Brooksia rostrata	Blastozooid	8	24	Plastic	Intact	Very active		09/20	4	150	P4	6.23	NA		No temperature measured.
+99	D7-BR-B-3	Brooksia rostrata	Blastozooid	8	19	Plastic	Intact	Very active		09/20	4	150	P5	6.33	NA		No temperature measured.
+100	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/20	4	150	P3 control	6.52	NA	Control local seawater	No temperature measured.
+101	D7-BR-B-1	Brooksia rostrata	Blastozooid	7	28	Plastic	Intact	Very active		09/20	4	180	P1	6.27	NA		No temperature measured.
+102	D7-CA-B-1	Cyclosalpa affinis	Blastozooid	40	4	Plastic	Intact	Moderate		09/20	4	180	P2	3.79	NA		No temperature measured.
+103	D7-BR-B-2	Brooksia rostrata	Blastozooid	8	24	Plastic	Intact	Very active		09/20	4	180	P4	6.22	NA		No temperature measured.
+104	D7-BR-B-3	Brooksia rostrata	Blastozooid	8	19	Plastic	Intact	Very active		09/20	4	180	P5	6.33	NA		No temperature measured.
+105	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/20	4	180	P3 control	6.52	NA	Control local seawater	No temperature measured.
+106	D7-BR-B-1	Brooksia rostrata	Blastozooid	7	28	Plastic	Intact	Very active		09/20	4	300	P1	5.99	NA		No temperature measured.
+107	D7-CA-B-1	Cyclosalpa affinis	Blastozooid	40	4	Plastic	Intact	Moderate		09/20	4	300	P2	2.61	NA		No temperature measured.
+108	D7-BR-B-2	Brooksia rostrata	Blastozooid	8	24	Plastic	Intact	Very active		09/20	4	300	P4	5.86	NA		No temperature measured.
+109	D7-BR-B-3	Brooksia rostrata	Blastozooid	8	19	Plastic	Intact	Very active		09/20	4	300	P5	6.01	NA		No temperature measured.
+110	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/20	4	300	P3 control	6.31	NA	Control local seawater	No temperature measured.
+111	D9-CP-B-1	Cyclosalpa polae	Blastozooid	25	4	Plastic	Intact	Moderate		09/21	5	0	P1	6.41	26.6	1 zooid popped off. Pregnant with large embryos.	
+112	D9-CP-B-2	Cyclosalpa polae	Blastozooid	25	6	Plastic	Intact	Moderate		09/21	5	0	P2	6.32	26.6	Pregnant with small embryos	
+113	D9-CP-B-3	Cyclosalpa polae	Blastozooid	20	2	Plastic	Intact	Moderate		09/21	5	0	P4	6.42	26.6		
+114	D9-CP-B-4	Cyclosalpa polae	Blastozooid	25	1	Plastic	Intact	Moderate		09/21	5	0	P5	6.48	26.6	Pregnant with big embryos	
+115	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/21	5	0	P3 control	6.54	26.6	Control local seawater	
+116	D9-CP-B-1	Cyclosalpa polae	Blastozooid	25	4	Plastic	Intact	Moderate		09/21	5	15	P1	6.47	26.2	1 zooid popped off. Pregnant with large embryos.	
+117	D9-CP-B-2	Cyclosalpa polae	Blastozooid	25	6	Plastic	Intact	Moderate		09/21	5	15	P2	6.36	26.2	Pregnant with small embryos	
+118	D9-CP-B-3	Cyclosalpa polae	Blastozooid	20	2	Plastic	Intact	Moderate		09/21	5	15	P4	6.51	26.2		
+119	D9-CP-B-4	Cyclosalpa polae	Blastozooid	25	1	Plastic	Intact	Moderate		09/21	5	15	P5	6.57	26.2	Pregnant with big embryos	
+120	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/21	5	15	P3 control	6.62	26.2	Control local seawater	
+121	D9-CP-B-1	Cyclosalpa polae	Blastozooid	25	4	Plastic	Intact	Moderate		09/21	5	30	P1	6.44	26.2	1 zooid popped off. Pregnant with large embryos.	
+122	D9-CP-B-2	Cyclosalpa polae	Blastozooid	25	6	Plastic	Intact	Moderate		09/21	5	30	P2	6.32	26.2	Pregnant with small embryos	
+123	D9-CP-B-3	Cyclosalpa polae	Blastozooid	20	2	Plastic	Intact	Moderate		09/21	5	30	P4	6.51	26.2		
+124	D9-CP-B-4	Cyclosalpa polae	Blastozooid	25	1	Plastic	Intact	Moderate		09/21	5	30	P5	6.57	26.2	Pregnant with big embryos	
+125	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/21	5	30	P3 control	6.62	26.2	Control local seawater	
+126	D9-CP-B-1	Cyclosalpa polae	Blastozooid	25	4	Plastic	Intact	Moderate		09/21	5	45	P1	6.39	26.2	1 zooid popped off. Pregnant with large embryos.	
+127	D9-CP-B-2	Cyclosalpa polae	Blastozooid	25	6	Plastic	Intact	Moderate		09/21	5	45	P2	6.29	26.2	Pregnant with small embryos	
+128	D9-CP-B-3	Cyclosalpa polae	Blastozooid	20	2	Plastic	Intact	Moderate		09/21	5	45	P4	6.5	26.2		
+129	D9-CP-B-4	Cyclosalpa polae	Blastozooid	25	1	Plastic	Intact	Moderate		09/21	5	45	P5	6.56	26.2	Pregnant with big embryos	
+130	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/21	5	45	P3 control	6.6	26.2	Control local seawater	
+131	D9-CP-B-1	Cyclosalpa polae	Blastozooid	25	4	Plastic	Intact	Moderate		09/21	5	60	P1	6.33	26.2	1 zooid popped off. Pregnant with large embryos.	
+132	D9-CP-B-2	Cyclosalpa polae	Blastozooid	25	6	Plastic	Intact	Moderate		09/21	5	60	P2	6.2	26.2	Pregnant with small embryos	
+133	D9-CP-B-3	Cyclosalpa polae	Blastozooid	20	2	Plastic	Intact	Moderate		09/21	5	60	P4	6.49	26.2		
+134	D9-CP-B-4	Cyclosalpa polae	Blastozooid	25	1	Plastic	Intact	Moderate		09/21	5	60	P5	6.55	26.2	Pregnant with big embryos	
+135	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/21	5	60	P3 control	6.58	26.2	Control local seawater	
+136	D9-CP-B-1	Cyclosalpa polae	Blastozooid	25	4	Plastic	Intact	Moderate		09/21	5	90	P1	6.33	25.7	1 zooid popped off. Pregnant with large embryos.	
+137	D9-CP-B-2	Cyclosalpa polae	Blastozooid	25	6	Plastic	Intact	Moderate		09/21	5	90	P2	6.18	25.7	Pregnant with small embryos	
+138	D9-CP-B-3	Cyclosalpa polae	Blastozooid	20	2	Plastic	Intact	Moderate		09/21	5	90	P4	6.53	25.7		
+139	D9-CP-B-4	Cyclosalpa polae	Blastozooid	25	1	Plastic	Intact	Moderate		09/21	5	90	P5	6.59	25.7	Pregnant with big embryos	
+140	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/21	5	90	P3 control	6.63	25.7	Control local seawater	
+141	D9-CP-B-1	Cyclosalpa polae	Blastozooid	25	4	Plastic	Intact	Moderate		09/21	5	120	P1	6.26	25.7	1 zooid popped off. Pregnant with large embryos.	
+142	D9-CP-B-2	Cyclosalpa polae	Blastozooid	25	6	Plastic	Intact	Moderate		09/21	5	120	P2	6.09	25.7	Pregnant with small embryos	
+143	D9-CP-B-3	Cyclosalpa polae	Blastozooid	20	2	Plastic	Intact	Moderate		09/21	5	120	P4	6.47	25.7		
+144	D9-CP-B-4	Cyclosalpa polae	Blastozooid	25	1	Plastic	Intact	Moderate		09/21	5	120	P5	6.54	25.7	Pregnant with big embryos	
+145	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/21	5	120	P3 control	6.63	25.7	Control local seawater	
+146	D9-CP-B-1	Cyclosalpa polae	Blastozooid	25	4	Plastic	Intact	Moderate		09/21	5	150	P1	6.16	25.6	1 zooid popped off. Pregnant with large embryos.	
+147	D9-CP-B-2	Cyclosalpa polae	Blastozooid	25	6	Plastic	Intact	Moderate		09/21	5	150	P2	5.98	25.6	Pregnant with small embryos	
+148	D9-CP-B-3	Cyclosalpa polae	Blastozooid	20	2	Plastic	Intact	Moderate		09/21	5	150	P4	6.45	25.6		
+149	D9-CP-B-4	Cyclosalpa polae	Blastozooid	25	1	Plastic	Intact	Moderate		09/21	5	150	P5	6.52	25.6	Pregnant with big embryos	
+150	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/21	5	150	P3 control	6.61	25.6	Control local seawater	
+151	D9-CP-B-1	Cyclosalpa polae	Blastozooid	25	4	Plastic	Intact	Moderate		09/21	5	180	P1	5.81	27.1	1 zooid popped off. Pregnant with large embryos.	Temperature measured in air
+152	D9-CP-B-2	Cyclosalpa polae	Blastozooid	25	6	Plastic	Intact	Moderate		09/21	5	180	P2	5.62	27.1	Pregnant with small embryos	Temperature measured in air
+153	D9-CP-B-3	Cyclosalpa polae	Blastozooid	20	2	Plastic	Intact	Moderate		09/21	5	180	P4	6.1	27.1		Temperature measured in air
+154	D9-CP-B-4	Cyclosalpa polae	Blastozooid	25	1	Plastic	Intact	Moderate		09/21	5	180	P5	6.18	27.1	Pregnant with big embryos	Temperature measured in air
+155	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/21	5	180	P3 control	6.28	27.1	Control local seawater	Temperature measured in air
+156	D9-CP-B-1	Cyclosalpa polae	Blastozooid	25	4	Plastic	Intact	Moderate		09/21	5	360	P1	5.53	27.2	1 zooid popped off. Pregnant with large embryos.	Temperature measured in air
+157	D9-CP-B-2	Cyclosalpa polae	Blastozooid	25	6	Plastic	Intact	Moderate		09/21	5	360	P2	5.24	27.2	Pregnant with small embryos	Temperature measured in air
+158	D9-CP-B-3	Cyclosalpa polae	Blastozooid	20	2	Plastic	Intact	Moderate		09/21	5	360	P4	6.07	27.2		Temperature measured in air
+159	D9-CP-B-4	Cyclosalpa polae	Blastozooid	25	1	Plastic	Intact	Moderate		09/21	5	360	P5	6.17	27.2	Pregnant with big embryos	Temperature measured in air
+160	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/21	5	360	P3 control	6.32	27.2	Control local seawater	Temperature measured in air
+161	D11-BR-B-1	Brooksia rostrata	Blastozooid	10	14	Plastic	Intact	Moderate		09/22	6	0	P1	6.34	26.6	Broken zooids on one side	
+162	D11-CA-B-1	Cyclosalpa affinis	Blastozooid	45	6	Plastic	Intact	Active		09/22	6	0	P2	5.73	26.6	"Gunky surface, pooping a lot"	
+163	D11-WC-B-1	Iasis (Weelia) cylindrica	Blastozooid	15	12	Plastic	Intact	Very active		09/22	6	0	P4	6.27	26.6	"Yellow cloudy hue, lost by the end of incubation"	
+164	D11-BR-B-2	Brooksia rostrata	Blastozooid	7.5	32	Plastic	Intact	Moderate		09/22	6	0	P5	6.3	26.6	Gradation from 5-10mm length zooids	
+165	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/22	6	0	P3 control	6.41	26.6	Control local seawater	
+166	D11-BR-B-1	Brooksia rostrata	Blastozooid	10	14	Plastic	Intact	Moderate		09/22	6	15	P1	6.42	26.2	Broken zooids on one side	
+167	D11-CA-B-1	Cyclosalpa affinis	Blastozooid	45	6	Plastic	Intact	Active		09/22	6	15	P2	5.49	26.2	"Gunky surface, pooping a lot"	
+168	D11-WC-B-1	Iasis (Weelia) cylindrica	Blastozooid	15	12	Plastic	Intact	Very active		09/22	6	15	P4	6.25	26.2	"Yellow cloudy hue, lost by the end of incubation"	
+169	D11-BR-B-2	Brooksia rostrata	Blastozooid	7.5	32	Plastic	Intact	Moderate		09/22	6	15	P5	6.34	26.2	Gradation from 5-10mm length zooids	
+170	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/22	6	15	P3 control	6.47	26.2	Control local seawater	
+171	D11-BR-B-1	Brooksia rostrata	Blastozooid	10	14	Plastic	Intact	Moderate		09/22	6	30	P1	6.41	26.1	Broken zooids on one side	
+172	D11-CA-B-1	Cyclosalpa affinis	Blastozooid	45	6	Plastic	Intact	Active		09/22	6	30	P2	5.22	26.1	"Gunky surface, pooping a lot"	
+173	D11-WC-B-1	Iasis (Weelia) cylindrica	Blastozooid	15	12	Plastic	Intact	Very active		09/22	6	30	P4	6.17	26.1	"Yellow cloudy hue, lost by the end of incubation"	
+174	D11-BR-B-2	Brooksia rostrata	Blastozooid	7.5	32	Plastic	Intact	Moderate		09/22	6	30	P5	6.37	26.1	Gradation from 5-10mm length zooids	
+175	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/22	6	30	P3 control	6.47	26.1	Control local seawater	
+176	D11-BR-B-1	Brooksia rostrata	Blastozooid	10	14	Plastic	Intact	Moderate		09/22	6	45	P1	6.41	25.9	Broken zooids on one side	
+177	D11-CA-B-1	Cyclosalpa affinis	Blastozooid	45	6	Plastic	Intact	Active		09/22	6	45	P2	4.94	25.9	"Gunky surface, pooping a lot"	
+178	D11-WC-B-1	Iasis (Weelia) cylindrica	Blastozooid	15	12	Plastic	Intact	Very active		09/22	6	45	P4	6.09	25.9	"Yellow cloudy hue, lost by the end of incubation"	
+179	D11-BR-B-2	Brooksia rostrata	Blastozooid	7.5	32	Plastic	Intact	Moderate		09/22	6	45	P5	6.36	25.9	Gradation from 5-10mm length zooids	
+180	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/22	6	45	P3 control	6.48	25.9	Control local seawater	
+181	D11-BR-B-1	Brooksia rostrata	Blastozooid	10	14	Plastic	Intact	Moderate		09/22	6	60	P1	6.42	25.8	Broken zooids on one side	
+182	D11-CA-B-1	Cyclosalpa affinis	Blastozooid	45	6	Plastic	Intact	Active		09/22	6	60	P2	4.71	25.8	"Gunky surface, pooping a lot"	
+183	D11-WC-B-1	Iasis (Weelia) cylindrica	Blastozooid	15	12	Plastic	Intact	Very active		09/22	6	60	P4	6.02	25.8	"Yellow cloudy hue, lost by the end of incubation"	
+184	D11-BR-B-2	Brooksia rostrata	Blastozooid	7.5	32	Plastic	Intact	Moderate		09/22	6	60	P5	6.37	25.8	Gradation from 5-10mm length zooids	
+185	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/22	6	60	P3 control	6.54	25.8	Control local seawater	
+186	D11-BR-B-1	Brooksia rostrata	Blastozooid	10	14	Plastic	Intact	Moderate		09/22	6	90	P1	6.42	25.4	Broken zooids on one side	
+187	D11-CA-B-1	Cyclosalpa affinis	Blastozooid	45	6	Plastic	Intact	Active		09/22	6	90	P2	4.3	25.4	"Gunky surface, pooping a lot"	
+188	D11-WC-B-1	Iasis (Weelia) cylindrica	Blastozooid	15	12	Plastic	Intact	Very active		09/22	6	90	P4	5.88	25.4	"Yellow cloudy hue, lost by the end of incubation"	
+189	D11-BR-B-2	Brooksia rostrata	Blastozooid	7.5	32	Plastic	Intact	Moderate		09/22	6	90	P5	6.39	25.4	Gradation from 5-10mm length zooids	
+190	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/22	6	90	P3 control	6.56	25.3	Control local seawater	
+191	D11-BR-B-1	Brooksia rostrata	Blastozooid	10	14	Plastic	Intact	Moderate		09/22	6	120	P1	6.36	25.3	Broken zooids on one side	
+192	D11-CA-B-1	Cyclosalpa affinis	Blastozooid	45	6	Plastic	Intact	Active		09/22	6	120	P2	3.81	25.3	"Gunky surface, pooping a lot"	
+193	D11-WC-B-1	Iasis (Weelia) cylindrica	Blastozooid	15	12	Plastic	Intact	Very active		09/22	6	120	P4	5.69	25.3	"Yellow cloudy hue, lost by the end of incubation"	
+194	D11-BR-B-2	Brooksia rostrata	Blastozooid	7.5	32	Plastic	Intact	Moderate		09/22	6	120	P5	6.33	25.3	Gradation from 5-10mm length zooids	
+195	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/22	6	120	P3 control	6.56	25.3	Control local seawater	
+196	D11-BR-B-1	Brooksia rostrata	Blastozooid	10	14	Plastic	Intact	Moderate		09/22	6	150	P1	6.38	25	Broken zooids on one side	
+197	D11-CA-B-1	Cyclosalpa affinis	Blastozooid	45	6	Plastic	Intact	Active		09/22	6	150	P2	3.53	25	"Gunky surface, pooping a lot"	
+198	D11-WC-B-1	Iasis (Weelia) cylindrica	Blastozooid	15	12	Plastic	Intact	Very active		09/22	6	150	P4	5.58	25	"Yellow cloudy hue, lost by the end of incubation"	
+199	D11-BR-B-2	Brooksia rostrata	Blastozooid	7.5	32	Plastic	Intact	Moderate		09/22	6	150	P5	6.35	25	Gradation from 5-10mm length zooids	
+200	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/22	6	150	P3 control	6.6	25	Control local seawater	
+201	D11-BR-B-1	Brooksia rostrata	Blastozooid	10	14	Plastic	Intact	Moderate		09/22	6	180	P1	6.46	24.7	Broken zooids on one side	
+202	D11-CA-B-1	Cyclosalpa affinis	Blastozooid	45	6	Plastic	Intact	Active		09/22	6	180	P2	3.14	24.7	"Gunky surface, pooping a lot"	
+203	D11-WC-B-1	Iasis (Weelia) cylindrica	Blastozooid	15	12	Plastic	Intact	Very active		09/22	6	180	P4	5.47	24.7	"Yellow cloudy hue, lost by the end of incubation"	
+204	D11-BR-B-2	Brooksia rostrata	Blastozooid	7.5	32	Plastic	Intact	Moderate		09/22	6	180	P5	6.35	24.7	Gradation from 5-10mm length zooids	
+205	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/22	6	180	P3 control	6.69	24.7	Control local seawater	
+206	D11-BR-B-1	Brooksia rostrata	Blastozooid	10	14	Plastic	Intact	Moderate		09/22	6	295	P1	5.95	27	Broken zooids on one side	Temperature measured in air
+207	D11-CA-B-1	Cyclosalpa affinis	Blastozooid	45	6	Plastic	Intact	Active		09/22	6	295	P2	1.84	27	"Gunky surface, pooping a lot"	Temperature measured in air
+208	D11-WC-B-1	Iasis (Weelia) cylindrica	Blastozooid	15	12	Plastic	Intact	Very active		09/22	6	295	P4	4.64	27	"Yellow cloudy hue, lost by the end of incubation"	Temperature measured in air
+209	D11-BR-B-2	Brooksia rostrata	Blastozooid	7.5	32	Plastic	Intact	Moderate		09/22	6	295	P5	5.82	27	Gradation from 5-10mm length zooids	Temperature measured in air
+210	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/22	6	295	P3 control	6.22	27	Control local seawater	Temperature measured in air
+211	D13-CA-B-1	Cyclosalpa affinis	Blastozooid	35	6	Plastic	Intact	Active		09/23	7	0	P1	6.25	27.2	"Found in D13, released-recaptured in D14."	Temperature measured in D13 jar water (same dive computer value 81F)
+212	D14-WC-B-1A	Iasis (Weelia) cylindrica	Blastozooid	10	20	Plastic	Intact	Very active	0.0418	09/23	7	0	P2	6.3	27.2	Same golden-hazed chain broken in 2 pieces - lost 1 zooid by the end	Temperature measured in D13 jar water (same dive computer value 81F)
+213	D14-WC-B-1B	Iasis (Weelia) cylindrica	Blastozooid	10	28	Plastic	Intact	Very active	0.0314	09/23	7	0	P4	6.16	27.2	Same golden-hazed chain broken in 2 pieces - lost 4 zooids by the end	Temperature measured in D13 jar water (same dive computer value 81F)
+214	D14-WC-B-2	Iasis (Weelia) cylindrica	Blastozooid	10	34	Plastic	Intact	Very active	0.0314	09/23	7	0	P5	6.14	27.2	Includes one little hyperiid amphipod	Temperature measured in D13 jar water (same dive computer value 81F)
+215	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/23	7	0	P3 control	6.48	27.2	Control local seawater	Temperature measured in D13 jar water (same dive computer value 81F)
+216	D13-CA-B-1	Cyclosalpa affinis	Blastozooid	35	6	Plastic	Intact	Active		09/23	7	15	P1	6.11	28.2	"Found in D13, released-recaptured in D14."	Temperature measured in D13 jar water (same dive computer value 81F)
+217	D14-WC-B-1A	Iasis (Weelia) cylindrica	Blastozooid	10	20	Plastic	Intact	Very active	0.0418	09/23	7	15	P2	6.19	28.2	Same golden-hazed chain broken in 2 pieces - lost 1 zooid by the end	Temperature measured in D13 jar water (same dive computer value 81F)
+218	D14-WC-B-1B	Iasis (Weelia) cylindrica	Blastozooid	10	28	Plastic	Intact	Very active	0.0314	09/23	7	15	P4	6.02	28.2	Same golden-hazed chain broken in 2 pieces - lost 4 zooids by the end	Temperature measured in D13 jar water (same dive computer value 81F)
+219	D14-WC-B-2	Iasis (Weelia) cylindrica	Blastozooid	10	34	Plastic	Intact	Very active	0.0314	09/23	7	15	P5	5.9	28.2	Includes one little hyperiid amphipod	Temperature measured in D13 jar water (same dive computer value 81F)
+220	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/23	7	15	P3 control	6.53	28.2	Control local seawater	Temperature measured in D13 jar water (same dive computer value 81F)
+221	D13-CA-B-1	Cyclosalpa affinis	Blastozooid	35	6	Plastic	Intact	Active		09/23	7	30	P1	5.95	29.2	"Found in D13, released-recaptured in D14."	Temperature measured in D13 jar water (same dive computer value 81F)
+222	D14-WC-B-1A	Iasis (Weelia) cylindrica	Blastozooid	10	20	Plastic	Intact	Very active	0.0418	09/23	7	30	P2	6.11	29.2	Same golden-hazed chain broken in 2 pieces - lost 1 zooid by the end	Temperature measured in D13 jar water (same dive computer value 81F)
+223	D14-WC-B-1B	Iasis (Weelia) cylindrica	Blastozooid	10	28	Plastic	Intact	Very active	0.0314	09/23	7	30	P4	5.94	29.2	Same golden-hazed chain broken in 2 pieces - lost 4 zooids by the end	Temperature measured in D13 jar water (same dive computer value 81F)
+224	D14-WC-B-2	Iasis (Weelia) cylindrica	Blastozooid	10	34	Plastic	Intact	Very active	0.0314	09/23	7	30	P5	5.69	29.2	Includes one little hyperiid amphipod	Temperature measured in D13 jar water (same dive computer value 81F)
+225	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/23	7	30	P3 control	6.52	29.2	Control local seawater	Temperature measured in D13 jar water (same dive computer value 81F)
+226	D13-CA-B-1	Cyclosalpa affinis	Blastozooid	35	6	Plastic	Intact	Active		09/23	7	45	P1	5.78	29.5	"Found in D13, released-recaptured in D14."	Temperature measured in D13 jar water (same dive computer value 81F)
+227	D14-WC-B-1A	Iasis (Weelia) cylindrica	Blastozooid	10	20	Plastic	Intact	Very active	0.0418	09/23	7	45	P2	6.04	29.5	Same golden-hazed chain broken in 2 pieces - lost 1 zooid by the end	Temperature measured in D13 jar water (same dive computer value 81F)
+228	D14-WC-B-1B	Iasis (Weelia) cylindrica	Blastozooid	10	28	Plastic	Intact	Very active	0.0314	09/23	7	45	P4	5.76	29.5	Same golden-hazed chain broken in 2 pieces - lost 4 zooids by the end	Temperature measured in D13 jar water (same dive computer value 81F)
+229	D14-WC-B-2	Iasis (Weelia) cylindrica	Blastozooid	10	34	Plastic	Intact	Very active	0.0314	09/23	7	45	P5	5.58	29.5	Includes one little hyperiid amphipod	Temperature measured in D13 jar water (same dive computer value 81F)
+230	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/23	7	45	P3 control	6.64	29.5	Control local seawater	Temperature measured in D13 jar water (same dive computer value 81F)
+231	D13-CA-B-1	Cyclosalpa affinis	Blastozooid	35	6	Plastic	Intact	Active		09/23	7	60	P1	5.53	30	"Found in D13, released-recaptured in D14."	Temperature measured in D13 jar water (same dive computer value 81F)
+232	D14-WC-B-1A	Iasis (Weelia) cylindrica	Blastozooid	10	20	Plastic	Intact	Very active	0.0418	09/23	7	60	P2	5.8	30	Same golden-hazed chain broken in 2 pieces - lost 1 zooid by the end	Temperature measured in D13 jar water (same dive computer value 81F)
+233	D14-WC-B-1B	Iasis (Weelia) cylindrica	Blastozooid	10	28	Plastic	Intact	Very active	0.0314	09/23	7	60	P4	5.46	30	Same golden-hazed chain broken in 2 pieces - lost 4 zooids by the end	Temperature measured in D13 jar water (same dive computer value 81F)
+234	D14-WC-B-2	Iasis (Weelia) cylindrica	Blastozooid	10	34	Plastic	Intact	Very active	0.0314	09/23	7	60	P5	5.29	30	Includes one little hyperiid amphipod	Temperature measured in D13 jar water (same dive computer value 81F)
+235	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/23	7	60	P3 control	6.45	30	Control local seawater	Temperature measured in D13 jar water (same dive computer value 81F)
+236	D13-CA-B-1	Cyclosalpa affinis	Blastozooid	35	6	Plastic	Intact	Active		09/23	7	90	P1	5.17	31.1	"Found in D13, released-recaptured in D14."	Temperature measured in D13 jar water (same dive computer value 81F)
+237	D14-WC-B-1A	Iasis (Weelia) cylindrica	Blastozooid	10	20	Plastic	Intact	Very active	0.0418	09/23	7	90	P2	5.45	31.1	Same golden-hazed chain broken in 2 pieces - lost 1 zooid by the end	Temperature measured in D13 jar water (same dive computer value 81F)
+238	D14-WC-B-1B	Iasis (Weelia) cylindrica	Blastozooid	10	28	Plastic	Intact	Very active	0.0314	09/23	7	90	P4	4.99	31.1	Same golden-hazed chain broken in 2 pieces - lost 4 zooids by the end	Temperature measured in D13 jar water (same dive computer value 81F)
+239	D14-WC-B-2	Iasis (Weelia) cylindrica	Blastozooid	10	34	Plastic	Intact	Very active	0.0314	09/23	7	90	P5	4.81	31.1	Includes one little hyperiid amphipod	Temperature measured in D13 jar water (same dive computer value 81F)
+240	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/23	7	90	P3 control	6.25	31.1	Control local seawater	Temperature measured in D13 jar water (same dive computer value 81F)
+241	D13-CA-B-1	Cyclosalpa affinis	Blastozooid	35	6	Plastic	Intact	Active		09/23	7	120	P1	5.06	30.3	"Found in D13, released-recaptured in D14."	Temperature measured in D13 jar water (same dive computer value 81F)
+242	D14-WC-B-1A	Iasis (Weelia) cylindrica	Blastozooid	10	20	Plastic	Intact	Very active	0.0418	09/23	7	120	P2	5.36	30.3	Same golden-hazed chain broken in 2 pieces - lost 1 zooid by the end	Temperature measured in D13 jar water (same dive computer value 81F)
+243	D14-WC-B-1B	Iasis (Weelia) cylindrica	Blastozooid	10	28	Plastic	Intact	Very active	0.0314	09/23	7	120	P4	4.74	30.3	Same golden-hazed chain broken in 2 pieces - lost 4 zooids by the end	Temperature measured in D13 jar water (same dive computer value 81F)
+244	D14-WC-B-2	Iasis (Weelia) cylindrica	Blastozooid	10	34	Plastic	Intact	Very active	0.0314	09/23	7	120	P5	4.53	30.3	Includes one little hyperiid amphipod	Temperature measured in D13 jar water (same dive computer value 81F)
+245	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/23	7	120	P3 control	6.26	30.3	Control local seawater	Temperature measured in D13 jar water (same dive computer value 81F)
+246	D13-CA-B-1	Cyclosalpa affinis	Blastozooid	35	6	Plastic	Intact	Active		09/23	7	150	P1	4.78	29.9	"Found in D13, released-recaptured in D14."	Temperature measured in D13 jar water (same dive computer value 81F)
+247	D14-WC-B-1A	Iasis (Weelia) cylindrica	Blastozooid	10	20	Plastic	Intact	Very active	0.0418	09/23	7	150	P2	5.18	29.9	Same golden-hazed chain broken in 2 pieces - lost 1 zooid by the end	Temperature measured in D13 jar water (same dive computer value 81F)
+248	D14-WC-B-1B	Iasis (Weelia) cylindrica	Blastozooid	10	28	Plastic	Intact	Very active	0.0314	09/23	7	150	P4	4.45	29.9	Same golden-hazed chain broken in 2 pieces - lost 4 zooids by the end	Temperature measured in D13 jar water (same dive computer value 81F)
+249	D14-WC-B-2	Iasis (Weelia) cylindrica	Blastozooid	10	34	Plastic	Intact	Very active	0.0314	09/23	7	150	P5	4.25	29.9	Includes one little hyperiid amphipod	Temperature measured in D13 jar water (same dive computer value 81F)
+250	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/23	7	150	P3 control	6.25	29.9	Control local seawater	Temperature measured in D13 jar water (same dive computer value 81F)
+251	D13-CA-B-1	Cyclosalpa affinis	Blastozooid	35	6	Plastic	Intact	Active		09/23	7	180	P1	4.62	29.5	"Found in D13, released-recaptured in D14."	Temperature measured in D13 jar water (same dive computer value 81F)
+252	D14-WC-B-1A	Iasis (Weelia) cylindrica	Blastozooid	10	20	Plastic	Intact	Very active	0.0418	09/23	7	180	P2	5.04	29.5	Same golden-hazed chain broken in 2 pieces - lost 1 zooid by the end	Temperature measured in D13 jar water (same dive computer value 81F)
+253	D14-WC-B-1B	Iasis (Weelia) cylindrica	Blastozooid	10	28	Plastic	Intact	Very active	0.0314	09/23	7	180	P4	4.21	29.5	Same golden-hazed chain broken in 2 pieces - lost 4 zooids by the end	Temperature measured in D13 jar water (same dive computer value 81F)
+254	D14-WC-B-2	Iasis (Weelia) cylindrica	Blastozooid	10	34	Plastic	Intact	Very active	0.0314	09/23	7	180	P5	4	29.5	Includes one little hyperiid amphipod	Temperature measured in D13 jar water (same dive computer value 81F)
+255	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/23	7	180	P3 control	6.23	29.5	Control local seawater	Temperature measured in D13 jar water (same dive computer value 81F)
+256	D13-CA-B-1	Cyclosalpa affinis	Blastozooid	35	6	Plastic	Intact	Active		09/23	7	246	P1	4.14	29.5	"Found in D13, released-recaptured in D14."	Temperature measured in D13 jar water (same dive computer value 81F)
+257	D14-WC-B-1A	Iasis (Weelia) cylindrica	Blastozooid	10	20	Plastic	Intact	Very active	0.0418	09/23	7	246	P2	4.71	29.5	Same golden-hazed chain broken in 2 pieces - lost 1 zooid by the end	Temperature measured in D13 jar water (same dive computer value 81F)
+258	D14-WC-B-1B	Iasis (Weelia) cylindrica	Blastozooid	10	28	Plastic	Intact	Very active	0.0314	09/23	7	246	P4	3.84	29.5	Same golden-hazed chain broken in 2 pieces - lost 4 zooids by the end	Temperature measured in D13 jar water (same dive computer value 81F)
+259	D14-WC-B-2	Iasis (Weelia) cylindrica	Blastozooid	10	34	Plastic	Intact	Very active	0.0314	09/23	7	246	P5	3.43	29.5	Includes one little hyperiid amphipod	Temperature measured in D13 jar water (same dive computer value 81F)
+260	NA	NA	NA	NA	NA	Plastic	Intact	NA		09/23	7	246	P3 control	6.11	29.5	Control local seawater	Temperature measured in D13 jar water (same dive computer value 81F)
