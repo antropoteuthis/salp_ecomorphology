@@ -47,21 +47,27 @@ rawControl <- ggplot(norm_presens, aes(x=Time.point..min., y=O2..mg.L._control))
 rawAnimal <- ggplot(norm_presens, aes(x=Time.point..min., y=O2..mg.L._animal)) + geom_point(aes(col=Species)) + ylab("O2 (mg/L) animals") + geom_line(aes(col = Species, group=Specimen)) + theme_bw() + theme(legend.position = "none")
 rawSpecific <- ggplot(norm_presens, aes(x=Time.point..min., y=O2..mg.L.specific)) + geom_point(aes(col=Species)) + ylab("O2 (mg/L) animals-controls") + geom_line(aes(col = Species, group=Specimen)) + theme_bw()
 
+pdf("RawO2.pdf", height=4, width=14)
 wrap_plots(rawControl,rawAnimal,rawSpecific)
+dev.off()
 
 #Raw SAT O2 plots
-rawSatControl <- ggplot(norm_presens, aes(x=Time.point..min., y=sat_O2_control)) + geom_point(aes(col=Species)) + ylab("Sat O2 (%) controls") + geom_line(aes(col = Species, group=Specimen)) + theme_bw() + theme(legend.position = "none")
-rawSatAnimal <- ggplot(norm_presens, aes(x=Time.point..min., y=sat_O2_animal)) + geom_point(aes(col=Species)) + ylab("Sat O2 (%) (mg/L) animals") + geom_line(aes(col = Species, group=Specimen)) + theme_bw() + theme(legend.position = "none")
-rawSatSpecific <- ggplot(norm_presens, aes(x=Time.point..min., y=sat_O2.specific)) + geom_point(aes(col=Species)) + ylab("Sat O2 (%) animals-controls") + geom_line(aes(col = Species, group=Specimen)) + theme_bw()
+rawSatControl <- ggplot(norm_presens, aes(x=Time.point..min., y=sat_O2_control)) + geom_point(aes(col=Species)) + ylab("Sat O2 (%) Controls") + geom_line(aes(col = Species, group=Specimen)) + theme_bw() + theme(legend.position = "none")
+rawSatAnimal <- ggplot(norm_presens, aes(x=Time.point..min., y=sat_O2_animal)) + geom_point(aes(col=Species)) + ylab("Sat O2 (%) (mg/L) Animals") + geom_line(aes(col = Species, group=Specimen)) + theme_bw() + theme(legend.position = "none")
+rawSatSpecific <- ggplot(norm_presens, aes(x=Time.point..min., y=sat_O2.specific)) + geom_point(aes(col=Species)) + ylab("Sat O2 (%) Animals-Controls") + geom_line(aes(col = Species, group=Specimen)) + theme_bw()
 
+pdf("RawSatO2.pdf", height=4, width=14)
 wrap_plots(rawSatControl,rawSatAnimal,rawSatSpecific)
+dev.off()
 
 #Relative O2 from T-0 plots
 RelControl <- ggplot(norm_presens, aes(x=Time.point..min., y=dif_O2.control)) + geom_point(aes(col=Species)) + ylab("O2 (mg/L) from T0 - Controls") + geom_line(aes(col = Species, group=Specimen)) + theme_bw() + theme(legend.position = "none")
 RelAnimal <- ggplot(norm_presens, aes(x=Time.point..min., y=dif_O2.animal)) + geom_point(aes(col=Species))+ ylab("O2 (mg/L) from T0 - Animals") + geom_line(aes(col = Species, group=Specimen)) + theme_bw() + theme(legend.position = "none")
 RelSpecific <- ggplot(norm_presens, aes(x=Time.point..min., y=dif_O2.specific)) + geom_point(aes(col=Species))+ ylab("O2 (mg/L) from T0 - Animals-Controls") + geom_line(aes(col = Species, group=Specimen)) + theme_bw()
 
+pdf("RelO2.pdf", height=4, width=14)
 wrap_plots(RelControl,RelAnimal,RelSpecific)
+dev.off()
 
 #Relative SAT O2 T-0 plots
 RelSatControl <- ggplot(norm_presens, aes(x=Time.point..min., y=dif_sat_O2.control)) + geom_point(aes(col=Species)) + ylab("Sat O2 (%) from T0 - Controls") + geom_line(aes(col = Species, group=Specimen)) + theme_bw() + theme(legend.position = "none")
