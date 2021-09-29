@@ -1,7 +1,7 @@
 library(tidyverse)
 library(wql)
 library(patchwork)
-setwd("Documents/salp_ecomorphology/")
+setwd("~/Documents/salp_ecomorphology/")
 
 #Load data and label control rows
 presens <- read.csv("respirometry_Kona21.tsv", header = T, sep = "\t", stringsAsFactors = F)
@@ -74,35 +74,73 @@ RelSatControl <- ggplot(norm_presens, aes(x=Time.point..min., y=dif_sat_O2.contr
 RelSatAnimal <- ggplot(norm_presens, aes(x=Time.point..min., y=dif_sat_O2.animal)) + geom_point(aes(col=Species))+ ylab("Sat O2 (%) from T0 - Animals") + geom_line(aes(col = Species, group=Specimen)) + theme_bw() + theme(legend.position = "none")
 RelSatSpecific <- ggplot(norm_presens, aes(x=Time.point..min., y=dif_sat_O2.specific)) + geom_point(aes(col=Species))+ ylab("Sat O2 (%) from T0 - Animals-Controls") + geom_line(aes(col = Species, group=Specimen)) + theme_bw()
 
+pdf("RelSatO2.pdf", height=4, width=14)
 wrap_plots(RelSatControl,RelSatAnimal,RelSatSpecific)
+dev.off()
 
 #Zooid N & Size corrected O2 plots
 CorrControl <- ggplot(norm_presens, aes(x=Time.point..min., y=corr_O2.control)) + geom_point(aes(col=Species)) + ylab("Corrected O2 (mg/L) from T0 - Controls") + geom_line(aes(col = Species, group=Specimen)) + theme_bw() + theme(legend.position = "none")
 CorrAnimal <- ggplot(norm_presens, aes(x=Time.point..min., y=corr_O2.animal)) + geom_point(aes(col=Species))+ ylab("Corrected O2 (mg/L) from T0 - Animals") + geom_line(aes(col = Species, group=Specimen)) + theme_bw() + theme(legend.position = "none")
 CorrSpecific <- ggplot(norm_presens, aes(x=Time.point..min., y=corr_O2.specific)) + geom_point(aes(col=Species)) + ylab("Corrected O2 (mg/L) from T0 - Animals-Controls") + geom_line(aes(col = Species, group=Specimen)) + theme_bw()
 
+pdf("CorrO2.pdf", height=4, width=14)
 wrap_plots(CorrControl,CorrAnimal,CorrSpecific)
+dev.off()
 
 #Zooid N & Size corrected O2 % saturation
 CorrSatControl <- ggplot(norm_presens, aes(x=Time.point..min., y=corr_sat_O2.control)) + geom_point(aes(col=Species)) + ylab("Corrected Sat O2 (%) from T0 - Controls") + geom_line(aes(col = Species, group=Specimen)) + theme_bw() + theme(legend.position = "none")
 CorrSatAnimal <- ggplot(norm_presens, aes(x=Time.point..min., y=corr_sat_O2.animal)) + geom_point(aes(col=Species))+ ylab("Corrected Sat O2 (%) from T0 - Animals") + geom_line(aes(col = Species, group=Specimen)) + theme_bw() + theme(legend.position = "none")
 CorrSatSpecific <- ggplot(norm_presens, aes(x=Time.point..min., y=corr_sat_O2.specific)) + geom_point(aes(col=Species)) + ylab("Corrected Sat O2 (%) from T0 - Animals-Controls") + geom_line(aes(col = Species, group=Specimen)) + theme_bw()
 
+pdf("CorrSatO2.pdf", height=4, width=14)
 wrap_plots(CorrSatControl,CorrSatAnimal,CorrSatSpecific)
+dev.off()
 
 #Estimate slopes
-slopes <- as.data.frame(matrix(ncol=3,nrow=length(unique(norm_presens$Specimen))))
-names(slopes) <- c("Species","Specimen","Slope")
+slopes <- as.data.frame(matrix(ncol=8,nrow=length(unique(norm_presens$Specimen))))
+names(slopes) <- c("Species","Specimen","Zooid.length..mm.","Number.of.zooids","Slope_O2","Slope_CorrO2sat","Timespan","Temperature...C.")
 for(i in 1:length(unique(norm_presens$Specimen))){
   spm_i <- unique(norm_presens$Specimen)[i]
-  series_i <- norm_presens[which(norm_presens$Specimen==spm_i),c("Specimen","Species","Time.point..min.","corr_sat_O2.specific")]
-  lm_i <- lm(Time.point..min.~corr_sat_O2.specific, series_i)
-  print(series_i$Specimen[1] %>% as.character());print(series_i$Species[1] %>% as.character());print(lm_i$coefficients)
+  series_i <- norm_presens[which(norm_presens$Specimen==spm_i),c("Specimen","Species","Zooid.length..mm.","Number.of.zooids","Time.point..min.","Temperature...C.","sat_O2.specific","corr_sat_O2.specific")]
+  lm_i <- lm(sat_O2.specific~Time.point..min., series_i)
+  lm_j <- lm(corr_sat_O2.specific~Time.point..min., series_i)
+  print(series_i$Specimen[1] %>% as.character());print(series_i$Species[1] %>% as.character());print(lm_i$coefficients);print(lm_j$coefficients)
+  time.span_i <- max(series_i$Time.point..min.)-min(series_i$Time.point..min.)
   slopes[i,1] <- series_i$Species[1] %>% as.character()
   slopes[i,2] <- series_i$Specimen[1] %>% as.character()
-  slopes[i,3] <- lm_i$coefficients[2] %>% as.numeric()
+  slopes[i,3] <- series_i$Zooid.length..mm.[1] %>% as.character()
+  slopes[i,4] <- series_i$Number.of.zooids[1] %>% as.character()
+  slopes[i,5] <- lm_i$coefficients[2] %>% as.numeric()
+  slopes[i,6] <- lm_j$coefficients[2] %>% as.numeric()
+  slopes[i,7] <- time.span_i
+  slopes[i,8] <- series_i$Temperature...C. %>% mean()
 }
 
-ggplot(slopes,aes(x=Species,y=Slope))+geom_boxplot()+theme(axis.text.x = element_text(angle = 90))
+pdf("slopes_SatO2.pdf", height=6, width=10)
+ggplot(slopes,aes(x=Species,y=-Slope_O2))+geom_boxplot()+theme(axis.text.x = element_text(angle = 90))
+dev.off()
+
+pdf("slopes_CorrSatO2.pdf", height=6, width=10)
+ggplot(slopes,aes(x=Species,y=-Slope_CorrO2sat))+geom_boxplot()+theme(axis.text.x = element_text(angle = 90))
+dev.off()
+
 ## GROUP BY Specimen ##
 
+### COST OF TRANSPORT ###
+swim <- data.frame(Species=c("Pegea confoederata","Iasis (Weelia) cylindrica","Cyclosalpa affinis"),Speed.cm.s=c(1.68,1.23,1.72))
+COT <- left_join(slopes, swim, by="Species") 
+COT$Zooid.length..mm. <- as.numeric(COT$Zooid.length..mm.)
+COT$Number.of.zooids <- as.numeric(COT$Number.of.zooids)
+COT %>% mutate(Speed.body.s = Zooid.length..mm.*Speed.cm.s/10) -> COT
+COT %>% mutate(absO2slope = abs(Slope_O2)*0.225*oxySol(Temperature...C., 30.1, 1)) -> COT
+#Define COT.abs as mgO2/(Zooid.vol*cm_moved)  v.v. COT.rel as mgO2/(Zooid.vol*bodylength)
+COT %>% mutate(COT.abs = absO2slope*Speed.cm.s*60/((((Zooid.length..mm./2)^2)*Zooid.length..mm.)*Number.of.zooids), COT.rel = abs(Slope_O2)*0.225*Speed.body.s*60/((((Zooid.length..mm./2)^2)*Zooid.length..mm.)*Number.of.zooids))->COT
+COT <- COT[which(!is.na(COT$COT.abs)),]
+
+pdf("COT_abs.pdf", height=6, width=10)
+ggplot(COT,aes(x=Species,y=COT.abs))+geom_boxplot()+theme(axis.text.x = element_text(angle = 90))
+dev.off()
+
+pdf("COT_rel.pdf", height=6, width=10)
+ggplot(COT,aes(x=Species,y=COT.rel))+geom_boxplot()+theme(axis.text.x = element_text(angle = 90))
+››dev.off()
