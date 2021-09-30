@@ -143,4 +143,12 @@ dev.off()
 
 pdf("COT_rel.pdf", height=6, width=10)
 ggplot(COT,aes(x=Species,y=COT.rel))+geom_boxplot()+theme(axis.text.x = element_text(angle = 90))
-››dev.off()
+dev.off()
+
+#Estimate Carbon content for each species and recalculate carbon-based COT
+mm_to_carbon <- read.csv("salpcarbon.tsv", header=T, stringsAsFactors = F, sep='\t')
+mm_to_carbon$Species[mm_to_carbon$Species=="Pegea socia"] <- "Pegea confoederata" ##PROXY P. socia for P. confoederata
+mm_to_carbon$Species[mm_to_carbon$Species=="Soestia (Iasis) zonaria"] <- "Iasis (Weelia) cylindrica" ##PROXY Soestia for Weelia
+COT <- left_join(COT, mm_to_carbon[,c(1,4,5)], by="Species")
+COT <- mutate(COT, mgC = Regression_b*Zooid.length..mm.^Regression_alpha)
+COT %>% mutate(COT.abs = absO2slope*Speed.cm.s*60/((((Zooid.length..mm./2)^2)*Zooid.length..mm.)*Number.of.zooids), COT.rel = abs(Slope_O2)*0.225*Speed.body.s*60/((((Zooid.length..mm./2)^2)*Zooid.length..mm.)*Number.of.zooids))->COT
