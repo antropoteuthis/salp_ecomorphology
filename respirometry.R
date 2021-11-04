@@ -135,20 +135,27 @@ COT %>% mutate(Speed.body.s = Zooid.length..mm.*Speed.cm.s/10) -> COT
 COT %>% mutate(absO2slope = abs(Slope_O2)*0.225*oxySol(Temperature...C., 30.1, 1)) -> COT
 #Define COT.abs as mgO2/(Zooid.vol*cm_moved)  v.v. COT.rel as mgO2/(Zooid.vol*bodylength)
 COT %>% mutate(COT.abs = absO2slope*Speed.cm.s*60/((((Zooid.length..mm./2)^2)*Zooid.length..mm.)*Number.of.zooids), COT.rel = abs(Slope_O2)*0.225*Speed.body.s*60/((((Zooid.length..mm./2)^2)*Zooid.length..mm.)*Number.of.zooids))->COT
-COT <- COT[which(!is.na(COT$COT.abs)),]
+COT_pruned <- COT[which(!is.na(COT$COT.abs)),]
 
 pdf("COT_abs.pdf", height=6, width=10)
-ggplot(COT,aes(x=Species,y=COT.abs))+geom_boxplot()+theme(axis.text.x = element_text(angle = 90))
+ggplot(COT_pruned,aes(x=Species,y=COT.abs))+geom_boxplot()+theme(axis.text.x = element_text(angle = 90))
 dev.off()
 
 pdf("COT_rel.pdf", height=6, width=10)
-ggplot(COT,aes(x=Species,y=COT.rel))+geom_boxplot()+theme(axis.text.x = element_text(angle = 90))
+ggplot(COT_pruned,aes(x=Species,y=COT.rel))+geom_boxplot()+theme(axis.text.x = element_text(angle = 90))
 dev.off()
 
 #Estimate Carbon content for each species and recalculate carbon-based COT
-mm_to_carbon <- read.csv("salpcarbon.tsv", header=T, stringsAsFactors = F, sep='\t')
-mm_to_carbon$Species[mm_to_carbon$Species=="Pegea socia"] <- "Pegea confoederata" ##PROXY P. socia for P. confoederata
-mm_to_carbon$Species[mm_to_carbon$Species=="Soestia (Iasis) zonaria"] <- "Iasis (Weelia) cylindrica" ##PROXY Soestia for Weelia
+mm_to_carbon <- read.csv("Madin1981_salpcarbon.tsv", header=T, stringsAsFactors = F, sep='\t')
+mm_to_carbon$Generation[mm_to_carbon$Species=="Iasis (Weelia) cylindrica"] <- "a" ##PROXY 
 COT <- left_join(COT, mm_to_carbon[,c(1,4,5)], by="Species")
 COT <- mutate(COT, mgC = Regression_b*Zooid.length..mm.^Regression_alpha)
-COT %>% mutate(COT.abs = absO2slope*Speed.cm.s*60/((((Zooid.length..mm./2)^2)*Zooid.length..mm.)*Number.of.zooids), COT.rel = abs(Slope_O2)*0.225*Speed.body.s*60/((((Zooid.length..mm./2)^2)*Zooid.length..mm.)*Number.of.zooids))->COT
+COT <- mutate(COT, COT_C.abs = absO2slope*Speed.cm.s*60/mgC, COT_C.rel = abs(Slope_O2)*0.225*Speed.body.s*60/mgC)
+
+pdf("COT_C_abs.pdf", height=6, width=10)
+ggplot(COT,aes(x=Species,y=COT_C.abs))+geom_boxplot()+theme(axis.text.x = element_text(angle = 90))
+dev.off()
+
+pdf("COT_C_rel.pdf", height=6, width=10)
+ggplot(COT,aes(x=Species,y=COT_C.rel))+geom_boxplot()+theme(axis.text.x = element_text(angle = 90))
+dev.off()

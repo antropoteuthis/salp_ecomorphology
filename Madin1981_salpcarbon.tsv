@@ -1,0 +1,20 @@
+Species	Generation	N	Regression_a	Regression_b	R2
+Cyclosalpa affinis	s	16	1.038	1.540	0.92
+Cyclosalpa affinis	a	19	-0.111	1.984	0.95
+Cyclosalpa floridana	s	9	0.518	1.480	0.94
+Cyclosalpa floridana	a	9	1.209	0.719	0.56
+Cyclosalpa pinnata	s	18	1.861	1.111	0.86
+Cyclosalpa pinnata	a	11	0.102	2.013	0.96
+Cyclosalpa polae	s	8	0.391	1.791	0.97
+Cyclosalpa polae	a	6	0.219	1.715	0.99
+lhlea asymmetrica	s	10	1.516	0.978	0.67
+lhlea asymmetrica	a	10	0.613	1.531	0.65
+Pegea bicaudata	s	8	1.118	1.737	0.96
+Pegea bicaudata	a	23	-0.663	2.429	0.92
+Pegea confoederata	s	26	1.450	1.031	0.86
+Pegea confoederata	a	23	-0.111	1.906	0.95
+Pegea socia	a	18	-0.327	2.216	0.96
+Iasis (Weelia) cylindrica	s	19	-0.160	1.920	0.91
+Salpa maxima	a	30	0.006	2.062	0.93
+Thalia democratica	s	12	0.121	1.775	0.75
+Thalia democratica	a	12	0.485	1.193	0.45
