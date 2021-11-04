@@ -1,49 +1,113 @@
-Species Variable    Class   Value   Source
-Cyclosalpa polae    Mean swimming speed cms number  1.2 Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777.
-Pegea confoederata  Mean swimming speed cms number  2   Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777.
-Cyclosalpa affinis  Mean swimming speed cms number  3.6 Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777.
-Salpa maxima    Mean swimming speed cms number  3.9 Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777.
-Iasis (Weelia) cylindrica   Mean swimming speed cms number  9   Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777.
-Cyclosalpa polae    Pulsation rate Hz   number  1.1 Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777.
-Pegea confoederata  Pulsation rate Hz   number  2   Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777.
-Cyclosalpa affinis  Pulsation rate Hz   number  2   Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777.
-Salpa maxima    Pulsation rate Hz   number  1.3 Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777.
-Iasis (Weelia) cylindrica   Pulsation rate Hz   number  2.7 Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777.
-Pegea confoederata  Chain architecture  category    Transversal Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777.
-Pegea bicaudata Chain architecture  category    Transversal Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777.
-Pegea socia Chain architecture  category    Transversal Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777.
-Cyclosalpa polae    Chain architecture  category    Cluster Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777.
-Cyclosalpa affinis  Chain architecture  category    Whorl   Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777.
-Traustedtia multitentaculata    Chain architecture  category    Transversal Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777.
-Thalia democratica  Chain architecture  category    Oblique Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777.
-Thetys vagina   Chain architecture  category    Oblique Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777.
-Cyclosalpa sewelli  Chain architecture  category    Cluster Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777.
-Cyclosalpa affinis  Chain architecture  category    Whorl   Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777.
-Cyclosalpa pinnata  Chain architecture  category    Whorl   Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777.
-Cyclosalpa floridiana   Chain architecture  category    Whorl   Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777.
-Helicosalpa virgula Chain architecture  category    Helical Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777.
-Helicosalpa komaii  Chain architecture  category    Helical Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777.
-Helicosalpa younti  Chain architecture  category    Helical Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777.
-Brooksia rostrata   Chain architecture  category    Bipinnate   Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777.
-Salpa maxima    Chain architecture  category    Linear  Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777.
-Iasis (Weelia) cylindrica   Chain architecture  category    Linear  Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777.
-Salpa fusiformis    Chain architecture  category    Linear  Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777.
-Salpa aspera    Chain architecture  category    Linear  Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777.
-Salpa younti    Chain architecture  category    Linear  Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777.
-Ihlea racovitzai    Chain architecture  category    Linear  Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777.
-Soestia (Iasis) zonaria Chain architecture  category    Linear  Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777.
-Ritteriella retracta    Chain architecture  category    Linear  Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777.
-Ritteriella amboinensis Chain architecture  category    Linear  Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777.
-Ritteriella picteti Chain architecture  category    Linear  Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777.
-Salpa gerlachei Chain architecture  category    Linear  Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777.
-Salpa thompsoni Chain architecture  category    Linear  Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777.
-Salpa tuberculata   Chain architecture  category    Linear  Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777.
-Ihlea magalhanica   Chain architecture  category    Linear  Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777.
-Ihlea punctata  Chain architecture  category    Linear  Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777.
-Pegea confoederata  Cost of locomotion J-kg-m   number  2.7 Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777.
-Salpa maxima    Cost of locomotion J-kg-m   number  2.6 Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777.
-Salpa fusiformis    Cost of locomotion J-kg-m   number  2.5 Bone, Q., & Trueman, E. R. (1983). Jet propulsion in salps (Tunicata: Thaliacea). Journal of Zoology, 201(4), 481-506.
-Salpa thompsoni Cost of locomotion J-kg-m   number  0.13    Reinke M (1987) On the feeding and locomotory physiology of Salpa thompsoni and Salpa fusiformis. Ber Polarforsch 36:1–89
-Salpa fusiformis    Cost of locomotion J-kg-m   number  0.3 Reinke M (1987) On the feeding and locomotory physiology of Salpa thompsoni and Salpa fusiformis. Ber Polarforsch 36:1–89
-Salpa fusiformis    Mean swimming speed cms number  4   Reinke M (1987) On the feeding and locomotory physiology of Salpa thompsoni and Salpa fusiformis. Ber Polarforsch 36:1–90
-Salpa thompsoni Mean swimming speed cms number  4   Reinke M (1987) On the feeding and locomotory physiology of Salpa thompsoni and Salpa fusiformis. Ber Polarforsch 36:1–91
+Species	Variable	Class	Value	Source
+Cyclosalpa polae	Mean swimming speed cms	number	1.2	"Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777."
+Pegea confoederata	Mean swimming speed cms	number	2	"Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777."
+Cyclosalpa affinis	Mean swimming speed cms	number	3.6	"Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777."
+Salpa maxima	Mean swimming speed cms	number	3.9	"Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777."
+Iasis (Weelia) cylindrica	Mean swimming speed cms	number	9	"Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777."
+Cyclosalpa polae	Mean pulsation rate Hz	number	1.1	"Bone, Q. (1998). The biology of pelagic tunicates (No. Sirsi) i9780198540243). Chapter 3"
+Pegea confoederata	Mean pulsation rate Hz	number	2	"Bone, Q. (1998). The biology of pelagic tunicates (No. Sirsi) i9780198540243). Chapter 4"
+Cyclosalpa affinis	Mean pulsation rate Hz	number	2	"Bone, Q. (1998). The biology of pelagic tunicates (No. Sirsi) i9780198540243). Chapter 5"
+Salpa maxima	Mean pulsation rate Hz	number	1.3	"Bone, Q. (1998). The biology of pelagic tunicates (No. Sirsi) i9780198540243). Chapter 6"
+Iasis (Weelia) cylindrica	Mean pulsation rate Hz	number	2.7	"Bone, Q. (1998). The biology of pelagic tunicates (No. Sirsi) i9780198540243). Chapter 7"
+Pegea confoederata	Chain architecture	category	Transversal	"Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777."
+Pegea bicaudata	Chain architecture	category	Transversal	"Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777."
+Pegea socia	Chain architecture	category	Transversal	"Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777."
+Cyclosalpa polae	Chain architecture	category	Cluster	"Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777."
+Cyclosalpa affinis	Chain architecture	category	Whorl	"Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777."
+Traustedtia multitentaculata	Chain architecture	category	Transversal	"Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777."
+Thalia democratica	Chain architecture	category	Oblique	"Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777."
+Thetys vagina	Chain architecture	category	Oblique	"Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777."
+Cyclosalpa sewelli	Chain architecture	category	Cluster	"Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777."
+Cyclosalpa affinis	Chain architecture	category	Whorl	"Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777."
+Cyclosalpa pinnata	Chain architecture	category	Whorl	"Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777."
+Cyclosalpa floridiana	Chain architecture	category	Whorl	"Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777."
+Helicosalpa virgula	Chain architecture	category	Helical	"Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777."
+Helicosalpa komaii	Chain architecture	category	Helical	"Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777."
+Helicosalpa younti	Chain architecture	category	Helical	"Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777."
+Brooksia rostrata	Chain architecture	category	Bipinnate	"Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777."
+Salpa maxima	Chain architecture	category	Linear	"Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777."
+Iasis (Weelia) cylindrica	Chain architecture	category	Linear	"Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777."
+Salpa fusiformis	Chain architecture	category	Linear	"Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777."
+Salpa aspera	Chain architecture	category	Linear	"Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777."
+Salpa younti	Chain architecture	category	Linear	"Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777."
+Ihlea racovitzai	Chain architecture	category	Linear	"Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777."
+Soestia (Iasis) zonaria	Chain architecture	category	Linear	"Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777."
+Ritteriella retracta	Chain architecture	category	Linear	"Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777."
+Ritteriella amboinensis	Chain architecture	category	Linear	"Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777."
+Ritteriella picteti	Chain architecture	category	Linear	"Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777."
+Salpa gerlachei	Chain architecture	category	Linear	"Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777."
+Salpa thompsoni	Chain architecture	category	Linear	"Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777."
+Salpa tuberculata	Chain architecture	category	Linear	"Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777."
+Ihlea magalhanica	Chain architecture	category	Linear	"Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777."
+Ihlea punctata	Chain architecture	category	Linear	"Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777."
+Pegea confoederata	Cost of locomotion J-kg-m	number	2.7	"Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777."
+Salpa maxima	Cost of locomotion J-kg-m	number	2.6	"Madin, L. P. (1990). Aspects of jet propulsion in salps. Canadian Journal of Zoology, 68(4), 765-777."
+Salpa fusiformis	Cost of locomotion J-kg-m	number	2.5	"Bone, Q., & Trueman, E. R. (1983). Jet propulsion in salps (Tunicata: Thaliacea). Journal of Zoology, 201(4), 481-506."
+Salpa thompsoni	Cost of locomotion J-kg-m	number	0.13	Reinke M (1987) On the feeding and locomotory physiology of Salpa thompsoni and Salpa fusiformis. Ber Polarforsch 36:1–89
+Salpa fusiformis	Cost of locomotion J-kg-m	number	0.3	Reinke M (1987) On the feeding and locomotory physiology of Salpa thompsoni and Salpa fusiformis. Ber Polarforsch 36:1–89
+Salpa fusiformis	Mean swimming speed cms	number	4	Reinke M (1987) On the feeding and locomotory physiology of Salpa thompsoni and Salpa fusiformis. Ber Polarforsch 36:1–90
+Salpa thompsoni	Mean swimming speed cms	number	4	Reinke M (1987) On the feeding and locomotory physiology of Salpa thompsoni and Salpa fusiformis. Ber Polarforsch 36:1–91
+Salpa fusiformis	Mean pulsation rate Hz	number	2.5	"Nishikawa, J., & Terazaki, M. (1994). Measurement of swimming speed and pulse rate of salps using a video equipment. Bulletin of Plankton Society of Japan (Japan)."
+Cyclosalpa affinis	Weight-specific clearance rate ml-mg-h	number	266	"Harbison, G. R., & Gilmer, R. W. (1976). The feeding rates of the pelagic tunicate Pegea confederata and two other salps 1. Limnology and Oceanography, 21(4), 517-528."
+Cyclosalpa affinis	Weight-specific clearance rate ml-mg-h	number	383	"Harbison, G. R., & McAlister, V. L. (1979). The filter‐feeding rates and particle retention efficiencies of three species of Cyclosalpa (Tunicata, Thaliacea) 1. Limnology and Oceanography, 24(5), 875-892."
+Cyclosalpa bakeri	Weight-specific clearance rate ml-mg-h	number	161	"Madin, L. P., & Purcell, J. E. (1992). Feeding, metabolism. and growth of Cyclosalpa bakeri in the subarctic Pacific. Limnology and Oceanography, 37(6), 1236-1251."
+Cyclosalpa bakeri	Weight-specific clearance rate ml-mg-h	number	354	"Madin, L. P., & Purcell, J. E. (1992). Feeding, metabolism. and growth of Cyclosalpa bakeri in the subarctic Pacific. Limnology and Oceanography, 37(6), 1236-1251."
+Cyclosalpa floridiana	Weight-specific clearance rate ml-mg-h	number	664	"Harbison, G. R., & McAlister, V. L. (1979). The filter‐feeding rates and particle retention efficiencies of three species of Cyclosalpa (Tunicata, Thaliacea) 1. Limnology and Oceanography, 24(5), 875-892."
+Pegea confoederata	Weight-specific clearance rate ml-mg-h	number	626	"Harbison, G. R., & Gilmer, R. W. (1976). The feeding rates of the pelagic tunicate Pegea confederata and two other salps 1. Limnology and Oceanography, 21(4), 517-528."
+Pegea confoederata	Weight-specific clearance rate ml-mg-h	number	1951	"Madin, L. P., & Cetta, C. M. (1984). The use of gut fluorescence to estimate grazing by oceanic salps. Journal of Plankton Research, 6(3), 475-492."
+Salpa fusiformis	Weight-specific clearance rate ml-mg-h	number	173	"Andersen, V. (1985). Filtration and ingestion rates of Salpa fusiformis Cuvier (Tunicata: Thaliacea): effects of size, individual weight and algal concentration. Journal of Experimental Marine Biology and Ecology, 87(1), 13-29."
+Salpa maxima	Weight-specific clearance rate ml-mg-h	number	1235	"Harbison, G. R., & Gilmer, R. W. (1976). The feeding rates of the pelagic tunicate Pegea confederata and two other salps 1. Limnology and Oceanography, 21(4), 517-528."
+Salpa maxima	Weight-specific clearance rate ml-mg-h	number	1753	"Madin, L. P., & Cetta, C. M. (1984). The use of gut fluorescence to estimate grazing by oceanic salps. Journal of Plankton Research, 6(3), 475-492."
+Salpa thompsoni	Weight-specific clearance rate ml-mg-h	number	70	"Huntley, M. E., Sykes, P. F., & Marin, V. (1989). Biometry and trophodynamics of Salpa thompsoni Foxton (Tunicata: Thaliacea) near the Antarctic Peninsula in austral summer, 1983–1984. Polar Biology, 10(1), 59-70."
+Salpa thompsoni	Weight-specific clearance rate ml-mg-h	number	95	Reinke M (1987) On the feeding and locomotory physiology of Salpa thompsoni and Salpa fusiformis. Ber Polarforsch 36:1–89
+Thalia democratica	Weight-specific clearance rate ml-mg-h	number	801	"Deibel, D. (1982). Laboratory-measured grazing and ingestion rates of the salp, Thalia democratica Forskal, and the doliolid, Dolioletta gegenbauri Uljanin (Tunicata, Thaliacea). Journal of Plankton Research, 4(2), 189-201."
+Thalia democratica	Weight-specific clearance rate ml-mg-h	number	250	"Mullin, M. M. (1983). In situ measurement of filtering rates of the salp, Thalia democratica, on phytoplankton and bacteria. Journal of Plankton Research, 5(2), 279-288."
+Thalia democratica	Weight-specific clearance rate ml-mg-h	number	350	"Mullin, M. M. (1983). In situ measurement of filtering rates of the salp, Thalia democratica, on phytoplankton and bacteria. Journal of Plankton Research, 5(2), 279-288."
+Cyclosalpa affinis	Weight-specific respiration rate µmolO2-mgC-h	number	1.09	"Cetta, C. M., Madin, L. P., & Kremer, P. (1986). Respiration and excretion by oceanic salps. Marine Biology, 91(4), 529-537."
+Cyclosalpa bakeri	Weight-specific respiration rate µmolO2-mgC-h	number	0.18	"Madin, L. P., & Purcell, J. E. (1992). Feeding, metabolism. and growth of Cyclosalpa bakeri in the subarctic Pacific. Limnology and Oceanography, 37(6), 1236-1251."
+Cyclosalpa pinnata	Weight-specific respiration rate µmolO2-mgC-h	number	0.57	"Cetta, C. M., Madin, L. P., & Kremer, P. (1986). Respiration and excretion by oceanic salps. Marine Biology, 91(4), 529-537."
+Pegea confoederata	Weight-specific respiration rate µmolO2-mgC-h	number	0.89	"Biggs, D. C. (1977). Respiration and ammonium excretion by open ocean gelatinous zooplankton 1. Limnology and Oceanography, 22(1), 108-117."
+Pegea confoederata	Weight-specific respiration rate µmolO2-mgC-h	number	1.11	"Cetta, C. M., Madin, L. P., & Kremer, P. (1986). Respiration and excretion by oceanic salps. Marine Biology, 91(4), 529-537."
+Pegea socia	Weight-specific respiration rate µmolO2-mgC-h	number	0.75	"Cetta, C. M., Madin, L. P., & Kremer, P. (1986). Respiration and excretion by oceanic salps. Marine Biology, 91(4), 529-537."
+Iasis (Weelia) cylindrica	Weight-specific respiration rate µmolO2-mgC-h	number	1.74	"Biggs, D. C. (1977). Respiration and ammonium excretion by open ocean gelatinous zooplankton 1. Limnology and Oceanography, 22(1), 108-117."
+Salpa fusiformis	Weight-specific respiration rate µmolO2-mgC-h	number	0.28	"Cetta, C. M., Madin, L. P., & Kremer, P. (1986). Respiration and excretion by oceanic salps. Marine Biology, 91(4), 529-537."
+Salpa maxima	Weight-specific respiration rate µmolO2-mgC-h	number	0.92	"Cetta, C. M., Madin, L. P., & Kremer, P. (1986). Respiration and excretion by oceanic salps. Marine Biology, 91(4), 529-537."
+Salpa maxima	Weight-specific respiration rate µmolO2-mgC-h	number	0.63	"Biggs, D. C. (1977). Respiration and ammonium excretion by open ocean gelatinous zooplankton 1. Limnology and Oceanography, 22(1), 108-117."
+Thalia democratica	Weight-specific respiration rate µmolO2-mgC-h	number	0.71	"Biggs, D. C. (1977). Respiration and ammonium excretion by open ocean gelatinous zooplankton 1. Limnology and Oceanography, 22(1), 108-117."
+Cyclosalpa bakeri	Carbon ingestion %bodyCweight-h	number	3.8	"Madin, L. P., & Purcell, J. E. (1992). Feeding, metabolism. and growth of Cyclosalpa bakeri in the subarctic Pacific. Limnology and Oceanography, 37(6), 1236-1251."
+Pegea confoederata	Carbon ingestion %bodyCweight-h	number	2.2	"Cetta, C. M., Madin, L. P., & Kremer, P. (1986). Respiration and excretion by oceanic salps. Marine Biology, 91(4), 529-537."
+Salpa fusiformis	Carbon ingestion %bodyCweight-h	number	4.5	"Andersen, V. (1985). Filtration and ingestion rates of Salpa fusiformis Cuvier (Tunicata: Thaliacea): effects of size, individual weight and algal concentration. Journal of Experimental Marine Biology and Ecology, 87(1), 13-29."
+Thalia democratica	Carbon ingestion %bodyCweight-h	number	2.5	"Deibel, D. (1982). Laboratory-measured grazing and ingestion rates of the salp, Thalia democratica Forskal, and the doliolid, Dolioletta gegenbauri Uljanin (Tunicata, Thaliacea). Journal of Plankton Research, 4(2), 189-201."
+Thalia democratica	Carbon ingestion %bodyCweight-h	number	2	"Deibel, D. (1985). Clearance rates of the salp Thalia democratica fed naturally occurring particles. Marine Biology, 86(1), 47-54."
+Thalia democratica	Carbon ingestion %bodyCweight-h	number	8.3	"Mullin, M. M. (1983). In situ measurement of filtering rates of the salp, Thalia democratica, on phytoplankton and bacteria. Journal of Plankton Research, 5(2), 279-288."
+Cyclosalpa affinis	Mean defaecation rate µgC-mgbodyC-h	number	9.9	"Madin, L. P. (1982). Production, composition and sedimentation of salp fecal pellets in oceanic waters. Marine Biology, 67(1), 39-45."
+Cyclosalpa pinnata	Mean defaecation rate µgC-mgbodyC-h	number	3.7	"Madin, L. P. (1982). Production, composition and sedimentation of salp fecal pellets in oceanic waters. Marine Biology, 67(1), 39-45."
+Pegea bicaudata	Mean defaecation rate µgC-mgbodyC-h	number	6.5	"Madin, L. P. (1982). Production, composition and sedimentation of salp fecal pellets in oceanic waters. Marine Biology, 67(1), 39-45."
+Pegea socia	Mean defaecation rate µgC-mgbodyC-h	number	9.9	"Madin, L. P. (1982). Production, composition and sedimentation of salp fecal pellets in oceanic waters. Marine Biology, 67(1), 39-45."
+Salpa maxima	Mean defaecation rate µgC-mgbodyC-h	number	13	"Madin, L. P. (1982). Production, composition and sedimentation of salp fecal pellets in oceanic waters. Marine Biology, 67(1), 39-45."
+Cyclosalpa bakeri	Vertical migration	category	Weak	"Purcell, J. E., & Madin, L. P. (1991). Diel patterns of migration, feeding, and spawning by salps in the subarctic Pacific. Marine Ecology Progress Series, 211-217."
+Cyclosalpa bakeri	Vertical migration	category	None	"Tsuda, A., & Nemoto, T. (1992). Distribution and growth of salps in a Kuroshio warm-core ring during summer 1987. Deep Sea Research Part A. Oceanographic Research Papers, 39, S219-S229."
+Ihlea punctata	Vertical migration	category	None	"Laval, P., Braconnot, J. C., & Silva, N. L. (1992). Deep planktonic filter-feeders found in the aphotic zone with the Cyana submersible in the Ligurian Sea(NW Mediterranean). Marine ecology progress series. Oldendorf, 79(3), 235-241."
+Pegea confoederata	Vertical migration	category	None	"Caron, D. A., Madin, L. P., & Cole, J. J. (1989). Composition and degradation of salp fecal pellets: implications for vertical flux in oceanic environments. Journal of Marine Research, 47(4), 829-850."
+Iasis (Weelia) cylindrica	Vertical migration	category	None	"Caron, D. A., Madin, L. P., & Cole, J. J. (1989). Composition and degradation of salp fecal pellets: implications for vertical flux in oceanic environments. Journal of Marine Research, 47(4), 829-850."
+Salpa maxima	Vertical migration	category	None	"Caron, D. A., Madin, L. P., & Cole, J. J. (1989). Composition and degradation of salp fecal pellets: implications for vertical flux in oceanic environments. Journal of Marine Research, 47(4), 829-850."
+Thalia democratica	Vertical migration	category	None	"Tsuda, A., & Nemoto, T. (1992). Distribution and growth of salps in a Kuroshio warm-core ring during summer 1987. Deep Sea Research Part A. Oceanographic Research Papers, 39, S219-S229."
+Thalia democratica	Vertical migration	category	None	"Sardou, J., Etienne, M., & Andersen, V. (1996). Seasonal abundance and vertical distributions of macroplankton and micronekton in the Northwestern Mediterranean Sea. Oceanologica acta, 19(6), 645-656."
+Pegea socia	Vertical migration	category	Present	"Silver, M. W., & Bruland, K. W. (1981). Differential feeding and fecal pellet composition of salps and pteropods, and the possible origin of the deep-water flora and olive-green “cells”. Marine Biology, 62(4), 263-273."
+Pegea socia	Vertical migration	category	Present	"Bruland, K. W., & Silver, M. W. (1981). Sinking rates of fecal pellets from gelatinous zooplankton (salps, pteropods, doliolids). Marine Biology, 63(3), 295-300."
+Salpa aspera	Vertical migration	category	Strong	"Laval, P., Braconnot, J. C., & Silva, N. L. (1992). Deep planktonic filter-feeders found in the aphotic zone with the Cyana submersible in the Ligurian Sea(NW Mediterranean). Marine ecology progress series. Oldendorf, 79(3), 235-241."
+Salpa fusiformis	Vertical migration	category	Weak	"Laval, P., Braconnot, J. C., & Silva, N. L. (1992). Deep planktonic filter-feeders found in the aphotic zone with the Cyana submersible in the Ligurian Sea(NW Mediterranean). Marine ecology progress series. Oldendorf, 79(3), 235-241."
+Salpa fusiformis	Vertical migration	category	Strong	"Franqueville, C. (1970). Macroplancton profond (invertébrés) de la Méditerranée nord-occidentale (Doctoral dissertation, Éditeur inconnu)."
+Salpa fusiformis	Vertical migration	category	Weak	"Sardou, J., Etienne, M., & Andersen, V. (1996). Seasonal abundance and vertical distributions of macroplankton and micronekton in the Northwestern Mediterranean Sea. Oceanologica acta, 19(6), 645-656."
+Salpa fusiformis	Vertical migration	category	None	"Tsuda, A., & Nemoto, T. (1992). Distribution and growth of salps in a Kuroshio warm-core ring during summer 1987. Deep Sea Research Part A. Oceanographic Research Papers, 39, S219-S229."
+Salpa fusiformis	Vertical migration	category	Weak	"Tsuda, A., & Nemoto, T. (1992). Distribution and growth of salps in a Kuroshio warm-core ring during summer 1987. Deep Sea Research Part A. Oceanographic Research Papers, 39, S219-S230"
+Salpa thompsoni	Vertical migration	category	Strong	"Andersen, V., Sardou, J., & Nival, P. (1992). The diel migrations and vertical distributions of zooplankton and micronekton in the Northwestern Mediterranean Sea. 2. Siphonophores, hydromedusae and pyrosomids. Journal of Plankton Research, 14(8), 1155-1169."
+Pegea confoederata	Mean pulsation rate Hz	number	2.1	"Sutherland, K. R., & Madin, L. P. (2010). A comparison of filtration rates among pelagic tunicates using kinematic measurements. Marine biology, 157(4), 755-764."
+Iasis (Weelia) cylindrica	Mean pulsation rate Hz	number	2.5	"Sutherland, K. R., & Madin, L. P. (2010). A comparison of filtration rates among pelagic tunicates using kinematic measurements. Marine biology, 157(4), 755-764."
+Cyclosalpa sewelli	Mean pulsation rate Hz	number	1.6	"Sutherland, K. R., & Madin, L. P. (2010). A comparison of filtration rates among pelagic tunicates using kinematic measurements. Marine biology, 157(4), 755-764."
+Pegea confoederata	Mean % Body volume change	number	18.3	"Sutherland, K. R., & Madin, L. P. (2010). A comparison of filtration rates among pelagic tunicates using kinematic measurements. Marine biology, 157(4), 755-764."
+Iasis (Weelia) cylindrica	Mean % Body volume change	number	29.9	"Sutherland, K. R., & Madin, L. P. (2010). A comparison of filtration rates among pelagic tunicates using kinematic measurements. Marine biology, 157(4), 755-764."
+Cyclosalpa sewelli	Mean % Body volume change	number	24.6	"Sutherland, K. R., & Madin, L. P. (2010). A comparison of filtration rates among pelagic tunicates using kinematic measurements. Marine biology, 157(4), 755-764."
+Pegea confoederata	Normalized mean volume filtered Hz	number	2.5	"Sutherland, K. R., & Madin, L. P. (2010). A comparison of filtration rates among pelagic tunicates using kinematic measurements. Marine biology, 157(4), 755-764."
+Iasis (Weelia) cylindrica	Normalized mean volume filtered Hz	number	1	"Sutherland, K. R., & Madin, L. P. (2010). A comparison of filtration rates among pelagic tunicates using kinematic measurements. Marine biology, 157(4), 755-764."
+Cyclosalpa sewelli	Normalized mean volume filtered Hz	number	0.6	"Sutherland, K. R., & Madin, L. P. (2010). A comparison of filtration rates among pelagic tunicates using kinematic measurements. Marine biology, 157(4), 755-764."
