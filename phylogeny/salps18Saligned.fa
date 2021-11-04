@@ -1,4 +1,4 @@
->HQ015406.1 Salpa thompsoni
+>HQ015406.1_Salpa_thompsoni
 ttctggttgatcctgcccagtagtcatatgcttgtctcaaagattaagccatgcaagtgt
 aagtacgag--ctcgagtacagtgaaactgcgaatggctcattaaatcagttatggttca
 tttgatcgtacgctttaatacatggataactgtggcaattctagagctaatacatgcgtg
@@ -30,7 +30,7 @@ gaacgaggaattcccagtaagcgcgagtcattagctcgcgttgattacgtccctgccctt
 tgtacacaccgcccgtcgctactaccgattgaatggtttagtgaggtcctccgattgggc
 ctggtgagctcggaaac-gagcctgctggtgcccgaaaagacgcccgaacttgatcattt
 agaggaagtaaaagtcgtaacaaggtttccgtaggtgaacctgcggaaggatcattaa
->HQ015415.1 Thalia democratica
+>HQ015415.1_Thalia_democratica
 -tctggttgatcctg-ccagtagtcatatgcttgtctcaaagattaagccatgcaagtgt
 aagtacgag--ctcacgtacagtgaaactgcgaatggctcattaaatcagttatggttca
 tttgattgtacgcttt--tacatggataactgtggcaattctagagctaatacatgcgta
@@ -62,7 +62,7 @@ gaacgaggaattcccagtaagcgcgagtcattagcttgcgttgattacgtccctgccctt
 tgtacacaccgcccgtcgctactaccgattgaatggtttagtgaggtcctccgattgagc
 ctggtacgtgcggcaac-gcactcgccggtgttcgaaaagacgatcgaacttgatcatta
 gaggaagtaaaaagtcgta---------------------------------------
->HQ015414.1 Thalia democratica
+>HQ015414.1_Thalia_democratica
 -tctggttgattctg-ccagtagtcatatgcttgtctcaaagattaagccatgcaagtgt
 aagtacgag--ctcacgtacagtgaaactgcgaatggctcattaaatcagttatggttca
 tttgattgtacgcttt--tacatggataactgtggcaattctagagctaatacatgcgta
@@ -94,7 +94,7 @@ gaacgaggaattcccagtaagcgcgagtcattagcttgcgttgattacgtccctgccctt
 tgtacacaccgcccgtcgctactaccgattgaatggtttagtgaggtcctccgattgagc
 ctggtacgtgcggcaac-gcactcgccggtgttcgaaaagacgatcgaacttgatca---
 ----------------------------------------------------------
->HQ015413.1 Thalia democratica
+>HQ015413.1_Thalia_democratica
 -tctggttgatcctg-ccagtagtcatatgcttgtctcaaagattaagccatgcaagtgt
 aagtacgag--ctcacgtacagtgaaactgcgaatggctcattaaatcagttatggttca
 tttgattgtacgcttt--tacatggataactgtggcaattctagagctaatacatgcgta
@@ -126,7 +126,7 @@ gaacgaggaattcccagtaagcgcgagtcattagcttgcgttgattacgtccctgccctt
 tgtacacaccgcccgtcgctactaccgattgaatggtttagtgaggtcctccgattgagc
 ctggtacgtgcggcaac-gcactcgccggtgttcgaaaagacgatcg-------------
 ----------------------------------------------------------
->HQ015412.1 Thalia orientalis
+>HQ015412.1_Thalia_orientalis
 ------------ctg-ccagtagtcatatgcttgtctcaaagattaagccatgcaagtgt
 aagtacgag--ctcttgtacagtgaaactgcgaatggctcattaaatcagttatggttca
 tttgattgtacgcttt--tacatggataactgtggcaattctagagctaatacatgcgta
@@ -158,7 +158,7 @@ gaacgaggaattcccagtaagcgcgagtcattagctcgcgttgattacgtccctgccctt
 tgtacacaccgcccgtcgctactaccgattgaatggtttagtgaggtcctccgattgagc
 cctgaaggtgcggcaac-gcgccacaaggtgttcgaaaagacgatcgaacttgatcattt
 agaggaagtaaaagtcgt----------------------------------------
->HQ015411.1 Ritteriella retracta
+>HQ015411.1_Ritteriella_retracta
 -tctggttgatcctg-ccagtagtcatatgcttgtctcaaagattaagccatgcaagtgt
 aagtacgag--ctcaagtacagtgaaactgcgaatggctcattaaatcagttatggttca
 tttgatcgtacgctttaatacatggataactgtggcaattctagagctaatacatgcgtg
@@ -190,7 +190,7 @@ gaacgaggaattcccagtaagcgcgagtcattagcttgcgttgattacgtccctgccctt
 tgtacacaccgcccgtcgctactaccgattgaatggtttagtgaggtcctccgattgagc
 ccggtgcgcccggaaac-gtgcatgctggtgcccgagaagacgatcgaacttgatcattt
 agaggaagtaaaagtcgtaacaag----------------------------------
->HQ015410.1 Ritteriella retracta
+>HQ015410.1_Ritteriella_retracta
 -------------tt-ccagtagtcatatgcttgtctcaaagattaagccatgcaagtgt
 aagtacgag--ctcaagtacagtgaaactgcgaatggctcattaaatcagttatggttca
 tttgatcgtacgctttaatacatggataactgtggcaattctagagctaatacatgcgtg
@@ -222,7 +222,7 @@ gaacgaggaattcccagtaagcgcgagtcattagcttgcgttgattacgtccctgccctt
 tgtacacaccgcccgtcgctactaccgattgaatggtttagtgaggtcctccgattgagc
 ccggtgcgcccggaaac-gtgcatgctggtgcccgagaagacgatcgaacttgatcattt
 aga-------------------------------------------------------
->HQ015409.1 Salpa fusiformis
+>HQ015409.1_Salpa_fusiformis
 -----------------------------gcttgtctcaaagattaagccatgcaagtgt
 aagtacgag--ctcgagtacagtgaaactgcgaatggctcattaaatcagttatggttca
 tttgatcgtacgctttaatacatggataactgtggcaattctagagctaatacatgcgtg
@@ -254,7 +254,7 @@ gaacgaggaattcccagtaagcgcgagtcattagctcgcgttgattacgtccctgccctt
 tgtacacaccgcccgtcgctactaccgattgaatggtttagtgaggtcctccgattgggc
 ctggtgagctcggaaac-gagcctactggtgcccgaaaagacgatcgaacttgatca---
 ----------------------------------------------------------
->HQ015408.1 Salpa maxima
+>HQ015408.1_Salpa_maxima
 ----------------ccagtagtcatatgcttgtctcaaagattaagccatgcaagtgt
 aagtacgag--ctcgagtacagtgaaactgcgaatggctcattaaatcagttatggttca
 tttgatcgtacgctttaatacatggataactgtggcaattctagagctaatacatgcgtg
@@ -286,7 +286,7 @@ gaacgaggaattcccagtaagcgcgagtcattagctcgcgttgattacgtccctgccctt
 tgtacacaccgcccgtcgctactaccgattgaatggtttagtgaggtcctccgattgggc
 ctggtgagctcggaaac-gagcctactggtgcccgaaaagacgatcgaacttg-------
 ----------------------------------------------------------
->HQ015407.1 Salpa maxima
+>HQ015407.1_Salpa_maxima
 ----------------ccagtagtcatatgcttgtctcaaagattaagccatgcaagtgt
 aagtacgag--ctcgagtacagtgaaactgcgaatggctcattaaatcagttatggttca
 tttgatcgtacgctttaatacatggataactgtggcaattctagagctaatacatgcgtg
@@ -318,7 +318,7 @@ gaacgaggaattcccagtaagcgcgagtcattagctcgcgttgattacgtccctgccctt
 tgtacacaccgcccgtcgctactaccgattgaatggtttagtgaggtcctccgattgggc
 ctggtgagctcggaaac-gagcctactggtgcccgaaaagacgatcgaacttgatcattt
 agaggaagtaaaagtcgtaacaaggtttccgtaggtgaacctgcggag----------
->HQ015405.1 Salpa aspera
+>HQ015405.1_Salpa_aspera
 ----------------ccagtagtcatatgcttgtctcaaagattaagccatgcaagtgt
 aagtacgag--ctcgagtacagtgaaactgcgaatggctcattaaatcagttatggttca
 tttgatcgtacgctttaatacatggataactgtggcaattctagagctaatacatgcgtg
@@ -350,7 +350,7 @@ gaacgaggaattcccagtaagcgcgagtcattagctcgcgttgattacgtccctgccctt
 tgtacacaccgcccgtcgctactaccgattgaatggtttagtgaggtcctccgattgggc
 ctggtgagctcggaaac-gagcctactggtgcccgaaaagacgatcg-------------
 ----------------------------------------------------------
->HQ015404.1 Brooksia rostrata
+>HQ015404.1_Brooksia_rostrata
 ----------------------------------tctcaaagattaagccatgcaagtgt
 aagtacgag--ctcgagtacagtgaaactgcgaatggctcattaaatcagttatggttca
 tttgatcgtacgctttaatacatggataactgtggcaattctagagctaatacatgcgtg
@@ -382,7 +382,7 @@ gaacgaggaattcccagtaagcgcgagtcattagcttgcgttgattacgtccctgccctt
 tgtacacaccgcccgtcgctactaccgattgaatggtttagtgaggtcctccgattgagc
 ctggtgcgctcggaaac-gtgcatactggtgcccgaaaagacgatcgaacttgatcattt
 agaggaagtaaa----------------------------------------------
->HQ015403.1 Brooksia rostrata
+>HQ015403.1_Brooksia_rostrata
 ---------------------------atgcttgtctcaaagattaagccatgcaagtgt
 aagtacgag--ctcgagtacagtgaaactgcgaatggctcattaaatcagttatggttca
 tttgatcgtacgctttaatacatggataactgtggcaattctagagctaatacatgcgtg
@@ -414,7 +414,7 @@ gaacgaggaattcccagtaagcgcgagtcattagcttgcgttgattacgtccctgccctt
 tgtacacaccgcccgtcgctactaccgattgaatggtttagtgaggtcctccgattgagc
 ctggtgcgctcggaaac-gtgcatactggtgcccgaaaagacgatcgaacttgatcattt
 agaggaagt-------------------------------------------------
->HQ015402.1 Iasis cylindrica
+>HQ015402.1_Iasis_cylindrica
 -----------cctg-ccagtagtcatatgcttgtctcaaagattaagccatgcaagtgt
 aagtacgag--ctcgagtacagtgaaactgcgaatggctcattaaatcagttatggttca
 tttgatcgtacgctttaatacatggataactgtggcaattctagagctaatacatgcgtg
@@ -446,7 +446,7 @@ gaacgaggaattcccagtaagcgcgagtcatcaactcgcgttgattacgtccctgccctt
 tgtacacaccgcccgtcgctactaccgattgaatggtttagtgaggtcctccgattggac
 c-----------------------------------------------------------
 ----------------------------------------------------------
->HQ015401.1 Iasis cylindrica
+>HQ015401.1_Iasis_cylindrica
 -----------------------tcatatgcttgtctcaaagattaagccatgcaagtgt
 aagtacgag--ctcgagtacagtgaaactgcgaatggctcattaaatcagttatggttca
 tttgatcgtacgctttaatacatggataactgtggcaattctagagctaatacatgcgtg
@@ -478,7 +478,7 @@ gaacgaggaattcccagtaagcgcgagtcatcaactcgcgttgattacgtccctgccctt
 tgtacacaccgcccgtcgctactaccgattgaatggtttagtgaggtcctccgattggac
 ctggcgcgctctgaaag-gagcgcgccggcgtccgagaagacgatcgaacttgatc----
 ----------------------------------------------------------
->HQ015400.1 Iasis cylindrica
+>HQ015400.1_Iasis_cylindrica
 -----------------cagtagtcatatgcttgtctcaaagattaagccatgcaagtgt
 aagtacgag--ctcgagtacagtgaaactgcgaatggctcattaaatcagttatggttca
 tttgatcgtacgctttaatacatggataactgtggcaattctagagctaatacatgcgtg
@@ -510,7 +510,7 @@ gaacgaggaattcccagtaagcgcgagtcatcaactcgcgttgattacgtccctgccctt
 tgtacacaccgcccgtcgctactaccgattgaatggtttagtgaggtcctccgattggac
 ctggcgcgctctgaaag-gagcgcgccggcgtccgagaagacgatcgaacttgatcattt
 agaggaagtaaaagtcgtaacaaggtttccgtaggtgaacctgcgag-----------
->HQ015399.1 Iasis cylindrica
+>HQ015399.1_Iasis_cylindrica
 ---------------------agtcatatgcttgtctcaaagattaagccatgcaagtgt
 aagtacgag--ctcaagtacagtgaaactgcgaatggctcattaaatcagttatggttca
 tttgatcgtacgctttaatacatggataactgtggcaattctagagctaatacatgcgtg
@@ -542,7 +542,7 @@ gaacgaggaattcccagtaagcgcgagtcatcaactcgcgttgattacgtccctgccctt
 tgtacacaccgcccgtcgctactaccgattgaatggtttagtgaggtcctccgattggac
 ctggagcgctctgaaag-gagcgcgccggcgtccgagaagacgatcgaact-gatca---
 ----------------------------------------------------------
->HQ015398.1 Cyclosalpa sewelli
+>HQ015398.1_Cyclosalpa_sewelli
 ----------------------gtcatatgcttgtctcaaagattaagccatgcaagtgt
 aagtacgag--ctcgagtacagtgaaactgcgaatggctcattaaatcagttatggttca
 tttgatcgtacgctttaatacatggataactgtggcaattctagagctaatacatgcgtg
@@ -574,7 +574,7 @@ gaacgaggaattcccagtaagcgcgagtcattagcttgcgttgattacgtccctgccctt
 tgtacacaccgcccgtcgctactaccgattgaatggtttagtgaggtcctccgattgggc
 ccggagcgcacggaaac-gcgcgcgctggcgcccgagaagacgat---------------
 ----------------------------------------------------------
->HQ015397.1 Cyclosalpa quadriluminis
+>HQ015397.1_Cyclosalpa_quadriluminis
 -------------------------------------------------catgcaagtgt
 aagtacgag--ctcgagtacagtgaaactgcgaatggctcattaaatcagttatggttca
 tttgatcgtacgctttaatacatggataactgtggcaattctagagctaatacatgcgtg
@@ -606,7 +606,7 @@ gaacgaggaattcccagtaagcgcgagtcattagcttgcgttgattacgtccctgccctt
 tgtacacaccgcccgtcgctactaccgattgaatggtttagtgaggtcctccgattgggc
 ccggagcgcacgga----------------------------------------------
 ----------------------------------------------------------
->HQ015396.1 Cyclosalpa polae
+>HQ015396.1_Cyclosalpa_polae
 ------------------------------cttgtctcaaagattaagccatgcaagtgt
 aagtacgag--ctcgagtacagtgaaactgcgaatggctcattaaatcagttatggttca
 tttgatcgtacgctttaatacatggataactgtggcaattctagagctaatacatgcgtg
@@ -638,7 +638,7 @@ gaacgaggaattcccagtaagcgcgagtcattagcttgcgttgattacgtccctgccctt
 tgtacacaccgcccgtcgctactaccgattgaatggtttagtgaggtcctccgattgggc
 ccggagcgcacggaaac-gcgcgcgctggcgcccgagaagacgatcgaacttgatca---
 ----------------------------------------------------------
->HQ015395.1 Cyclosalpa sewelli
+>HQ015395.1_Cyclosalpa_sewelli
 -----------------------------------ctcaaagattaagccatgcaagtgt
 aagtacgag--ctcgagtacagtgaaactgcgaatggctcattaaatcagttatggttca
 tttgatcgtacgctttaatacatggataactgtggcaattctagagctaatacatgcgtg
@@ -670,7 +670,7 @@ gaacgaggaattcccagtaagcgcgagtcattagcttgcgttgattacgtccctgccctt
 tgtacacaccgcccgtcgctactaccgattgaatggtttagtgaggtcctccgattgggc
 ccggagcgcacggaaac-gcgcgcgctggcgcccgagaagacgatcgaacttga------
 ----------------------------------------------------------
->HQ015394.1 Cyclosalpa polae
+>HQ015394.1_Cyclosalpa_polae
 --------------t-ccagtagtcatatgcttgtctcaaagattaagccatgcaagtgt
 aagtacgag--ctcgagtacagtgaaactgcgaatggctcattaaatcagttatggttca
 tttgatcgtacgctttaatacatggataactgtggcaattctagagctaatacatgcgtg
@@ -702,7 +702,7 @@ gaacgaggaattcccagtaagcgcgagtcattagcttgcgttgattacgtccctgccctt
 tgtacacaccgcccgtcgctactaccgattgaatggtttagtgaggtcctccgattgggc
 ccggagcgcacggaaac-gcgcgcgctggcgcccgagaagacgatcgaacttgatcattt
 agaggaagtaaaagtcgtaacaaggtttccgtaggtgaacctgcg-------------
->HQ015393.1 Cyclosalpa floridana
+>HQ015393.1_Cyclosalpa_floridana
 ttctggttgatcctg-ccagtagtcatatgcttgtctcaaagattaagccatgcaagtgt
 aagtacgag--ctcgagtacagtgaaactgcgaatggctcattaaatcagttatggttca
 tttgatcgtacgctttaatacatggataactgtggcaattctagagctaatacatgcgtg
@@ -734,7 +734,7 @@ gaacgaggaattcccagtaagcgcgagtcattagcttgcgttgattacgtccctgccctt
 tgtacacaccgcccgtcgctactaccgattgaatggtttagtgaggtcctccgattgggc
 ccggtgcgcacggaaac-gcgcgcgctggcgcccgagaagacgatcgaacttgatca---
 ----------------------------------------------------------
->HQ015392.1 Cyclosalpa affinis
+>HQ015392.1_Cyclosalpa_affinis
 -----------cctg-ccagtagtcatatgcttgtctcaaagattaagccatgcaagtgt
 aagtacgag--ctcgagtacagtgaaactgcgaatggctcattaaatcagttatggttca
 tttgatcgtacgctttaatacatggataactgtggcaattctagagctaatacatgcgtg
@@ -766,7 +766,7 @@ gaacgaggaattcccagtaagcgcgagtcattagctcgcgttgattacgtccctgccctt
 tgtacacaccgcccgtcgctactaccgattgaatggtttagtgaggtcctccgattgggc
 ccggtgcgcgcggaaac-gcgtgcgctggcgcccgagaagacgatcgaacttg-------
 ----------------------------------------------------------
->HQ015391.1 Cyclosalpa affinis
+>HQ015391.1_Cyclosalpa_affinis
 --------aatcctg-ccagtagtcatatgcttgtctcaaagattaagccatgcaagtgt
 aagtacgag--ctcgagtacagtgaaactgcgaatggctcattaaatcagttatggttca
 tttgatcgtacgctttaatacatggataactgtggcaattctagagctaatacatgcgtg
@@ -798,7 +798,7 @@ gaacgaggaattcccagtaagcgcgagtcattagctcgcgttgattacgtccctgccctt
 tgtacacaccgcccgtcgctactaccgattgaatggtttagtgaggtcctccgattgggc
 ccggtgcgcgcggaaac-gcgtgcgctggcgcccgagaagacgatcgaacttgatcattt
 agaggaagtaaaagtcgtaacaagg---------------------------------
->HQ015390.1 Thetys vagina
+>HQ015390.1_Thetys_vagina
 ----------------ccagtagtcatatgcttgtctcaaagattaagccatgcaagtgt
 aagtacgag--ctcgagtacagtgaaactgcgaatggctcattaaatcagttatggttca
 tttgatcgtacgctttaatacatggataactgtggcaattctagagctaatacatgcgtg
@@ -830,7 +830,7 @@ gaacgaggaattcctagtaagtgcgagtcattagctcgcattgattacgtccctgccctt
 tgtacacaccgcccgtcgctactaccgattgaatggtttagtgagatcctccgactggat
 tcgatgtggctggcaacggctcacgacgatgtccggaaagacgatcgaacttgatca---
 ----------------------------------------------------------
->HQ015389.1 Soestia zonaria
+>HQ015389.1_Soestia_zonaria
 -----------------cagtagtcatatgcttgtctcaaagattaagccatgcaagtgt
 aagtacgag--ctcttgtacagtgaaactgcgaatggctcattaaatcagttatggttca
 tttgatcgtaggctt---tacttggataactgtggcaattctagagctaatacatgcgaa
@@ -862,7 +862,7 @@ gaacgaggaattcctagtaagtgcgagtcattagctcgcattgattacgtccctgccctt
 tgtacacaccgcccgtcgctactaccgattgaatggtttagtgagatcctccgactggat
 tcgatgtggctggcaacggctcacgacgatgtccggaaagacgatcgaacttgatcattt
 agaggaagtaaaagtcgtaacaaggtttccgtaggtgaacctgcgg------------
->HQ015388.1 Pegea bicaudata
+>HQ015388.1_Pegea_bicaudata
 --------gatcctg-ccagtagtcatatgcttgtctcaaagattaagccatgcaagtgt
 aagtacgaa--ctctcgtatagtgaaactgcgaatggctcattaaatcagttatggttca
 tttgatcgtacgctttaatacatggataactgtggcaaatctagagctaatacatgcatg
@@ -894,7 +894,7 @@ gaacgaggaattcccagtaagcgcgagtcatcagctcgcgttgattacgtccctgccctt
 tgtacacaccgcccgtcgctactaccgattgaatggtttagtgaggtcttccgattggcc
 agagcgtagtcggcaac-gacggcgcttttgtccgaaaagacgatcgaacttgatcattt
 agaggaagtaaaagtcgt----------------------------------------
->HQ015387.1 Pegea confoederata
+>HQ015387.1_Pegea_confoederata
 -tctggttattcctg-ccagtagtcatatgcttgtctcaaagattaagccatgcaagtgt
 aagtacgaa--ctctcgtatagtgaaactgcgaatggctcattaaatcagttatggttca
 tttgatcgtacgctttaatacatggataactgtggcaaatctagagctaatacatgcatg
@@ -926,7 +926,7 @@ gaacgaggaattcccagtaagcgcgagtcatcagctcgcgttgattacgtccctgccctt
 tgtacacaccgcccgtcgctactaccgattgaatggtttagtgaggtcttccgattggcc
 agagcgtagtcggcaac-gacggcgcttttgtccgaaaagacgatcgaacttgatcattt
 agaggaagtaaaagtcgtaaca------------------------------------
->HQ015386.1 Pegea confoederata
+>HQ015386.1_Pegea_confoederata
 ---------------------agtcatatgcttgtctcaaagattaagccatgcaagtgt
 aagtacgaa--ctctcgtatagtgaaactgcgaatggctcattaaatcagttatggttca
 tttgatcgtacgctttaatacatggataactgtggcaaatctagagctaatacatgcatg
@@ -958,7 +958,7 @@ gaacgaggaattcccagtaagcgcgagtcatcagctcgcgttgattacgtccctgccctt
 tgtacacaccgcccgtcgctactaccgattgaatggtttagtgaggtcttccgattggcc
 ggagcgtagtcggcaac-gacggcgcttttgtccgaaaagacgatcgaacttgatcatt-
 ----------------------------------------------------------
->HQ015385.1 Pyrosoma atlanticum
+>HQ015385.1_Pyrosoma_atlanticum
 ------------------------------------------------------------
 aagtacgag--ctctcgtacagtgaaactgcgaatggctcattaaatcagttatggttca
 tttgatcgtacgtgtt--tacttggataactgtggcaattctagagctaatacatgcgat
@@ -990,7 +990,7 @@ gaacgaggaattcccagtaagcgcgagtcattagctcgcgttgattacgtccctgccctt
 tgtacacaccgcccgtcgctactaccgattgaatggtttagtgaggtcctctgatcggtc
 ctggtttgtgctgaaag-gtacgagccggcgat---------------------------
 ----------------------------------------------------------
->HQ015384.1 Pyrosoma godeauxi
+>HQ015384.1_Pyrosoma_godeauxi
 --------------------------------------------------------gtgt
 aagtacgag--ctctcgtacagtgaaactgcgaatggctcattaaatcagttatggttca
 tttgatcgtacgtgtt--tacttggataactgtggcaattctagagctaatacatgcgat
@@ -1022,7 +1022,7 @@ gaacgaggaattcccagtaagcgcgagtcattagctcgcgttgattacgtccctgccctt
 tgtacacaccgcccgtcgctactaccgattgaatggtttagtgaggtcctctgatcggtc
 ctggtttgtgctgaaag-gtacgagccggcgattgagaagacgatcgaacttgatcatta
 gag-------------------------------------------------------
->HQ015383.1 Pyrosomella verticillata
+>HQ015383.1_Pyrosomella_verticillata
 -tctggttgatcctg-ccagtagtcatatgcttgtctcaaagattaagccatgcaagtgt
 aagtacgag--ctctcgtacagtgaaactgcgaatggctcattaaatcagttatggttca
 tttgatcgtacgtgtt--tacttggataactgtggcaattctagagctaatacatgcgat
@@ -1054,7 +1054,7 @@ gaacgaggaattcccagtaagcgcgagtcattagctcgcgttgattacgtccctgccctt
 tgtacacaccgcccgtcgctactaccgattgaatggtttagtgaggtcctctgatcggtc
 ctggtttgtgctgaaag-gtacgagccggcgattgagaagacgatcgaacttg-------
 ----------------------------------------------------------
->HQ015382.1 Pyrosomella verticillata
+>HQ015382.1_Pyrosomella_verticillata
 -tctggttgatcctg-ccagtagtcatatgcttgtctcaaagattaagccatgcaagtgt
 aagtacgag--ctctcgtacagtgaaactgcgaatggctcattaaatcagttatggttca
 tttgatcgtacgtgtt--tacttggataactgtggcaattctagagctaatacatgcgat
@@ -1086,7 +1086,7 @@ gaacgaggaattcccagtaagcgcgagtcattagctcgcgttgattacgtccctgccctt
 tgtacacaccgcccgtcgctactaccgattgaatggtttagtgaggtcctctgatcggtc
 ctggtttgtgctgaaag-gtacgagccggcgattgagaagacgatcgaacttgatcattt
 agaggaagtaaaa---------------------------------------------
->HQ015381.1 Pyrosoma atlanticum
+>HQ015381.1_Pyrosoma_atlanticum
 -tctggttgatcctg-ccagtagtcatatgcttgtctcaaagattaagccatgcaagtgt
 aagtacgag--ctctcgtacagtgaaactgcgaatggctcattaaatcagttatggttca
 tttgatcgtacgtgtt--tacttggataactgtggcaattctagagctaatacatgcgat
@@ -1118,7 +1118,7 @@ gaacgaggaattcccagtaagcgcgagtcattagctcgcgttgattacgtccctgccctt
 tgtacacaccgcccgtcgctactaccgattgaatggtttagtgaggtcctctgatcggtc
 ctggtttgtgctgaaag-gtacgagccggcgattgagaagacgatcgaac----------
 ----------------------------------------------------------
->HQ015380.1 Pyrosomella verticillata
+>HQ015380.1_Pyrosomella_verticillata
 ------------------------------cttgtctcaaagattaagccatgcaagtgt
 aagtacgag--ctctcgtacagtgaaactgcgaatggctcattaaatcagttatggttca
 tttgatcgtacgtgtt--tacttggataactgtggcaattctagagctaatacatgcgat
@@ -1150,7 +1150,7 @@ gaacgaggaattcccagtaagcgcgagtcattagctcgcgttgattacgtccctgccctt
 tgtacacaccgcccgtcgctactaccgattgaatggtttagtgaggtcctctgatcggtc
 ctggtttgtgctgaaag-gtacgagccggcgattgagaagacgatcgaacttga------
 ----------------------------------------------------------
->HQ015379.1 Pyrostremma spinosum
+>HQ015379.1_Pyrostremma_spinosum
 ------------------------------------tcaaagattaagccatgcaagtgt
 aagtacgag--ctctcgtacagtgaaactgcgaatggctcattaaatcagttatggttca
 tttgatcgtacgctt---tacttggataactgtggcaattctagagctaatacatgcgat
@@ -1182,7 +1182,7 @@ gaacgaggaattcccagtaagcgcgagtcattagctcgcgttgattacgtccctgccctt
 tgtacacaccgcccgtcgctactaccgattgaatggtttagtgaggtcctccgattgggc
 ctggcgcggccggcaac-gttcgcgctggcgttcgagaagacgatcgaacttgatcattt
 agaggaagtaaaa---------------------------------------------
->HQ015378.1 Ihlea racovitzai
+>HQ015378.1_Ihlea_racovitzai
 -------------tg-ccagtagtcatatgcttgtctcaaagattaagccatgcaagtct
 aagtacgag--ctcaagtacagtgaaactgcgaatggctcattaaatcagttatggttca
 tttgatcgttacgcttaatacatggataactgtggcaattctagagctaatacatgcgtg
@@ -1214,7 +1214,7 @@ gaacgaggaattcccagtaagcgcgggtcattagcccgcgttgattacgtccctgccctt
 tgtacacaccgcccgtcgctactaccgattgaatggtttagtgagaccctccgattggac
 cttaggcggtcggtcaacgactgtttagtggcccgaaaagacgttcgaacttgatcatta
 gaggaag---------------------------------------------------
->HQ015376.1 Doliolum denticulatum
+>HQ015376.1_Doliolum_denticulatum
 --------------------------------------------------------gtgt
 cagtacgagcacacacgtaaagcgaaactgcgaatggctcattaaatcagttgtggttca
 tttgatcgtac---cagttacaaggataactgtggcaattctagagctaatacatgcgaa
