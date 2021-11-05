@@ -12,12 +12,12 @@ ggplot(traits[which(traits$Variable=="Mean pulsation rate Hz"),], aes(x = Specie
 
 ggplot(traits[which(traits$Variable=="Cost of locomotion J-kg-m"),], aes(x = Species, y = Value)) + geom_point() + theme_bw() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
 
-tree_salp <- read.newick("phylogeny/salps18Saligned.fa.treefile")
-tree_salp$tip.label <- str_remove_all(tree_salp$tip.label, "HQ.+?_")
+#tree_salp <- read.newick("phylogeny/salps18Saligned.fa.treefile")
+tree_salp <- read.newick("phylogeny/chordata18Saligned.fa.treefile")
+tree_salp$tip.label <- str_remove_all(tree_salp$tip.label, ".+\\..+?_")
 tree_salp$tip.label <- str_replace_all(tree_salp$tip.label, "_", " ")
-tree_salp <- reroot(tree_salp, 55) #reroot
-tree_salp <- drop.tip(tree_salp, 32:39) #drop outgroups
-tree_salp <- drop.tip(tree_salp, c(29,24,26,17,21,2,3,6,7,8,13,19)) #drop duplicate species
+tree_salp <- drop.tip(tree_salp, c(1:13, 45:52)) #drop outgroups
+tree_salp <- drop.tip(tree_salp, c(29,28,24,23,21,20,19,16,12,13,9,7,4)) #drop duplicate species
 tree_salp$tip.label[which(tree_salp$tip.label == "Iasis cylindrica")] <- "Iasis (Weelia) cylindrica"
 
 #prune tree by data and make ultrametric
@@ -26,10 +26,9 @@ tree_salp_pruned <- drop.tip(tree_salp, which(!(tree_salp$tip.label %in% unique(
 pruned_traits <- traits[which(traits$Species %in% tree_salp_pruned$tip.label),]
 
 cast_num <- dcast(pruned_traits[which(pruned_traits$Class=="number"),], Species~Variable, value.var="Value", fun.aggregate = function(x){mean(as.numeric(x), na.rm = T)})
-#cast_num[is.na(cast_num)] <- 0 #CAREFUL!!
 
-dotTree(drop.tip(tree_salp_pruned, which(!(tree_salp_pruned$tip.label %in% names(setNames(as.numeric(cast_num$`Mean swimming speed cms`)[which(!is.na(cast_num$`Mean swimming speed cms`))],cast_num$Species))))),setNames(as.numeric(cast_num$`Mean swimming speed cms`)[which(!is.na(cast_num$`Mean swimming speed cms`))],cast_num$Species))
 #cast_cat <- dcast(traits[which(traits$Class=="category"),], Species~Variable, value.var="Value", fun.aggregate = unique)
+
 morph <- setNames(pruned_traits[which(pruned_traits$Variable=="Chain architecture"),4], pruned_traits[which(pruned_traits$Variable=="Chain architecture"),1])
 simmorph<-make.simmap(tree_salp_pruned,morph,model="ER",nsim=100)
 par(ask=F)
