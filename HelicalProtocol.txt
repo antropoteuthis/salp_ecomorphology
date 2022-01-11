@@ -1,0 +1,36 @@
+Goal: Do 4 chains each by 11/04
+
+Backup D:/Kelly/WestPalmBeach2021/Field/Z_Stereo
+
+Look at video in WMP to identify best part to analyze.
+
+Open EventMeasure
+
+Picture/Set picture directory = D:/Stereo Processing (has calibration files)
+
+Copy Field/ZStereo/Master Field/ZStereo/Secondary (count down from top ordered by name, check by name and size)
+
+Load: Picture/Load Picture ... Stereo/Load picture (hit ok boxes)
+
+Load calibrations: Stereo/Cameras/Left and Stereo/Cameras/Right
+
+Measurement/Information fields/Edit field values -- OpCode = 1, TapeReader = 1
+
+Zoom: CRTL+MouseMove
+
+Measure length/width: Stereo/Length measurements/Compound. Click on front, all viscera, and end. For both master and stereo.
+Right click on screen. Add length.
+
+Measure points in time:
+
+Select lock frame box.
+
+Set centroid point: SHIFT+Click on the viscera/reference left and right images. Press X. Attribute box: set number for point (0 ref) 1-n front-back. Number must match zooid number starting with frontal 1 (the next two, one with a rotating point, the rotating point, then the last one: 6-7 total including the junk). Stage F front, AD adjacent, J junk reference. Add a rotating outside point AD zooid-.2
+
+Skip frames (measure every 20 frame up to 18 total i.e. 360 framespan ~ 3s): 20 frames by hitting CTRL+Right_arrow
+
+If Junk point moves out of frame, pick other junk point before it passes and relabel as 0.1 J. Then keep going with J 0.1
+
+Save data to continue later: Measurement/Save, Choose EMOBS format, Name after left (A starting) video.
+
+Export data: Measurement/Measurement Summaries/3D/3D point measurements. File/Save to TextFile. Name after left (A starting) video.csv
