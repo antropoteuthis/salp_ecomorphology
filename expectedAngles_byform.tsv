@@ -1,0 +1,8 @@
+"LRN_Zooid:Siphon"	"LRN_Motion:Siphon"	"LRN_Motion:Zooid"	"LRN_Zooid:Chiral"	"DVN_Stolon:Zooid"	"DVN_Stolon:Motion"	"DVN_Motion:Zooid"	"DVN_Zooid:Chiral"
+"Linear"	10	10	0	0	0	0	0	0
+"Oblique"	10	10	0	0	45	45	0	0
+"Bipinnate"	10	70	60	90	0	0	0	0
+"Transversal"	10	10	0	0	90	90	0	0
+"Whorl"	10	10	0	0	90	90	0	0
+"Cluster"	0	0	0	0	90	90	0	0
+"Helical"	90	90	0	0	90	45	90	90
