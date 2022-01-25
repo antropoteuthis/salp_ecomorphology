@@ -1,0 +1,155 @@
+#### "Transveral->Oblique" #####
+
+pi =
+Oblique     Transversal 
+0.6666667   0.3333333 
+
+    "ER" BEST & PREFERRED
+        Q =
+                       Oblique Transversal
+        Oblique     -0.3634176   0.3634176
+        Transversal  0.3634176  -0.3634176
+
+        model summary:
+              log-likelihood = -5.938216
+              AIC = 13.876432
+              AICc = 14.126432
+              free parameters = 1
+
+        Scaled likelihoods at the root (type '...$lik.anc' to get them for all nodes):
+            Oblique Transversal 
+         0.95206801  0.04793199 
+
+    "ARD"
+        Q =
+                       Oblique Transversal
+        Oblique     -0.3499769   0.3499769
+        Transversal  0.0000000   0.0000000
+
+        model summary:
+              log-likelihood = -5.752125
+              AIC = 15.504250
+              AICc = 16.304250
+              free parameters = 2
+
+        Scaled likelihoods at the root (type '...$lik.anc' to get them for all nodes):
+            Oblique Transversal 
+                  1           0 
+
+##### "Oblique->Linear" #####
+
+pi =
+    Linear Non-linear 
+       0.5        0.5 
+
+    "ER" BEST & PREFERRED
+
+        Q =
+                      Linear Non-linear
+        Linear     -1.099313   1.099313
+        Non-linear  1.099313  -1.099313
+
+        model summary:
+              log-likelihood = -8.094311
+              AIC = 18.188622
+              AICc = 18.438622 
+              free parameters = 1
+
+        Scaled likelihoods at the root (type '...$lik.anc' to get them for all nodes):
+            Linear Non-linear 
+         0.5162417  0.4837583 
+
+    "ARD"
+
+        Q =
+                      Linear Non-linear
+        Linear     -1.117044   1.117044
+        Non-linear  1.064453  -1.064453
+
+        model summary:
+          log-likelihood = -7.944831
+          AIC = 19.889661
+          AICc = 20.689661
+          free parameters = 2
+
+        Scaled likelihoods at the root (type '...$lik.anc' to get them for all nodes):
+            Linear Non-linear 
+         0.5257827  0.4742173 
+
+##### "Transversal->Whorl" ######
+
+pi =
+    Non-whorl     Whorl 
+    0.7777778     0.2222222 
+
+    "ER" BEST & PREFERRED
+        Q =
+                   Non-whorl      Whorl
+        Non-whorl -0.1634338  0.1634338
+        Whorl      0.1634338 -0.1634338
+
+         model summary:
+              log-likelihood = -4.313961
+              AIC = 10.627922
+              AICc = 10.877922
+              free parameters = 1
+
+        Scaled likelihoods at the root (type '...$lik.anc' to get them for all nodes):
+          Non-whorl       Whorl 
+        0.998305222 0.001694778 
+
+    "ARD"
+
+        Q =
+                   Non-whorl     Whorl
+        Non-whorl -0.1595012 0.1595012
+        Whorl      0.0000000 0.0000000
+
+         model summary:
+              log-likelihood = -4.295106
+              AIC = 12.590213
+              AICc = 13.390213
+              free parameters = 2
+
+        Scaled likelihoods at the root (type '...$lik.anc' to get them for all nodes):
+        Non-whorl     Whorl 
+                1         0 
+
+##### "Whorl->Cluster" #####
+
+pi =
+    Cluster     Non-cluster 
+    0.1111111   0.8888889 
+
+    "ER" PREFERRED
+        Q =
+                       Cluster Non-cluster
+        Cluster     -0.1631312   0.1631312
+        Non-cluster  0.1631312  -0.1631312
+
+         model summary:
+              log-likelihood = -5.603318
+              AIC = 13.206636
+              AICc = 13.456636
+              free parameters = 1
+
+        Scaled likelihoods at the root (type '...$lik.anc' to get them for all nodes):
+            Cluster Non-cluster 
+        0.001688621 0.998311379 
+
+    "ARD" BEST
+
+        Q =
+                       Cluster Non-cluster
+        Cluster     -54.720396   54.720396
+        Non-cluster   3.648488   -3.648488
+
+         model summary:
+          log-likelihood = -3.744604
+          AIC = 11.489209
+          AICc = 12.289209
+          free parameters = 2
+
+        Scaled likelihoods at the root (type '...$lik.anc' to get them for all nodes):
+            Cluster Non-cluster 
+                0.5         0.5

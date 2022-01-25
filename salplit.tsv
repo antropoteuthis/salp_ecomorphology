@@ -169,3 +169,8 @@ Thalia longicauda	Temperate	category	Yes	"Boltovskoy, D. (1999). South atlantic 
 Ihlea magalhanica	Temperate	category	Yes	"Boltovskoy, D. (1999). South atlantic zooplankton (No. C/592 S6)."
 Salpa thompsoni	Temperate	category	Yes	"Boltovskoy, D. (1999). South atlantic zooplankton (No. C/592 S6)."
 Ihlea racovitzai	Temperate	category	Yes	"Boltovskoy, D. (1999). South atlantic zooplankton (No. C/592 S6)."
+Salpa fusiformis	Muscle_area/Chamber_length	number	0.25	"Bone, Q., & Trueman, E. R. (1983). Jet propulsion in salps (Tunicata: Thaliacea). Journal of Zoology, 201(4), 481-506."
+Salpa fusiformis	Muscle_area/Chamber_length	number	0.45	"Bone, Q., & Trueman, E. R. (1983). Jet propulsion in salps (Tunicata: Thaliacea). Journal of Zoology, 201(4), 481-506."
+Pegea confoederata	Muscle_area/Chamber_length	number	0.14	"Bone, Q., & Trueman, E. R. (1983). Jet propulsion in salps (Tunicata: Thaliacea). Journal of Zoology, 201(4), 481-506."
+Salpa maxima	Muscle_area/Chamber_length	number	1.20	"Bone, Q., & Trueman, E. R. (1983). Jet propulsion in salps (Tunicata: Thaliacea). Journal of Zoology, 201(4), 481-506."
+Soestia (Iasis) zonaria	Muscle_area/Chamber_length	number	1.00	"Bone, Q., & Trueman, E. R. (1983). Jet propulsion in salps (Tunicata: Thaliacea). Journal of Zoology, 201(4), 481-506."
