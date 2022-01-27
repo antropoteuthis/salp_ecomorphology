@@ -1,0 +1,85 @@
+
+#######################
+# Reading in the Data #
+#######################
+
+filename <- v("chordata18Saligned")
+data[i] = readDiscreteCharacterData(filename)
+taxa <- data.taxa()
+n_species <- data.ntaxa()
+n_branches <- 2 * n_species - 3
+mvi = 0
+mni = 0
+
+##################################
+# Substitution Model #
+##################################
+
+er_prior <- v(1,1,1,1,1,1)
+er ~ dnDirichlet(er_prior)
+moves[++mvi] = mvSimplexElementScale(er, alpha=10, tune=true, weight=3)
+pi_prior <- v(1,1,1,1)
+pi ~ dnDirichlet(pi_prior)
+moves[++mvi] = mvSimplexElementScale(pi, alpha=10, tune=true, weight=2)
+
+Q := fnGTR(er,pi)
+alpha_prior_mean <- 5.0
+alpha_prior_sd <- 0.587405
+
+alpha ~ dnLognormal( alpha_prior_mean, alpha_prior_sd)
+gamma_rates := fnDiscretizeGamma( alpha, alpha, 4, false )
+moves[++mvi] = mvScale(alpha,weight=2)
+
+pinvar ~ dnBeta(1,1)
+moves[++mvi] = mvScale(pinvar, lambda=0.1, tune=true, weight=2.0)
+moves[++mvi] = mvSlide(pinvar, delta=0.1, tune=true, weight=2.0)
+
+##############
+# Tree model #
+##############
+
+topology ~ dnUniformTopology(taxa=taxa)
+moves[++mvi] = mvNNI(topology, weight=1.0)
+moves[++mvi] = mvSPR(topology, weight=1.0)
+
+for (i in 1:n_branches) {
+br_lens[i] ~ dnExponential(10.0)
+moves[++mvi] = mvScale(br_lens[i])
+}
+
+TL := sum(br_lens)
+
+# unite topology and branch length vector into phylogeny object
+phylogeny := treeAssembly(topology, br_lens)
+
+###################
+# PhyloCTMC Model #
+###################
+
+rate ~ dnDirichlet(1)
+moves[++mvi] = mvSimplexElementScale(rate, alpha=10, tune=true, weight=2)
+
+phyloSeq ~ dnPhyloCTMC(tree=phylogeny, Q=Q, branchRates=rate, siteRates=gamma_rates, pInv=pinvar, type="DNA")
+phyloSeq.clamp(data)
+
+############
+# Analysis #
+############
+
+mymodel = model(phylogeny)
+# add monitors
+monitors[++mni] = mnModel(filename="TOPOLOGY_Chordata_output/Salps18S_chordata.log",printgen=10)
+monitors[++mni] = mnFile(phylogeny, filename="TOPOLOGY_Chordata_output/Salps18S_chordata.trees", printgen=100)
+monitors[++mni] = mnScreen(alpha,printgen=100)
+
+# run the analysis
+mymcmc = mcmc(mymodel, moves, monitors)
+mymcmc.burnin(10000,1000)
+mymcmc.run(300000)
+
+# summarize output
+treetrace = readTreeTrace("TOPOLOGY_Chordata_output/Salps18S_chordata.trees")
+treetrace.summarize()
+map_tree = mapTree(treetrace,"TOPOLOGY_Chordata_output/Salps18S_chordata.tre")
+
+q()

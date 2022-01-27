@@ -1,0 +1,50 @@
+IQ-TREE multicore version 1.6.12 for Mac OS X 64-bit built Aug 15 2019
+Developed by Bui Quang Minh, Nguyen Lam Tung, Olga Chernomor,
+Heiko Schmidt, Dominik Schrempf, Michael Woodhams.
+
+Host:    alejandros-mbp.lan (AVX2, FMA3, 16 GB RAM)
+Command: ./iqtree -s salps18S.fasta -nt AUTO -bb 1000
+Seed:    500958 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Thu Nov  4 15:54:32 2021
+Kernel:  AVX+FMA - auto-detect threads (8 CPU cores detected)
+
+Reading alignment file salps18S.fasta ... Fasta format detected
+ERROR: Sequence HQ015415.1 contains not enough characters (1768)
+ERROR: Sequence HQ015414.1 contains not enough characters (1746)
+ERROR: Sequence HQ015413.1 contains not enough characters (1736)
+ERROR: Sequence HQ015412.1 contains not enough characters (1757)
+ERROR: Sequence HQ015411.1 contains not enough characters (1778)
+ERROR: Sequence HQ015410.1 contains not enough characters (1745)
+ERROR: Sequence HQ015409.1 contains not enough characters (1722)
+ERROR: Sequence HQ015408.1 contains not enough characters (1731)
+ERROR: Sequence HQ015407.1 contains not enough characters (1786)
+ERROR: Sequence HQ015405.1 contains not enough characters (1725)
+ERROR: Sequence HQ015404.1 contains not enough characters (1736)
+ERROR: Sequence HQ015403.1 contains not enough characters (1740)
+ERROR: Sequence HQ015402.1 contains not enough characters (1686)
+ERROR: Sequence HQ015401.1 contains not enough characters (1729)
+ERROR: Sequence HQ015400.1 contains not enough characters (1786)
+ERROR: Sequence HQ015399.1 contains not enough characters (1731)
+ERROR: Sequence HQ015398.1 contains not enough characters (1720)
+ERROR: Sequence HQ015397.1 contains not enough characters (1663)
+ERROR: Sequence HQ015396.1 contains not enough characters (1724)
+ERROR: Sequence HQ015395.1 contains not enough characters (1716)
+ERROR: Sequence HQ015394.1 contains not enough characters (1787)
+ERROR: Sequence HQ015393.1 contains not enough characters (1754)
+ERROR: Sequence HQ015392.1 contains not enough characters (1738)
+ERROR: Sequence HQ015391.1 contains not enough characters (1773)
+ERROR: Sequence HQ015390.1 contains not enough characters (1739)
+ERROR: Sequence HQ015389.1 contains not enough characters (1782)
+ERROR: Sequence HQ015388.1 contains not enough characters (1773)
+ERROR: Sequence HQ015387.1 contains not enough characters (1784)
+ERROR: Sequence HQ015386.1 contains not enough characters (1744)
+ERROR: Sequence HQ015385.1 contains not enough characters (1681)
+ERROR: Sequence HQ015384.1 contains not enough characters (1715)
+ERROR: Sequence HQ015383.1 contains not enough characters (1759)
+ERROR: Sequence HQ015382.1 contains not enough characters (1779)
+ERROR: Sequence HQ015381.1 contains not enough characters (1756)
+ERROR: Sequence HQ015380.1 contains not enough characters (1732)
+ERROR: Sequence HQ015379.1 contains not enough characters (1730)
+ERROR: Sequence HQ015378.1 contains not enough characters (1752)
+ERROR: Sequence HQ015376.1 contains not enough characters (1670)
+ERROR: 
