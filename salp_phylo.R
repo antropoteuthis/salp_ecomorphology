@@ -60,6 +60,14 @@ nodelabels(node=1:tree_salp_morph$Nnode+Ntip(tree_salp_morph),pie=fitMorph$lik.a
 tiplabels(pie=to.matrix(morph,sort(unique(morph))),piecol=cols,cex=0.5)
 add.simmap.legend(colors=cols,prompt=FALSE,x=0,y=2,fsize=0.8)
 
+  #corHMM
+hidMorph <- corHMM(tree_salp_morph,cbind(names(morph),morph),rate.cat=1)
+hidMorph$solution[is.na(hidMorph$solution)] <- 0
+diag(hidMorph$solution) <- -rowSums(hidMorph$solution)
+
+MorphSimmap <- makeSimmap(tree_salp_morph,cbind(names(morph),morph), model=hidMorph$solution, rate.cat=1)
+plotSimmap(MorphSimmap[[1]], fsize = 0.5)
+
 #### [2] #### Whole colony architecture EXCLUDING Bipinnate for being autapomorphic #####
 morph_nb <- morph[which(morph!="Bipinnate")]
 nbTree <- drop.tip(tree_salp, which(!(tree_salp$tip.label %in% names(morph_nb)))) %>% chronos()
@@ -133,13 +141,17 @@ binTransits$WC[which(binTransits$WC == 2)] <- 0
 hidTrans <- corHMM(tree_salp_morph,binTransits[,1:2],rate.cat=1)
 hidTrans$solution[is.na(hidTrans$solution)] <- 0
 diag(hidTrans$solution) <- -rowSums(hidTrans$solution)
-simHid <- make.simmap(tree_salp_morph,setNames(binTransits[,2],binTransits[,1]),nsim=10,model=hidTrans$solution)
-par(ask=F)
-obj_t<-summary(simT,plot=FALSE)
-cols_t<-setNames(palette()[1:2],mapped.states(simT)[,1])
-plot(obj_t,colors=cols_t,fsize=0.8,cex=c(0.9,0.5), ftype="i")
 
-ancRECON(tree_salp_morph, binTransits[,c(1:3)],p=-c(0.05,10,0.01,0.01,0.06,0,0.02,51.2),ntraits = 2)
+HidSimmap <- makeSimmap(tree_salp_morph,binTransits[,1:2], model=hidTrans$solution, rate.cat=1)
+plotSimmap(HidSimmap[[10]], fsize = 0.5)
+
+corPAINT(tree_salp_morph, binTransits[,c(1:3)])
+
+RDtransits <- rayDISC(tree_salp_morph, binTransits[,c(1,3)])
+
+plotRECON(tree_salp_morph, RDtransits$states, title="OL")
+
+ancRECON(tree_salp_morph, binTransits[,c(1:3)], p=param, rate.cat=NULL, ntraits=2, model="ARD")
 
 
 #### [4] #### Colony morphologies as transition characters with exclusionary states (1/0/NA) ####
@@ -196,6 +208,7 @@ for(t in c(2:6)){
     plot(obj_t,colors=cols_t,fsize=0.8,cex=c(0.9,0.5), ftype="i")
     add.simmap.legend(colors=cols_t,x=0, y=4,prompt=FALSE,fsize=0.9)
 }
+
 
 #### [5] #### #Developmental Transition pathways as multistate characters #####
 

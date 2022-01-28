@@ -1,0 +1,12 @@
+q()
+nbranches
+n_branches
+br_lens
+i
+br_lens[i] ~ dnExponential(10.0)
+i=2
+br_lens[i] ~ dnExponential(10.0)
+br_lens
+q(
+)
+q()
