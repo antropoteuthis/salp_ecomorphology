@@ -79,5 +79,6 @@ mymcmc.run(300000)
 treetrace = readTreeTrace("TOPOLOGY_Chordata_output/Salps18S_chordata.trees")
 treetrace.summarize()
 map_tree = mapTree(treetrace,"TOPOLOGY_Chordata_output/Salps18S_chordata.tre")
+map_tree = consensusTree(trace=treetrace, cutoff=0.5, file="TOPOLOGY_Chordata_output/Salps18S_chordata.consensus.tree")
 
 q()
