@@ -1,0 +1,77 @@
+############################################################################################
+#   File: timetree tutorial birth-death, rho=10/147 model specification file -- FIXED topology
+############################################################################################
+
+data = readDiscreteCharacterData("./chordata18Saligned.fa")
+
+# Get some useful variables from the data. We need these later on.
+taxa <- data.taxa()
+n_taxa <- data.ntaxa()
+
+mi = 1
+
+#######################################
+###### birth-death process model  #####
+#######################################
+
+### diversification = birth_rate - death_rate
+### assume an exponential prior distribution 
+
+diversification ~ dnExponential(10.0) 
+
+### turnover = death_rate / birth_rate
+### this parameter can only take values between 0 and 1
+### use a Beta prior distribution
+
+turnover ~ dnBeta(2.0, 2.0) 
+
+### the parameters of the BDP include birth and death rates
+### these are deterministic variables of the diversification & turnover
+##### create a variable to ensure the rates are always positive (RealPos)
+
+denom := abs(1.0 - turnover) 
+
+##### birth_rate = diversification / (1 - turnover)
+
+birth_rate := diversification / denom
+
+##### death_rate = (turnover * diversification) / (1 - turnover)
+
+death_rate := (turnover * diversification) / denom
+
+### rho is the probability of sampling species at the present
+### fix this to 0.001
+### and we have sampled 1/1000
+
+rho <- 0.001
+
+### the root age is an independent stochastic node with a lognormal prior
+### the mean of the lognormal distribution is set to 15 Mya older than the observed fossil
+### when offset by tHesperocyon, this gives a mean root_time of 49 Mya
+
+mean_ra <- 1
+stdv_ra <- 0.001
+
+### the lognormal distribution is parameterized by mu which is a function of the mean and standard deviation
+mu_ra <- ln(mean_ra) - ((stdv_ra*stdv_ra) * 0.5)
+
+root_time ~ dnLnorm(mu_ra, stdv_ra, offset=1)
+
+### the time tree is a stochastic node modeled by the constant rate birth-death process (dnBDP)
+timetree ~ dnBDP(lambda=birth_rate, mu=death_rate, rho=rho, rootAge=root_time, samplingStrategy="uniform", condition="nTaxa", taxa=taxa)
+
+moves[mi++] = mvScale(diversification,lambda=1.0,tune=true,weight=3.0)
+moves[mi++] = mvSlide(turnover,delta=1.0,tune=true,weight=3.0)
+
+####### Tree Moves #######
+
+### add moves on the tree node times, including the root time, which is outside of the timetree 
+moves[mi++] = mvNodeTimeSlideUniform(timetree, weight=30.0)
+moves[mi++] = mvTreeScale(tree=timetree, rootAge=root_time, delta=1.0, tune=true, weight=3.0)
+moves[mi++] = mvSlide(root_time, delta=2.0, tune=true, weight=10.0)
+moves[mi++] = mvScale(root_time, lambda=2.0, tune=true, weight=10.0)
+
+### and moves for the tree topology
+moves[mi++] = mvNNI(timetree, weight=8.0)
+moves[mi++] = mvNarrow(timetree, weight=8.0)
+moves[mi++] = mvFNPR(timetree, weight=8.0)

@@ -1,0 +1,370 @@
+IQ-TREE 1.6.12 built Aug 15 2019
+
+Input file name: ./Govindarajan2011_18S+Higaboja_MUSCLE.afa-gb
+Type of analysis: tree reconstruction + ultrafast bootstrap (1000 replicates)
+Random seed number: 592869
+
+REFERENCES
+----------
+
+To cite IQ-TREE please use:
+
+Lam-Tung Nguyen, Heiko A. Schmidt, Arndt von Haeseler, and Bui Quang Minh
+(2015) IQ-TREE: A fast and effective stochastic algorithm for estimating
+maximum likelihood phylogenies. Mol Biol Evol, 32:268-274.
+https://doi.org/10.1093/molbev/msu300
+
+Since you used ultrafast bootstrap (UFBoot) please also cite: 
+
+Diep Thi Hoang, Olga Chernomor, Arndt von Haeseler, Bui Quang Minh,
+and Le Sy Vinh (2017) UFBoot2: Improving the ultrafast bootstrap
+approximation. Mol Biol Evol, in press.
+https://doi.org/10.1093/molbev/msx281
+
+SEQUENCE ALIGNMENT
+------------------
+
+Input data: 63 sequences with 1482 nucleotide sites
+Number of constant sites: 580 (= 39.1363% of all sites)
+Number of invariant (constant or ambiguous constant) sites: 580 (= 39.1363% of all sites)
+Number of parsimony informative sites: 556
+Number of distinct site patterns: 1007
+
+SUBSTITUTION PROCESS
+--------------------
+
+Model of substitution: GTR+F+I+G4
+
+Rate parameter R:
+
+  A-C: 0.8369
+  A-G: 1.5529
+  A-T: 0.8866
+  C-G: 1.0172
+  C-T: 2.6436
+  G-T: 1.0000
+
+State frequencies: (empirical counts from alignment)
+
+  pi(A) = 0.2526
+  pi(C) = 0.2218
+  pi(G) = 0.2796
+  pi(T) = 0.246
+
+Rate matrix Q:
+
+  A   -0.8589    0.1903    0.4451    0.2235
+  C    0.2167    -1.175    0.2915    0.6665
+  G    0.4021    0.2313   -0.8856    0.2521
+  T    0.2296    0.6012    0.2866    -1.117
+
+Model of rate heterogeneity: Invar+Gamma with 4 categories
+Proportion of invariable sites: 0.3784
+Gamma shape alpha: 0.4861
+
+ Category  Relative_rate  Proportion
+  0         0              0.3784
+  1         0.04962        0.1554
+  2         0.3905         0.1554
+  3         1.303          0.1554
+  4         4.692          0.1554
+Relative rates are computed as MEAN of the portion of the Gamma distribution falling in the category.
+
+MAXIMUM LIKELIHOOD TREE
+-----------------------
+
+Log-likelihood of the tree: -15192.5898 (s.e. 382.7066)
+Unconstrained log-likelihood (without tree): -9006.3951
+Number of free parameters (#branches + #model parameters): 131
+Akaike information criterion (AIC) score: 30647.1795
+Corrected Akaike information criterion (AICc) score: 30672.7973
+Bayesian information criterion (BIC) score: 31341.6299
+
+Total tree length (sum of branch lengths): 1.8050
+Sum of internal branch lengths: 0.5282 (29.2623% of tree length)
+
+WARNING: 8 near-zero internal branches (<0.0007) should be treated with caution
+         Such branches are denoted by '**' in the figure below
+
+NOTE: Tree is UNROOTED although outgroup taxon 'HQ015383.1_Pyrosomella_verticillata' is drawn at root
+Numbers in parentheses are  ultrafast bootstrap support (%)
+
++**HQ015383.1_Pyrosomella_verticillata
+|
+|                                         +**HQ015413.1_Thalia_democratica
+|                                      +**| (28)
+|                                      |  +**HQ015415.1_Thalia_democratica
+|                                   +--| (100)
+|                                   |  +**HQ015414.1_Thalia_democratica
+|                                +--| (97)
+|                                |  +--D14366.1_Thalia_democratica
+|                             +--| (100)
+|                             |  +--HQ015412.1_Thalia_orientalis
+|                          +--| (35)
+|                          |  |              +--FM244867.1_Salpa_thompsoni
+|                          |  |           +--| (82)
+|                          |  |           |  |  +--HQ015403.1_Brooksia_rostrata
+|                          |  |           |  +--| (86)
+|                          |  |           |     +--HQ015404.1_Brooksia_rostrata
+|                          |  |        +--| (65)
+|                          |  |        |  |     +--HQ015409.1_Salpa_fusiformis
+|                          |  |        |  |  +--| (99)
+|                          |  |        |  |  |  +--HQ015395.1_Cyclosalpa_sewelli
+|                          |  |        |  +--| (100)
+|                          |  |        |     +--HQ015396.1_Cyclosalpa_polae
+|                          |  |     +**| (22)
+|                          |  |     |  |     +--HQ015397.1_Cyclosalpa_quadriluminis
+|                          |  |     |  |  +--| (97)
+|                          |  |     |  |  |  +---FM244864.1_Cyclosalpa_quadriluminis
+|                          |  |     |  +--| (67)
+|                          |  |     |     |       +--HQ015399.1_Iasis_cylindrica
+|                          |  |     |     |   +---| (99)
+|                          |  |     |     |   |   +---HQ015401.1_Iasis_cylindrica
+|                          |  |     |     +---| (100)
+|                          |  |     |         +**HQ015398.1_Cyclosalpa_sewelli
+|                          |  |  +--| (36)
+|                          |  |  |  |  +---HQ015393.1_Cyclosalpa_floridana
+|                          |  |  |  +--| (100)
+|                          |  |  |     |  +---HQ015406.1_Salpa_thompsoni
+|                          |  |  |     +--| (77)
+|                          |  |  |        +--HQ015411.1_Ritteriella_retracta
+|                          |  +--| (81)
+|                          |     |               +**HQ015392.1_Cyclosalpa_affinis
+|                          |     |            +--| (100)
+|                          |     |            |  +------HQ015391.1_Cyclosalpa_affinis
+|                          |     |         +--| (100)
+|                          |     |         |  +--HQ015402.1_Iasis_cylindrica
+|                          |     |      +--| (100)
+|                          |     |      |  +--HQ015394.1_Cyclosalpa_polae
+|                          |     |  +---| (100)
+|                          |     |  |   +--HQ015410.1_Ritteriella_retracta
+|                          |     +--| (99)
+|                          |        |     +**HQ015407.1_Salpa_maxima
+|                          |        |  +--| (100)
+|                          |        |  |  +**HQ015408.1_Salpa_maxima
+|                          |        +--| (99)
+|                          |           +--HQ015405.1_Salpa_aspera
+|                       +--| (61)
+|                       |  |  +--HQ015400.1_Iasis_cylindrica
+|                       |  +--| (82)
+|                       |     +--FM244866.1_Iasis_cylindrica
+|                    +--| (95)
+|                    |  |     +--FM244865.1_Ihlea_racovitzai
+|                    |  |  +--| (100)
+|                    |  |  |  +---HQ015378.1_Ihlea_racovitzai
+|                    |  +--| (100)
+|                    |     +-----HQ015377.1_Salpidae_gen._nov._sp._nov._A
+|                 +--| (86)
+|                 |  |       +--HQ015388.1_Pegea_bicaudata
+|                 |  |    +--| (99)
+|                 |  |    |  +--HQ015387.1_Pegea_confoederata
+|                 |  +----| (100)
+|                 |       +--HQ015386.1_Pegea_confoederata
+|              +--| (100)
+|              |  |  +--HQ015390.1_Thetys_vagina
+|              |  +--| (91)
+|              |     +-------HQ015389.1_Soestia_zonaria
+|           +--| (99)
+|           |  |              +--HQ015376.1_Doliolum_denticulatum
+|           |  |  +-----------| (100)
+|           |  |  |           |  +--AB013012.1_Doliolum_nationalis
+|           |  |  |           +--| (77)
+|           |  |  |              +--FM244861.1_Doliolum_denticulatu
+|           |  +--| (75)
+|           |     |        +--FM244841.1_Pycnoclavella_aff._detorta
+|           |     |     +--| (99)
+|           |     |     |  +-----FM244840.1_Clavelina_meridionalis
+|           |     |  +--| (94)
+|           |     |  |  |     +-----AB013017.1_Ciona_intestinalis
+|           |     |  |  |  +--| (48)
+|           |     |  |  |  |  |  +------L12378.2_Ascidia_ceratodes
+|           |     |  |  |  |  +**| (27)
+|           |     |  |  |  |     +--AB104873.1_Perophora_sagamiensis
+|           |     |  |  +--| (79)
+|           |     |  |     |  +--AF165821.2_Chelyosoma_siboja
+|           |     |  |     +--| (100)
+|           |     |  |        +--AB075543.1_Megalodicopia_hians
+|           |     +--| (98)
+|           |        |     +------------------------AB013014.1_Oikopleura_dioica
+|           |        |  +--| (92)
+|           |        |  |  |         +----------------------------------M97574.1_Myxine_glutinosa
+|           |        |  |  |    +----| (100)
+|           |        |  |  |    |    +---------M91181.1_Echinorhinus_cookei
+|           |        |  |  +----| (100)
+|           |        |  |       +--------------------M97571.1_Branchiostoma_floridae
+|           |        +--| (100)
+|           |           |   +----AY903925.1_Halocynthia_igaboja
+|           |           +---| (100)
+|           |               +----------------------L12426.2_Molgula_manhattensis
+|        +--| (100)
+|        |  +-----HQ015379.1_Pyrostremma_spinosum
+|     +--| (91)
+|     |  +---AB013011.1_Pyrosoma_atlanticum
+|  +**| (20)
+|  |  |  +--FM244862.1_Pyrosoma_godeauxi
+|  |  +**| (22)
+|  |     |  +--FM244863.1_Pyrosomella_verticillata
+|  |     +**| (78)
+|  |        +**HQ015380.1_Pyrosomella_verticillata
++--| (100)
+|  |  +--HQ015385.1_Pyrosoma_atlanticum
+|  +**| (98)
+|     +--HQ015384.1_Pyrosoma_godeauxi
+|
+|  +**HQ015382.1_Pyrosomella_verticillata
++**| (94)
+   +**HQ015381.1_Pyrosoma_atlanticum
+
+Tree in newick format:
+
+(HQ015383.1_Pyrosomella_verticillata:0.0000023165,((((((((((((((HQ015413.1_Thalia_democratica:0.0000023165,HQ015415.1_Thalia_democratica:0.0000023165)28:0.0000023165,HQ015414.1_Thalia_democratica:0.0000023165)100:0.0075564340,D14366.1_Thalia_democratica:0.0166580440)97:0.0032095143,HQ015412.1_Thalia_orientalis:0.0169299501)100:0.0175285700,(((((FM244867.1_Salpa_thompsoni:0.0162820635,(HQ015403.1_Brooksia_rostrata:0.0179700289,HQ015404.1_Brooksia_rostrata:0.0133478224)86:0.0059051562)82:0.0022249980,((HQ015409.1_Salpa_fusiformis:0.0071080543,HQ015395.1_Cyclosalpa_sewelli:0.0164069592)99:0.0034692668,HQ015396.1_Cyclosalpa_polae:0.0064295989)100:0.0038365434)65:0.0025971867,((HQ015397.1_Cyclosalpa_quadriluminis:0.0063648482,FM244864.1_Cyclosalpa_quadriluminis:0.0209775339)97:0.0007438329,((HQ015399.1_Iasis_cylindrica:0.0021334000,HQ015401.1_Iasis_cylindrica:0.0217404721)99:0.0196071267,HQ015398.1_Cyclosalpa_sewelli:0.0002329441)100:0.0218084245)67:0.0019256071)22:0.0000021585,(HQ015393.1_Cyclosalpa_floridana:0.0198354578,(HQ015406.1_Salpa_thompsoni:0.0210397923,HQ015411.1_Ritteriella_retracta:0.0032800604)77:0.0127996780)100:0.0128913937)36:0.0020740073,(((((HQ015392.1_Cyclosalpa_affinis:0.0000023165,HQ015391.1_Cyclosalpa_affinis:0.0341330879)100:0.0162026900,HQ015402.1_Iasis_cylindrica:0.0099943568)100:0.0148734893,HQ015394.1_Cyclosalpa_polae:0.0070508546)100:0.0046899177,HQ015410.1_Ritteriella_retracta:0.0096818710)100:0.0190897735,((HQ015407.1_Salpa_maxima:0.0006735071,HQ015408.1_Salpa_maxima:0.0000023165)100:0.0013025073,HQ015405.1_Salpa_aspera:0.0027664108)99:0.0031100885)99:0.0039197732)81:0.0041709775)35:0.0012035349,(HQ015400.1_Iasis_cylindrica:0.0101939153,FM244866.1_Iasis_cylindrica:0.0125915092)82:0.0060408329)61:0.0082035672,((FM244865.1_Ihlea_racovitzai:0.0115440784,HQ015378.1_Ihlea_racovitzai:0.0205769385)100:0.0141125585,HQ015377.1_Salpidae_gen._nov._sp._nov._A:0.0304163336)100:0.0181738838)95:0.0078347373,((HQ015388.1_Pegea_bicaudata:0.0075360833,HQ015387.1_Pegea_confoederata:0.0053916257)99:0.0048345484,HQ015386.1_Pegea_confoederata:0.0139567692)100:0.0251376451)86:0.0040277766,(HQ015390.1_Thetys_vagina:0.0168639627,HQ015389.1_Soestia_zonaria:0.0384398905)91:0.0114005809)100:0.0181247975,((HQ015376.1_Doliolum_denticulatum:0.0027082035,(AB013012.1_Doliolum_nationalis:0.0076301049,FM244861.1_Doliolum_denticulatu:0.0148132868)77:0.0014353581)100:0.0595691868,(((FM244841.1_Pycnoclavella_aff._detorta:0.0079177440,FM244840.1_Clavelina_meridionalis:0.0286222373)99:0.0087127736,((AB013017.1_Ciona_intestinalis:0.0291589990,(L12378.2_Ascidia_ceratodes:0.0357748022,AB104873.1_Perophora_sagamiensis:0.0176042395)27:0.0000024863)48:0.0017566780,(AF165821.2_Chelyosoma_siboja:0.0057594172,AB075543.1_Megalodicopia_hians:0.0157386402)100:0.0150292890)79:0.0038872606)94:0.0042325590,((AB013014.1_Oikopleura_dioica:0.1193149379,((M97574.1_Myxine_glutinosa:0.1634876517,M91181.1_Echinorhinus_cookei:0.0477500004)100:0.0257412339,M97571.1_Branchiostoma_floridae:0.0997089430)100:0.0263193598)92:0.0109187211,(AY903925.1_Halocynthia_igaboja:0.0265992835,L12426.2_Molgula_manhattensis:0.1082417195)100:0.0189231092)100:0.0176178022)98:0.0069757981)75:0.0022055733)99:0.0055712360,HQ015379.1_Pyrostremma_spinosum:0.0321826373)100:0.0097024254,AB013011.1_Pyrosoma_atlanticum:0.0211069582)91:0.0013476468,(FM244862.1_Pyrosoma_godeauxi:0.0065894666,(FM244863.1_Pyrosomella_verticillata:0.0102762079,HQ015380.1_Pyrosomella_verticillata:0.0000023165)78:0.0000011279)22:0.0006560196)20:0.0000023165,(HQ015385.1_Pyrosoma_atlanticum:0.0136072577,HQ015384.1_Pyrosoma_godeauxi:0.0153973813)98:0.0003814390)100:0.0101045246,(HQ015382.1_Pyrosomella_verticillata:0.0000023165,HQ015381.1_Pyrosoma_atlanticum:0.0000023165)94:0.0006620296);
+
+CONSENSUS TREE
+--------------
+
+Consensus tree is constructed from 1000bootstrap trees
+Log-likelihood of consensus tree: -15192.694228
+Robinson-Foulds distance between ML tree and consensus tree: 10
+
+Branches with support >0.000000% are kept (extended consensus)
+Branch lengths are optimized by maximum likelihood on original alignment
+Numbers in parentheses are bootstrap supports (%)
+
++--HQ015383.1_Pyrosomella_verticillata
+|
+|                                      +--HQ015413.1_Thalia_democratica
+|                                   +--| (100)
+|                                   |  |  +--HQ015415.1_Thalia_democratica
+|                                   |  +--| (50)
+|                                   |     +--HQ015414.1_Thalia_democratica
+|                                +--| (97)
+|                                |  +--D14366.1_Thalia_democratica
+|                             +--| (100)
+|                             |  +--HQ015412.1_Thalia_orientalis
+|                          +--| (61)
+|                          |  |                 +--FM244867.1_Salpa_thompsoni
+|                          |  |              +--| (82)
+|                          |  |              |  |  +--HQ015403.1_Brooksia_rostrata
+|                          |  |              |  +--| (86)
+|                          |  |              |     +--HQ015404.1_Brooksia_rostrata
+|                          |  |           +--| (65)
+|                          |  |           |  |     +--HQ015409.1_Salpa_fusiformis
+|                          |  |           |  |  +--| (99)
+|                          |  |           |  |  |  +--HQ015395.1_Cyclosalpa_sewelli
+|                          |  |           |  +--| (100)
+|                          |  |           |     +--HQ015396.1_Cyclosalpa_polae
+|                          |  |        +--| (22)
+|                          |  |        |  |     +--HQ015397.1_Cyclosalpa_quadriluminis
+|                          |  |        |  |  +--| (97)
+|                          |  |        |  |  |  +---FM244864.1_Cyclosalpa_quadriluminis
+|                          |  |        |  +--| (67)
+|                          |  |        |     |       +--HQ015399.1_Iasis_cylindrica
+|                          |  |        |     |   +---| (99)
+|                          |  |        |     |   |   +---HQ015401.1_Iasis_cylindrica
+|                          |  |        |     +---| (100)
+|                          |  |        |         +--HQ015398.1_Cyclosalpa_sewelli
+|                          |  |     +--| (36)
+|                          |  |     |  |  +---HQ015393.1_Cyclosalpa_floridana
+|                          |  |     |  +--| (100)
+|                          |  |     |     |  +---HQ015406.1_Salpa_thompsoni
+|                          |  |     |     +--| (77)
+|                          |  |     |        +--HQ015411.1_Ritteriella_retracta
+|                          |  |  +--| (81)
+|                          |  |  |  |               +--HQ015392.1_Cyclosalpa_affinis
+|                          |  |  |  |            +--| (100)
+|                          |  |  |  |            |  +------HQ015391.1_Cyclosalpa_affinis
+|                          |  |  |  |         +--| (100)
+|                          |  |  |  |         |  +--HQ015402.1_Iasis_cylindrica
+|                          |  |  |  |      +--| (100)
+|                          |  |  |  |      |  +--HQ015394.1_Cyclosalpa_polae
+|                          |  |  |  |  +---| (100)
+|                          |  |  |  |  |   +--HQ015410.1_Ritteriella_retracta
+|                          |  |  |  +--| (99)
+|                          |  |  |     |     +--HQ015407.1_Salpa_maxima
+|                          |  |  |     |  +--| (100)
+|                          |  |  |     |  |  +--HQ015408.1_Salpa_maxima
+|                          |  |  |     +--| (99)
+|                          |  |  |        +--HQ015405.1_Salpa_aspera
+|                          |  +--| (45)
+|                          |     |  +--HQ015400.1_Iasis_cylindrica
+|                          |     +--| (82)
+|                          |        +--FM244866.1_Iasis_cylindrica
+|                       +--| (95)
+|                       |  |     +--FM244865.1_Ihlea_racovitzai
+|                       |  |  +--| (100)
+|                       |  |  |  +---HQ015378.1_Ihlea_racovitzai
+|                       |  +--| (100)
+|                       |     +-----HQ015377.1_Salpidae_gen._nov._sp._nov._A
+|                    +--| (86)
+|                    |  |       +--HQ015388.1_Pegea_bicaudata
+|                    |  |    +--| (99)
+|                    |  |    |  +--HQ015387.1_Pegea_confoederata
+|                    |  +----| (100)
+|                    |       +--HQ015386.1_Pegea_confoederata
+|                 +--| (100)
+|                 |  |  +--HQ015390.1_Thetys_vagina
+|                 |  +--| (91)
+|                 |     +-------HQ015389.1_Soestia_zonaria
+|              +--| (99)
+|              |  |              +--HQ015376.1_Doliolum_denticulatum
+|              |  |  +-----------| (100)
+|              |  |  |           |  +--AB013012.1_Doliolum_nationalis
+|              |  |  |           +--| (77)
+|              |  |  |              +--FM244861.1_Doliolum_denticulatu
+|              |  +--| (75)
+|              |     |        +--FM244841.1_Pycnoclavella_aff._detorta
+|              |     |     +--| (99)
+|              |     |     |  +-----FM244840.1_Clavelina_meridionalis
+|              |     |  +--| (94)
+|              |     |  |  |        +-----AB013017.1_Ciona_intestinalis
+|              |     |  |  |     +--| (51)
+|              |     |  |  |     |  +--AB104873.1_Perophora_sagamiensis
+|              |     |  |  |  +--| (48)
+|              |     |  |  |  |  +------L12378.2_Ascidia_ceratodes
+|              |     |  |  +--| (79)
+|              |     |  |     |  +--AF165821.2_Chelyosoma_siboja
+|              |     |  |     +--| (100)
+|              |     |  |        +--AB075543.1_Megalodicopia_hians
+|              |     +--| (98)
+|              |        |     +------------------------AB013014.1_Oikopleura_dioica
+|              |        |  +--| (92)
+|              |        |  |  |         +----------------------------------M97574.1_Myxine_glutinosa
+|              |        |  |  |    +----| (100)
+|              |        |  |  |    |    +---------M91181.1_Echinorhinus_cookei
+|              |        |  |  +----| (100)
+|              |        |  |       +--------------------M97571.1_Branchiostoma_floridae
+|              |        +--| (100)
+|              |           |   +----AY903925.1_Halocynthia_igaboja
+|              |           +---| (100)
+|              |               +----------------------L12426.2_Molgula_manhattensis
+|           +--| (100)
+|           |  +-----HQ015379.1_Pyrostremma_spinosum
+|        +--| (91)
+|        |  +---AB013011.1_Pyrosoma_atlanticum
+|     +--| (63)
+|     |  |  +--HQ015385.1_Pyrosoma_atlanticum
+|     |  +--| (98)
+|     |     +--HQ015384.1_Pyrosoma_godeauxi
+|  +--| (44)
+|  |  +--FM244862.1_Pyrosoma_godeauxi
++--| (100)
+|  |  +--FM244863.1_Pyrosomella_verticillata
+|  +--| (78)
+|     +--HQ015380.1_Pyrosomella_verticillata
+|
+|  +--HQ015382.1_Pyrosomella_verticillata
++--| (94)
+   +--HQ015381.1_Pyrosoma_atlanticum
+
+
+Consensus tree in newick format: 
+
+(HQ015383.1_Pyrosomella_verticillata:0.0000023165,(((((((((((((HQ015413.1_Thalia_democratica:0.0000023165,(HQ015415.1_Thalia_democratica:0.0000023165,HQ015414.1_Thalia_democratica:0.0000023165)50:0.0000023165)100:0.0075732990,D14366.1_Thalia_democratica:0.0166647958)97:0.0034151158,HQ015412.1_Thalia_orientalis:0.0167783792)100:0.0166619693,((((((FM244867.1_Salpa_thompsoni:0.0162935685,(HQ015403.1_Brooksia_rostrata:0.0179797200,HQ015404.1_Brooksia_rostrata:0.0133621227)86:0.0059054989)82:0.0022549359,((HQ015409.1_Salpa_fusiformis:0.0071380177,HQ015395.1_Cyclosalpa_sewelli:0.0163949494)99:0.0034720282,HQ015396.1_Cyclosalpa_polae:0.0064094364)100:0.0038371289)65:0.0025962983,((HQ015397.1_Cyclosalpa_quadriluminis:0.0063700527,FM244864.1_Cyclosalpa_quadriluminis:0.0210145835)97:0.0007462858,((HQ015399.1_Iasis_cylindrica:0.0021334659,HQ015401.1_Iasis_cylindrica:0.0217561891)99:0.0196219155,HQ015398.1_Cyclosalpa_sewelli:0.0002324866)100:0.0218012775)67:0.0019216355)22:0.0000023198,(HQ015393.1_Cyclosalpa_floridana:0.0198440869,(HQ015406.1_Salpa_thompsoni:0.0210683779,HQ015411.1_Ritteriella_retracta:0.0032682097)77:0.0128121823)100:0.0128806528)36:0.0022253274,(((((HQ015392.1_Cyclosalpa_affinis:0.0000023165,HQ015391.1_Cyclosalpa_affinis:0.0341553669)100:0.0162187018,HQ015402.1_Iasis_cylindrica:0.0099941840)100:0.0148657883,HQ015394.1_Cyclosalpa_polae:0.0070784038)100:0.0046964168,HQ015410.1_Ritteriella_retracta:0.0096960419)100:0.0191514752,((HQ015407.1_Salpa_maxima:0.0006734060,HQ015408.1_Salpa_maxima:0.0000023165)100:0.0012999241,HQ015405.1_Salpa_aspera:0.0027707081)99:0.0030411257)99:0.0038691788)81:0.0045175733,(HQ015400.1_Iasis_cylindrica:0.0103198681,FM244866.1_Iasis_cylindrica:0.0126474312)82:0.0063984482)45:0.0013298449)61:0.0082599056,((FM244865.1_Ihlea_racovitzai:0.0116179126,HQ015378.1_Ihlea_racovitzai:0.0205302805)100:0.0141506218,HQ015377.1_Salpidae_gen._nov._sp._nov._A:0.0303814782)100:0.0176860896)95:0.0080213677,((HQ015388.1_Pegea_bicaudata:0.0075370087,HQ015387.1_Pegea_confoederata:0.0053982755)99:0.0048730733,HQ015386.1_Pegea_confoederata:0.0139288005)100:0.0257150046)86:0.0036866128,(HQ015390.1_Thetys_vagina:0.0166760212,HQ015389.1_Soestia_zonaria:0.0387092091)91:0.0112523921)100:0.0180605882,((HQ015376.1_Doliolum_denticulatum:0.0027093453,(AB013012.1_Doliolum_nationalis:0.0076349442,FM244861.1_Doliolum_denticulatu:0.0148206662)77:0.0014367994)100:0.0598354033,(((FM244841.1_Pycnoclavella_aff._detorta:0.0079189774,FM244840.1_Clavelina_meridionalis:0.0286413461)99:0.0087208537,(((AB013017.1_Ciona_intestinalis:0.0291766103,AB104873.1_Perophora_sagamiensis:0.0176082470)51:0.0000024884,L12378.2_Ascidia_ceratodes:0.0357920067)48:0.0017577407,(AF165821.2_Chelyosoma_siboja:0.0057604237,AB075543.1_Megalodicopia_hians:0.0157487462)100:0.0150409578)79:0.0038920675)94:0.0043418606,((AB013014.1_Oikopleura_dioica:0.1193992750,((M97574.1_Myxine_glutinosa:0.1635436640,M91181.1_Echinorhinus_cookei:0.0477804081)100:0.0257410527,M97571.1_Branchiostoma_floridae:0.0997723808)100:0.0263055158)92:0.0109220645,(AY903925.1_Halocynthia_igaboja:0.0266173950,L12426.2_Molgula_manhattensis:0.1082961307)100:0.0189235383)100:0.0176073239)98:0.0066870801)75:0.0022568730)99:0.0054549251,HQ015379.1_Pyrostremma_spinosum:0.0319335169)100:0.0099063123,AB013011.1_Pyrosoma_atlanticum:0.0211167859)91:0.0013448556,(HQ015385.1_Pyrosoma_atlanticum:0.0136128045,HQ015384.1_Pyrosoma_godeauxi:0.0154034128)98:0.0003807385)63:0.0000023165,FM244862.1_Pyrosoma_godeauxi:0.0065918421)44:0.0000023165,(FM244863.1_Pyrosomella_verticillata:0.0102798386,HQ015380.1_Pyrosomella_verticillata:0.0000023165)78:0.0006576366)100:0.0101081436,(HQ015382.1_Pyrosomella_verticillata:0.0000023165,HQ015381.1_Pyrosoma_atlanticum:0.0000023165)94:0.0006615223);
+
+TIME STAMP
+----------
+
+Date and time: Mon Jan 31 19:03:10 2022
+Total CPU time used: 167.808098 seconds (0h:2m:47s)
+Total wall-clock time used: 51.89021993 seconds (0h:0m:51s)
+

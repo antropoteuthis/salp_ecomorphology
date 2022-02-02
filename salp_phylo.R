@@ -13,23 +13,22 @@ traits$Species[which(traits$Species == "Iasis (Weelia) cylindrica")] <- "Iasis c
 traits$Species[which(traits$Species == "Soestia (Iasis) zonaria")] <- "Soestia zonaria"
 
 #tree_salp <- read.newick("phylogeny/salps18Saligned.fa.treefile")
-tree_salp <- read.newick("phylogeny/ML/chordata18Saligned.fa.treefile")
+tree_salp <- read.nexus("phylogeny/RevBayes/TIMETREE_Chordata_output/TimeTree_chordata_mcmc_MAP.tre")
 tree_salp$tip.label <- str_remove_all(tree_salp$tip.label, ".+\\..+?_")
 tree_salp$tip.label <- str_replace_all(tree_salp$tip.label, "_", " ")
-tree_salp <- drop.tip(tree_salp, c(1:13, 45:52)) #drop outgroups
-tree_salp <- drop.tip(tree_salp, c(28,24,23,21,20,19,16,12,13,9,7,4)) #drop duplicate species
-#tree_salp$tip.label[which(tree_salp$tip.label == "Iasis cylindrica")] <- "Iasis (Weelia) cylindrica"
 tree_salp$tip.label[which(tree_salp$tip.label == "Cyclosalpa floridana")] <- "Cyclosalpa floridiana"
+tree_salp <- drop.tip(tree_salp, c(32:52)) #drop outgroups
+tree_salp <- drop.tip(tree_salp, c(1,2,6,9,14,16,18,19,20,22,23,27)) #drop duplicate species
 
-#prune tree by data and make ultrametric
-tree_salp_pruned <- drop.tip(tree_salp, which(!(tree_salp$tip.label %in% unique(traits$Species)))) %>% chronos()
+#prune Literature data
+tree_salp_pruned <- drop.tip(tree_salp, which(!(tree_salp$tip.label %in% unique(traits$Species))))
 pruned_traits <- traits[which(traits$Species %in% tree_salp$tip.label),]
 unique_traits <- unique(pruned_traits)
 
 #### [1] #### Whole colony architecture #####
 morph <- setNames(unique_traits[which(unique_traits$Variable=="Chain architecture"),4], unique_traits[which(unique_traits$Variable=="Chain architecture"),1])
 morph <- c(morph,setNames("Linear", "Soestia zonaria"),setNames("Oblique", "Thalia orientalis"),setNames("Transversal", "Pegea confoederata"),setNames("Whorl","Cyclosalpa quadriluminis"))
-tree_salp_morph <- drop.tip(tree_salp, which(!(tree_salp$tip.label %in% names(morph)))) %>% chronos()
+tree_salp_morph <- drop.tip(tree_salp, which(!(tree_salp$tip.label %in% names(morph))))
 morph <- morph[which(names(morph) %in% tree_salp_morph$tip.label)]
 morph[match(tree_salp_morph$tip.label,names(morph))] -> morph
 class(tree_salp_morph) <- "phylo"
@@ -70,7 +69,7 @@ plotSimmap(MorphSimmap[[1]], fsize = 0.5)
 
 #### [2] #### Whole colony architecture EXCLUDING Bipinnate for being autapomorphic #####
 morph_nb <- morph[which(morph!="Bipinnate")]
-nbTree <- drop.tip(tree_salp, which(!(tree_salp$tip.label %in% names(morph_nb)))) %>% chronos()
+nbTree <- drop.tip(tree_salp, which(!(tree_salp$tip.label %in% names(morph_nb))))
 
   #Model selection
 for(i in 1:3){

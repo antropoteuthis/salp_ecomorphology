@@ -13,3 +13,9 @@ q()
 tree_trace = readTreeTrace("TOPOLOGY_Chordata_output/Salps18S_chordata.trees", burnin=0.1)
 map_tree = consensusTree(trace=tree_trace, cutoff=0.5, file="TOPOLOGY_Chordata_output/Salps18S_chordata.consensus.tree")
 q()
+n_taxa
+backbone
+root_time
+tree_prior
+timetree
+q()

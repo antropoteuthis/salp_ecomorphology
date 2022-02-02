@@ -1,0 +1,56 @@
+############################################################################################
+#   File: timetree tutorial full model specification and MCMC set up for estimating
+#          time-calibrated phylogenies under a strict clock model
+############################################################################################
+
+### Load the sequence alignment
+D <- readDiscreteCharacterData(file="./chordata18Saligned.fa")
+
+### initialize an iterator for the moves vector
+mi = 1
+
+n_sites <- D.nchar()
+
+### set up the birth-death model from file
+### this file includes tree topology moves
+
+source("m_BDP_salps.Rev")
+
+###########################################################
+############ Your favorite model ###########
+###########################################################
+
+source("m_UCLN_salps.Rev")
+
+#############################
+############ MCMC ###########
+#############################
+
+### workspace model wrapper ###
+mymodel = model(er)
+
+### set up the monitors that will output parameter values to file and screen 
+monitors[1] = mnModel(filename="TIMETREE_Chordata_output/TimeTree_chordata_mcmc.log", printgen=10)
+monitors[2] = mnFile(filename="TIMETREE_Chordata_output/TimeTree_chordata_mcmc.trees", printgen=10, timetree)
+
+### workspace mcmc ###
+mymcmc = mcmc(mymodel, monitors, moves)
+
+### pre-burnin to tune the proposals ###
+mymcmc.burnin(generations=5000,tuningInterval=100)
+
+### run the MCMC ###
+mymcmc.run(generations=10000)
+
+### display proposal acceptance rates and tuning ###
+mymcmc.operatorSummary()
+
+### summarize the trees ###
+tt = readTreeTrace("TIMETREE_Chordata_output/TimeTree_chordata_mcmc.trees", "clock")
+tt.summarize()
+
+### write MAP tree to file
+mapTree(tt, "TIMETREE_Chordata_output/TimeTree_chordata_mcmc_MAP.tre")
+
+## quit ##
+q()
