@@ -8,11 +8,8 @@ library(corHMM)
 #library(diversitree)
 
 setwd("~/Documents/salp_ecomorphology/")
-traits <- read.csv("salplit.tsv", sep="\t", stringsAsFactors = F)
-traits$Species[which(traits$Species == "Iasis (Weelia) cylindrica")] <- "Iasis cylindrica"
-traits$Species[which(traits$Species == "Soestia (Iasis) zonaria")] <- "Soestia zonaria"
 
-#tree_salp <- read.newick("phylogeny/salps18Saligned.fa.treefile")
+#LOAD consensus tree
 tree_salp <- read.nexus("phylogeny/RevBayes/TIMETREE_Chordata_output/TimeTree_chordata_mcmc_MAP.tre")
 tree_salp$tip.label <- str_remove_all(tree_salp$tip.label, ".+\\..+?_")
 tree_salp$tip.label <- str_replace_all(tree_salp$tip.label, "_", " ")
@@ -20,7 +17,29 @@ tree_salp$tip.label[which(tree_salp$tip.label == "Cyclosalpa floridana")] <- "Cy
 tree_salp <- drop.tip(tree_salp, c(32:52)) #drop outgroups
 tree_salp <- drop.tip(tree_salp, c(1,2,6,9,14,16,18,19,20,22,23,27)) #drop duplicate species
 
-#prune Literature data
+#Load phylogenetic uncertainty
+Strees <- read.tree("phylogeny/RevBayes/TOPOLOGY_Chordata_output/Salps18S_chordata_multitree.trees")
+Strees <- read.tree("phylogeny/RevBayes/TIMETREE_Chordata_output/TimeTree_chordata_multitree.trees")
+Strees <- lapply(Strees, drop.tip, c("HQ015387.1_Pegea_confoederata","HQ015391.1_Cyclosalpa_affinis","HQ015394.1_Cyclosalpa_polae","HQ015395.1_Cyclosalpa_sewelli","HQ015399.1_Iasis_cylindrica","HQ015402.1_Iasis_cylindrica","HQ015401.1_Iasis_cylindrica","HQ015413.1_Thalia_democratica","HQ015414.1_Thalia_democratica","HQ015410.1_Ritteriella_retracta","HQ015404.1_Brooksia_rostrata","HQ015408.1_Salpa_maxima"))
+Strees <- lapply(Strees, function(t){t$tip.label %>% 
+    str_remove_all(".+\\..+?_") %>% 
+      str_replace_all("_", " ") -> t$tip.label; return(t)})
+Strees <- lapply(Strees, drop.tip, c("Pyrosomella verticillata", "Pyrosoma atlanticum", "Pyrosoma godeauxi","Pyrostremma spinosum", "Clavelina meridionalis", "Pycnoclavella aff. detorta", "Ascidia ceratodes", "Perophora sagamiensis","Megalodicopia hians", "Chelyosoma siboja", "Ciona intestinalis", "Molgula manhattensis", "Oikopleura dioica","Halocynthia igaboja", "Echinorhinus cookei", "Myxine glutinosa", "Branchiostoma floridae", "Doliolum denticulatum"))
+Strees <- lapply(Strees, function(t){t$tip.label[which(t$tip.label == "Cyclosalpa floridana")] <- "Cyclosalpa floridiana"; return(t)})
+Strees <- lapply(Strees, ladderize)
+#Strees <- lapply(Strees, chronos)
+
+ape::unique.multiPhylo(Strees, use.tip.label = F)->Strees_Unique
+par(mfrow=c(4,5),mar=c(0,0,0,0), oma=c(0,0,0,0))
+lapply(Strees_Unique,function(t){plot.phylo(t, use.edge.length = F, cex=0.2)})
+lapply(Strees_Unique, function(t){length(lapply(Strees, function(Tr){all.equal.phylo(t,Tr,use.edge.length = F, use.tip.label = F)}) %>% unlist() %>% .[which(.==TRUE)])}) %>% unlist() -> BSratios
+BS_ratios <- (BSratios*100)/sum(BSratios)
+round(BS_ratios,2)
+
+#Load literature data
+traits <- read.csv("salplit.tsv", sep="\t", stringsAsFactors = F)
+traits$Species[which(traits$Species == "Iasis (Weelia) cylindrica")] <- "Iasis cylindrica"
+traits$Species[which(traits$Species == "Soestia (Iasis) zonaria")] <- "Soestia zonaria"
 tree_salp_pruned <- drop.tip(tree_salp, which(!(tree_salp$tip.label %in% unique(traits$Species))))
 pruned_traits <- traits[which(traits$Species %in% tree_salp$tip.label),]
 unique_traits <- unique(pruned_traits)
@@ -29,9 +48,11 @@ unique_traits <- unique(pruned_traits)
 morph <- setNames(unique_traits[which(unique_traits$Variable=="Chain architecture"),4], unique_traits[which(unique_traits$Variable=="Chain architecture"),1])
 morph <- c(morph,setNames("Linear", "Soestia zonaria"),setNames("Oblique", "Thalia orientalis"),setNames("Transversal", "Pegea confoederata"),setNames("Whorl","Cyclosalpa quadriluminis"))
 tree_salp_morph <- drop.tip(tree_salp, which(!(tree_salp$tip.label %in% names(morph))))
+STree_morph <- lapply(Strees, function(t){drop.tip(t,which(!(t$tip.label %in% names(morph))))})
 morph <- morph[which(names(morph) %in% tree_salp_morph$tip.label)]
 morph[match(tree_salp_morph$tip.label,names(morph))] -> morph
-class(tree_salp_morph) <- "phylo"
+
+
 
   #Model selection
 
@@ -93,6 +114,7 @@ add.simmap.legend(colors=cols_nb,x=0, y=4,prompt=FALSE,fsize=0.9,)
 
 #### [3] #### BINARY Developmental transitions from Transversal budding ####
 transits <- read.csv("Transitions_Salps.tsv", sep='\t', header = T, stringsAsFactors = F)[-4]
+
 models=c("ER","ARD")
 for(t in 2:5){
   T_I=transits[,t]
@@ -135,6 +157,16 @@ binTransits$OL[which(binTransits$OL == 2)] <- 0
 binTransits$TW <- as.numeric(as.factor(binTransits$TW))-1
 binTransits$WC <- as.numeric(as.factor(binTransits$WC))
 binTransits$WC[which(binTransits$WC == 2)] <- 0
+
+#MultiPhylo
+for(ch in 2:ncol(binTransits)){
+  print(names(binTransits)[ch])
+  lapply(STree_morph, function(t){phylosig(t, setNames(binTransits[,ch], binTransits$Species))}) %>% unlist() %>% summary() %>% print()
+  lapply(STree_morph, function(t){fastAnc(t, setNames(binTransits[,ch], binTransits$Species))["20"]}) %>% unlist() %>% summary() %>% print()
+}
+
+lapply(STree_morph, function(t){phylosig(t, setNames(binTransits$WC, transits$Species))}) %>% unlist() %>% summary()
+lapply(STree_morph, function(t){fastAnc(t, setNames(binTransits$OL, transits$Species))["20"]}) %>% unlist() %>% summary()
 
   #corHMM
 hidTrans <- corHMM(tree_salp_morph,binTransits[,1:2],rate.cat=1)
@@ -210,7 +242,6 @@ for(t in c(2:6)){
 
 
 #### [5] #### #Developmental Transition pathways as multistate characters #####
-
 transit_paths <- read.csv("Transitions_Paths.tsv", sep='\t', header = T, stringsAsFactors = F)
 
   #BIPPINATE PATH
@@ -321,7 +352,7 @@ cols<-setNames(palette()[1:3],mapped.states(simLat)[,1])
 plot(obj,colors=cols,fsize=0.8,cex=c(0.9,0.5), ftype="i")
 add.simmap.legend(colors=cols,x=0, y=4,prompt=FALSE,fsize=0.9,)
 
-#### [7 #### Continuous characters from the literature #####
+#### [7] #### Continuous characters from the literature #####
 cast_num <- dcast(pruned_traits[which(pruned_traits$Class=="number"),], Species~Variable, value.var="Value", fun.aggregate = function(x){mean(as.numeric(x), na.rm = T)})
 
   #Phylogenetic signals and contMaps for each character
@@ -349,13 +380,33 @@ for(i in 2:ncol(cast_num)){
 
 expected_angles <- read.csv("expected_angles.tsv",sep="\t",header = T, row.names = 1, stringsAsFactors = F)[,-c(7,8)] #remove variables with all zeroes
 
-  #ContMaps phylogenetic signals
+#MULTIPHYLO DV-St:Zoo
+#Phylosig
+phylosig(drop.tip(tree_salp,which(!(tree_salp$tip.label %in% row.names(expected_angles)))), setNames(expected_angles$DVN_Stolon.Zooid, row.names(expected_angles)))
+lapply(Strees, function(t){
+  treeI = drop.tip(t,which(!(t$tip.label %in% row.names(expected_angles))))
+  PS <- phylosig(treeI, setNames(expected_angles$DVN_Stolon.Zooid, row.names(expected_angles)))
+  return(PS)
+}) %>% unlist() %>% summary()
+
+#MRCA
+fastAnc(drop.tip(tree_salp,which(!(tree_salp$tip.label %in% row.names(expected_angles)))), setNames(expected_angles$DVN_Stolon.Zooid, row.names(expected_angles)))["20"]
+
+lapply(Strees, function(t){
+  treeI = drop.tip(t,which(!(t$tip.label %in% row.names(expected_angles))))
+  MRCA <- fastAnc(treeI, setNames(expected_angles$DVN_Stolon.Zooid, row.names(expected_angles)))["20"]
+  return(MRCA)
+}) %>% unlist() %>% summary()
+
+
+###
+
+#ContMaps phylogenetic signals
 for(i in 2:ncol(expected_angles)){
   CH_I=as.numeric(expected_angles[,i])
   names(CH_I) = row.names(expected_angles)
   CH_I= CH_I[!is.na(CH_I)]
-  treeI = drop.tip(tree_salp,which(!(tree_salp$tip.label %in% names(CH_I)))) %>% chronos()
-  class(treeI) = "phylo"
+  treeI = drop.tip(tree_salp,which(!(tree_salp$tip.label %in% names(CH_I))))
   PSIG <- phylosig(treeI, CH_I, test=T)
   print(names(expected_angles)[i])
   PSIG$K %>% print()
