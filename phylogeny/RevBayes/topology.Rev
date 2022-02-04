@@ -2,7 +2,7 @@
 # Reading in the Data #
 #######################
 
-data = readDiscreteCharacterData("../Seqs_and_Alignments/GovUNIONCho-AB921975Mman_MUSCLE.afa-gb")
+data = readDiscreteCharacterData("../Seqs_and_Alignments/GovUNIONCho-AB921975Mman_MUSCLE.afa")
 taxa <- data.taxa()
 n_species <- data.ntaxa()
 n_branches <- 2 * n_species - 3
@@ -66,8 +66,8 @@ phyloSeq.clamp(data)
 
 mymodel = model(phylogeny)
 # add monitors
-monitors.append(mnModel(filename="TOPOLOGY_Gov2011+Higa+Cint_output/Gov2011HigaCint18S.log",printgen=10))
-monitors.append(mnFile(phylogeny, filename="TOPOLOGY_Gov2011+Higa+Cint_output/Gov2011HigaCint18S.trees", printgen=100))
+monitors.append(mnModel(filename="TOPOLOGY_Gov2011+Higa+Cint_MUSCLE_output/Gov2011HigaCint_MUSCLE_18S.log",printgen=10))
+monitors.append(mnFile(phylogeny, filename="TOPOLOGY_Gov2011+Higa+Cint_MUSCLE_output/Gov2011HigaCint_MUSCLE_18S.trees", printgen=100))
 monitors.append(mnScreen(alpha,printgen=100))
 
 # run the analysis
@@ -76,9 +76,9 @@ mymcmc.burnin(10000,1000)
 mymcmc.run(300000)
 
 # summarize output
-treetrace = readTreeTrace("TOPOLOGY_Gov2011+Higa+Cint_output/Gov2011HigaCint18S.trees")
+treetrace = readTreeTrace("TOPOLOGY_Gov2011+Higa+Cint_MUSCLE_output/Gov2011HigaCint_MUSCLE_18S.trees")
 treetrace.summarize()
-map_tree = mapTree(treetrace,"TOPOLOGY_Gov2011+Higa+Cint_output/Gov2011HigaCint18S.tre")
-map_tree = consensusTree(trace=treetrace, cutoff=0.5, file="TOPOLOGY_Gov2011+Higa+Cint_output/Gov2011HigaCint18S.tree")
+map_tree = mapTree(treetrace,"TOPOLOGY_Gov2011+Higa+Cint_MUSCLE_output/Gov2011HigaCint_MUSCLE_18S.tre")
+map_tree = consensusTree(trace=treetrace, cutoff=0.5, file="TOPOLOGY_Gov2011+Higa+Cint_MUSCLE_output/Gov2011HigaCint_MUSCLE_18S.tree")
 
 q()

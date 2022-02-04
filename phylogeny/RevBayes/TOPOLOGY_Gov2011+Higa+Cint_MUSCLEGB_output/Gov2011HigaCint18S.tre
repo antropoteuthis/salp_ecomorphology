@@ -1,0 +1,75 @@
+#NEXUS
+
+	Begin taxa;
+	Dimensions ntax=64;
+	Taxlabels
+		AB013011.1_Pyrosoma_atlanticum
+		AB013012.1_Doliolum_nationalis
+		AB013014.1_Oikopleura_dioica
+		AB013017.1_Ciona_intestinalis
+		AB075543.1_Megalodicopia_hians
+		AB104873.1_Perophora_sagamiensis
+		AF165821.2_Chelyosoma_siboja
+		AJ250778.1_Ciona_intestinalis
+		AY903925.1_Halocynthia_igaboja
+		D14366.1_Thalia_democratica
+		FM244840.1_Clavelina_meridionalis
+		FM244841.1_Pycnoclavella_aff._detorta
+		FM244861.1_Doliolum_denticulatum
+		FM244862.1_Pyrosoma_godeauxi
+		FM244863.1_Pyrosomella_verticillata
+		FM244864.1_Cyclosalpa_quadriluminis
+		FM244865.1_Ihlea_racovitzai
+		FM244866.1_Iasis_cylindrica
+		FM244867.1_Salpa_thompsoni
+		HQ015376.1_Doliolum_denticulatum
+		HQ015377.1_Salpidae_gen._nov._sp._nov._A
+		HQ015378.1_Ihlea_racovitzai
+		HQ015379.1_Pyrostremma_spinosum
+		HQ015380.1_Pyrosomella_verticillata
+		HQ015381.1_Pyrosoma_atlanticum
+		HQ015382.1_Pyrosomella_verticillata
+		HQ015383.1_Pyrosomella_verticillata
+		HQ015384.1_Pyrosoma_godeauxi
+		HQ015385.1_Pyrosoma_atlanticum
+		HQ015386.1_Pegea_confoederata
+		HQ015387.1_Pegea_confoederata
+		HQ015388.1_Pegea_bicaudata
+		HQ015389.1_Soestia_zonaria
+		HQ015390.1_Thetys_vagina
+		HQ015391.1_Cyclosalpa_affinis
+		HQ015392.1_Cyclosalpa_affinis
+		HQ015393.1_Cyclosalpa_floridana
+		HQ015394.1_Cyclosalpa_polae
+		HQ015395.1_Cyclosalpa_sewelli
+		HQ015396.1_Cyclosalpa_polae
+		HQ015397.1_Cyclosalpa_quadriluminis
+		HQ015398.1_Cyclosalpa_sewelli
+		HQ015399.1_Iasis_cylindrica
+		HQ015400.1_Iasis_cylindrica
+		HQ015401.1_Iasis_cylindrica
+		HQ015402.1_Iasis_cylindrica
+		HQ015403.1_Brooksia_rostrata
+		HQ015404.1_Brooksia_rostrata
+		HQ015405.1_Salpa_aspera
+		HQ015406.1_Salpa_thompsoni
+		HQ015407.1_Salpa_maxima
+		HQ015408.1_Salpa_maxima
+		HQ015409.1_Salpa_fusiformis
+		HQ015410.1_Ritteriella_retracta
+		HQ015411.1_Ritteriella_retracta
+		HQ015412.1_Thalia_orientalis
+		HQ015413.1_Thalia_democratica
+		HQ015414.1_Thalia_democratica
+		HQ015415.1_Thalia_democratica
+		L12378.2_Ascidia_ceratodes
+		L12426.2_Molgula_manhattensis
+		M91181.1_Echinorhinus_cookei
+		M97571.1_Branchiostoma_floridae
+		M97574.1_Myxine_glutinosa
+		;
+End;
+
+Begin trees;
+tree TREE1 = [&R](((((((((((((HQ015394.1_Cyclosalpa_polae[&index=22,age_95%_HPD={0.430882,0.882214}]:0.003583,HQ015397.1_Cyclosalpa_quadriluminis[&index=24,age_95%_HPD={0.446194,0.897393}]:0.003506)[&index=65,posterior=0.119502,age_95%_HPD={0.422618,0.864437}]:0.006228,HQ015396.1_Cyclosalpa_polae[&index=26,age_95%_HPD={0.435797,0.886863}]:0.009830)[&index=66,posterior=0.051533,age_95%_HPD={0.477448,0.887114}]:0.015441,FM244864.1_Cyclosalpa_quadriluminis[&index=23,age_95%_HPD={0.423065,0.869181}]:0.039275)[&index=67,posterior=0.047090,age_95%_HPD={0.493293,0.920232}]:-0.018594,(HQ015395.1_Cyclosalpa_sewelli[&index=21,age_95%_HPD={0.438203,0.890761}]:-0.006398,HQ015398.1_Cyclosalpa_sewelli[&index=25,age_95%_HPD={0.436801,0.884807}]:-0.006134)[&index=68,posterior=0.119058,age_95%_HPD={0.434774,0.898399}]:0.012892)[&index=69,posterior=0.943136,age_95%_HPD={0.439066,0.890552}]:0.002247,(HQ015391.1_Cyclosalpa_affinis[&index=27,age_95%_HPD={0.433233,0.88834}]:0.006000,HQ015392.1_Cyclosalpa_affinis[&index=28,age_95%_HPD={0.449581,0.899951}]:0.000556)[&index=70,posterior=0.466459,age_95%_HPD={0.459368,0.902932}]:-0.003245)[&index=71,posterior=0.262994,age_95%_HPD={0.444583,0.86679}]:0.009541,HQ015393.1_Cyclosalpa_floridana[&index=20,age_95%_HPD={0.442101,0.892714}]:0.008703)[&index=72,posterior=1.000000,age_95%_HPD={0.464127,0.91982}]:0.016427,((((((HQ015408.1_Salpa_maxima[&index=36,age_95%_HPD={0.438844,0.883572}]:0.001086,HQ015409.1_Salpa_fusiformis[&index=37,age_95%_HPD={0.443192,0.889916}]:0.001117)[&index=73,posterior=0.322079,age_95%_HPD={0.437135,0.895116}]:0.002759,HQ015407.1_Salpa_maxima[&index=35,age_95%_HPD={0.439376,0.88324}]:0.003798)[&index=74,posterior=0.997779,age_95%_HPD={0.440896,0.887774}]:0.008721,HQ015405.1_Salpa_aspera[&index=38,age_95%_HPD={0.43802,0.880377}]:0.011315)[&index=75,posterior=0.967126,age_95%_HPD={0.44356,0.887904}]:0.007644,(FM244867.1_Salpa_thompsoni[&index=34,age_95%_HPD={0.447339,0.897852}]:0.002629,HQ015406.1_Salpa_thompsoni[&index=33,age_95%_HPD={0.459749,0.909391}]:0.002468)[&index=76,posterior=0.986673,age_95%_HPD={0.458564,0.911239}]:0.004079)[&index=77,posterior=0.973789,age_95%_HPD={0.450003,0.898014}]:0.001287,(HQ015410.1_Ritteriella_retracta[&index=32,age_95%_HPD={0.458346,0.912304}]:0.002511,HQ015411.1_Ritteriella_retracta[&index=31,age_95%_HPD={0.452622,0.905153}]:0.002588)[&index=78,posterior=0.994225,age_95%_HPD={0.454272,0.908906}]:0.002487)[&index=79,posterior=0.307863,age_95%_HPD={0.455787,0.885897}]:0.006331,(HQ015403.1_Brooksia_rostrata[&index=29,age_95%_HPD={0.439243,0.886149}]:0.002347,HQ015404.1_Brooksia_rostrata[&index=30,age_95%_HPD={0.446291,0.892536}]:0.002349)[&index=80,posterior=1.000000,age_95%_HPD={0.441423,0.8863}]:0.021576)[&index=81,posterior=0.944913,age_95%_HPD={0.45632,0.912009}]:0.007291)[&index=82,posterior=0.965349,age_95%_HPD={0.467879,0.921706}]:0.028289,((((((D14366.1_Thalia_democratica[&index=18,age_95%_HPD={0.451447,0.900156}]:0.008854,HQ015414.1_Thalia_democratica[&index=15,age_95%_HPD={0.456791,0.907116}]:0.009071)[&index=83,posterior=0.132386,age_95%_HPD={0.45802,0.892786}]:0.006657,HQ015413.1_Thalia_democratica[&index=19,age_95%_HPD={0.453234,0.902627}]:0.015787)[&index=84,posterior=0.098623,age_95%_HPD={0.459645,0.909138}]:-0.005389,HQ015415.1_Thalia_democratica[&index=16,age_95%_HPD={0.44404,0.893249}]:0.010290)[&index=85,posterior=0.186584,age_95%_HPD={0.458621,0.903891}]:-0.003785,HQ015412.1_Thalia_orientalis[&index=17,age_95%_HPD={0.452359,0.902213}]:0.017938)[&index=86,posterior=1.000000,age_95%_HPD={0.447626,0.898439}]:0.016558,((FM244865.1_Ihlea_racovitzai[&index=13,age_95%_HPD={0.440812,0.896883}]:0.002360,HQ015378.1_Ihlea_racovitzai[&index=14,age_95%_HPD={0.428135,0.883007}]:0.002267)[&index=87,posterior=1.000000,age_95%_HPD={0.442229,0.897216}]:0.030585,HQ015377.1_Salpidae_gen._nov._sp._nov._A[&index=12,age_95%_HPD={0.421924,0.873954}]:0.038432)[&index=88,posterior=1.000000,age_95%_HPD={0.465506,0.925517}]:0.001878)[&index=89,posterior=0.103510,age_95%_HPD={0.48296,0.927046}]:-0.008052,(((FM244866.1_Iasis_cylindrica[&index=39,age_95%_HPD={0.45557,0.910013}]:0.001231,HQ015401.1_Iasis_cylindrica[&index=42,age_95%_HPD={0.450711,0.902923}]:-0.000993)[&index=90,posterior=0.140382,age_95%_HPD={0.458813,0.950548}]:0.003533,HQ015402.1_Iasis_cylindrica[&index=41,age_95%_HPD={0.460393,0.91364}]:0.002390)[&index=91,posterior=0.090182,age_95%_HPD={0.473146,0.953952}]:0.003920,(HQ015399.1_Iasis_cylindrica[&index=43,age_95%_HPD={0.452309,0.905668}]:-0.003951,HQ015400.1_Iasis_cylindrica[&index=40,age_95%_HPD={0.44975,0.903433}]:-0.006334)[&index=92,posterior=0.138161,age_95%_HPD={0.477325,0.892985}]:0.012429)[&index=93,posterior=1.000000,age_95%_HPD={0.461246,0.916138}]:0.000772)[&index=94,posterior=0.021768,age_95%_HPD={0.44618,0.821105}]:0.034258)[&index=95,posterior=0.650378,age_95%_HPD={0.49863,0.950739}]:0.027615,((HQ015387.1_Pegea_confoederata[&index=10,age_95%_HPD={0.437191,0.881405}]:-0.003779,HQ015388.1_Pegea_bicaudata[&index=9,age_95%_HPD={0.421528,0.865795}]:-0.003692)[&index=96,posterior=0.635273,age_95%_HPD={0.41571,0.868455}]:0.010713,HQ015386.1_Pegea_confoederata[&index=11,age_95%_HPD={0.432778,0.87383}]:0.015387)[&index=97,posterior=1.000000,age_95%_HPD={0.442909,0.886207}]:0.094928)[&index=98,posterior=1.000000,age_95%_HPD={0.511836,0.972588}]:0.049974,(HQ015389.1_Soestia_zonaria[&index=44,age_95%_HPD={0.484494,0.937909}]:0.054409,HQ015390.1_Thetys_vagina[&index=45,age_95%_HPD={0.522992,0.985156}]:0.008093)[&index=99,posterior=1.000000,age_95%_HPD={0.536132,0.996492}]:0.042210)[&index=100,posterior=0.986673,age_95%_HPD={0.562256,1.03654}]:0.032522,(((((((AB013017.1_Ciona_intestinalis[&index=51,age_95%_HPD={0.493739,0.949139}]:0.033993,AJ250778.1_Ciona_intestinalis[&index=52,age_95%_HPD={0.495342,0.958946}]:0.014647)[&index=101,posterior=1.000000,age_95%_HPD={0.515781,0.980187}]:0.018267,(AB075543.1_Megalodicopia_hians[&index=49,age_95%_HPD={0.527768,0.992344}]:0.007846,AF165821.2_Chelyosoma_siboja[&index=50,age_95%_HPD={0.516919,0.982291}]:0.005344)[&index=102,posterior=0.983563,age_95%_HPD={0.52284,0.989713}]:0.005919)[&index=103,posterior=0.726344,age_95%_HPD={0.523255,0.993345}]:0.005483,L12378.2_Ascidia_ceratodes[&index=55,age_95%_HPD={0.529357,0.995318}]:0.025854)[&index=104,posterior=0.555309,age_95%_HPD={0.553788,1.01133}]:-0.004800,AB104873.1_Perophora_sagamiensis[&index=56,age_95%_HPD={0.542597,1.00617}]:0.003707)[&index=105,posterior=0.373167,age_95%_HPD={0.539141,0.993067}]:0.017379,(FM244840.1_Clavelina_meridionalis[&index=54,age_95%_HPD={0.516942,0.981635}]:0.016380,FM244841.1_Pycnoclavella_aff._detorta[&index=53,age_95%_HPD={0.527452,0.992343}]:0.009575)[&index=106,posterior=0.996890,age_95%_HPD={0.535846,0.999661}]:0.016867)[&index=107,posterior=0.996890,age_95%_HPD={0.556849,1.0257}]:0.014271,((((M91181.1_Echinorhinus_cookei[&index=58,age_95%_HPD={0.338983,0.723722}]:0.062360,M97574.1_Myxine_glutinosa[&index=57]:0.578922)[&index=108,posterior=1.000000,age_95%_HPD={0.392475,0.765413}]:0.108808,M97571.1_Branchiostoma_floridae[&index=59,age_95%_HPD={0.216527,0.627789}]:0.273861)[&index=109,posterior=0.999556,age_95%_HPD={0.487293,0.916701}]:0.058502,AB013014.1_Oikopleura_dioica[&index=62,age_95%_HPD={0.219071,0.636243}]:0.331089)[&index=110,posterior=0.258552,age_95%_HPD={0.534788,0.966932}]:0.017986,(AY903925.1_Halocynthia_igaboja[&index=61,age_95%_HPD={0.463175,0.907289}]:0.048336,L12426.2_Molgula_manhattensis[&index=60,age_95%_HPD={0.325297,0.743941}]:0.194205)[&index=111,posterior=0.791648,age_95%_HPD={0.491694,0.947887}]:0.034683)[&index=112,posterior=0.999112,age_95%_HPD={0.529604,0.990097}]:0.030819)[&index=113,posterior=0.805864,age_95%_HPD={0.571153,1.03839}]:0.012255,((AB013012.1_Doliolum_nationalis[&index=47,age_95%_HPD={0.386655,0.829825}]:0.000855,HQ015376.1_Doliolum_denticulatum[&index=48,age_95%_HPD={0.381361,0.825116}]:0.000769)[&index=114,posterior=0.327854,age_95%_HPD={0.388604,0.822823}]:0.003025,FM244861.1_Doliolum_denticulatum[&index=46,age_95%_HPD={0.386026,0.827906}]:0.003898)[&index=115,posterior=1.000000,age_95%_HPD={0.388832,0.832822}]:0.199842)[&index=116,posterior=0.858729,age_95%_HPD={0.573817,1.05014}]:0.016310)[&index=117,posterior=1.000000,age_95%_HPD={0.579345,1.05756}]:0.020090,HQ015379.1_Pyrostremma_spinosum[&index=8,age_95%_HPD={0.602318,1.08327}]:0.006092)[&index=118,posterior=1.000000,age_95%_HPD={0.607168,1.09096}]:0.041306,(((((HQ015380.1_Pyrosomella_verticillata[&index=63,age_95%_HPD={0.62358,1.11559}]:-0.005201,HQ015381.1_Pyrosoma_atlanticum[&index=64,age_95%_HPD={0.62856,1.11816}]:-0.004839)[&index=119,posterior=0.166148,age_95%_HPD={0.632623,1.1064}]:0.004371,HQ015382.1_Pyrosomella_verticillata[&index=6,age_95%_HPD={0.62517,1.11852}]:-0.000616)[&index=120,posterior=0.149267,age_95%_HPD={0.651604,1.08526}]:0.001118,FM244863.1_Pyrosomella_verticillata[&index=7,age_95%_HPD={0.620724,1.11091}]:0.000426)[&index=121,posterior=0.604620,age_95%_HPD={0.629673,1.12836}]:-0.000401,(HQ015384.1_Pyrosoma_godeauxi[&index=2,age_95%_HPD={0.644112,1.13571}]:-0.003004,HQ015385.1_Pyrosoma_atlanticum[&index=5,age_95%_HPD={0.628472,1.12234}]:-0.002711)[&index=122,posterior=0.124389,age_95%_HPD={0.665505,1.10343}]:-0.007742)[&index=123,posterior=0.022212,age_95%_HPD={0.669513,1.09187}]:-0.002847,(FM244862.1_Pyrosoma_godeauxi[&index=4,age_95%_HPD={0.638983,1.13176}]:-0.001561,HQ015383.1_Pyrosomella_verticillata[&index=3,age_95%_HPD={0.643743,1.14138}]:-0.001473)[&index=124,posterior=0.127499,age_95%_HPD={0.646861,1.08991}]:-0.011959)[&index=125,posterior=0.052865,age_95%_HPD={0.633362,1.1159}]:0.020080,AB013011.1_Pyrosoma_atlanticum[&index=1,age_95%_HPD={0.624845,1.12109}]:0.004696)[&index=126,posterior=1.000000,age_95%_HPD={0.645471,1.14278}]:0.000000;
+End;

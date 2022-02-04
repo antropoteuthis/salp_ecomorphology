@@ -19,3 +19,6 @@ root_time
 tree_prior
 timetree
 q()
+treetrace = readTreeTrace("TOPOLOGY_Gov2011+Higa+Cint_output/Gov2011HigaCint18S.trees")
+map_tree = consensusTree(trace=treetrace, cutoff=0.5, file="TOPOLOGY_Gov2011+Higa+Cint_output/Gov2011HigaCint18S.tree", positiveBranchLengths=TRUE)
+q()
