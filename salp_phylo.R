@@ -5,6 +5,8 @@ library(reshape2)
 library(data.table)
 library(geiger)
 library(corHMM)
+library(bayou)
+library(surface)
 #library(diversitree)
 
 setwd("~/Documents/salp_ecomorphology/")
@@ -19,7 +21,6 @@ tree_salp <- drop.tip(tree_salp, c(1,2,6,9,14,16,18,19,20,22,23,27)) #drop dupli
 
 #Load phylogenetic uncertainty
 Strees <- read.tree("phylogeny/RevBayes/TOPOLOGY_Chordata_output/Salps18S_chordata_multitree.trees")
-Strees <- read.tree("phylogeny/RevBayes/TIMETREE_Chordata_output/TimeTree_chordata_multitree.trees")
 Strees <- lapply(Strees, drop.tip, c("HQ015387.1_Pegea_confoederata","HQ015391.1_Cyclosalpa_affinis","HQ015394.1_Cyclosalpa_polae","HQ015395.1_Cyclosalpa_sewelli","HQ015399.1_Iasis_cylindrica","HQ015402.1_Iasis_cylindrica","HQ015401.1_Iasis_cylindrica","HQ015413.1_Thalia_democratica","HQ015414.1_Thalia_democratica","HQ015410.1_Ritteriella_retracta","HQ015404.1_Brooksia_rostrata","HQ015408.1_Salpa_maxima"))
 Strees <- lapply(Strees, function(t){t$tip.label %>% 
     str_remove_all(".+\\..+?_") %>% 
@@ -27,7 +28,7 @@ Strees <- lapply(Strees, function(t){t$tip.label %>%
 Strees <- lapply(Strees, drop.tip, c("Pyrosomella verticillata", "Pyrosoma atlanticum", "Pyrosoma godeauxi","Pyrostremma spinosum", "Clavelina meridionalis", "Pycnoclavella aff. detorta", "Ascidia ceratodes", "Perophora sagamiensis","Megalodicopia hians", "Chelyosoma siboja", "Ciona intestinalis", "Molgula manhattensis", "Oikopleura dioica","Halocynthia igaboja", "Echinorhinus cookei", "Myxine glutinosa", "Branchiostoma floridae", "Doliolum denticulatum"))
 Strees <- lapply(Strees, function(t){t$tip.label[which(t$tip.label == "Cyclosalpa floridana")] <- "Cyclosalpa floridiana"; return(t)})
 Strees <- lapply(Strees, ladderize)
-#Strees <- lapply(Strees, chronos)
+Strees <- lapply(Strees, chronos)
 
 ape::unique.multiPhylo(Strees, use.tip.label = F)->Strees_Unique
 par(mfrow=c(4,5),mar=c(0,0,0,0), oma=c(0,0,0,0))
@@ -157,6 +158,10 @@ binTransits$OL[which(binTransits$OL == 2)] <- 0
 binTransits$TW <- as.numeric(as.factor(binTransits$TW))-1
 binTransits$WC <- as.numeric(as.factor(binTransits$WC))
 binTransits$WC[which(binTransits$WC == 2)] <- 0
+
+write.nexus.data(binTransits,"binDevelopmentalTransits.nex")
+write.table(binTransits,"binDevelopmentalTransits.tsv",sep="\t",row.names = F)
+write.tree(tree_salp_morph,"Chordata18Srev_morph.tree")
 
 #MultiPhylo
 for(ch in 2:ncol(binTransits)){
@@ -377,8 +382,40 @@ for(i in 2:ncol(cast_num)){
 }
 
 #### [8] #### EXPECTED ANGLES ################
-
 expected_angles <- read.csv("expected_angles.tsv",sep="\t",header = T, row.names = 1, stringsAsFactors = F)[,-c(7,8)] #remove variables with all zeroes
+
+#DorsoVentral StolonZooid Expected angle
+angleTree <- drop.tip(tree_salp,which(!(tree_salp$tip.label %in% row.names(expected_angles))))
+dvsz <- setNames(expected_angles$DVN_Stolon.Zooid, row.names(expected_angles))
+#contMap
+DVSZ<-contMap(angleTree, dvsz,plot=FALSE)
+DVSZ<-setMap(DVSZ,c("white","black"))
+par(mfrow=c(1,1))
+plot(DVSZ,lwd=7,legend=2, leg.txt=names(expected_angles)[6], fsize=c(1,0.5))
+# estimate ancestors
+AncDVSZ<-fastAnc(angleTree,dvsz,CI=TRUE)
+treePaint<-paintSubTree(angleTree,node=length(angleTree$tip)+1,"1")
+# phenogram
+trans<-as.character(floor(0:50/2))
+trans[as.numeric(trans)<10]<- paste("0", trans[as.numeric(trans)<10],sep="")
+for(i in 0:50){
+  p<-i/length(trans)
+  phenogram(angleTree,c(dvsz,(1-p)*AncDVSZ$CI95[,1]+p*AncDVSZ$ace), colors=setNames(paste("#0000ff",trans[i+1],sep=""),1), add=i>0)
+  phenogram(angleTree,c(dvsz,(1-p)*AncDVSZ$CI95[,2]+p*AncDVSZ$ace), colors=setNames(paste("#0000ff",trans[i+1],sep=""),1), add=TRUE)
+}
+phenogram(angleTree,c(dvsz,AncDVSZ$ace),add=TRUE, colors=setNames("black",1))
+
+#multirate Brownian
+brownie.lite(angleTree,dvsz)
+
+#bayou
+prior <- make.prior(angleTree, dists=list(dalpha="dhalfcauchy", dsig2="dhalfcauchy",dsb="dsb", dk="cdpois", dtheta="dnorm"), param=list(dalpha=list(scale=1), dsig2=list(scale=1), dk=list(lambda=15, kmax=200), dsb=list(bmax=1,prob=1), dtheta=list(mean=mean(dvsz), sd=2)))
+MRdvsz <- bayou.makeMCMC(angleTree, setNames(as.numeric(dvsz),names(dvsz)), SE=0, model="OU", prior=prior, plot.freq=1000, ticker.freq=1000)
+MRdvsz$run(10000)
+chain <- load.bayou(MRdvsz, cleanup=TRUE)
+chain <- set.burnin(chain, 0.3)
+plotSimmap.mcmc(chain, burnin=0.3, lwd=4, show.tip.label=TRUE)
+phenogram.density(angleTree, dvsz, chain=chain, burnin=0.3, pp.cutoff=0.3)
 
 #MULTIPHYLO DV-St:Zoo
 #Phylosig
@@ -397,7 +434,6 @@ lapply(Strees, function(t){
   MRCA <- fastAnc(treeI, setNames(expected_angles$DVN_Stolon.Zooid, row.names(expected_angles)))["20"]
   return(MRCA)
 }) %>% unlist() %>% summary()
-
 
 ###
 
@@ -457,11 +493,32 @@ for(c in 1:ncol(expected_angles)){
 AICdf[,2:6] = apply(AICdf[,2:6], 2, as.numeric) %>% apply(2, function(x){round(x,3)})
 
 #ace(C, Ctree, model="EB")
-  #DorsoVentral StolonZooid Expected angle
-DVSZ<-contMap(Ctree,C,plot=FALSE)
-DVSZ<-setMap(DVSZ,c("white","black"))
-par(mfrow=c(1,1))
-plot(DVSZ,lwd=7,legend=2, leg.txt=names(expected_angles)[6], fsize=c(1,0.5))
-phenogram(Ctree,C)
+
 
 #SURFACE Convergence?
+surfaceALL <- function(data,tree){
+  Tree <- nameNodes(drop.tip(tree, which(!(tree$tip.label %in% rownames(data)))))
+  olist <- convertTreeData(Tree, data)
+  otree<-olist[[1]]
+  odata<-olist[[2]]
+  fwd<-surfaceForward(otree, odata, aic_threshold = 0, exclude = 0, verbose = FALSE, plotaic = FALSE)
+  k<-length(fwd)
+  fsum<-surfaceSummary(fwd)
+  bwd<-surfaceBackward(otree, odata, starting_model = fwd[[k]], aic_threshold = 0, only_best = TRUE, verbose = FALSE, plotaic = FALSE)
+  bsum<-surfaceSummary(bwd)
+  kk<-length(bwd)
+  print("N regimes BWD")
+  bsum$n_regimes %>% return()
+  par(mfrow=c(1,2))
+  surfaceTreePlot(Tree, bwd[[kk]], labelshifts = T) %>% return()
+  surfaceTraitPlot(data, bwd[[kk]], whattraits = c(1,2)) %>% return()
+  newsim<-surfaceSimulate(Tree, type="hansen-fit", hansenfit=fwd[[k]]$fit, shifts=fwd[[k]]$savedshifts, sample_optima=TRUE)
+  newout<-runSurface(Tree, newsim$dat, only_best = TRUE)
+  newsum<-surfaceSummary(newout$bwd)
+  newkk<-length(newout$bwd)
+  print("N regimes SIM")
+  newsum$n_regimes %>% return()
+}
+
+expected_angles[,1:6] <- sapply(expected_angles[,1:6],as.numeric)
+surfaceALL(expected_angles[,5:6],angleTree)
