@@ -1,0 +1,209 @@
+#### Alignment and ML Phylogeny analyses ####
+
+#MUSCLE was run in talapas
+#ML inference IQtree results saved to ML folder
+#GTR+I+G often overwrite the original iqtree outputs
+#Gblocks output was NOT determined with the ">" operator, included here just for simplicity.
+
+## DS initial Sequence list with few outgroup ##
+mafft --auto --inputorder "salps18S.fasta" > "salps18Saligned.fa"
+../iqtree -s Seqs_and_Alignments/salps18Saligned.fa -nt AUTO -bb 1000
+
+## DS Chordata Sequence List with many outgroups included in Gov2011 ##
+mafft --auto --inputorder "chordata18S.fasta" > "chordata18Saligned.fa"
+../iqtree -s Seqs_and_Alignments/chordata18Saligned.fa -nt AUTO -bb 1000
+	#with GTR+I+G
+	../iqtree -s Seqs_and_Alignments/chordata18Saligned.fa -nt AUTO -bb 1000 -m GTR+I+G
+
+	#with MUSCLE
+	./muscle5.1.linux_intel64 -align chordata18S.fasta -output chordata18S_MUSCLE.afa
+	../iqtree -s Seqs_and_Alignments/chordata18S_MUSCLE.afa -nt AUTO -bb 1000
+			#with GTR+I+G
+			../iqtree -s Seqs_and_Alignments/chordata18S_MUSCLE.afa-gb -nt AUTO -bb 1000 -m GTR+I+G
+
+	#with GBLOCKS
+	./Gblocks chordata18Saligned.fa -t DNA -b5 h > chordata18Saligned.fa-gb
+	../iqtree -s Seqs_and_Alignments/chordata18Saligned.fa-gb -nt AUTO -bb 1000
+
+	#with MUSCLE+GBLOCKS
+	./Gblocks chordata18S_MUSCLE.afa -t DNA -b5 h > chordata18S_MUSCLE.afa-gb
+	../iqtree -s Seqs_and_Alignments/chordata18S_MUSCLE.afa-gb -nt AUTO -bb 1000
+
+
+## Original Gov2011 accessions without AY903925.1 Halocynthia igaboja ##
+mafft --auto --inputorder "Govindarajan2011_18S.fasta" > "Govindarajan2011_18Saligned.fa"
+../iqtree -s Seqs_and_Alignments/Govindarajan2011_18Saligned.fa -nt AUTO -bb 1000
+	#with GTR+I+G
+	../iqtree -s Seqs_and_Alignments/Govindarajan2011_GTRIG.fa -nt AUTO -bb 1000 -m GTR+I+G
+
+	#Removing the alleged typoed Uncultured bacterium accession HQ015280.1 (DELETED files)
+	mafft --auto --inputorder "Govindarajan2011-UncBac_18S.fasta" > "Govindarajan2011-UncBac_18Saligned.fa"
+	../iqtree -s Seqs_and_Alignments/Govindarajan2011-UncBac_18Saligned.fa -nt AUTO -bb 1000
+
+## Original Gov2011 accessions with AY903925.1 Halocynthia igaboja ##
+mafft --auto --inputorder "Govindarajan2011_18S+Higaboja.fasta" > "Govindarajan2011_18S+Higaboja_aligned.fa"
+../iqtree -s Seqs_and_Alignments/Govindarajan2011_18S+Higaboja_aligned.fa -nt AUTO -bb 1000
+	
+	#with GBLOCKS
+	./Gblocks Govindarajan2011_18S+Higaboja_aligned.fa -t DNA -b5 h > Govindarajan2011_18S+Higaboja_GBLOCK.fa-gb
+	../iqtree -s Seqs_and_Alignments/Govindarajan2011_18S+Higaboja_GBLOCK.fa-gb -nt AUTO -bb 1000
+		#with GTR+I+G
+		../iqtree -s Seqs_and_Alignments/Govindarajan2011_18S+Higaboja_GBLOCK.fa-gb -nt AUTO -bb 1000 -m GTR+I+G 
+			#models limited to raxml selection
+			../iqtree -s Seqs_and_Alignments/Govindarajan2011_18S+Higaboja_GBLOCK.fa-gb -nt AUTO -bb 1000 -m GTR+I+G -mset raxml
+			#with specific pinv and alpha
+			../iqtree -s Seqs_and_Alignments/Govindarajan2011_18S+Higaboja_GBLOCK.fa-gb -nt AUTO -bb 1000 -m GTR+I+G -a 0.4861 -i 0.3784
+
+	#with MUSCLE
+	./muscle5.1.linux_intel64 -align Govindarajan2011_18S+Higaboja.fasta -output Govindarajan2011_18S+Higaboja_MUSCLE.afa
+	../iqtree -s Seqs_and_Alignments/Govindarajan2011_18S+Higaboja_MUSCLE.afa -nt AUTO -bb 1000
+		#with GTR+I+G
+		../iqtree -s Seqs_and_Alignments/Govindarajan2011_18S+Higaboja_MUSCLE.afa -nt AUTO -bb 1000 -m GTR+I+G
+
+	#with MUSCLE+GBLOCKS
+	./Gblocks Govindarajan2011_18S+Higaboja_MUSCLE.afa -t DNA -b5 h > Seqs_and_Alignments/Govindarajan2011_18S+Higaboja_MUSCLE.afa-gb
+	../iqtree -s Seqs_and_Alignments/Govindarajan2011_18S+Higaboja_MUSCLE.afa-gb -nt AUTO -bb 1000
+		#with GTR+I+G
+			#with specific pinv and alpha
+			../iqtree -s Seqs_and_Alignments/Govindarajan2011_18S+Higaboja_MUSCLE.afa-gb -nt AUTO -bb 1000  -m GTR+I+G -a 0.4861 -i 0.3784 
+
+## UNION between DS Chordata Sequence List and Gov2011 including AY903925.1  H. igaboja ##
+#All Govindarajan sequences + AJ250778 Ciona intestinalis and AB921975 Molgula manhattensis
+mafft --auto --inputorder "GovindarajanUNIONChordata.fasta" > "GovindarajanUNIONChordata_aligned.fa"
+../iqtree -s Seqs_and_Alignments/GovindarajanUNIONChordata_aligned.fa -nt AUTO -bb 1000
+	#with GTR+I+G
+	../iqtree -s Seqs_and_Alignments/GovindarajanUNIONChordata_aligned.fa -nt AUTO -bb 1000 -m GTR+I+G
+
+	#with MUSCLE
+	./muscle5.1.linux_intel64 -align GovindarajanUNIONChordata.fasta -output GovindarajanUNIONChordata_MUSCLE.afa
+	../iqtree -s Seqs_and_Alignments/GovindarajanUNIONChordata_MUSCLE.afa -nt AUTO -bb 1000
+
+	#with GBLOCKS
+	./Gblocks GovindarajanUNIONChordata_MUSCLE -t DNA -b5 h > GovindarajanUNIONChordata_MUSCLE.afa-gb
+	../iqtree -s Seqs_and_Alignments/GovindarajanUNIONChordata_aligned.fa-gb -nt AUTO -bb 1000
+
+	#with MUSCLE+GBLOCKS
+	./Gblocks GovindarajanUNIONChordata_aligned.fa -t DNA -b5 h > GovindarajanUNIONChordata_aligned.fa-gb
+	../iqtree -s Seqs_and_Alignments/GovindarajanUNIONChordata_MUSCLE.afa-gb -nt AUTO -bb 1000
+		#with GTR+I+G
+		../iqtree -s Seqs_and_Alignments/GovindarajanUNIONChordata_MUSCLE.afa-gb -nt AUTO -bb 1000 -m GTR+I+G
+
+## INTERSECTION between DS Chordata Sequence List and Gov2011 including AY903925.1  H. igaboja ##
+mafft --auto --inputorder "chordata18S-Mman-Cint.fasta" > "chordata18S-Mman-Cint_aligned.fa"
+../iqtree -s Seqs_and_Alignments/chordata18S-Mman-Cint_aligned.fa -nt AUTO -bb 1000
+	#with GTR+I+G
+	../iqtree -s Seqs_and_Alignments/chordata18S-Mman-Cint_aligned.fa -nt AUTO -bb 1000 -m GTR+I+G 
+
+	#with MUSCLE
+	./muscle5.1.linux_intel64 -align chordata18S-Mman-Cint.fasta -output chordata18S-Mman-Cint_MUSCLE.afa
+	../iqtree -s Seqs_and_Alignments/chordata18S-Mman-Cint_MUSCLE.afa -nt AUTO -bb 1000
+
+## Gov2011 including AY903925.1  H. igaboja + AB921975 Molgula manhattensis ##
+#Labeled as DS-Union-Gov11 minus C. intestinalis
+mafft --auto --inputorder "GovUNIONCho-AJ250778Cint.fasta" > "GovUNIONCho-AJ250778Cint_aligned.fa"
+../iqtree -s Seqs_and_Alignments/GovUNIONCho-AJ250778Cint_aligned.fa -nt AUTO -bb 1000
+	#with GTR+I+G
+	../iqtree -s Seqs_and_Alignments/GovUNIONCho-AJ250778Cint_aligned.fa -nt AUTO -bb 1000 -m GTR+I+G
+
+	#with MUSCLE
+	./muscle5.1.linux_intel64 -align GovUNIONCho-AJ250778Cint.fasta -output GovUNIONCho-AJ250778Cint_MUSCLE.afa
+	../iqtree -s Seqs_and_Alignments/GovUNIONCho-AJ250778Cint_MUSCLE.afa -bb 1000 -nt AUTO
+
+	#with MUSCLE+GBLOCKS
+	./Gblocks GovUNIONCho-AJ250778Cint_MUSCLE.afa -t DNA -b5 h > GovUNIONCho-AJ250778Cint_MUSCLE.afa-gb
+	../iqtree -s Seqs_and_Alignments/GovUNIONCho-AJ250778Cint_MUSCLE.afa-gb -nt AUTO -bb 1000
+
+## Gov2011 including AY903925.1  H. igaboja + AJ250778 Ciona intestinalis ##
+#Labeled as DS-Union-Gov11 minus M. manhattensis
+mafft --auto --inputorder "GovUNIONCho-AB921975Mman.fasta" > "GovUNIONCho-AB921975Mman_aligned.fa"
+../iqtree -s Seqs_and_Alignments/GovUNIONCho-AB921975Mman_aligned.fa -nt AUTO -bb 1000
+	#with GTR+I+G
+	../iqtree -s Seqs_and_Alignments/GovUNIONCho-AB921975Mman_aligned.fa -nt AUTO -bb 1000 -m GTR+I+G
+
+	#with MUSCLE
+	./muscle5.1.linux_intel64 -align GovUNIONCho-AB921975Mman.fasta -output GovUNIONCho-AB921975Mman_MUSCLE.afa
+	../iqtree -s Seqs_and_Alignments/GovUNIONCho-AB921975Mman_MUSCLE.afa -nt AUTO -bb 1000
+		#with GTR+I+G
+		../iqtree -s Seqs_and_Alignments/GovUNIONCho-AB921975Mman_MUSCLE.afa -nt AUTO -bb 1000 -m GTR+I+G
+
+	#with GBLOCKS
+	./Gblocks GovUNIONCho-AB921975Mman_aligned.fa -t DNA -b5 h > GovUNIONCho-AB921975Mman_aligned.fa-gb
+	../iqtree -s Seqs_and_Alignments/GovUNIONCho-AB921975Mman_aligned.fa-gb -nt AUTO -bb 1000
+
+	#with MUSCLE+GBLOCKS
+	./Gblocks GovUNIONCho-AB921975Mman_MUSCLE.afa -t DNA -b5 h > GovUNIONCho-AB921975Mman_MUSCLE.afa-gb
+	../iqtree -s Seqs_and_Alignments/GovUNIONCho-AB921975Mman_MUSCLE.afa-gb -nt AUTO -bb 1000
+		#with GTR+I+G
+		../iqtree -s Seqs_and_Alignments/GovUNIONCho-AB921975Mman_MUSCLE.afa-gb -nt AUTO -bb 1000 -m GTR+I+G
+
+## Original Gov2011 accessions with AY903925.1 Halocynthia igaboja and the NEW SEQUENCES for salps B. lacromae, T. longicauda, S. younti ##
+mafft --auto --inputorder "Govindarajan2011_18S+Higaboja+news.fasta" > "Govindarajan2011_18S+Higaboja+news_aligned.fa"
+../iqtree -s Seqs_and_Alignments/Govindarajan2011_18S+Higaboja+news_aligned.fa -nt AUTO -bb 1000
+
+	#with MUSCLE
+	./muscle5.1.linux_intel64 -align Govindarajan2011_18S+Higaboja+news.fasta -output Govindarajan2011_18S+Higaboja+news_MUSCLE.afa
+	../iqtree -s Seqs_and_Alignments/Govindarajan2011_18S+Higaboja+news_MUSCLE.afa -nt AUTO -bb 1000
+		#with GTR+I+G
+		../iqtree -s Seqs_and_Alignments/Govindarajan2011_18S+Higaboja+news_MUSCLE.afa -nt AUTO -bb 1000 -m GTR+I+G #_MUSCLE-gtrig
+
+	#with GBLOCKS
+	./Gblocks Govindarajan2011_18S+Higaboja+news_aligned.fa -t DNA -b5 h > Govindarajan2011_18S+Higaboja+news.fa-gb #really bad % sites
+
+## Gov2011 including AY903925.1  H. igaboja + AJ250778 Ciona intestinalis and the NEW SEQUENCES for salps B. lacromae, T. longicauda, S. younti ##
+#Labeled as DS-Union-Gov11 minus M. manhattensis + news
+mafft --auto --inputorder "GovUNIONCho-AB921975Mman+news.fasta" > "GovUNIONCho-AB921975Mman+news_aligned.fa"
+../iqtree -s Seqs_and_Alignments/GovUNIONCho-AB921975Mman_aligned.fa -nt AUTO -bb 1000
+	#with GTR+I+G
+	../iqtree -s Seqs_and_Alignments/GovUNIONCho-AB921975Mman+news_aligned.fa -nt AUTO -bb 1000 -m GTR+I+G #-gtrig
+
+	#with MUSCLE
+	./muscle5.1.linux_intel64 -align GovUNIONCho-AB921975Mman+news.fasta -output GovUNIONCho-AB921975Mman+news_MUSCLE.afa
+	../iqtree -s Seqs_and_Alignments/GovUNIONCho-AB921975Mman+news_MUSCLE.afa -nt AUTO -bb 1000
+		#with GTR+I+G
+		../iqtree -s Seqs_and_Alignments/GovUNIONCho-AB921975Mman+news_MUSCLE.afa -nt AUTO -bb 1000 -m GTR+I+G #_MUSCLE-gtrig.
+
+	#with GBLOCKS
+	./Gblocks GovUNIONCho-AB921975Mman+news_aligned.fa -t DNA -b5 h > GovUNIONCho-AB921975Mman+news_aligned.fa-gb
+	../iqtree -s Seqs_and_Alignments/GovUNIONCho-AB921975Mman+news_aligned.fa-gb -nt AUTO -bb 1000
+
+	#with MUSCLE+GBLOCKS
+	./Gblocks GovUNIONCho-AB921975Mman+news_MUSCLE.afa -t DNA -b5 h > GovUNIONCho-AB921975Mman+news_MUSCLE.afa-gb
+	../iqtree -s Seqs_and_Alignments/GovUNIONCho-AB921975Mman+news_MUSCLE.afa-gb -nt AUTO -bb 1000
+	
+######
+
+### BAYESIAN Analyses in RevBayes ####
+#Topology
+../rb topology.Rev
+#Ultrametric molecular clock branch length estimation
+../rb mcmc_TimeTree_salps.Rev
+
+#Directories:
+
+## DS Chordata Sequence List with many outgroups included in Gov2011 aligned##
+#with MAFFT
+TOPOLOGY_Chordata_output
+	#timetree
+	TIMETREE_Chordata_output
+
+## Original Gov2011 accessions with AY903925.1 Halocynthia igaboja ##
+#with MAFFT
+TOPOLOGY_Gov2011+Higaboja_output
+
+## Gov2011 including AY903925.1  H. igaboja + AJ250778 Ciona intestinalis ##
+
+	#with MUSCLE
+	TOPOLOGY_Gov2011+Higa+Cint_MUSCLE_output
+		#timetree
+		TIMETREE_Gov2011+Higa+Cint_MUSCLE_output
+
+	#with MUSCLE+GBLOCKS
+	TOPOLOGY_Gov2011+Higa+Cint_MUSCLEGB_output
+
+## Gov2011 including AY903925.1  H. igaboja + AJ250778 Ciona intestinalis and the NEW SEQUENCES for salps B. lacromae, T. longicauda, S. younti ##
+
+	#with MUSCLE
+	TOPOLOGY_Gov2011+HigaCint+New_MUSCLE_output
+
+	#with MAFFT
+	TOPOLOGY_Gov2011+HigaCint+New_MAFFT_output

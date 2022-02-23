@@ -12,82 +12,123 @@
 # Reading in the Data #
 #######################
 
-# Import the morphological character matrix #
-# this file contains only the taxa for which morphological characters are available #
-morpho <- readDiscreteCharacterData("data/mammals_thinned_placenta_type.nex")
+morpho <- readDiscreteCharacterData("morph.nex")
 
-# Create some vector for the moves and monitors of this analysis
 moves    = VectorMoves()
 monitors = VectorMonitors()
-
 
 
 ##############
 # Tree model #
 ##############
 
-# Here we use a fixed tree topology of mammals on a family level sampling
 # Note that the readTrees function always returns a vector of trees, 
 # so we simple take the first tree
-phylogeny <- readTrees("data/mammals_thinned.tree")[1]
 
-
+phylogeny <- readTrees("Chordata18Srev_morph.tree")[1]
 
 ###########################################
-# Binary morphological substitution model #
+#     Morphological substitution model    #
 ###########################################
 
-# Create the Q matrix. These data are binary, so we initialize the Jukes-Cantor matrix with
-# three states
-Q_morpho <- fnJC(3)
+# Create the Q matrix. 
 
-# Specify a prior on the rate of morphological evolution
-mu_morpho ~ dnExponential( 1.0 )
+cw ~ dnExponential( 1 )
+cw.setValue( 1 )
+#wc ~ dnExponential( 1 )
+#wc.setValue( 1 )
+#wt ~ dnExponential( 1 )
+#wt.setValue( 1 )
+#tw ~ dnExponential( 1 )
+#tw.setValue( 1 )
+to ~ dnExponential( 1 )
+to.setValue( 1 )
+#ot ~ dnExponential( 1 )
+#ot.setValue( 1 )
+#ol ~ dnExponential( 1 )
+#ol.setValue( 1 )
+#lo ~ dnExponential( 1 )
+#lo.setValue( 1 )
+lb ~ dnExponential( 1 )
+lb.setValue( 1 )
+#bl ~ dnExponential( 1 )
+#bl.setValue( 1 )
+
+rates := [ [ 0.0, cw, 0.0, 0.0, 0.0, 0.0 ],
+           [ cw, 0.0, cw, 0.0, 0.0, 0.0 ],
+           [ 0.0, cw, 0.0, to, 0.0, 0.0 ],
+           [ 0.0, 0.0, to, 0.0, to, 0.0 ],
+           [ 0.0, 0.0, 0.0, to ,0.0, lb ],
+           [ 0.0, 0.0, 0.0, 0.0, lb, 0.0 ] ]
+
+Q_morpho := fnFreeK(rates)
+P <- Q_morpho.getTransitionProbabilities(rate=0.1)
+P
 
 # Moves on the parameters to the Gamma distribution.
-moves.append( mvScale(mu_morpho,lambda=1, weight=2.0) )
+moves.append( mvScale(cw, weight=2.0) )
+#moves.append( mvScale(wc, weight=2.0) )
+#moves.append( mvScale(wt, weight=2.0) )
+#moves.append( mvScale(tw, weight=2.0) )
+moves.append( mvScale(to, weight=2.0) )
+#moves.append( mvScale(ot, weight=2.0) )
+#moves.append( mvScale(ol, weight=2.0) )
+#moves.append( mvScale(lo, weight=2.0) )
+moves.append( mvScale(lb, weight=2.0) )
+#moves.append( mvScale(bl, weight=2.0) )
+
 
 # Combine all of our elements into a CTMC.
 
-phyMorpho ~ dnPhyloCTMC(tree=phylogeny, branchRates=mu_morpho, Q=Q_morpho, type="Standard")
+phyMorpho ~ dnPhyloCTMC(tree=phylogeny, Q=Q_morpho, type="Standard")
 phyMorpho.clamp(morpho)
-
-
 
 ########
 # MCMC #
 ########
 
 # initialize the model object #
+
 mymodel = model(phylogeny)
+
 # Create a vector of monitors #
 # 1. for the full model #
-monitors.append( mnModel(filename="output/mk.log", printgen=1) )
+
+monitors.append( mnModel(filename="morph_output/morph.log", printgen=1) )
+
 # 2. and a few select parameters to be printed to the screen #
+
 monitors.append( mnScreen(printgen=100) )
+
 # 3. add an ancestral state monitor
+
 monitors.append( mnJointConditionalAncestralState(tree=phylogeny,
                                                   ctmc=phyMorpho,
-                                                  filename="output/mk.states.txt",
+                                                  filename="morph_output/morph.states",
                                                   type="Standard",
                                                   printgen=1,
                                                   withTips=true,
                                                   withStartStates=false) )
 
 # Initialize the MCMC object #
+
 mymcmc = mcmc(mymodel, monitors, moves, nruns=2, combine="mixed")
 
 # Run the MCMC #
+
 mymcmc.run(generations=5000, tuningInterval=200)
 
 # check the performance of the MCMC/moves
+
 mymcmc.operatorSummary()
 
-
 # Read in the tree trace and construct the ancestral states (ASE) #
-anc_states = readAncestralStateTrace("output/mk.states.txt")
-anc_tree = ancestralStateTree(tree=phylogeny, ancestral_state_trace_vector=anc_states, include_start_states=false, file="output/ase_mk.tree", burnin=0.25, summary_statistic="MAP", site=1)
-writeNexus( anc_tree, filename="output/ase_mk.tree" )
+
+anc_states = readAncestralStateTrace("morph_output/morph.states")
+
+anc_tree = ancestralStateTree(tree=phylogeny, ancestral_state_trace_vector=anc_states, include_start_states=false, file="morph_output/ase_morph.tree", burnin=0.25, summary_statistic="MAP", site=1)
+
+writeNexus( anc_tree, filename="morph_output/ase_morph.tree" )
 
 # Quit RevBayes #
 q()

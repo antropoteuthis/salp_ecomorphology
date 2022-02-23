@@ -6,12 +6,12 @@
 # Reading in the Data #
 #######################
 
-data = readDiscreteCharacterData("./chordata18Saligned.fa")
+data = readDiscreteCharacterData("../Seqs_and_Alignments/GovUNIONCho-AB921975Mman_aligned.fa")
 
 # Get some useful variables from the data. We need these later on.
 taxa <- data.taxa()
 n_species <- data.ntaxa()
-n_branches <- 2 * n_species - 3
+n_branches <- 2 * n_species - 2
 mvi = 0
 
 ##################################

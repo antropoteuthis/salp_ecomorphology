@@ -1,0 +1,205 @@
+IQ-TREE multicore version 1.6.12 for Mac OS X 64-bit built Aug 15 2019
+Developed by Bui Quang Minh, Nguyen Lam Tung, Olga Chernomor,
+Heiko Schmidt, Dominik Schrempf, Michael Woodhams.
+
+Host:    alejandros-mbp.lan (AVX2, FMA3, 16 GB RAM)
+Command: ../iqtree -s GovUNIONCho-AB921975Mman+news_MUSCLE.afa -nt AUTO -bb 1000 -m GTR+I+G
+Seed:    379810 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Thu Feb 17 09:23:01 2022
+Kernel:  AVX+FMA - auto-detect threads (8 CPU cores detected)
+
+Reading alignment file GovUNIONCho-AB921975Mman+news_MUSCLE.afa ... Fasta format detected
+Alignment most likely contains DNA/RNA sequences
+Alignment has 68 sequences with 1988 columns, 879 distinct patterns
+542 parsimony-informative, 272 singleton sites, 1174 constant sites
+                                          Gap/Ambiguity  Composition  p-value
+   1  HQ015392.1_Cyclosalpa_affinis              12.58%    passed     99.44%
+   2  HQ015396.1_Cyclosalpa_polae                13.28%    passed     99.31%
+   3  HQ015381.1_Pyrosoma_atlanticum             11.67%    passed     96.52%
+   4  HQ015394.1_Cyclosalpa_polae                10.11%    passed     98.75%
+   5  HQ015387.1_Pegea_confoederata              10.26%    passed     86.39%
+   6  M97571.1_Branchiostoma_floridae            10.66%    passed     13.00%
+   7  HQ015404.1_Brooksia_rostrata               12.68%    passed     86.32%
+   8  HQ015391.1_Cyclosalpa_affinis              10.81%    passed     97.67%
+   9  D14366.1_Thalia_democratica                15.34%    passed     88.74%
+  10  AB013014.1_Oikopleura_dioica               11.72%    failed      0.01%
+  11  AB075543.1_Megalodicopia_hians             10.16%    passed     89.39%
+  12  KR057223.1_Brooksia_lacromae               11.07%    passed     91.08%
+  13  HQ015380.1_Pyrosomella_verticillata        12.88%    passed     97.54%
+  14  HQ015399.1_Iasis_cylindrica                12.98%    passed     98.30%
+  15  M97574.1_Myxine_glutinosa                   7.04%    failed      0.00%
+  16  HQ015378.1_Ihlea_racovitzai                11.97%    passed     86.90%
+  17  HQ015379.1_Pyrostremma_spinosum            12.98%    passed     77.62%
+  18  HQ015403.1_Brooksia_rostrata               12.47%    passed     90.24%
+  19  HQ015397.1_Cyclosalpa_quadriluminis        16.35%    passed     99.85%
+  20  L12426.2_Molgula_manhattensis               9.26%    passed     11.15%
+  21  MZ333593.1_Salpa_younti                    35.81%    passed     92.26%
+  22  HQ015408.1_Salpa_maxima                    12.93%    passed     93.37%
+  23  HQ015409.1_Salpa_fusiformis                13.38%    passed     93.73%
+  24  AY903925.1_Halocynthia_igaboja             10.87%    passed     99.92%
+  25  HQ015376.1_Doliolum_denticulatum           16.00%    passed     11.69%
+  26  FM244840.1_Clavelina_meridionalis          13.58%    passed     99.91%
+  27  AB013012.1_Doliolum_nationalis              9.91%    passed     23.30%
+  28  HQ015390.1_Thetys_vagina                   13.23%    passed     95.25%
+  29  HQ015384.1_Pyrosoma_godeauxi               13.73%    passed     93.77%
+  30  FM244866.1_Iasis_cylindrica                20.12%    passed     96.76%
+  31  HQ015415.1_Thalia_democratica              11.07%    passed     58.54%
+  32  AB859889.1_Thalia_longicauda               14.74%    passed     81.25%
+  33  FM244865.1_Ihlea_racovitzai                11.62%    passed     81.42%
+  34  HQ015413.1_Thalia_democratica              12.78%    passed     77.64%
+  35  HQ015395.1_Cyclosalpa_sewelli              13.68%    passed     98.17%
+  36  AB013011.1_Pyrosoma_atlanticum              9.66%    passed     98.94%
+  37  HQ015411.1_Ritteriella_retracta            10.56%    passed     86.11%
+  38  HQ015407.1_Salpa_maxima                    10.16%    passed     83.83%
+  39  HQ015414.1_Thalia_democratica              12.17%    passed     65.07%
+  40  HQ015405.1_Salpa_aspera                    13.23%    passed     86.58%
+  41  HQ015382.1_Pyrosomella_verticillata        10.51%    passed     99.68%
+  42  HQ015400.1_Iasis_cylindrica                10.16%    passed     97.54%
+  43  AB104873.1_Perophora_sagamiensis           13.48%    passed     85.52%
+  44  M91181.1_Echinorhinus_cookei               10.87%    passed     33.45%
+  45  HQ015410.1_Ritteriella_retracta            12.27%    passed     92.44%
+  46  AJ250778.1_Ciona_intestinalis              50.80%    passed     65.01%
+  47  HQ015398.1_Cyclosalpa_sewelli              13.48%    passed     99.58%
+  48  FM244863.1_Pyrosomella_verticillata        11.97%    passed     98.61%
+  49  L12378.2_Ascidia_ceratodes                  8.40%    passed     52.61%
+  50  FM244861.1_Doliolum_denticulatum           11.02%    passed     14.78%
+  51  HQ015402.1_Iasis_cylindrica                15.19%    passed     99.33%
+  52  AF165821.2_Chelyosoma_siboja               10.41%    passed     91.09%
+  53  KR057222.1_Brooksia_lacromae               12.73%    passed     96.48%
+  54  HQ015412.1_Thalia_orientalis               11.62%    passed     89.44%
+  55  FM244864.1_Cyclosalpa_quadriluminis        12.63%    passed     96.58%
+  56  HQ015377.1_Salpidae_gen._nov._sp._nov._A   13.83%    passed     97.42%
+  57  HQ015388.1_Pegea_bicaudata                 10.87%    passed     92.65%
+  58  FM244862.1_Pyrosoma_godeauxi               19.47%    passed     92.23%
+  59  AB013017.1_Ciona_intestinalis              11.67%    passed     99.39%
+  60  HQ015385.1_Pyrosoma_atlanticum             15.44%    passed     87.29%
+  61  HQ015389.1_Soestia_zonaria                 10.36%    passed     26.93%
+  62  HQ015383.1_Pyrosomella_verticillata        11.52%    passed     94.62%
+  63  HQ015406.1_Salpa_thompsoni                  8.85%    passed     86.70%
+  64  HQ015401.1_Iasis_cylindrica                13.03%    passed     98.82%
+  65  FM244867.1_Salpa_thompsoni                 11.37%    passed     87.52%
+  66  HQ015386.1_Pegea_confoederata              12.37%    passed     82.20%
+  67  HQ015393.1_Cyclosalpa_floridana            11.77%    passed     99.59%
+  68  FM244841.1_Pycnoclavella_aff._detorta      13.28%    passed     95.79%
+WARNING: 1 sequences contain more than 50% gaps/ambiguity
+****  TOTAL                                      13.16%  2 sequences failed composition chi2 test (p-value<5%; df=3)
+
+Create initial parsimony tree by phylogenetic likelihood library (PLL)... 0.011 seconds
+Generating 1000 samples for ultrafast bootstrap (seed: 379810)...
+
+NOTE: 11 MB RAM (0 GB) is required!
+Measuring multi-threading efficiency up to 8 CPU cores
+Increase to 10 rounds for branch lengths
+75 trees examined
+Threads: 1 / Time: 8.093 sec / Speedup: 1.000 / Efficiency: 100% / LogL: -25038
+Threads: 2 / Time: 4.575 sec / Speedup: 1.769 / Efficiency: 88% / LogL: -25038
+Threads: 3 / Time: 3.631 sec / Speedup: 2.229 / Efficiency: 74% / LogL: -25038
+Threads: 4 / Time: 3.236 sec / Speedup: 2.501 / Efficiency: 63% / LogL: -25038
+Threads: 5 / Time: 3.926 sec / Speedup: 2.061 / Efficiency: 41% / LogL: -25038
+BEST NUMBER OF THREADS: 4
+
+Estimate model parameters (epsilon = 0.100)
+Thoroughly optimizing +I+G parameters from 10 start values...
+Init pinv, alpha: 0.000, 1.000 / Estimate: 0.000, 0.258 / LogL: -14504.693
+Init pinv, alpha: 0.066, 1.000 / Estimate: 0.270, 0.391 / LogL: -14472.169
+Init pinv, alpha: 0.131, 1.000 / Estimate: 0.270, 0.390 / LogL: -14472.194
+Init pinv, alpha: 0.197, 1.000 / Estimate: 0.270, 0.391 / LogL: -14472.185
+Init pinv, alpha: 0.262, 1.000 / Estimate: 0.272, 0.392 / LogL: -14472.156
+Init pinv, alpha: 0.328, 1.000 / Estimate: 0.316, 0.436 / LogL: -14471.875
+Init pinv, alpha: 0.394, 1.000 / Estimate: 0.325, 0.447 / LogL: -14472.085
+Init pinv, alpha: 0.459, 1.000 / Estimate: 0.326, 0.447 / LogL: -14472.116
+Init pinv, alpha: 0.525, 1.000 / Estimate: 0.324, 0.445 / LogL: -14472.094
+Init pinv, alpha: 0.591, 1.000 / Estimate: 0.326, 0.448 / LogL: -14472.181
+Optimal pinv,alpha: 0.316, 0.436 / LogL: -14471.875
+
+Parameters optimization took 4.936 sec
+Computing ML distances based on estimated model parameters... 0.075 sec
+Computing BIONJ tree...
+0.005 seconds
+Log-likelihood of BIONJ tree: -14519.683
+--------------------------------------------------------------------
+|             INITIALIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+Generating 98 parsimony trees... 0.835 second
+Computing log-likelihood of 98 initial trees ... 1.198 seconds
+Current best score: -14471.875
+
+Do NNI search on 20 best initial trees
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 1: -14463.889
+Iteration 10 / LogL: -14463.957 / Time: 0h:0m:33s
+Iteration 20 / LogL: -14463.923 / Time: 0h:0m:35s
+Finish initializing candidate tree set (15)
+Current best tree score: -14463.889 / CPU time: 6.655
+Number of iterations: 20
+--------------------------------------------------------------------
+|               OPTIMIZING CANDIDATE TREE SET                      |
+--------------------------------------------------------------------
+Iteration 30 / LogL: -14463.894 / Time: 0h:0m:37s (0h:1m:31s left)
+Estimate model parameters (epsilon = 0.100)
+BETTER TREE FOUND at iteration 38: -14463.846
+Iteration 40 / LogL: -14463.886 / Time: 0h:0m:39s (0h:1m:38s left)
+Iteration 50 / LogL: -14472.852 / Time: 0h:0m:41s (0h:1m:14s left)
+Log-likelihood cutoff on original alignment: -14498.941
+Iteration 60 / LogL: -14463.894 / Time: 0h:0m:43s (0h:0m:57s left)
+Iteration 70 / LogL: -14472.335 / Time: 0h:0m:45s (0h:0m:44s left)
+Iteration 80 / LogL: -14463.864 / Time: 0h:0m:47s (0h:0m:34s left)
+BETTER TREE FOUND at iteration 82: -14463.846
+BETTER TREE FOUND at iteration 85: -14463.846
+Iteration 90 / LogL: -14463.847 / Time: 0h:0m:49s (0h:0m:52s left)
+Iteration 100 / LogL: -14563.348 / Time: 0h:0m:51s (0h:0m:44s left)
+Log-likelihood cutoff on original alignment: -14498.695
+NOTE: Bootstrap correlation coefficient of split occurrence frequencies: 0.999
+Iteration 110 / LogL: -14463.896 / Time: 0h:0m:53s (0h:0m:44s left)
+Iteration 120 / LogL: -14464.015 / Time: 0h:0m:55s (0h:0m:37s left)
+Iteration 130 / LogL: -14463.863 / Time: 0h:0m:57s (0h:0m:31s left)
+UPDATE BEST LOG-LIKELIHOOD: -14463.846
+Iteration 140 / LogL: -14464.023 / Time: 0h:0m:59s (0h:0m:25s left)
+Iteration 150 / LogL: -14463.920 / Time: 0h:1m:1s (0h:0m:20s left)
+Log-likelihood cutoff on original alignment: -14498.695
+Iteration 160 / LogL: -14472.917 / Time: 0h:1m:4s (0h:0m:16s left)
+Iteration 170 / LogL: -14463.896 / Time: 0h:1m:6s (0h:0m:11s left)
+Iteration 180 / LogL: -14463.846 / Time: 0h:1m:8s (0h:0m:7s left)
+TREE SEARCH COMPLETED AFTER 186 ITERATIONS / Time: 0h:1m:9s
+
+--------------------------------------------------------------------
+|                    FINALIZING TREE SEARCH                        |
+--------------------------------------------------------------------
+Performs final model parameters optimization
+Estimate model parameters (epsilon = 0.010)
+1. Initial log-likelihood: -14463.846
+Optimal log-likelihood: -14463.836
+Rate parameters:  A-C: 0.88876  A-G: 1.77817  A-T: 1.10570  C-G: 0.85777  C-T: 3.96803  G-T: 1.00000
+Base frequencies:  A: 0.245  C: 0.227  G: 0.284  T: 0.244
+Proportion of invariable sites: 0.311
+Gamma shape alpha: 0.427
+Parameters optimization took 1 rounds (0.031 sec)
+BEST SCORE FOUND : -14463.836
+Creating bootstrap support values...
+Split supports printed to NEXUS file GovUNIONCho-AB921975Mman+news_MUSCLE.afa.splits.nex
+Total tree length: 2.812
+
+Total number of iterations: 186
+CPU time used for tree search: 150.218 sec (0h:2m:30s)
+Wall-clock time used for tree search: 41.172 sec (0h:0m:41s)
+Total CPU time used: 229.588 sec (0h:3m:49s)
+Total wall-clock time used: 70.009 sec (0h:1m:10s)
+
+Computing bootstrap consensus tree...
+Reading input file GovUNIONCho-AB921975Mman+news_MUSCLE.afa.splits.nex...
+68 taxa and 360 splits.
+Consensus tree written to GovUNIONCho-AB921975Mman+news_MUSCLE.afa.contree
+Reading input trees file GovUNIONCho-AB921975Mman+news_MUSCLE.afa.contree
+Log-likelihood of consensus tree: -14463.914
+
+Analysis results written to: 
+  IQ-TREE report:                GovUNIONCho-AB921975Mman+news_MUSCLE.afa.iqtree
+  Maximum-likelihood tree:       GovUNIONCho-AB921975Mman+news_MUSCLE.afa.treefile
+  Likelihood distances:          GovUNIONCho-AB921975Mman+news_MUSCLE.afa.mldist
+
+Ultrafast bootstrap approximation results written to:
+  Split support values:          GovUNIONCho-AB921975Mman+news_MUSCLE.afa.splits.nex
+  Consensus tree:                GovUNIONCho-AB921975Mman+news_MUSCLE.afa.contree
+  Screen log file:               GovUNIONCho-AB921975Mman+news_MUSCLE.afa.log
+
+Date and Time: Thu Feb 17 09:24:11 2022

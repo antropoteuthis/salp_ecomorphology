@@ -1,0 +1,27 @@
+#NEXUS
+
+Begin data;
+Dimensions ntax=19 nchar=1;
+Format datatype=Standard symbols="C W T O L B" missing=? gap=-;
+Matrix
+Brooksia_rostrata	B
+Cyclosalpa_affinis	W
+Cyclosalpa_floridiana	W
+Cyclosalpa_quadriluminis	W
+Cyclosalpa_polae	C
+Cyclosalpa_sewelli	C
+Iasis_cylindrica	L
+Ihlea_racovitzai	L
+Pegea_bicaudata	T
+Pegea_confoederata	T
+Ritteriella_retracta	L
+Salpa_aspera	L
+Salpa_fusiformis	L
+Salpa_maxima	L
+Salpa_thompsoni	L
+Soestia_zonaria	L
+Thalia_democratica	O
+Thalia_orientalis	O
+Thetys_vagina	O
+;
+END;

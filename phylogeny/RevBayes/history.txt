@@ -1,24 +1,99 @@
-q()
-nbranches
-n_branches
-br_lens
-i
-br_lens[i] ~ dnExponential(10.0)
-i=2
-br_lens[i] ~ dnExponential(10.0)
-br_lens
-q(
-)
-q()
-tree_trace = readTreeTrace("TOPOLOGY_Chordata_output/Salps18S_chordata.trees", burnin=0.1)
-map_tree = consensusTree(trace=tree_trace, cutoff=0.5, file="TOPOLOGY_Chordata_output/Salps18S_chordata.consensus.tree")
-q()
-n_taxa
-backbone
-root_time
-tree_prior
 timetree
 q()
 treetrace = readTreeTrace("TOPOLOGY_Gov2011+Higa+Cint_output/Gov2011HigaCint18S.trees")
 map_tree = consensusTree(trace=treetrace, cutoff=0.5, file="TOPOLOGY_Gov2011+Higa+Cint_output/Gov2011HigaCint18S.tree", positiveBranchLengths=TRUE)
+q()
+timetree
+q()
+n_branches
+n_taxa
+n_species
+branch_rates
+length(branch_rates)
+backbone
+backbone.taxa(
+)
+backbone.ntips()
+data
+mean(branch_rates)
+Q
+pi
+dnPhyloCTMC(tree=timetree, Q=Q, branchRates=branch_rates, nSites=n_sites, type="DNA")
+phySeq
+phySeq ~ dnPhyloCTMC(tree=timetree, Q=Q, branchRates=branch_rates, nSites=n_sites, type="DNA")
+branch_rates
+timetree
+timetree.nbranches()
+timetree.ntip()
+timetree.ntips()
+n_taxa
+2*n_taxa - 2
+phySeq ~ dnPhyloCTMC(tree=timetree, Q=Q, branchRates=branch_rates, nSites=n_sites, type="DNA")
+n_sites
+phySeq ~ dnPhyloCTMC(tree=tree_prior, Q=Q, branchRates=branch_rates, nSites=n_sites, type="DNA")
+tree_prior
+tree_prior()
+tree_prior[[1]]
+tree_prior[1]
+timetree
+backbone
+q()
+backbone <- readTrees("backbone_ML_Gov2011+Higa+Cint_MUSCLE.tree")[1]
+backbone
+data = readDiscreteCharacterData("../Seqs_and_Alignments/GovUNIONCho-AB921975Mman_MUSCLE.afa")
+mi = 1############################################# birth-death process model  ############################################### get helpful variables from the treen_taxa <- data.ntaxa()taxa <- data.taxa()### diversification = birth_rate - death_rate### assume an exponential prior distribution diversification ~ dnExponential(10.0) ### turnover = death_rate / birth_rate### this parameter can only take values between 0 and 1### use a Beta prior distributionturnover ~ dnBeta(2.0, 2.0) ### the parameters of the BDP include birth and death rates### these are deterministic variables of the diversification & turnover##### create a variable to ensure the rates are always positive (RealPos)denom := abs(1.0 - turnover) ##### birth_rate = diversification / (1 - turnover)birth_rate := diversification / denom##### death_rate = (turnover * diversification) / (1 - turnover)death_rate := (turnover * diversification) / denom### rho is the probability of sampling species at the present### fix this to 0.001
+### and we have sampled 1/1000
+rho <- 0.001
+### the root age is an independent stochastic node with a lognormal prior
+### the mean of the lognormal distribution is set to 15 Mya older than the observed fossil
+### when offset by tHesperocyon, this gives a mean root_time of 49 Mya
+mean_ra <- 1
+stdv_ra <- 0.001
+### the lognormal distribution is parameterized by mu which is a function of the mean and standard deviation
+mu_ra <- ln(mean_ra) - ((stdv_ra*stdv_ra) * 0.5)
+root_time ~ dnLnorm(mu_ra, stdv_ra, offset=1)
+### the time tree is a stochastic node modeled by the constant rate birth-death process (dnBDP)
+treeprior = dnBDP(lambda=birth_rate, mu=death_rate, rho=rho, rootAge=root_time, samplingStrategy="uniform", condition="nTaxa", taxa=taxa)
+data = readDiscreteCharacterData("../Seqs_and_Alignments/GovUNIONCho-AB921975Mman_MUSCLE.afa")
+mi = 1
+n_taxa <- data.ntaxa()
+taxa <- data.taxa()
+diversification ~ dnExponential(10.0) 
+turnover ~ dnBeta(2.0, 2.0) 
+denom := abs(1.0 - turnover) 
+birth_rate := diversification / denom
+death_rate := (turnover * diversification) / denom
+rho <- 0.001
+mean_ra <- 1
+stdv_ra <- 0.001
+root_time ~ dnLnorm(mu_ra, stdv_ra, offset=1)
+treeprior = dnBDP(lambda=birth_rate, mu=death_rate, rho=rho, rootAge=root_time, samplingStrategy="uniform", condition="nTaxa", taxa=taxa)
+backbone <- readTrees("backbone_ML_Gov2011+Higa+Cint_MUSCLE.tree")[1]
+timetree ~ dnConstrainedTopology(treeprior, backbone = backbone)
+q()
+branch_rates
+branch_rates.n()
+data = readDiscreteCharacterData("../Seqs_and_Alignments/GovUNIONCho-AB921975Mman_MUSCLE.afa")
+backbone <- readTrees("backbone_ML_Gov2011+Higa+Cint_MUSCLE.tree")[1]
+# Get some useful variables from the data. We need these later on.
+taxa <- backbone.taxa()
+n_species <- backbone.ntips()
+n_branches <- 2 * n_species - 2
+mvi = 0
+n_branches
+n_species <- data.ntaxa()
+n_branches <- 2 * n_species - 2
+n_branches
+q()
+n_branches
+branch_rates
+Q
+q()
+branch_rates
+dnPhyloCTMC(tree=timetree, Q=Q, branchRates=branch_rates, nSites=n_sites, type="DNA")
+a~dnPhyloCTMC(tree=timetree, Q=Q, branchRates=branch_rates, nSites=n_sites, type="DNA")
+timetree.ntips()
+timetree.ntips()*2
+n_branches
+data.ntaxa()
 q()
