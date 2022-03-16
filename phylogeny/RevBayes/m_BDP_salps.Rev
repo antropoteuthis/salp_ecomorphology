@@ -2,7 +2,7 @@
 #   File: timetree tutorial birth-death, rho=10/147 model specification file -- FIXED topology
 ############################################################################################
 
-data = readDiscreteCharacterData("../Seqs_and_Alignments/GovUNIONCho-AB921975Mman_aligned.fa")
+data = readDiscreteCharacterData("../Seqs_and_Alignments/GovUNIONCho-AB921975Mman+news_MUSCLE.afa")
 
 mi = 1
 
@@ -59,7 +59,7 @@ root_time ~ dnLnorm(mu_ra, stdv_ra, offset=1)
 
 ### the time tree is a stochastic node modeled by the constant rate birth-death process (dnBDP)
 
-backbone <- readTrees("backbone_ML_Gov2011+Higa+Cint_MAFFT_rooted_multiD_ultra.tree")[1]
+backbone <- readTrees("MLgtrig_Gov2011+Higa+Cint+news_MUSCLE_rooted_multiD_ultra.tree")[1]
 
 treeprior = dnBDP(lambda=birth_rate, mu=death_rate, rho=rho, rootAge=root_time, samplingStrategy="uniform", condition="nTaxa", taxa=backbone.taxa())
 

@@ -12,11 +12,11 @@ library(surface)
 setwd("~/Documents/salp_ecomorphology/")
 
 #LOAD consensus tree
-tree_salp <- read.nexus("phylogeny/RevBayes/TIMETREE_Gov2011+Higa+Cint_MAFFT_output/TimeTree_Gov2011+Higa+Cint_MAFFT_mcmc_MAP.tre")
+tree_salp <- read.nexus("phylogeny/RevBayes/TIMETREE_Gov2011+Higa+Cint+news_MUSCLE_output/TimeTree_GovUNIONCho-AB921975Mman+news_MUSCLE_mcmc_MAP.tre")
   #Remove duplicate and ingroup undescribed salp species
 
     ### ATTENTION: MAKE SURE THESE MAXIMIZE BRANCH LENGTHS  ####
-tree_salp <- drop.tip(tree_salp, c("HQ015388.1_Pegea_confoederata","FM244864.1_Cyclosalpa_quadriluminis","HQ015391.1_Cyclosalpa_affinis","HQ015396.1_Cyclosalpa_polae","HQ015395.1_Cyclosalpa_sewelli","FM244866.1_Iasis_cylindrica","HQ015399.1_Iasis_cylindrica","HQ015402.1_Iasis_cylindrica","HQ015401.1_Iasis_cylindrica","HQ015413.1_Thalia_democratica","HQ015414.1_Thalia_democratica","D14366.1_Thalia_democratica","HQ015410.1_Ritteriella_retracta","HQ015404.1_Brooksia_rostrata","HQ015408.1_Salpa_maxima","HQ015406.1_Salpa_thompsoni", "HQ015377.1_Salpidae_gen._nov._sp._nov._A", "FM244865.1_Ihlea_racovitzai"))
+tree_salp <- drop.tip(tree_salp, c("HQ015387.1_Pegea_confoederata","HQ015397.1_Cyclosalpa_quadriluminis","HQ015391.1_Cyclosalpa_affinis","HQ015396.1_Cyclosalpa_polae","HQ015398.1_Cyclosalpa_sewelli","FM244866.1_Iasis_cylindrica","HQ015399.1_Iasis_cylindrica","HQ015402.1_Iasis_cylindrica","HQ015401.1_Iasis_cylindrica","HQ015413.1_Thalia_democratica","HQ015414.1_Thalia_democratica","D14366.1_Thalia_democratica","HQ015410.1_Ritteriella_retracta","HQ015404.1_Brooksia_rostrata","HQ015408.1_Salpa_maxima","HQ015406.1_Salpa_thompsoni", "HQ015377.1_Salpidae_gen._nov._sp._nov._A", "FM244865.1_Ihlea_racovitzai", "KR057222.1_Brooksia_lacromae"))
   #Remove accession codes and _
 tree_salp$tip.label <- str_remove_all(tree_salp$tip.label, ".+\\..+?_")
 tree_salp$tip.label <- str_replace_all(tree_salp$tip.label, "_", " ")
@@ -27,9 +27,9 @@ tree_salp <- drop.tip(tree_salp, c("Pyrosomella verticillata", "Pyrosoma atlanti
 
 #Load phylogenetic uncertainty tree set (3001 trees from RevBayes)
 #Strees <- read.tree("phylogeny/RevBayes/TOPOLOGY_Gov2011+Higa+Cint_MUSCLE_output/Gov2011HigaCint_MUSCLE_18S_multitrees.trees")
-Strees <- read.tree("phylogeny/RevBayes/TOPOLOGY_Gov+H+C_output/Gov+H+C_MAFFT_multitree.trees")
+Strees <- read.tree("phylogeny/RevBayes/TOPOLOGY_Gov2011+HigaCint+New_MUSCLE_output/Gov2011+HigaCint+New_MUSCLE_18S.trees")
   #remove duplicate species and undescribed ingroup
-  Strees <- lapply(Strees, drop.tip, c("HQ015387.1_Pegea_confoederata","FM244864.1_Cyclosalpa_quadriluminis","HQ015391.1_Cyclosalpa_affinis","HQ015394.1_Cyclosalpa_polae","HQ015395.1_Cyclosalpa_sewelli","FM244866.1_Iasis_cylindrica","HQ015399.1_Iasis_cylindrica","HQ015402.1_Iasis_cylindrica","HQ015401.1_Iasis_cylindrica","HQ015413.1_Thalia_democratica","HQ015414.1_Thalia_democratica","D14366.1_Thalia_democratica","HQ015410.1_Ritteriella_retracta","HQ015404.1_Brooksia_rostrata","HQ015408.1_Salpa_maxima","HQ015406.1_Salpa_thompsoni", "HQ015377.1_Salpidae_gen._nov._sp._nov._A", "FM244865.1_Ihlea_racovitzai"))
+Strees <- lapply(Strees, drop.tip, c("HQ015387.1_Pegea_confoederata","HQ015397.1_Cyclosalpa_quadriluminis","HQ015391.1_Cyclosalpa_affinis","HQ015396.1_Cyclosalpa_polae","HQ015398.1_Cyclosalpa_sewelli","FM244866.1_Iasis_cylindrica","HQ015399.1_Iasis_cylindrica","HQ015402.1_Iasis_cylindrica","HQ015401.1_Iasis_cylindrica","HQ015413.1_Thalia_democratica","HQ015414.1_Thalia_democratica","D14366.1_Thalia_democratica","HQ015410.1_Ritteriella_retracta","HQ015404.1_Brooksia_rostrata","HQ015408.1_Salpa_maxima","HQ015406.1_Salpa_thompsoni", "HQ015377.1_Salpidae_gen._nov._sp._nov._A", "FM244865.1_Ihlea_racovitzai", "KR057222.1_Brooksia_lacromae"))
   #Remove straneous characters and Accession codes from tip labels
 Strees <- lapply(Strees, function(t){t$tip.label %>% 
     str_remove_all(".+\\..+?_") %>% 
@@ -38,33 +38,29 @@ Strees <- lapply(Strees, function(t){t$tip.label %>%
 Strees <- lapply(Strees, drop.tip, c("Pyrosomella verticillata", "Pyrosoma atlanticum", "Pyrosoma godeauxi","Pyrostremma spinosum", "Clavelina meridionalis", "Pycnoclavella aff. detorta", "Ascidia ceratodes", "Perophora sagamiensis","Megalodicopia hians", "Chelyosoma siboja", "Ciona intestinalis", "Molgula manhattensis", "Oikopleura dioica","Halocynthia igaboja", "Echinorhinus cookei", "Myxine glutinosa", "Branchiostoma floridae", "Doliolum denticulatum", "Doliolum nationalis"))
   #correct spelling
 Strees <- lapply(Strees, function(t){t$tip.label[which(t$tip.label == "Cyclosalpa floridana")] <- "Cyclosalpa floridiana"; return(t)})
-  #Ladderize for homogeneity in tip rder
+  #Ladderize for homogeneity in tip order
 Strees <- lapply(Strees, ladderize)
   #Make ultrametric
 Strees <- lapply(Strees, chronos)
 
 #Quantify each unique tree topology
 ape::unique.multiPhylo(Strees, use.tip.label = F)->Strees_Unique
-lapply(Strees_Unique, function(t){length(lapply(Strees, function(Tr){all.equal.phylo(t,Tr,use.edge.length = F, use.tip.label = F)}) %>% unlist() %>% .[which(.==TRUE)])}) %>% unlist() -> BSratios
+lapply(Strees_Unique, function(t){length(lapply(Strees, function(Tr){all.equal.phylo(t,Tr,use.edge.length = F, use.tip.label = F)}) %>% unlist() %>% .[which(.==TRUE)])}) %>% unlist() %>% as.numeric() -> BSratios
 BS_ratios <- (BSratios*100)/sum(BSratios)
 round(BS_ratios,2) %>% sort() %>% .[length(BS_ratios):1]
 Strees_Unique <- Strees_Unique[order(BS_ratios)[length(BS_ratios):1]]
 
 #Plot each unique tree variant
-par(mfrow=c(4,6),mar=c(0,0,0,0), oma=c(0,0,0,0))
+par(mfrow=c(7,7),mar=c(0,0,0,0), oma=c(0,0,0,0))
 lapply(Strees_Unique,function(t){plot.phylo(t, use.edge.length = F, cex=0.2)})
 
 #Test proportion of specific nodes
   #Make unitary BLs and ultrametric
-Strees_clado <- lapply(Strees, function(TREE){TREE$edge.length <- rep(1,length(TREE$edge.length));return(TREE)}) %>% 
-  lapply(Strees_clado, chronos)
-lapply(strees_clado, function(TRE){
+Strees_clado <- lapply(Strees, function(TREE){TREE$edge.length <- rep(1,length(TREE$edge.length));return(TREE)}) %>% lapply(chronos)
+lapply(Strees_clado, function(TRE){
   #cophenetic(TRE)["Brooksia rostrata","Ritteriella retracta"]>cophenetic(TRE)["Ritteriella retracta","Cyclosalpa polae"] & 
-    cophenetic(TRE)["Brooksia rostrata","Ritteriella retracta"]>cophenetic(TRE)["Brooksia rostrata","Cyclosalpa polae"] &
-    cophenetic(TRE)["Salpa aspera","Cyclosalpa polae"]<cophenetic(TRE)["Ritteriella retracta","Cyclosalpa polae"] &
-    cophenetic(TRE)["Salpa aspera","Cyclosalpa polae"]<cophenetic(TRE)["Brooksia rostrata","Cyclosalpa polae"] &
-    cophenetic(TRE)["Salpa aspera","Cyclosalpa polae"]<cophenetic(TRE)["Ritteriella retracta","Salpa aspera"] &
-    cophenetic(TRE)["Salpa aspera","Cyclosalpa polae"]<cophenetic(TRE)["Brooksia rostrata","Salpa aspera"]
+    cophenetic(TRE)["Cyclosalpa polae","Cyclosalpa sewelli"]<cophenetic(TRE)["Cyclosalpa polae","Cyclosalpa quadriluminis"]
+    #cophenetic(TRE)["Salpa aspera","Cyclosalpa polae"]<cophenetic(TRE)["Ritteriella retracta","Cyclosalpa polae"] &
     }) %>% unlist() %>% table() -> cr; print(cr/30.01)
 
 #Load literature data

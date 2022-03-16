@@ -1,5 +1,6 @@
 require(ape)
-
+library(phytools)
+library(magrittr)
 
 #Chordata Govindarajan Accession comparison
 
@@ -17,10 +18,10 @@ CHsort[which(!(CHsort %in% GVsort))] #4 of CH are NOT in GV
 GVHtree <- read.newick("phylogeny/ML/Govindarajan2011_18S+Higaboja_aligned.fa.splits.nex")
 
 #Backbone for Bayesian timetree
-treeZ <- read.tree("phylogeny/ML/GovUNIONCho-AB921975Mman_aligned.fa.contree") #Load ML tree since RevBayes one has polytomies
+treeZ <- read.tree("Documents/salp_ecomorphology/phylogeny/ML/GovUNIONCho-AB921975Mman+news_MUSCLE-gtrig.afa.contree") #Load ML tree since RevBayes one has polytomies
 treeX <- multi2di(treeZ) #remove a single polytomy somewhere - probably in the outgroups rooting
 treeX$edge.length[1] <- 0.000001 #set arbitrary small branch length to artificial branch for polytomy
 plot(treeX,cex=0.4);nodelabels(cex=0.4) #find rooting node (cephalochordata/vertebrata)
-treeY <- reroot(treeX, 84) #set true root
+treeY <- reroot(treeX, 97) #set true root
 treeU <- treeY %>% chronos() #make tree ultrametric
-write.tree(treeU, "phylogeny/RevBayes/backbone_ML_Gov2011+Higa+Cint_MAFFT_rooted_multiD_ultra.tree")
+write.tree(treeU, "Documents/salp_ecomorphology/phylogeny/RevBayes/MLgtrig_Gov2011+Higa+Cint+news_MUSCLE_rooted_multiD_ultra.tree")
