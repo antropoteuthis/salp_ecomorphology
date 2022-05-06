@@ -2,6 +2,7 @@ library(tidyverse)
 library(wql)
 library(patchwork)
 require(data.table)
+library(mgcv)
 setwd("~/Documents/salp_ecomorphology/")
 
 #Load data and label control rows
@@ -11,6 +12,9 @@ presens$Specimen[which(is.na(presens$Specimen))] <- "Control"
 
 #Filter by plastic and intact treatments
 presens <- presens[which(presens$Container=="Plastic" & presens$Treatment == "Intact"),]
+
+#Filter by blastozooids
+presens <- presens[which(presens$Stage != "Oozoid" & presens$Stage != "Oozoid+Stolon" | is.na(presens$Stage)),]
 
 #Fill in contained volume
 presens$Container.volume..ml.[which(is.na(presens$Container.volume..ml.) & presens$Sensor.ID %in% c("P1","P2","P4","P5"))] <- 170
@@ -32,7 +36,9 @@ specimens <- presens[which(presens$Specimen != "Control"),]
 #Keep only controls with the largest jar volume and in case of a tie, those that report the highest O2 concentration (purportedly those with least organic matter decay).
 controls <- controls %>% 
   group_by(Experiment, Time.point..min.) %>% 
-  filter(Container.volume..ml. == max(Container.volume..ml.) & O2..mg.L. == max(O2..mg.L.)) 
+  filter(Container.volume..ml. == max(Container.volume..ml.) & O2..mg.L. == max(O2..mg.L.)) %>% .[,-which(names(.)=="Sensor.ID" | names(.)=="Measurement")] 
+
+controls=unique(controls)
 
 #Extract T0 points and calculate O2 consumed
 # t_zeros_control <- controls[which(controls$Time.point..min.==0),c("Experiment","abs_O2.mg.")]
@@ -44,13 +50,12 @@ controls <- controls %>%
 # dif_specimens <- mutate(dif_specimens, dif_O2.mg. = abs_O2.mg.-abs_O2.mg.T0)
 
 #Join Specimens+Controls and subtract correcting for the difference in volume for specific O2 measurements
-join_presens <- full_join(specimens, controls[c("Measurement","Date","Experiment","Time.point..min.","abs_O2.mg.","Container.volume..ml.")], 
-                            by=c("Experiment","Time.point..min."), suffix=c("_animal","_control"))
-names(join_presens)
+join_presens <- full_join(specimens, controls[c("Date","Experiment","Time.point..min.","abs_O2.mg.","Container.volume..ml.")], 
+                            by=c("Experiment","Time.point..min.","Date"), suffix=c("_animal","_control"))
 join_presens <- mutate(join_presens, abs_O2.mg.specific = abs_O2.mg._animal-(abs_O2.mg._control*(Container.volume..ml._animal/Container.volume..ml._control)))
-ggplot(join_presens,aes(x=Specimen,y=abs_O2.mg.specific))+geom_point(aes(col=Container.volume..ml._animal %>% log()))+ theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
-ggplot(join_presens,aes(x=Date_animal,y=abs_O2.mg._control))+geom_point(aes(col=Container.volume..ml._control %>% log()))+ theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+join_presens <- join_presens[which(!is.na(join_presens$Measurement)),]
 
+ggplot(join_presens,aes(x=Specimen,y=abs_O2.mg.specific))+geom_point(aes(col=Container.volume..ml._animal %>% log()))+ theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
 
 join_presens %>% 
   mutate(exbool = as.character(Experiment)) %>% 
@@ -60,8 +65,21 @@ ggplot(aes(x=Time.point..min., y=abs_O2.mg.specific)) +
   theme_bw()
 
 #Colony volume imputation
-join_presens$Colony.volume..ml.[which(is.na(join_presens$Colony.volume..ml.))] <- join_presens[which(is.na(join_presens$Colony.volume..ml.)),"Number.of.zooids"]*pi*join_presens[which(is.na(join_presens$Colony.volume..ml.)),"Zooid.length..mm."]*((join_presens[which(is.na(join_presens$Colony.volume..ml.)),"Zooid.length..mm."]/2)^2)*0.001
-join_presens$Colony.volume..ml. %>% round(2) -> join_presens$Colony.volume..ml.
+
+imputed_vols <- data.frame(imputed_vol = round(join_presens[which(!is.na(join_presens$Colony.volume..ml.)),"Number.of.zooids"]*pi*join_presens[which(!is.na(join_presens$Colony.volume..ml.)),"Zooid.length..mm."]*((join_presens[which(!is.na(join_presens$Colony.volume..ml.)),"Zooid.length..mm."]/2)^2)*0.001,1),
+                           real_vol = join_presens[which(!is.na(join_presens$Colony.volume..ml.)),"Colony.volume..ml."], 
+                           Number.of.zooids = join_presens[which(!is.na(join_presens$Colony.volume..ml.)), "Number.of.zooids"],
+                           Zooid.length..mm. = join_presens[which(!is.na(join_presens$Colony.volume..ml.)),"Zooid.length..mm."],
+                           Species = join_presens[which(!is.na(join_presens$Colony.volume..ml.)),"Species"])
+
+mutate(imputed_vols, estimate_vol=Number.of.zooids*(0.00015*pi*Zooid.length..mm.*((0.3*Zooid.length..mm.)^2 - ((0.2*Zooid.length..mm.)^2)))) %>%
+  ggplot(aes(x=estimate_vol, y=real_vol)) + 
+  geom_point(aes(col=Species))
+
+fit3 = gam(real_vol~Zooid.length..mm.+Number.of.zooids, data = imputed_vols)
+
+unknown=as.data.frame(join_presens[which(is.na(join_presens$Colony.volume..ml.)),c("Number.of.zooids","Zooid.length..mm.")])
+join_presens$Colony.volume..ml.[which(is.na(join_presens$Colony.volume..ml.))] <- predict.gam(fit3, unknown) %>% as.vector()
 
 norm_presens <- join_presens
 
@@ -85,15 +103,6 @@ pdf("RawO2.pdf", height=4, width=14)
 wrap_plots(rawControl,rawAnimal,rawDifference)
 dev.off()
 
-#Zooid N & Size corrected O2 % saturation
-CorrSatControl <- ggplot(norm_presens, aes(x=Time.point..min., y=corr_sat_O2.control)) + geom_point(aes(col=Species)) + ylab("Corrected Sat O2 (%) from T0 - Controls") + geom_line(aes(col = Species, group=Specimen)) + theme_bw() + theme(legend.position = "none")
-CorrSatAnimal <- ggplot(norm_presens, aes(x=Time.point..min., y=corr_sat_O2.animal)) + geom_point(aes(col=Species))+ ylab("Corrected Sat O2 (%) from T0 - Animals") + geom_line(aes(col = Species, group=Specimen)) + theme_bw() + theme(legend.position = "none")
-CorrSatSpecific <- ggplot(norm_presens, aes(x=Time.point..min., y=corr_sat_O2.specific)) + geom_point(aes(col=Species)) + ylab("Corrected Sat O2 (%) from T0 - Animals-Controls") + geom_line(aes(col = Species, group=Specimen)) + theme_bw()
-
-pdf("CorrSatO2.pdf", height=4, width=14)
-wrap_plots(CorrSatControl,CorrSatAnimal,CorrSatSpecific)
-dev.off()
-
 #Estimate slopes
 slopes <- as.data.frame(matrix(ncol=8,nrow=length(unique(norm_presens$Specimen))))
 names(slopes) <- c("Species","Specimen","Colony.volume..ml.","Zooid.length..mm.","Number.of.zooids","Slope_O2","Timespan","Temperature...C.")
@@ -114,18 +123,13 @@ for(i in 1:length(unique(norm_presens$Specimen))){
 }
 
 pdf("slopes_SatO2.pdf", height=6, width=10)
-ggplot(slopes,aes(x=Species,y=-Slope_O2))+geom_boxplot()+theme(axis.text.x = element_text(angle = 90))
+ggplot(slopes,aes(x=Species,y=-Slope_O2))+geom_boxplot()+theme_bw()+theme(axis.text.x = element_text(angle = 90))
 dev.off()
 
 slopes %>% mutate(Slope_normalized = Slope_O2/Colony.volume..ml.) -> slopes
 
-#Careful, volume is being overestimated!!
-slopes_brr <- mutate(slopes, Slope_normalized = Slope_O2/(((Zooid.length..mm./2)^2)*Zooid.length..mm.*0.001)*Number.of.zooids)
-ggplot(slopes_brr,aes(x=Species,y=-Slope_normalized))+geom_boxplot()+theme(axis.text.x = element_text(angle = 90))
-
-
 pdf("slopes_Corrected.pdf", height=6, width=10)
-ggplot(slopes,aes(x=Species,y=-Slope_normalized))+geom_boxplot()+theme(axis.text.x = element_text(angle = 90))
+ggplot(slopes,aes(x=Species,y=-Slope_normalized))+geom_boxplot()+ylab("-Slope / Specimen biovolume (ml)")+theme_bw()+theme(axis.text.x = element_text(angle = 90))
 dev.off()
 
 ## GROUP BY Specimen ##
