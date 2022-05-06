@@ -99,7 +99,7 @@ rawControl <- ggplot(norm_presens, aes(x=Time.point..min., y=abs_O2.mg._control)
 rawAnimal <- ggplot(norm_presens, aes(x=Time.point..min., y=abs_O2.mg._animal)) + geom_point(aes(col=Species)) + ylab("O2 (mg) Animals") + geom_line(aes(col = Species, group=Specimen)) + theme_bw()+ theme(legend.position = "none")
 rawDifference <- ggplot(norm_presens, aes(x=Time.point..min., y=abs_O2.mg.specific)) + geom_point(aes(col=Species)) + ylab("O2 (mg) Difference") + geom_line(aes(col = Species, group=Specimen)) + theme_bw()
 
-pdf("RawO2.pdf", height=4, width=14)
+pdf("Figures_respirometry/Kona2022/RawO2.pdf", height=4, width=14)
 wrap_plots(rawControl,rawAnimal,rawDifference)
 dev.off()
 
@@ -122,13 +122,13 @@ for(i in 1:length(unique(norm_presens$Specimen))){
   slopes[i,8] <- series_i$Temperature...C. %>% mean()
 }
 
-pdf("slopes_SatO2.pdf", height=6, width=10)
+pdf("Figures_respirometry/Kona2022/slopes_SatO2.pdf", height=6, width=10)
 ggplot(slopes,aes(x=Species,y=-Slope_O2))+geom_boxplot()+theme_bw()+theme(axis.text.x = element_text(angle = 90))
 dev.off()
 
 slopes %>% mutate(Slope_normalized = Slope_O2/Colony.volume..ml.) -> slopes
 
-pdf("slopes_Corrected.pdf", height=6, width=10)
+pdf("Figures_respirometry/Kona2022/slopes_Corrected.pdf", height=6, width=10)
 ggplot(slopes,aes(x=Species,y=-Slope_normalized))+geom_boxplot()+ylab("-Slope / Specimen biovolume (ml)")+theme_bw()+theme(axis.text.x = element_text(angle = 90))
 dev.off()
 
