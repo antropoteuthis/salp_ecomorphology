@@ -136,21 +136,24 @@ dev.off()
 
 ### COST OF TRANSPORT ###
 swim <- data.frame(Species=c("Pegea confoederata","Iasis (Weelia) cylindrica","Cyclosalpa affinis"),Speed.cm.s=c(1.68,1.23,1.72))
+salplit <- read.csv("salplit.tsv", sep='\t')
+swimraw <- salplit[,c(1,2,4)] %>% filter(Variable=="Mean swimming speed cms")
+swim <- data.frame(Species=swimraw$Species, Speed.cm.s=as.numeric(swimraw$Value))
 COT <- left_join(slopes, swim, by="Species") 
 COT$Zooid.length..mm. <- as.numeric(COT$Zooid.length..mm.)
 COT$Number.of.zooids <- as.numeric(COT$Number.of.zooids)
 COT %>% mutate(Speed.body.s = Zooid.length..mm.*Speed.cm.s/10) -> COT
-COT %>% mutate(absO2slope = abs(Slope_O2)*0.225*oxySol(Temperature...C., 30.1, 1)) -> COT
 #Define COT.abs as mgO2/(Zooid.vol*cm_moved)  v.v. COT.rel as mgO2/(Zooid.vol*bodylength)
-COT %>% mutate(COT.abs = absO2slope*Speed.cm.s*60/((((Zooid.length..mm./2)^2)*Zooid.length..mm.)*Number.of.zooids), COT.rel = abs(Slope_O2)*0.225*Speed.body.s*60/((((Zooid.length..mm./2)^2)*Zooid.length..mm.)*Number.of.zooids))->COT
+COT %>% filter(Slope_O2<0) -> COT
+COT %>% mutate(COT.abs = -Slope_normalized*Speed.cm.s*60, COT.rel = -Slope_normalized*Speed.body.s*60)->COT
 COT_pruned <- COT[which(!is.na(COT$COT.abs)),]
 
 pdf("COT_abs.pdf", height=6, width=10)
-ggplot(COT_pruned,aes(x=Species,y=COT.abs))+geom_boxplot()+theme(axis.text.x = element_text(angle = 90))
+ggplot(COT_pruned,aes(x=Species,y=COT.abs))+geom_boxplot()+theme_bw()+theme(axis.text.x = element_text(angle = 90))+ylab("Cost of Transport (mgO2/Biovolume per cm moved)")
 dev.off()
 
 pdf("COT_rel.pdf", height=6, width=10)
-ggplot(COT_pruned,aes(x=Species,y=COT.rel))+geom_boxplot()+theme(axis.text.x = element_text(angle = 90))
+ggplot(COT_pruned,aes(x=Species,y=COT.rel))+geom_boxplot()+theme_bw()+theme(axis.text.x = element_text(angle = 90))+ylab("Cost of Transport (mgO2/Biovolume per colony length moved)")
 dev.off()
 
 #Estimate Carbon content for each species and recalculate carbon-based COT
