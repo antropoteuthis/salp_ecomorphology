@@ -17,7 +17,7 @@ presens <- presens[which(presens$Container=="Plastic" & presens$Treatment == "In
 presens <- presens[which(presens$Stage != "Oozoid" & presens$Stage != "Oozoid+Stolon" | is.na(presens$Stage)),]
 
 #Fill in contained volume
-presens$Container.volume..ml.[which(is.na(presens$Container.volume..ml.) & presens$Sensor.ID %in% c("P1","P2","P4","P5"))] <- 170
+presens$Container.volume..ml.[which(is.na(presens$Container.volume..ml.) & presens$Sensor.ID %in% c("P1","P2","P4","P5"))] <- 208
 presens$Container.volume..ml.[which(is.na(presens$Container.volume..ml.) & presens$Sensor.ID == "P3 control")] <- 72
 
 #Estimate absolute oxygen mg
