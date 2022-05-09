@@ -72,8 +72,8 @@ imputed_vols <- data.frame(imputed_vol = round(join_presens[which(!is.na(join_pr
                            Zooid.length..mm. = join_presens[which(!is.na(join_presens$Colony.volume..ml.)),"Zooid.length..mm."],
                            Species = join_presens[which(!is.na(join_presens$Colony.volume..ml.)),"Species"])
 
-mutate(imputed_vols, estimate_vol=Number.of.zooids*(0.00015*pi*Zooid.length..mm.*((0.3*Zooid.length..mm.)^2 - ((0.2*Zooid.length..mm.)^2)))) %>%
-  ggplot(aes(x=estimate_vol, y=real_vol)) + 
+mutate(imputed_vols, estimate_vol=Number.of.zooids*(0.00015*pi*Zooid.length..mm.*((0.35*Zooid.length..mm.)^2 - ((0.25*Zooid.length..mm.)^2)))) %>%
+  ggplot(aes(x=real_vol, y=estimate_vol)) + 
   geom_point(aes(col=Species))
 
 fit3 = gam(real_vol~Zooid.length..mm.+Number.of.zooids, data = imputed_vols)
@@ -122,11 +122,11 @@ for(i in 1:length(unique(norm_presens$Specimen))){
   slopes[i,8] <- series_i$Temperature...C. %>% mean()
 }
 
+slopes %>% mutate(Slope_normalized = Slope_O2/Colony.volume..ml.) -> slopes
+
 pdf("Figures_respirometry/Kona2022/slopes_SatO2.pdf", height=6, width=10)
 ggplot(slopes,aes(x=Species,y=-Slope_O2))+geom_boxplot()+theme_bw()+theme(axis.text.x = element_text(angle = 90))
 dev.off()
-
-slopes %>% mutate(Slope_normalized = Slope_O2/Colony.volume..ml.) -> slopes
 
 pdf("Figures_respirometry/Kona2022/slopes_Corrected.pdf", height=6, width=10)
 ggplot(slopes,aes(x=Species,y=-Slope_normalized))+geom_boxplot()+ylab("-Slope / Specimen biovolume (ml)")+theme_bw()+theme(axis.text.x = element_text(angle = 90))
@@ -148,11 +148,11 @@ COT %>% filter(Slope_O2<0) -> COT
 COT %>% mutate(COT.abs = -Slope_normalized*Speed.cm.s*60, COT.rel = -Slope_normalized*Speed.body.s*60)->COT
 COT_pruned <- COT[which(!is.na(COT$COT.abs)),]
 
-pdf("COT_abs.pdf", height=6, width=10)
+pdf("Figures_respirometry/Kona2022/COT_abs.pdf", height=6, width=10)
 ggplot(COT_pruned,aes(x=Species,y=COT.abs))+geom_boxplot()+theme_bw()+theme(axis.text.x = element_text(angle = 90))+ylab("Cost of Transport (mgO2/Biovolume per cm moved)")
 dev.off()
 
-pdf("COT_rel.pdf", height=6, width=10)
+pdf("Figures_respirometry/Kona2022/COT_rel.pdf", height=6, width=10)
 ggplot(COT_pruned,aes(x=Species,y=COT.rel))+geom_boxplot()+theme_bw()+theme(axis.text.x = element_text(angle = 90))+ylab("Cost of Transport (mgO2/Biovolume per colony length moved)")
 dev.off()
 
@@ -160,13 +160,14 @@ dev.off()
 mm_to_carbon <- read.csv("Madin1981_salpcarbon.tsv", header=T, stringsAsFactors = F, sep='\t')
 mm_to_carbon$Generation[mm_to_carbon$Species=="Iasis (Weelia) cylindrica"] <- "a" ##PROXY 
 COT <- left_join(COT, mm_to_carbon[,c(1,4,5)], by="Species")
-COT <- mutate(COT, mgC = Regression_b*Zooid.length..mm.^Regression_alpha)
-COT <- mutate(COT, COT_C.abs = absO2slope*Speed.cm.s*60/mgC, COT_C.rel = abs(Slope_O2)*0.225*Speed.body.s*60/mgC)
+COT <- mutate(COT, mgC = Regression_b*Zooid.length..mm.^Regression_a)
+COT <- mutate(COT, COT_C.abs = -Slope_O2*Speed.cm.s*60/mgC, COT_C.rel = -Slope_O2*Speed.body.s*60/mgC)
+COT_mgC <- COT[which(!is.na(COT$mgC)),]
 
-pdf("COT_C_abs.pdf", height=6, width=10)
-ggplot(COT,aes(x=Species,y=COT_C.abs))+geom_boxplot()+theme(axis.text.x = element_text(angle = 90))
+pdf("Figures_respirometry/Kona2022/COT_mgC_abs.pdf", height=6, width=10)
+ggplot(COT_mgC,aes(x=Species,y=COT_C.abs))+geom_boxplot()+theme(axis.text.x = element_text(angle = 90))+ylab("Cost of Transport (mgO2/mgC per cm moved)")
 dev.off()
 
-pdf("COT_C_rel.pdf", height=6, width=10)
-ggplot(COT,aes(x=Species,y=COT_C.rel))+geom_boxplot()+theme(axis.text.x = element_text(angle = 90))
+pdf("Figures_respirometry/Kona2022/COT_mgC_rel.pdf", height=6, width=10)
+ggplot(COT_mgC,aes(x=Species,y=COT_C.rel))+geom_boxplot()+theme(axis.text.x = element_text(angle = 90))+ylab("Cost of Transport (mgO2/mgC per colony length moved)")
 dev.off()
