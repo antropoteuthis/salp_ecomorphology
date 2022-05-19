@@ -9,7 +9,7 @@ library(bayou)
 library(surface)
 #library(diversitree)
 
-setwd("~/Documents/salp_ecomorphology/")
+setwd("~/salp_ecomorphology/")
 
 #LOAD consensus tree
 tree_salp <- read.nexus("phylogeny/RevBayes/TIMETREE_Gov2011+Higa+Cint+news_MUSCLE_output/TimeTree_GovUNIONCho-AB921975Mman+news_MUSCLE_mcmc_MAP.tre")

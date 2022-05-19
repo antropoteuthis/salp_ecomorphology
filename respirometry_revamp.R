@@ -3,7 +3,7 @@ library(wql)
 library(patchwork)
 require(data.table)
 library(mgcv)
-setwd("~/Documents/salp_ecomorphology/")
+setwd("~/salp_ecomorphology/")
 
 #Load data and label control rows
 presens <- read.csv("respirometry_Kona22.tsv", header = T, sep = "\t", stringsAsFactors = F)

@@ -1,5 +1,3 @@
-Goal: Do 4 chains each by 11/04
-
 Backup D:/Kelly/WestPalmBeach2021/Field/Z_Stereo
 
 Look at video in WMP to identify best part to analyze.
@@ -27,7 +25,7 @@ Select lock frame box.
 
 Set centroid point: SHIFT+Click on the viscera/reference left and right images. Press X. Attribute box: set number for point (0 ref) 1-n front-back. Number must match zooid number starting with frontal 1 (the next two, one with a rotating point, the rotating point, then the last one: 6-7 total including the junk). Stage F front, AD adjacent, J junk reference. Add a rotating outside point AD zooid-.2
 
-Skip frames (measure every 20 frame up to 18 total i.e. 360 framespan ~ 3s): 20 frames by hitting CTRL+Right_arrow
+Skip frames (measure every 10 frame up to 14 total ~ 2s): 10 frames by hitting CTRL+Right_arrow
 
 If Junk point moves out of frame, pick other junk point before it passes and relabel as 0.1 J. Then keep going with J 0.1
 
