@@ -1,0 +1,804 @@
+Measurement	Specimen	Species	Stage	Zooid length (mm)	Number of zooids	Colony volume (ml)	Container 	Treatment	Activity level	In-jar velocity (m/s)	Date	Experiment	Time point (min)	Sensor ID	O2 (mg/L)	Temperature (°C)	Organism notes	Measurement notes	Container volume (ml)	Injection time	Start time
+1	D4-BR-O-1	Brooksia rostrata	Oozoid	30	1		Plastic	Intact	Low		9/18/2021	1	0	P1	6.21	NA	1cm stolon (DCI jar)	No temperature measured. Jars filled and closed in a bucket on land.	208		
+2	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/18/2021	1	0	P2	6.23	NA	Seawater	No temperature measured. Jars filled and closed in a bucket on land.	208		
+3	D4-BR-O-2	Brooksia rostrata	Oozoid	35	1		Glass	Intact	High		9/18/2021	1	0	G1	6.31	NA	7mm stolon (B jar)	No temperature measured. Jars filled and closed in a bucket on land.	NA		
+4	NA	NA	NA	NA	NA		Glass	Intact	NA		9/18/2021	1	0	G2	6.3	NA	Seawater	No temperature measured. Jars filled and closed in a bucket on land.	NA		
+5	D4-BR-O-1	Brooksia rostrata	Oozoid	30	1		Plastic	Intact	Low		9/18/2021	1	15	P1	6.18	NA	1cm stolon (DCI jar)	No temperature measured. Jars filled and closed in a bucket on land.	208		
+6	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/18/2021	1	15	P2	6.23	NA	Seawater	No temperature measured. Jars filled and closed in a bucket on land.	208		
+7	D4-BR-O-2	Brooksia rostrata	Oozoid	35	1		Glass	Intact	High		9/18/2021	1	15	G1	6.21	NA	7mm stolon (B jar)	No temperature measured. Jars filled and closed in a bucket on land.	NA		
+8	NA	NA	NA	NA	NA		Glass	Intact	NA		9/18/2021	1	15	G2	6.24	NA	Seawater	No temperature measured. Jars filled and closed in a bucket on land.	NA		
+9	D4-BR-O-1	Brooksia rostrata	Oozoid	30	1		Plastic	Intact	Low		9/18/2021	1	30	P1	6.15	NA	1cm stolon (DCI jar)	No temperature measured. Jars filled and closed in a bucket on land.	208		
+10	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/18/2021	1	30	P2	6.21	NA	Seawater	No temperature measured. Jars filled and closed in a bucket on land.	208		
+11	D4-BR-O-2	Brooksia rostrata	Oozoid	35	1		Glass	Intact	High		9/18/2021	1	30	G1	6.16	NA	7mm stolon (B jar)	No temperature measured. Jars filled and closed in a bucket on land.	NA		
+12	NA	NA	NA	NA	NA		Glass	Intact	NA		9/18/2021	1	30	G2	6.18	NA	Seawater	No temperature measured. Jars filled and closed in a bucket on land.	NA		
+13	D4-BR-O-1	Brooksia rostrata	Oozoid	30	1		Plastic	Intact	Low		9/18/2021	1	45	P1	6.07	NA	1cm stolon (DCI jar)	No temperature measured. Jars filled and closed in a bucket on land.	208		
+14	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/18/2021	1	45	P2	6.14	NA	Seawater	No temperature measured. Jars filled and closed in a bucket on land.	208		
+15	D4-BR-O-2	Brooksia rostrata	Oozoid	35	1		Glass	Intact	High		9/18/2021	1	45	G1	6.08	NA	7mm stolon (B jar)	No temperature measured. Jars filled and closed in a bucket on land.	NA		
+16	NA	NA	NA	NA	NA		Glass	Intact	NA		9/18/2021	1	45	G2	6.14	NA	Seawater	No temperature measured. Jars filled and closed in a bucket on land.	NA		
+17	D4-BR-O-1	Brooksia rostrata	Oozoid	30	1		Plastic	Intact	Low		9/18/2021	1	60	P1	6.05	NA	1cm stolon (DCI jar)	No temperature measured. Jars filled and closed in a bucket on land.	208		
+18	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/18/2021	1	60	P2	6.13	NA	Seawater	No temperature measured. Jars filled and closed in a bucket on land.	208		
+19	D4-BR-O-2	Brooksia rostrata	Oozoid	35	1		Glass	Intact	High		9/18/2021	1	60	G1	6.06	NA	7mm stolon (B jar)	No temperature measured. Jars filled and closed in a bucket on land.	NA		
+20	NA	NA	NA	NA	NA		Glass	Intact	NA		9/18/2021	1	60	G2	6.1	NA	Seawater	No temperature measured. Jars filled and closed in a bucket on land.	NA		
+21	D4-Csew-B-1	Cyclosalpa sewelli	Blastozooid	20	1		Plastic	Intact	Low		9/19/2021	2	0	P1	5.89	NA	Different blatozooids from same colony	No temperature measured. Jars filled and closed in a bucket on land.	208		
+22	D4-Csew-B-1	Cyclosalpa sewelli	Blastozooid	20	1		Plastic	MgCl2	Very low		9/19/2021	2	0	P2	6	NA	Different blatozooids from same colony	No temperature measured. Jars filled and closed in a bucket on land.	208		
+23	D4-Csew-B-1	Cyclosalpa sewelli	Blastozooid	20	1		Plastic	Intact			9/19/2021	2	15	P1	5.91	NA	Different blatozooids from same colony	No temperature measured. Jars filled and closed in a bucket on land.	208		
+24	D4-Csew-B-1	Cyclosalpa sewelli	Blastozooid	20	1		Plastic	MgCl2			9/19/2021	2	15	P2	6	NA	Different blatozooids from same colony	No temperature measured. Jars filled and closed in a bucket on land.	208		
+25	D4-Csew-B-1	Cyclosalpa sewelli	Blastozooid	20	1		Plastic	Intact			9/19/2021	2	30	P1	5.92	NA	Different blatozooids from same colony	No temperature measured. Jars filled and closed in a bucket on land.	208		
+26	D4-Csew-B-1	Cyclosalpa sewelli	Blastozooid	20	1		Plastic	MgCl2			9/19/2021	2	30	P2	6.01	NA	Different blatozooids from same colony	No temperature measured. Jars filled and closed in a bucket on land.	208		
+27	D4-Csew-B-1	Cyclosalpa sewelli	Blastozooid	20	1		Plastic	Intact			9/19/2021	2	45	P1	5.92	NA	Different blatozooids from same colony	No temperature measured. Jars filled and closed in a bucket on land.	208		
+28	D4-Csew-B-1	Cyclosalpa sewelli	Blastozooid	20	1		Plastic	MgCl2			9/19/2021	2	45	P2	5.98	NA	Different blatozooids from same colony	No temperature measured. Jars filled and closed in a bucket on land.	208		
+29	D4-Csew-B-1	Cyclosalpa sewelli	Blastozooid	20	1		Plastic	Intact			9/19/2021	2	60	P1	5.88	NA	Different blatozooids from same colony	No temperature measured. Jars filled and closed in a bucket on land.	208		
+30	D4-Csew-B-1	Cyclosalpa sewelli	Blastozooid	20	1		Plastic	MgCl2			9/19/2021	2	60	P2	5.89	NA	Different blatozooids from same colony	No temperature measured. Jars filled and closed in a bucket on land.	208		
+31	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/19/2021	2	0	P1	5.63	NA	Seawater control for the measurements 21-30	No temperature measured. Jars filled and closed in a bucket on land.	208		
+32	NA	NA	NA	NA	NA		Plastic	MgCl2	NA		9/19/2021	2	0	P2	5.7	NA	Seawater + MgCl2 control for the measurements 21-30	No temperature measured. Jars filled and closed in a bucket on land.	208		
+33	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/19/2021	2	15	P1	5.79	NA	Seawater control for the measurements 21-30	No temperature measured. Jars filled and closed in a bucket on land.	208		
+34	NA	NA	NA	NA	NA		Plastic	MgCl2	NA		9/19/2021	2	15	P2	5.8	NA	Seawater + MgCl2 control for the measurements 21-30	No temperature measured. Jars filled and closed in a bucket on land.	208		
+35	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/19/2021	2	30	P1	5.79	NA	Seawater control for the measurements 21-30	No temperature measured. Jars filled and closed in a bucket on land.	208		
+36	NA	NA	NA	NA	NA		Plastic	MgCl2	NA		9/19/2021	2	30	P2	5.78	NA	Seawater + MgCl2 control for the measurements 21-30	No temperature measured. Jars filled and closed in a bucket on land.	208		
+37	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/19/2021	2	45	P1	5.8	NA	Seawater control for the measurements 21-30	No temperature measured. Jars filled and closed in a bucket on land.	208		
+38	NA	NA	NA	NA	NA		Plastic	MgCl2	NA		9/19/2021	2	45	P2	5.73	NA	Seawater + MgCl2 control for the measurements 21-30	No temperature measured. Jars filled and closed in a bucket on land.	208		
+39	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/19/2021	2	60	P1	5.8	NA	Seawater control for the measurements 21-30	No temperature measured. Jars filled and closed in a bucket on land.	208		
+40	NA	NA	NA	NA	NA		Plastic	MgCl2	NA		9/19/2021	2	60	P2	5.73	NA	Seawater + MgCl2 control for the measurements 21-30	No temperature measured. Jars filled and closed in a bucket on land.	208		
+41	D5-PC-B-1	Pegea confoederata	Blastozooid	25	5		Plastic	Intact	Moderate		9/19/2021	3	0	P1	6.35	NA	Sapphirina included	No temperature measured.	208		
+42	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/19/2021	3	0	P2	6.42	NA	Control local seawater	No temperature measured.	208		
+43	D5-PC-B-1	Pegea confoederata	Blastozooid	25	5		Plastic	Intact	Moderate		9/19/2021	3	15	P1	6.34	NA	Sapphirina included	No temperature measured.	208		
+44	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/19/2021	3	15	P2	6.48	NA	Control local seawater	No temperature measured.	208		
+45	D5-PC-B-1	Pegea confoederata	Blastozooid	25	5		Plastic	Intact	Moderate		9/19/2021	3	30	P1	6.25	NA	Sapphirina included	No temperature measured.	208		
+46	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/19/2021	3	30	P2	6.42	NA	Control local seawater	No temperature measured.	208		
+47	D5-PC-B-1	Pegea confoederata	Blastozooid	25	5		Plastic	Intact	Moderate		9/19/2021	3	45	P1	6.21	NA	Sapphirina included	No temperature measured.	208		
+48	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/19/2021	3	45	P2	6.42	NA	Control local seawater	No temperature measured.	208		
+49	D5-PC-B-1	Pegea confoederata	Blastozooid	25	5		Plastic	Intact	Moderate		9/19/2021	3	60	P1	6.18	NA	Sapphirina included	No temperature measured.	208		
+50	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/19/2021	3	60	P2	6.42	NA	Control local seawater	No temperature measured.	208		
+51	D5-PC-B-1	Pegea confoederata	Blastozooid	25	5		Plastic	Intact	Moderate		9/19/2021	3	90	P1	6.12	NA	Sapphirina included	No temperature measured.	208		
+52	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/19/2021	3	90	P2	6.42	NA	Control local seawater	No temperature measured.	208		
+53	D5-PC-B-1	Pegea confoederata	Blastozooid	25	5		Plastic	Intact	Moderate		9/19/2021	3	120	P1	6.04	NA	Sapphirina included	No temperature measured.	208		
+54	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/19/2021	3	120	P2	6.42	NA	Control local seawater	No temperature measured.	208		
+55	D5-PC-B-1	Pegea confoederata	Blastozooid	25	5		Plastic	Intact	Moderate		9/19/2021	3	150	P1	5.98	NA	Sapphirina included	No temperature measured.	208		
+56	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/19/2021	3	150	P2	6.42	NA	Control local seawater	No temperature measured.	208		
+57	D5-PC-B-1	Pegea confoederata	Blastozooid	25	5		Plastic	Intact	Moderate		9/19/2021	3	180	P1	5.95	NA	Sapphirina included	No temperature measured.	208		
+58	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/19/2021	3	180	P2	6.42	NA	Control local seawater	No temperature measured.	208		
+59	D5-PC-B-1	Pegea confoederata	Blastozooid	25	5		Plastic	Intact	Moderate		9/19/2021	3	259	P1	5.84	NA	Sapphirina included	No temperature measured.	208		
+60	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/19/2021	3	259	P2	6.44	NA	Control local seawater	No temperature measured.	208		
+61	D7-BR-B-1	Brooksia rostrata	Blastozooid	7	28		Plastic	Intact	Very active		9/20/2021	4	0	P1	6.63	NA		No temperature measured. Temperature adjusting to hot air outside, O2 saturation changes	208		
+62	D7-CA-B-1	Cyclosalpa affinis	Blastozooid	40	4		Plastic	Intact	Moderate		9/20/2021	4	0	P2	6.27	NA		No temperature measured. Temperature adjusting to hot air outside, O2 saturation changes	208		
+63	D7-BR-B-2	Brooksia rostrata	Blastozooid	8	24		Plastic	Intact	Very active		9/20/2021	4	0	P4	6.63	NA		No temperature measured. Temperature adjusting to hot air outside, O2 saturation changes	208		
+64	D7-BR-B-3	Brooksia rostrata	Blastozooid	8	19		Plastic	Intact	Very active		9/20/2021	4	0	P5	6.63	NA		No temperature measured. Temperature adjusting to hot air outside, O2 saturation changes	208		
+65	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/20/2021	4	0	P3 control	6.71	NA	Control local seawater	No temperature measured. Temperature adjusting to hot air outside, O2 saturation changes	72		
+66	D7-BR-B-1	Brooksia rostrata	Blastozooid	7	28		Plastic	Intact	Very active		9/20/2021	4	15	P1	6.5	NA		No temperature measured. Temperature adjusting to hot air outside, O2 saturation changes	208		
+67	D7-CA-B-1	Cyclosalpa affinis	Blastozooid	40	4		Plastic	Intact	Moderate		9/20/2021	4	15	P2	5.81	NA		No temperature measured. Temperature adjusting to hot air outside, O2 saturation changes	208		
+68	D7-BR-B-2	Brooksia rostrata	Blastozooid	8	24		Plastic	Intact	Very active		9/20/2021	4	15	P4	6.49	NA		No temperature measured. Temperature adjusting to hot air outside, O2 saturation changes	208		
+69	D7-BR-B-3	Brooksia rostrata	Blastozooid	8	19		Plastic	Intact	Very active		9/20/2021	4	15	P5	6.53	NA		No temperature measured. Temperature adjusting to hot air outside, O2 saturation changes	208		
+70	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/20/2021	4	15	P3 control	6.66	NA	Control local seawater	No temperature measured. Temperature adjusting to hot air outside, O2 saturation changes	72		
+71	D7-BR-B-1	Brooksia rostrata	Blastozooid	7	28		Plastic	Intact	Very active		9/20/2021	4	30	P1	6.5	NA		No temperature measured.	208		
+72	D7-CA-B-1	Cyclosalpa affinis	Blastozooid	40	4		Plastic	Intact	Moderate		9/20/2021	4	30	P2	5.58	NA		No temperature measured.	208		
+73	D7-BR-B-2	Brooksia rostrata	Blastozooid	8	24		Plastic	Intact	Very active		9/20/2021	4	30	P4	6.48	NA		No temperature measured.	208		
+74	D7-BR-B-3	Brooksia rostrata	Blastozooid	8	19		Plastic	Intact	Very active		9/20/2021	4	30	P5	6.53	NA		No temperature measured.	208		
+75	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/20/2021	4	30	P3 control	6.66	NA	Control local seawater	No temperature measured.	72		
+76	D7-BR-B-1	Brooksia rostrata	Blastozooid	7	28		Plastic	Intact	Very active		9/20/2021	4	45	P1	6.48	NA		No temperature measured.	208		
+77	D7-CA-B-1	Cyclosalpa affinis	Blastozooid	40	4		Plastic	Intact	Moderate		9/20/2021	4	45	P2	5.36	NA		No temperature measured.	208		
+78	D7-BR-B-2	Brooksia rostrata	Blastozooid	8	24		Plastic	Intact	Very active		9/20/2021	4	45	P4	6.46	NA		No temperature measured.	208		
+79	D7-BR-B-3	Brooksia rostrata	Blastozooid	8	19		Plastic	Intact	Very active		9/20/2021	4	45	P5	6.51	NA		No temperature measured.	208		
+80	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/20/2021	4	45	P3 control	6.66	NA	Control local seawater	No temperature measured.	72		
+81	D7-BR-B-1	Brooksia rostrata	Blastozooid	7	28		Plastic	Intact	Very active		9/20/2021	4	60	P1	6.45	NA		No temperature measured.	208		
+82	D7-CA-B-1	Cyclosalpa affinis	Blastozooid	40	4		Plastic	Intact	Moderate		9/20/2021	4	60	P2	5.12	NA		No temperature measured.	208		
+83	D7-BR-B-2	Brooksia rostrata	Blastozooid	8	24		Plastic	Intact	Very active		9/20/2021	4	60	P4	6.38	NA		No temperature measured.	208		
+84	D7-BR-B-3	Brooksia rostrata	Blastozooid	8	19		Plastic	Intact	Very active		9/20/2021	4	60	P5	6.46	NA		No temperature measured.	208		
+85	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/20/2021	4	60	P3 control	6.61	NA	Control local seawater	No temperature measured.	72		
+86	D7-BR-B-1	Brooksia rostrata	Blastozooid	7	28		Plastic	Intact	Very active		9/20/2021	4	90	P1	6.36	NA		No temperature measured.	208		
+87	D7-CA-B-1	Cyclosalpa affinis	Blastozooid	40	4		Plastic	Intact	Moderate		9/20/2021	4	90	P2	4.66	NA		No temperature measured.	208		
+88	D7-BR-B-2	Brooksia rostrata	Blastozooid	8	24		Plastic	Intact	Very active		9/20/2021	4	90	P4	6.36	NA		No temperature measured.	208		
+89	D7-BR-B-3	Brooksia rostrata	Blastozooid	8	19		Plastic	Intact	Very active		9/20/2021	4	90	P5	6.44	NA		No temperature measured.	208		
+90	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/20/2021	4	90	P3 control	6.57	NA	Control local seawater	No temperature measured.	72		
+91	D7-BR-B-1	Brooksia rostrata	Blastozooid	7	28		Plastic	Intact	Very active		9/20/2021	4	120	P1	6.3	NA		No temperature measured.	208		
+92	D7-CA-B-1	Cyclosalpa affinis	Blastozooid	40	4		Plastic	Intact	Moderate		9/20/2021	4	120	P2	4.31	NA		No temperature measured.	208		
+93	D7-BR-B-2	Brooksia rostrata	Blastozooid	8	24		Plastic	Intact	Very active		9/20/2021	4	120	P4	6.3	NA		No temperature measured.	208		
+94	D7-BR-B-3	Brooksia rostrata	Blastozooid	8	19		Plastic	Intact	Very active		9/20/2021	4	120	P5	6.38	NA		No temperature measured.	208		
+95	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/20/2021	4	120	P3 control	6.53	NA	Control local seawater	No temperature measured.	72		
+96	D7-BR-B-1	Brooksia rostrata	Blastozooid	7	28		Plastic	Intact	Very active		9/20/2021	4	150	P1	6.28	NA		No temperature measured.	208		
+97	D7-CA-B-1	Cyclosalpa affinis	Blastozooid	40	4		Plastic	Intact	Moderate		9/20/2021	4	150	P2	4	NA		No temperature measured.	208		
+98	D7-BR-B-2	Brooksia rostrata	Blastozooid	8	24		Plastic	Intact	Very active		9/20/2021	4	150	P4	6.23	NA		No temperature measured.	208		
+99	D7-BR-B-3	Brooksia rostrata	Blastozooid	8	19		Plastic	Intact	Very active		9/20/2021	4	150	P5	6.33	NA		No temperature measured.	208		
+100	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/20/2021	4	150	P3 control	6.52	NA	Control local seawater	No temperature measured.	72		
+101	D7-BR-B-1	Brooksia rostrata	Blastozooid	7	28		Plastic	Intact	Very active		9/20/2021	4	180	P1	6.27	NA		No temperature measured.	208		
+102	D7-CA-B-1	Cyclosalpa affinis	Blastozooid	40	4		Plastic	Intact	Moderate		9/20/2021	4	180	P2	3.79	NA		No temperature measured.	208		
+103	D7-BR-B-2	Brooksia rostrata	Blastozooid	8	24		Plastic	Intact	Very active		9/20/2021	4	180	P4	6.22	NA		No temperature measured.	208		
+104	D7-BR-B-3	Brooksia rostrata	Blastozooid	8	19		Plastic	Intact	Very active		9/20/2021	4	180	P5	6.33	NA		No temperature measured.	208		
+105	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/20/2021	4	180	P3 control	6.52	NA	Control local seawater	No temperature measured.	72		
+106	D7-BR-B-1	Brooksia rostrata	Blastozooid	7	28		Plastic	Intact	Very active		9/20/2021	4	300	P1	5.99	NA		No temperature measured.	208		
+107	D7-CA-B-1	Cyclosalpa affinis	Blastozooid	40	4		Plastic	Intact	Moderate		9/20/2021	4	300	P2	2.61	NA		No temperature measured.	208		
+108	D7-BR-B-2	Brooksia rostrata	Blastozooid	8	24		Plastic	Intact	Very active		9/20/2021	4	300	P4	5.86	NA		No temperature measured.	208		
+109	D7-BR-B-3	Brooksia rostrata	Blastozooid	8	19		Plastic	Intact	Very active		9/20/2021	4	300	P5	6.01	NA		No temperature measured.	208		
+110	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/20/2021	4	300	P3 control	6.31	NA	Control local seawater	No temperature measured.	72		
+111	D9-Csew-B-1	Cyclosalpa sewelli	Blastozooid	25	4		Plastic	Intact	Moderate		9/21/2021	5	0	P1	6.41	26.6	1 zooid popped off. Pregnant with large embryos.		208		
+112	D9-Csew-B-2	Cyclosalpa sewelli	Blastozooid	25	6		Plastic	Intact	Moderate		9/21/2021	5	0	P2	6.32	26.6	Pregnant with small embryos		208		
+113	D9-Csew-B-3	Cyclosalpa sewelli	Blastozooid	20	2		Plastic	Intact	Moderate		9/21/2021	5	0	P4	6.42	26.6			208		
+114	D9-Csew-B-4	Cyclosalpa sewelli	Blastozooid	25	1		Plastic	Intact	Moderate		9/21/2021	5	0	P5	6.48	26.6	Pregnant with big embryos		208		
+115	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/21/2021	5	0	P3 control	6.54	26.6	Control local seawater		72		
+116	D9-Csew-B-1	Cyclosalpa sewelli	Blastozooid	25	4		Plastic	Intact	Moderate		9/21/2021	5	15	P1	6.47	26.2	1 zooid popped off. Pregnant with large embryos.		208		
+117	D9-Csew-B-2	Cyclosalpa sewelli	Blastozooid	25	6		Plastic	Intact	Moderate		9/21/2021	5	15	P2	6.36	26.2	Pregnant with small embryos		208		
+118	D9-Csew-B-3	Cyclosalpa sewelli	Blastozooid	20	2		Plastic	Intact	Moderate		9/21/2021	5	15	P4	6.51	26.2			208		
+119	D9-Csew-B-4	Cyclosalpa sewelli	Blastozooid	25	1		Plastic	Intact	Moderate		9/21/2021	5	15	P5	6.57	26.2	Pregnant with big embryos		208		
+120	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/21/2021	5	15	P3 control	6.62	26.2	Control local seawater		72		
+121	D9-Csew-B-1	Cyclosalpa sewelli	Blastozooid	25	4		Plastic	Intact	Moderate		9/21/2021	5	30	P1	6.44	26.2	1 zooid popped off. Pregnant with large embryos.		208		
+122	D9-Csew-B-2	Cyclosalpa sewelli	Blastozooid	25	6		Plastic	Intact	Moderate		9/21/2021	5	30	P2	6.32	26.2	Pregnant with small embryos		208		
+123	D9-Csew-B-3	Cyclosalpa sewelli	Blastozooid	20	2		Plastic	Intact	Moderate		9/21/2021	5	30	P4	6.51	26.2			208		
+124	D9-Csew-B-4	Cyclosalpa sewelli	Blastozooid	25	1		Plastic	Intact	Moderate		9/21/2021	5	30	P5	6.57	26.2	Pregnant with big embryos		208		
+125	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/21/2021	5	30	P3 control	6.62	26.2	Control local seawater		72		
+126	D9-Csew-B-1	Cyclosalpa sewelli	Blastozooid	25	4		Plastic	Intact	Moderate		9/21/2021	5	45	P1	6.39	26.2	1 zooid popped off. Pregnant with large embryos.		208		
+127	D9-Csew-B-2	Cyclosalpa sewelli	Blastozooid	25	6		Plastic	Intact	Moderate		9/21/2021	5	45	P2	6.29	26.2	Pregnant with small embryos		208		
+128	D9-Csew-B-3	Cyclosalpa sewelli	Blastozooid	20	2		Plastic	Intact	Moderate		9/21/2021	5	45	P4	6.5	26.2			208		
+129	D9-Csew-B-4	Cyclosalpa sewelli	Blastozooid	25	1		Plastic	Intact	Moderate		9/21/2021	5	45	P5	6.56	26.2	Pregnant with big embryos		208		
+130	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/21/2021	5	45	P3 control	6.6	26.2	Control local seawater		72		
+131	D9-Csew-B-1	Cyclosalpa sewelli	Blastozooid	25	4		Plastic	Intact	Moderate		9/21/2021	5	60	P1	6.33	26.2	1 zooid popped off. Pregnant with large embryos.		208		
+132	D9-Csew-B-2	Cyclosalpa sewelli	Blastozooid	25	6		Plastic	Intact	Moderate		9/21/2021	5	60	P2	6.2	26.2	Pregnant with small embryos		208		
+133	D9-Csew-B-3	Cyclosalpa sewelli	Blastozooid	20	2		Plastic	Intact	Moderate		9/21/2021	5	60	P4	6.49	26.2			208		
+134	D9-Csew-B-4	Cyclosalpa sewelli	Blastozooid	25	1		Plastic	Intact	Moderate		9/21/2021	5	60	P5	6.55	26.2	Pregnant with big embryos		208		
+135	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/21/2021	5	60	P3 control	6.58	26.2	Control local seawater		72		
+136	D9-Csew-B-1	Cyclosalpa sewelli	Blastozooid	25	4		Plastic	Intact	Moderate		9/21/2021	5	90	P1	6.33	25.7	1 zooid popped off. Pregnant with large embryos.		208		
+137	D9-Csew-B-2	Cyclosalpa sewelli	Blastozooid	25	6		Plastic	Intact	Moderate		9/21/2021	5	90	P2	6.18	25.7	Pregnant with small embryos		208		
+138	D9-Csew-B-3	Cyclosalpa sewelli	Blastozooid	20	2		Plastic	Intact	Moderate		9/21/2021	5	90	P4	6.53	25.7			208		
+139	D9-Csew-B-4	Cyclosalpa sewelli	Blastozooid	25	1		Plastic	Intact	Moderate		9/21/2021	5	90	P5	6.59	25.7	Pregnant with big embryos		208		
+140	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/21/2021	5	90	P3 control	6.63	25.7	Control local seawater		72		
+141	D9-Csew-B-1	Cyclosalpa sewelli	Blastozooid	25	4		Plastic	Intact	Moderate		9/21/2021	5	120	P1	6.26	25.7	1 zooid popped off. Pregnant with large embryos.		208		
+142	D9-Csew-B-2	Cyclosalpa sewelli	Blastozooid	25	6		Plastic	Intact	Moderate		9/21/2021	5	120	P2	6.09	25.7	Pregnant with small embryos		208		
+143	D9-Csew-B-3	Cyclosalpa sewelli	Blastozooid	20	2		Plastic	Intact	Moderate		9/21/2021	5	120	P4	6.47	25.7			208		
+144	D9-Csew-B-4	Cyclosalpa sewelli	Blastozooid	25	1		Plastic	Intact	Moderate		9/21/2021	5	120	P5	6.54	25.7	Pregnant with big embryos		208		
+145	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/21/2021	5	120	P3 control	6.63	25.7	Control local seawater		72		
+146	D9-Csew-B-1	Cyclosalpa sewelli	Blastozooid	25	4		Plastic	Intact	Moderate		9/21/2021	5	150	P1	6.16	25.6	1 zooid popped off. Pregnant with large embryos.		208		
+147	D9-Csew-B-2	Cyclosalpa sewelli	Blastozooid	25	6		Plastic	Intact	Moderate		9/21/2021	5	150	P2	5.98	25.6	Pregnant with small embryos		208		
+148	D9-Csew-B-3	Cyclosalpa sewelli	Blastozooid	20	2		Plastic	Intact	Moderate		9/21/2021	5	150	P4	6.45	25.6			208		
+149	D9-Csew-B-4	Cyclosalpa sewelli	Blastozooid	25	1		Plastic	Intact	Moderate		9/21/2021	5	150	P5	6.52	25.6	Pregnant with big embryos		208		
+150	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/21/2021	5	150	P3 control	6.61	25.6	Control local seawater		72		
+151	D9-Csew-B-1	Cyclosalpa sewelli	Blastozooid	25	4		Plastic	Intact	Moderate		9/21/2021	5	180	P1	5.81	27.1	1 zooid popped off. Pregnant with large embryos.	Temperature measured in air	208		
+152	D9-Csew-B-2	Cyclosalpa sewelli	Blastozooid	25	6		Plastic	Intact	Moderate		9/21/2021	5	180	P2	5.62	27.1	Pregnant with small embryos	Temperature measured in air	208		
+153	D9-Csew-B-3	Cyclosalpa sewelli	Blastozooid	20	2		Plastic	Intact	Moderate		9/21/2021	5	180	P4	6.1	27.1		Temperature measured in air	208		
+154	D9-Csew-B-4	Cyclosalpa sewelli	Blastozooid	25	1		Plastic	Intact	Moderate		9/21/2021	5	180	P5	6.18	27.1	Pregnant with big embryos	Temperature measured in air	208		
+155	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/21/2021	5	180	P3 control	6.28	27.1	Control local seawater	Temperature measured in air	72		
+156	D9-Csew-B-1	Cyclosalpa sewelli	Blastozooid	25	4		Plastic	Intact	Moderate		9/21/2021	5	360	P1	5.53	27.2	1 zooid popped off. Pregnant with large embryos.	Temperature measured in air	208		
+157	D9-Csew-B-2	Cyclosalpa sewelli	Blastozooid	25	6		Plastic	Intact	Moderate		9/21/2021	5	360	P2	5.24	27.2	Pregnant with small embryos	Temperature measured in air	208		
+158	D9-Csew-B-3	Cyclosalpa sewelli	Blastozooid	20	2		Plastic	Intact	Moderate		9/21/2021	5	360	P4	6.07	27.2		Temperature measured in air	208		
+159	D9-Csew-B-4	Cyclosalpa sewelli	Blastozooid	25	1		Plastic	Intact	Moderate		9/21/2021	5	360	P5	6.17	27.2	Pregnant with big embryos	Temperature measured in air	208		
+160	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/21/2021	5	360	P3 control	6.32	27.2	Control local seawater	Temperature measured in air	72		
+161	D11-BR-B-1	Brooksia rostrata	Blastozooid	10	14		Plastic	Intact	Moderate		9/22/2021	6	0	P1	6.34	26.6	Broken zooids on one side		208		
+162	D11-CA-B-1	Cyclosalpa affinis	Blastozooid	45	6		Plastic	Intact	Active		9/22/2021	6	0	P2	5.73	26.6	Gunky surface, pooping a lot		208		
+163	D11-WC-B-1	Iasis (Weelia) cylindrica	Blastozooid	15	12		Plastic	Intact	Very active		9/22/2021	6	0	P4	6.27	26.6	Yellow cloudy hue, lost by the end of incubation		208		
+164	D11-BR-B-2	Brooksia rostrata	Blastozooid	7.5	32		Plastic	Intact	Moderate		9/22/2021	6	0	P5	6.3	26.6	Gradation from 5-10mm length zooids		208		
+165	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/22/2021	6	0	P3 control	6.41	26.6	Control local seawater		72		
+166	D11-BR-B-1	Brooksia rostrata	Blastozooid	10	14		Plastic	Intact	Moderate		9/22/2021	6	15	P1	6.42	26.2	Broken zooids on one side		208		
+167	D11-CA-B-1	Cyclosalpa affinis	Blastozooid	45	6		Plastic	Intact	Active		9/22/2021	6	15	P2	5.49	26.2	Gunky surface, pooping a lot		208		
+168	D11-WC-B-1	Iasis (Weelia) cylindrica	Blastozooid	15	12		Plastic	Intact	Very active		9/22/2021	6	15	P4	6.25	26.2	Yellow cloudy hue, lost by the end of incubation		208		
+169	D11-BR-B-2	Brooksia rostrata	Blastozooid	7.5	32		Plastic	Intact	Moderate		9/22/2021	6	15	P5	6.34	26.2	Gradation from 5-10mm length zooids		208		
+170	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/22/2021	6	15	P3 control	6.47	26.2	Control local seawater		72		
+171	D11-BR-B-1	Brooksia rostrata	Blastozooid	10	14		Plastic	Intact	Moderate		9/22/2021	6	30	P1	6.41	26.1	Broken zooids on one side		208		
+172	D11-CA-B-1	Cyclosalpa affinis	Blastozooid	45	6		Plastic	Intact	Active		9/22/2021	6	30	P2	5.22	26.1	Gunky surface, pooping a lot		208		
+173	D11-WC-B-1	Iasis (Weelia) cylindrica	Blastozooid	15	12		Plastic	Intact	Very active		9/22/2021	6	30	P4	6.17	26.1	Yellow cloudy hue, lost by the end of incubation		208		
+174	D11-BR-B-2	Brooksia rostrata	Blastozooid	7.5	32		Plastic	Intact	Moderate		9/22/2021	6	30	P5	6.37	26.1	Gradation from 5-10mm length zooids		208		
+175	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/22/2021	6	30	P3 control	6.47	26.1	Control local seawater		72		
+176	D11-BR-B-1	Brooksia rostrata	Blastozooid	10	14		Plastic	Intact	Moderate		9/22/2021	6	45	P1	6.41	25.9	Broken zooids on one side		208		
+177	D11-CA-B-1	Cyclosalpa affinis	Blastozooid	45	6		Plastic	Intact	Active		9/22/2021	6	45	P2	4.94	25.9	Gunky surface, pooping a lot		208		
+178	D11-WC-B-1	Iasis (Weelia) cylindrica	Blastozooid	15	12		Plastic	Intact	Very active		9/22/2021	6	45	P4	6.09	25.9	Yellow cloudy hue, lost by the end of incubation		208		
+179	D11-BR-B-2	Brooksia rostrata	Blastozooid	7.5	32		Plastic	Intact	Moderate		9/22/2021	6	45	P5	6.36	25.9	Gradation from 5-10mm length zooids		208		
+180	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/22/2021	6	45	P3 control	6.48	25.9	Control local seawater		72		
+181	D11-BR-B-1	Brooksia rostrata	Blastozooid	10	14		Plastic	Intact	Moderate		9/22/2021	6	60	P1	6.42	25.8	Broken zooids on one side		208		
+182	D11-CA-B-1	Cyclosalpa affinis	Blastozooid	45	6		Plastic	Intact	Active		9/22/2021	6	60	P2	4.71	25.8	Gunky surface, pooping a lot		208		
+183	D11-WC-B-1	Iasis (Weelia) cylindrica	Blastozooid	15	12		Plastic	Intact	Very active		9/22/2021	6	60	P4	6.02	25.8	Yellow cloudy hue, lost by the end of incubation		208		
+184	D11-BR-B-2	Brooksia rostrata	Blastozooid	7.5	32		Plastic	Intact	Moderate		9/22/2021	6	60	P5	6.37	25.8	Gradation from 5-10mm length zooids		208		
+185	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/22/2021	6	60	P3 control	6.54	25.8	Control local seawater		72		
+186	D11-BR-B-1	Brooksia rostrata	Blastozooid	10	14		Plastic	Intact	Moderate		9/22/2021	6	90	P1	6.42	25.4	Broken zooids on one side		208		
+187	D11-CA-B-1	Cyclosalpa affinis	Blastozooid	45	6		Plastic	Intact	Active		9/22/2021	6	90	P2	4.3	25.4	Gunky surface, pooping a lot		208		
+188	D11-WC-B-1	Iasis (Weelia) cylindrica	Blastozooid	15	12		Plastic	Intact	Very active		9/22/2021	6	90	P4	5.88	25.4	Yellow cloudy hue, lost by the end of incubation		208		
+189	D11-BR-B-2	Brooksia rostrata	Blastozooid	7.5	32		Plastic	Intact	Moderate		9/22/2021	6	90	P5	6.39	25.4	Gradation from 5-10mm length zooids		208		
+190	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/22/2021	6	90	P3 control	6.56	25.3	Control local seawater		72		
+191	D11-BR-B-1	Brooksia rostrata	Blastozooid	10	14		Plastic	Intact	Moderate		9/22/2021	6	120	P1	6.36	25.3	Broken zooids on one side		208		
+192	D11-CA-B-1	Cyclosalpa affinis	Blastozooid	45	6		Plastic	Intact	Active		9/22/2021	6	120	P2	3.81	25.3	Gunky surface, pooping a lot		208		
+193	D11-WC-B-1	Iasis (Weelia) cylindrica	Blastozooid	15	12		Plastic	Intact	Very active		9/22/2021	6	120	P4	5.69	25.3	Yellow cloudy hue, lost by the end of incubation		208		
+194	D11-BR-B-2	Brooksia rostrata	Blastozooid	7.5	32		Plastic	Intact	Moderate		9/22/2021	6	120	P5	6.33	25.3	Gradation from 5-10mm length zooids		208		
+195	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/22/2021	6	120	P3 control	6.56	25.3	Control local seawater		72		
+196	D11-BR-B-1	Brooksia rostrata	Blastozooid	10	14		Plastic	Intact	Moderate		9/22/2021	6	150	P1	6.38	25	Broken zooids on one side		208		
+197	D11-CA-B-1	Cyclosalpa affinis	Blastozooid	45	6		Plastic	Intact	Active		9/22/2021	6	150	P2	3.53	25	Gunky surface, pooping a lot		208		
+198	D11-WC-B-1	Iasis (Weelia) cylindrica	Blastozooid	15	12		Plastic	Intact	Very active		9/22/2021	6	150	P4	5.58	25	Yellow cloudy hue, lost by the end of incubation		208		
+199	D11-BR-B-2	Brooksia rostrata	Blastozooid	7.5	32		Plastic	Intact	Moderate		9/22/2021	6	150	P5	6.35	25	Gradation from 5-10mm length zooids		208		
+200	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/22/2021	6	150	P3 control	6.6	25	Control local seawater		72		
+201	D11-BR-B-1	Brooksia rostrata	Blastozooid	10	14		Plastic	Intact	Moderate		9/22/2021	6	180	P1	6.46	24.7	Broken zooids on one side		208		
+202	D11-CA-B-1	Cyclosalpa affinis	Blastozooid	45	6		Plastic	Intact	Active		9/22/2021	6	180	P2	3.14	24.7	Gunky surface, pooping a lot		208		
+203	D11-WC-B-1	Iasis (Weelia) cylindrica	Blastozooid	15	12		Plastic	Intact	Very active		9/22/2021	6	180	P4	5.47	24.7	Yellow cloudy hue, lost by the end of incubation		208		
+204	D11-BR-B-2	Brooksia rostrata	Blastozooid	7.5	32		Plastic	Intact	Moderate		9/22/2021	6	180	P5	6.35	24.7	Gradation from 5-10mm length zooids		208		
+205	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/22/2021	6	180	P3 control	6.69	24.7	Control local seawater		72		
+206	D11-BR-B-1	Brooksia rostrata	Blastozooid	10	14		Plastic	Intact	Moderate		9/22/2021	6	295	P1	5.95	27	Broken zooids on one side	Temperature measured in air	208		
+207	D11-CA-B-1	Cyclosalpa affinis	Blastozooid	45	6		Plastic	Intact	Active		9/22/2021	6	295	P2	1.84	27	Gunky surface, pooping a lot	Temperature measured in air	208		
+208	D11-WC-B-1	Iasis (Weelia) cylindrica	Blastozooid	15	12		Plastic	Intact	Very active		9/22/2021	6	295	P4	4.64	27	Yellow cloudy hue, lost by the end of incubation	Temperature measured in air	208		
+209	D11-BR-B-2	Brooksia rostrata	Blastozooid	7.5	32		Plastic	Intact	Moderate		9/22/2021	6	295	P5	5.82	27	Gradation from 5-10mm length zooids	Temperature measured in air	208		
+210	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/22/2021	6	295	P3 control	6.22	27	Control local seawater	Temperature measured in air	72		
+211	D13-CA-B-1	Cyclosalpa affinis	Blastozooid	35	6		Plastic	Intact	Active		9/23/2021	7	0	P1	6.25	27.2	Found in D13, released-recaptured in D14.	Temperature measured in D13 jar water (same dive computer value 81F)	208		
+212	D14-WC-B-1A	Iasis (Weelia) cylindrica	Blastozooid	10	20		Plastic	Intact	Very active	0.0418	9/23/2021	7	0	P2	6.3	27.2	Same golden-hazed chain broken in 2 pieces - lost 1 zooid by the end	Temperature measured in D13 jar water (same dive computer value 81F)	208		
+213	D14-WC-B-1B	Iasis (Weelia) cylindrica	Blastozooid	10	28		Plastic	Intact	Very active	0.0314	9/23/2021	7	0	P4	6.16	27.2	Same golden-hazed chain broken in 2 pieces - lost 4 zooids by the end	Temperature measured in D13 jar water (same dive computer value 81F)	208		
+214	D14-WC-B-2	Iasis (Weelia) cylindrica	Blastozooid	10	34		Plastic	Intact	Very active	0.0314	9/23/2021	7	0	P5	6.14	27.2	Includes one little hyperiid amphipod	Temperature measured in D13 jar water (same dive computer value 81F)	208		
+215	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/23/2021	7	0	P3 control	6.48	27.2	Control local seawater	Temperature measured in D13 jar water (same dive computer value 81F)	72		
+216	D13-CA-B-1	Cyclosalpa affinis	Blastozooid	35	6		Plastic	Intact	Active		9/23/2021	7	15	P1	6.11	28.2	Found in D13, released-recaptured in D14.	Temperature measured in D13 jar water (same dive computer value 81F)	208		
+217	D14-WC-B-1A	Iasis (Weelia) cylindrica	Blastozooid	10	20		Plastic	Intact	Very active	0.0418	9/23/2021	7	15	P2	6.19	28.2	Same golden-hazed chain broken in 2 pieces - lost 1 zooid by the end	Temperature measured in D13 jar water (same dive computer value 81F)	208		
+218	D14-WC-B-1B	Iasis (Weelia) cylindrica	Blastozooid	10	28		Plastic	Intact	Very active	0.0314	9/23/2021	7	15	P4	6.02	28.2	Same golden-hazed chain broken in 2 pieces - lost 4 zooids by the end	Temperature measured in D13 jar water (same dive computer value 81F)	208		
+219	D14-WC-B-2	Iasis (Weelia) cylindrica	Blastozooid	10	34		Plastic	Intact	Very active	0.0314	9/23/2021	7	15	P5	5.9	28.2	Includes one little hyperiid amphipod	Temperature measured in D13 jar water (same dive computer value 81F)	208		
+220	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/23/2021	7	15	P3 control	6.53	28.2	Control local seawater	Temperature measured in D13 jar water (same dive computer value 81F)	72		
+221	D13-CA-B-1	Cyclosalpa affinis	Blastozooid	35	6		Plastic	Intact	Active		9/23/2021	7	30	P1	5.95	29.2	Found in D13, released-recaptured in D14.	Temperature measured in D13 jar water (same dive computer value 81F)	208		
+222	D14-WC-B-1A	Iasis (Weelia) cylindrica	Blastozooid	10	20		Plastic	Intact	Very active	0.0418	9/23/2021	7	30	P2	6.11	29.2	Same golden-hazed chain broken in 2 pieces - lost 1 zooid by the end	Temperature measured in D13 jar water (same dive computer value 81F)	208		
+223	D14-WC-B-1B	Iasis (Weelia) cylindrica	Blastozooid	10	28		Plastic	Intact	Very active	0.0314	9/23/2021	7	30	P4	5.94	29.2	Same golden-hazed chain broken in 2 pieces - lost 4 zooids by the end	Temperature measured in D13 jar water (same dive computer value 81F)	208		
+224	D14-WC-B-2	Iasis (Weelia) cylindrica	Blastozooid	10	34		Plastic	Intact	Very active	0.0314	9/23/2021	7	30	P5	5.69	29.2	Includes one little hyperiid amphipod	Temperature measured in D13 jar water (same dive computer value 81F)	208		
+225	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/23/2021	7	30	P3 control	6.52	29.2	Control local seawater	Temperature measured in D13 jar water (same dive computer value 81F)	72		
+226	D13-CA-B-2	Cyclosalpa affinis	Blastozooid	35	6		Plastic	Intact	Active		9/23/2021	7	45	P1	5.78	29.5	Found in D13, released-recaptured in D14.	Temperature measured in D13 jar water (same dive computer value 81F)	208		
+227	D14-WC-B-1A	Iasis (Weelia) cylindrica	Blastozooid	10	20		Plastic	Intact	Very active	0.0418	9/23/2021	7	45	P2	6.04	29.5	Same golden-hazed chain broken in 2 pieces - lost 1 zooid by the end	Temperature measured in D13 jar water (same dive computer value 81F)	208		
+228	D14-WC-B-1B	Iasis (Weelia) cylindrica	Blastozooid	10	28		Plastic	Intact	Very active	0.0314	9/23/2021	7	45	P4	5.76	29.5	Same golden-hazed chain broken in 2 pieces - lost 4 zooids by the end	Temperature measured in D13 jar water (same dive computer value 81F)	208		
+229	D14-WC-B-3	Iasis (Weelia) cylindrica	Blastozooid	10	34		Plastic	Intact	Very active	0.0314	9/23/2021	7	45	P5	5.58	29.5	Includes one little hyperiid amphipod	Temperature measured in D13 jar water (same dive computer value 81F)	208		
+230	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/23/2021	7	45	P3 control	6.64	29.5	Control local seawater	Temperature measured in D13 jar water (same dive computer value 81F)	72		
+231	D13-CA-B-2	Cyclosalpa affinis	Blastozooid	35	6		Plastic	Intact	Active		9/23/2021	7	60	P1	5.53	30	Found in D13, released-recaptured in D14.	Temperature measured in D13 jar water (same dive computer value 81F)	208		
+232	D14-WC-B-1A	Iasis (Weelia) cylindrica	Blastozooid	10	20		Plastic	Intact	Very active	0.0418	9/23/2021	7	60	P2	5.8	30	Same golden-hazed chain broken in 2 pieces - lost 1 zooid by the end	Temperature measured in D13 jar water (same dive computer value 81F)	208		
+233	D14-WC-B-1B	Iasis (Weelia) cylindrica	Blastozooid	10	28		Plastic	Intact	Very active	0.0314	9/23/2021	7	60	P4	5.46	30	Same golden-hazed chain broken in 2 pieces - lost 4 zooids by the end	Temperature measured in D13 jar water (same dive computer value 81F)	208		
+234	D14-WC-B-3	Iasis (Weelia) cylindrica	Blastozooid	10	34		Plastic	Intact	Very active	0.0314	9/23/2021	7	60	P5	5.29	30	Includes one little hyperiid amphipod	Temperature measured in D13 jar water (same dive computer value 81F)	208		
+235	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/23/2021	7	60	P3 control	6.45	30	Control local seawater	Temperature measured in D13 jar water (same dive computer value 81F)	72		
+236	D13-CA-B-3	Cyclosalpa affinis	Blastozooid	35	6		Plastic	Intact	Active		9/23/2021	7	90	P1	5.17	31.1	Found in D13, released-recaptured in D14.	Temperature measured in D13 jar water (same dive computer value 81F)	208		
+237	D14-WC-B-1A	Iasis (Weelia) cylindrica	Blastozooid	10	20		Plastic	Intact	Very active	0.0418	9/23/2021	7	90	P2	5.45	31.1	Same golden-hazed chain broken in 2 pieces - lost 1 zooid by the end	Temperature measured in D13 jar water (same dive computer value 81F)	208		
+238	D14-WC-B-1B	Iasis (Weelia) cylindrica	Blastozooid	10	28		Plastic	Intact	Very active	0.0314	9/23/2021	7	90	P4	4.99	31.1	Same golden-hazed chain broken in 2 pieces - lost 4 zooids by the end	Temperature measured in D13 jar water (same dive computer value 81F)	208		
+239	D14-WC-B-4	Iasis (Weelia) cylindrica	Blastozooid	10	34		Plastic	Intact	Very active	0.0314	9/23/2021	7	90	P5	4.81	31.1	Includes one little hyperiid amphipod	Temperature measured in D13 jar water (same dive computer value 81F)	208		
+240	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/23/2021	7	90	P3 control	6.25	31.1	Control local seawater	Temperature measured in D13 jar water (same dive computer value 81F)	72		
+241	D13-CA-B-2	Cyclosalpa affinis	Blastozooid	35	6		Plastic	Intact	Active		9/23/2021	7	120	P1	5.06	30.3	Found in D13, released-recaptured in D14.	Temperature measured in D13 jar water (same dive computer value 81F)	208		
+242	D14-WC-B-1A	Iasis (Weelia) cylindrica	Blastozooid	10	20		Plastic	Intact	Very active	0.0418	9/23/2021	7	120	P2	5.36	30.3	Same golden-hazed chain broken in 2 pieces - lost 1 zooid by the end	Temperature measured in D13 jar water (same dive computer value 81F)	208		
+243	D14-WC-B-1B	Iasis (Weelia) cylindrica	Blastozooid	10	28		Plastic	Intact	Very active	0.0314	9/23/2021	7	120	P4	4.74	30.3	Same golden-hazed chain broken in 2 pieces - lost 4 zooids by the end	Temperature measured in D13 jar water (same dive computer value 81F)	208		
+244	D14-WC-B-3	Iasis (Weelia) cylindrica	Blastozooid	10	34		Plastic	Intact	Very active	0.0314	9/23/2021	7	120	P5	4.53	30.3	Includes one little hyperiid amphipod	Temperature measured in D13 jar water (same dive computer value 81F)	208		
+245	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/23/2021	7	120	P3 control	6.26	30.3	Control local seawater	Temperature measured in D13 jar water (same dive computer value 81F)	72		
+246	D13-CA-B-2	Cyclosalpa affinis	Blastozooid	35	6		Plastic	Intact	Active		9/23/2021	7	150	P1	4.78	29.9	Found in D13, released-recaptured in D14.	Temperature measured in D13 jar water (same dive computer value 81F)	208		
+247	D14-WC-B-1A	Iasis (Weelia) cylindrica	Blastozooid	10	20		Plastic	Intact	Very active	0.0418	9/23/2021	7	150	P2	5.18	29.9	Same golden-hazed chain broken in 2 pieces - lost 1 zooid by the end	Temperature measured in D13 jar water (same dive computer value 81F)	208		
+248	D14-WC-B-1B	Iasis (Weelia) cylindrica	Blastozooid	10	28		Plastic	Intact	Very active	0.0314	9/23/2021	7	150	P4	4.45	29.9	Same golden-hazed chain broken in 2 pieces - lost 4 zooids by the end	Temperature measured in D13 jar water (same dive computer value 81F)	208		
+249	D14-WC-B-3	Iasis (Weelia) cylindrica	Blastozooid	10	34		Plastic	Intact	Very active	0.0314	9/23/2021	7	150	P5	4.25	29.9	Includes one little hyperiid amphipod	Temperature measured in D13 jar water (same dive computer value 81F)	208		
+250	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/23/2021	7	150	P3 control	6.25	29.9	Control local seawater	Temperature measured in D13 jar water (same dive computer value 81F)	72		
+251	D13-CA-B-3	Cyclosalpa affinis	Blastozooid	35	6		Plastic	Intact	Active		9/23/2021	7	180	P1	4.62	29.5	Found in D13, released-recaptured in D14.	Temperature measured in D13 jar water (same dive computer value 81F)	208		
+252	D14-WC-B-1A	Iasis (Weelia) cylindrica	Blastozooid	10	20		Plastic	Intact	Very active	0.0418	9/23/2021	7	180	P2	5.04	29.5	Same golden-hazed chain broken in 2 pieces - lost 1 zooid by the end	Temperature measured in D13 jar water (same dive computer value 81F)	208		
+253	D14-WC-B-1B	Iasis (Weelia) cylindrica	Blastozooid	10	28		Plastic	Intact	Very active	0.0314	9/23/2021	7	180	P4	4.21	29.5	Same golden-hazed chain broken in 2 pieces - lost 4 zooids by the end	Temperature measured in D13 jar water (same dive computer value 81F)	208		
+254	D14-WC-B-4	Iasis (Weelia) cylindrica	Blastozooid	10	34		Plastic	Intact	Very active	0.0314	9/23/2021	7	180	P5	4	29.5	Includes one little hyperiid amphipod	Temperature measured in D13 jar water (same dive computer value 81F)	208		
+255	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/23/2021	7	180	P3 control	6.23	29.5	Control local seawater	Temperature measured in D13 jar water (same dive computer value 81F)	72		
+256	D13-CA-B-3	Cyclosalpa affinis	Blastozooid	35	6		Plastic	Intact	Active		9/23/2021	7	246	P1	4.14	29.5	Found in D13, released-recaptured in D14.	Temperature measured in D13 jar water (same dive computer value 81F)	208		
+257	D14-WC-B-1A	Iasis (Weelia) cylindrica	Blastozooid	10	20		Plastic	Intact	Very active	0.0418	9/23/2021	7	246	P2	4.71	29.5	Same golden-hazed chain broken in 2 pieces - lost 1 zooid by the end	Temperature measured in D13 jar water (same dive computer value 81F)	208		
+258	D14-WC-B-1B	Iasis (Weelia) cylindrica	Blastozooid	10	28		Plastic	Intact	Very active	0.0314	9/23/2021	7	246	P4	3.84	29.5	Same golden-hazed chain broken in 2 pieces - lost 4 zooids by the end	Temperature measured in D13 jar water (same dive computer value 81F)	208		
+259	D14-WC-B-4	Iasis (Weelia) cylindrica	Blastozooid	10	34		Plastic	Intact	Very active	0.0314	9/23/2021	7	246	P5	3.43	29.5	Includes one little hyperiid amphipod	Temperature measured in D13 jar water (same dive computer value 81F)	208		
+260	NA	NA	NA	NA	NA		Plastic	Intact	NA		9/23/2021	7	246	P3 control	6.11	29.5	Control local seawater	Temperature measured in D13 jar water (same dive computer value 81F)	72		
+261	D15-BR-B-1	Brooksia rostrata	Blastozooid	10	8	0.8	Plastic	Intact	Moderate		4/19/2022	8	0	P1	6.41	25	Pregnant	Temperature measured in surface water	208	NA	17:44
+262	D15-CPol-B-1	Cyclosalpa sewelli	Blastozooid	15	7	4.4	Plastic	Intact	Moderate		4/19/2022	8	0	P2	6.39	25	Species unclear, 2 light organs, C-shaped dorsal organ	Temperature measured in surface water	208	NA	17:44
+263	D15-CAff-B-1	Cyclosalpa affinis	Blastozooid	50	6	42	Plastic	Intact	Active		4/19/2022	8	0	P4	5.47	25	Pregnant, occupies most of the jar space.	Temperature measured in surface water	208	NA	17:44
+264	D15-BR-B-2	Brooksia rostrata	Blastozooid	3	14		Plastic	Intact	Moderate		4/19/2022	8	0	P5	6.53	25	Broken from a towed chain form an oozoid.	Temperature measured in surface water	208	NA	17:44
+265	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/19/2022	8	0	P3 control	6.55	25	Control local seawater	Temperature measured in surface water	72	NA	17:44
+266	D15-BR-B-1	Brooksia rostrata	Blastozooid	10	8	0.8	Plastic	Intact	Moderate		4/19/2022	8	15	P1	6.52	24.7	Pregnant	Temperature measured in surface water	208	NA	17:44
+267	D15-CPol-B-1	Cyclosalpa sewelli	Blastozooid	15	7	4.4	Plastic	Intact	Moderate		4/19/2022	8	15	P2	6.49	24.7	Species unclear, 2 light organs, C-shaped dorsal organ	Temperature measured in surface water	208		
+268	D15-CAff-B-1	Cyclosalpa affinis	Blastozooid	50	6	42	Plastic	Intact	Active		4/19/2022	8	15	P4	4.95	24.7	Pregnant, occupies most of the jar space.	Temperature measured in surface water	208		
+269	D15-BR-B-2	Brooksia rostrata	Blastozooid	3	14		Plastic	Intact	Moderate		4/19/2022	8	15	P5	6.64	24.7	Broken from a towed chain form an oozoid.	Temperature measured in surface water	208		
+270	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/19/2022	8	15	P3 control	6.69	24.7	Control local seawater	Temperature measured in surface water	72		
+271	D15-BR-B-1	Brooksia rostrata	Blastozooid	10	8	0.8	Plastic	Intact	Moderate		4/19/2022	8	30	P1	6.55	24.3	Pregnant	Temperature measured in surface water	208		
+272	D15-CPol-B-1	Cyclosalpa sewelli	Blastozooid	15	7	4.4	Plastic	Intact	Moderate		4/19/2022	8	30	P2	6.52	24.3	Species unclear, 2 light organs, C-shaped dorsal organ	Temperature measured in surface water	208		
+273	D15-CAff-B-1	Cyclosalpa affinis	Blastozooid	50	6	42	Plastic	Intact	Active		4/19/2022	8	30	P4	4.3	24.3	Pregnant, occupies most of the jar space.	Temperature measured in surface water	208		
+274	D15-BR-B-2	Brooksia rostrata	Blastozooid	3	14		Plastic	Intact	Moderate		4/19/2022	8	30	P5	6.72	24.3	Broken from a towed chain form an oozoid.	Temperature measured in surface water	208		
+275	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/19/2022	8	30	P3 control	6.78	24.3	Control local seawater	Temperature measured in surface water	72		
+276	D15-BR-B-1	Brooksia rostrata	Blastozooid	10	8	0.8	Plastic	Intact	Moderate		4/19/2022	8	45	P1	6.57	24.3	Pregnant	Temperature measured in surface water	208		
+277	D15-CPol-B-1	Cyclosalpa sewelli	Blastozooid	15	7	4.4	Plastic	Intact	Moderate		4/19/2022	8	45	P2	6.52	24.3	Species unclear, 2 light organs, C-shaped dorsal organ	Temperature measured in surface water	208		
+278	D15-CAff-B-1	Cyclosalpa affinis	Blastozooid	50	6	42	Plastic	Intact	Active		4/19/2022	8	45	P4	3.64	24.3	Pregnant, occupies most of the jar space.	Temperature measured in surface water	208		
+279	D15-BR-B-2	Brooksia rostrata	Blastozooid	3	14		Plastic	Intact	Moderate		4/19/2022	8	45	P5	6.73	24.3	Broken from a towed chain form an oozoid.	Temperature measured in surface water	208		
+280	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/19/2022	8	45	P3 control	6.77	24.3	Control local seawater	Temperature measured in surface water	72		
+281	D15-BR-B-1	Brooksia rostrata	Blastozooid	10	8	0.8	Plastic	Intact	Moderate		4/19/2022	8	63	P1	6.6	24	Pregnant	Temperature measured in surface water	208		
+282	D15-CPol-B-1	Cyclosalpa sewelli	Blastozooid	15	7	4.4	Plastic	Intact	Moderate		4/19/2022	8	63	P2	6.52	24	Species unclear, 2 light organs, C-shaped dorsal organ	Temperature measured in surface water	208		
+283	D15-CAff-B-1	Cyclosalpa affinis	Blastozooid	50	6	42	Plastic	Intact	Active		4/19/2022	8	63	P4	3.07	24	Pregnant, occupies most of the jar space.	Temperature measured in surface water	208		
+284	D15-BR-B-2	Brooksia rostrata	Blastozooid	3	14		Plastic	Intact	Moderate		4/19/2022	8	63	P5	6.79	24	Broken from a towed chain form an oozoid.	Temperature measured in surface water	208		
+285	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/19/2022	8	63	P3 control	6.82	24	Control local seawater	Temperature measured in surface water	72		
+286	D15-BR-B-1	Brooksia rostrata	Blastozooid	10	8	0.8	Plastic	Intact	Moderate		4/19/2022	8	93	P1	6.64	23.5	Pregnant	Temperature measured in surface water	208		
+287	D15-CPol-B-1	Cyclosalpa sewelli	Blastozooid	15	7	4.4	Plastic	Intact	Moderate		4/19/2022	8	93	P2	6.49	23.5	Species unclear, 2 light organs, C-shaped dorsal organ	Temperature measured in surface water	208		
+288	D15-CAff-B-1	Cyclosalpa affinis	Blastozooid	50	6	42	Plastic	Intact	Active		4/19/2022	8	93	P4	2.16	23.5	Pregnant, occupies most of the jar space.	Temperature measured in surface water	208		
+289	D15-BR-B-2	Brooksia rostrata	Blastozooid	3	14		Plastic	Intact	Moderate		4/19/2022	8	93	P5	6.84	23.5	Broken from a towed chain form an oozoid.	Temperature measured in surface water	208		
+290	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/19/2022	8	93	P3 control	6.82	23.5	Control local seawater	Temperature measured in surface water	72		
+291	D15-BR-B-1	Brooksia rostrata	Blastozooid	10	8	0.8	Plastic	Intact	Moderate		4/19/2022	8	123	P1	6.56	23.6	Pregnant	Temperature measured in surface water	208		
+292	D15-CPol-B-1	Cyclosalpa sewelli	Blastozooid	15	7	4.4	Plastic	Intact	Moderate		4/19/2022	8	123	P2	6.39	23.6	Species unclear, 2 light organs, C-shaped dorsal organ	Temperature measured in surface water	208		
+293	D15-CAff-B-1	Cyclosalpa affinis	Blastozooid	50	6	42	Plastic	Intact	Active		4/19/2022	8	123	P4	1.43	23.6	Pregnant, occupies most of the jar space.	Temperature measured in surface water	208		
+294	D15-BR-B-2	Brooksia rostrata	Blastozooid	3	14		Plastic	Intact	Moderate		4/19/2022	8	123	P5	6.77	23.6	Broken from a towed chain form an oozoid.	Temperature measured in surface water	208		
+295	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/19/2022	8	123	P3 control	6.76	23.6	Control local seawater	Temperature measured in surface water	72		
+296	D17-Caff-B-1	Cyclosalpa affinis	Blastozooid	35	11	27.5	Plastic	Intact	Moderate		4/20/2022	9	0	P4	5.99	25.1	2 whorls		208	NA	17:53
+297	D17-BR-OS-1	Brooksia rostrata	Oozoid+Stolon	25	61	0.5	Plastic	Intact	Active		4/20/2022	9	0	P5	6.37	25.1	Oozoid (25mm) with developing stolon of 60bz (0.5-3mm long)		208	NA	17:53
+298	D17-Caff-B-2	Cyclosalpa affinis	Blastozooid	40	8	48	Plastic	Intact	Active		4/20/2022	9	0	P7	6.33	25.1		In 980 ml jar	980	NA	17:53
+299	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/20/2022	9	0	P3 control	6.44	25.1	Control local seawater		72	NA	17:53
+300	D17-Caff-B-1	Cyclosalpa affinis	Blastozooid	35	11	27.5	Plastic	Intact	Moderate		4/20/2022	9	15	P4	5.61	24.9	2 whorls		208		
+301	D17-BR-OS-1	Brooksia rostrata	Oozoid+Stolon	25	61	0.5	Plastic	Intact	Active		4/20/2022	9	15	P5	6.47	24.9	Oozoid (25mm) with developing stolon of 60bz (0.5-3mm long)		208		
+302	D17-Caff-B-2	Cyclosalpa affinis	Blastozooid	40	8	48	Plastic	Intact	Active		4/20/2022	9	15	P7	6.29	24.9		In 980 ml jar	980		
+303	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/20/2022	9	15	P3 control	6.54	24.9	Control local seawater		72		
+304	D17-Caff-B-1	Cyclosalpa affinis	Blastozooid	35	11	27.5	Plastic	Intact	Moderate		4/20/2022	9	30	P4	5.27	24.8	2 whorls		208		
+305	D17-BR-OS-1	Brooksia rostrata	Oozoid+Stolon	25	61	0.5	Plastic	Intact	Active		4/20/2022	9	30	P5	6.5	24.8	Oozoid (25mm) with developing stolon of 60bz (0.5-3mm long)		208		
+306	D17-Caff-B-2	Cyclosalpa affinis	Blastozooid	40	8	48	Plastic	Intact	Active		4/20/2022	9	30	P7	6.2	24.8		In 980 ml jar	980		
+307	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/20/2022	9	30	P3 control	6.57	24.8	Control local seawater		72		
+308	D17-Caff-B-1	Cyclosalpa affinis	Blastozooid	35	11	27.5	Plastic	Intact	Moderate		4/20/2022	9	45	P4	4.94	24.4	2 whorls		208		
+309	D17-BR-OS-1	Brooksia rostrata	Oozoid+Stolon	25	61	0.5	Plastic	Intact	Active		4/20/2022	9	45	P5	6.54	24.4	Oozoid (25mm) with developing stolon of 60bz (0.5-3mm long)		208		
+310	D17-Caff-B-2	Cyclosalpa affinis	Blastozooid	40	8	48	Plastic	Intact	Active		4/20/2022	9	45	P7	6.17	24.4		In 980 ml jar	980		
+311	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/20/2022	9	45	P3 control	6.64	24.4	Control local seawater		72		
+312	D17-Caff-B-1	Cyclosalpa affinis	Blastozooid	35	11	27.5	Plastic	Intact	Moderate		4/20/2022	9	60	P4	4.58	24.2	2 whorls		208		
+313	D17-BR-OS-1	Brooksia rostrata	Oozoid+Stolon	25	61	0.5	Plastic	Intact	Active		4/20/2022	9	60	P5	6.53	24.2	Oozoid (25mm) with developing stolon of 60bz (0.5-3mm long)		208		
+314	D17-Caff-B-2	Cyclosalpa affinis	Blastozooid	40	8	48	Plastic	Intact	Active		4/20/2022	9	60	P7	6.11	24.2		In 980 ml jar	980		
+315	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/20/2022	9	60	P3 control	6.64	24.2	Control local seawater		72		
+316	D17-Caff-B-1	Cyclosalpa affinis	Blastozooid	35	11	27.5	Plastic	Intact	Moderate		4/20/2022	9	90	P4	3.87	23.8	2 whorls		208		
+317	D17-BR-OS-1	Brooksia rostrata	Oozoid+Stolon	25	61	0.5	Plastic	Intact	Active		4/20/2022	9	90	P5	6.56	23.8	Oozoid (25mm) with developing stolon of 60bz (0.5-3mm long)		208		
+318	D17-Caff-B-2	Cyclosalpa affinis	Blastozooid	40	8	48	Plastic	Intact	Active		4/20/2022	9	90	P7	6	23.8		In 980 ml jar	980		
+319	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/20/2022	9	90	P3 control	6.65	23.8	Control local seawater		72		
+320	D17-Caff-B-1	Cyclosalpa affinis	Blastozooid	35	11	27.5	Plastic	Intact	Moderate		4/20/2022	9	120	P4	3.32	23.7	2 whorls		208		
+321	D17-BR-OS-1	Brooksia rostrata	Oozoid+Stolon	25	61	0.5	Plastic	Intact	Active		4/20/2022	9	120	P5	6.53	23.7	Oozoid (25mm) with developing stolon of 60bz (0.5-3mm long)		208		
+322	D17-Caff-B-2	Cyclosalpa affinis	Blastozooid	40	8	48	Plastic	Intact	Active		4/20/2022	9	120	P7	5.86	23.7		In 980 ml jar	980		
+323	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/20/2022	9	120	P3 control	6.61	23.7	Control local seawater		72		
+324	D19-Pso-B-3	Pegea socia	Blastozooid	65	1	18	Plastic	Intact	Moderate		4/21/2022	10	0	P1	6.05	25	Single blastozooid		208	NA	17:40
+325	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/21/2022	10	0	P2	6.41	25	Control local seawater		208	NA	17:40
+326	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/21/2022	10	0	P4	6.44	25	Control local seawater		208	NA	17:40
+327	D19-Cbak-B-1	Cyclosalpa bakeri	Blastozooid	12	6	3.6	Plastic	Intact	Moderate		4/21/2022	10	0	P5	6.41	25	Pregnant, deep collected		208	NA	17:40
+328	D19-Pso-B-1	Pegea socia	Blastozooid	80	5	65	Plastic	Intact	Moderate		4/21/2022	10	0	P6	5.99	25	Deep collected	In 980 ml jar	980	NA	17:40
+329	D19-Pso-B-2	Pegea socia	Blastozooid	65	5	50	Plastic	Intact	Moderate		4/21/2022	10	0	P7	6.22	25		In 980 ml jar	980	NA	17:40
+330	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/21/2022	10	0	P3 control	6.32	25	Control local seawater		72	NA	17:40
+331	D19-Pso-B-3	Pegea socia	Blastozooid	65	1	18	Plastic	Intact	Moderate		4/21/2022	10	15	P1	6.02	24.7	Single blastozooid		208		
+332	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/21/2022	10	15	P2	6.49	24.7	Control local seawater		208		
+333	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/21/2022	10	15	P4	6.52	24.7	Control local seawater		208		
+334	D19-Cbak-B-1	Cyclosalpa bakeri	Blastozooid	12	6	3.6	Plastic	Intact	Moderate		4/21/2022	10	15	P5	6.49	24.7	Pregnant, deep collected		208		
+335	D19-Pso-B-1	Pegea socia	Blastozooid	80	5	65	Plastic	Intact	Moderate		4/21/2022	10	15	P6	5.92	24.7	Deep collected	In 980 ml jar	980		
+336	D19-Pso-B-2	Pegea socia	Blastozooid	65	5	50	Plastic	Intact	Moderate		4/21/2022	10	15	P7	6.14	24.7		In 980 ml jar	980		
+337	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/21/2022	10	15	P3 control	6.49	24.7	Control local seawater		72		
+338	D19-Pso-B-3	Pegea socia	Blastozooid	65	1	18	Plastic	Intact	Moderate		4/21/2022	10	30	P1	5.95	24.4	Single blastozooid		208		
+339	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/21/2022	10	30	P2	6.57	24.4	Control local seawater		208		
+340	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/21/2022	10	30	P4	6.57	24.4	Control local seawater		208		
+341	D19-Cbak-B-1	Cyclosalpa bakeri	Blastozooid	12	6	3.6	Plastic	Intact	Moderate		4/21/2022	10	30	P5	6.52	24.4	Pregnant, deep collected		208		
+342	D19-Pso-B-1	Pegea socia	Blastozooid	80	5	65	Plastic	Intact	Moderate		4/21/2022	10	30	P6	5.73	24.4	Deep collected	In 980 ml jar	980		
+343	D19-Pso-B-2	Pegea socia	Blastozooid	65	5	50	Plastic	Intact	Moderate		4/21/2022	10	30	P7	5.94	24.4		In 980 ml jar	980		
+344	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/21/2022	10	30	P3 control	6.57	24.4	Control local seawater		72		
+345	D19-Pso-B-3	Pegea socia	Blastozooid	65	1	18	Plastic	Intact	Moderate		4/21/2022	10	45	P1	5.82	24.1	Single blastozooid		208		
+346	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/21/2022	10	45	P2	6.6	24.1	Control local seawater		208		
+347	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/21/2022	10	45	P4	6.63	24.1	Control local seawater		208		
+348	D19-Cbak-B-1	Cyclosalpa bakeri	Blastozooid	12	6	3.6	Plastic	Intact	Moderate		4/21/2022	10	45	P5	6.57	24.1	Pregnant, deep collected		208		
+349	D19-Pso-B-1	Pegea socia	Blastozooid	80	5	65	Plastic	Intact	Moderate		4/21/2022	10	45	P6	5.57	24.1	Deep collected	In 980 ml jar	980		
+350	D19-Pso-B-2	Pegea socia	Blastozooid	65	5	50	Plastic	Intact	Moderate		4/21/2022	10	45	P7	5.83	24.1		In 980 ml jar	980		
+351	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/21/2022	10	45	P3 control	6.63	24.1	Control local seawater		72		
+352	D19-Pso-B-3	Pegea socia	Blastozooid	65	1	18	Plastic	Intact	Moderate		4/21/2022	10	62	P1	5.7	23.8	Single blastozooid		208		
+353	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/21/2022	10	62	P2	6.65	23.8	Control local seawater		208		
+354	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/21/2022	10	62	P4	6.68	23.8	Control local seawater		208		
+355	D19-Cbak-B-1	Cyclosalpa bakeri	Blastozooid	12	6	3.6	Plastic	Intact	Moderate		4/21/2022	10	62	P5	6.58	23.8	Pregnant, deep collected		208		
+356	D19-Pso-B-1	Pegea socia	Blastozooid	80	5	65	Plastic	Intact	Moderate		4/21/2022	10	62	P6	5.35	23.8	Deep collected	In 980 ml jar	980		
+357	D19-Pso-B-2	Pegea socia	Blastozooid	65	5	50	Plastic	Intact	Moderate		4/21/2022	10	62	P7	5.57	23.8		In 980 ml jar	980		
+358	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/21/2022	10	62	P3 control	6.63	23.8	Control local seawater		72		
+359	D19-Pso-B-3	Pegea socia	Blastozooid	65	1	18	Plastic	Intact	Moderate		4/21/2022	10	90	P1	5.47	23.8	Single blastozooid		208		
+360	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/21/2022	10	90	P2	6.74	23.8	Control local seawater		208		
+361	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/21/2022	10	90	P4	6.78	23.8	Control local seawater		208		
+362	D19-Cbak-B-1	Cyclosalpa bakeri	Blastozooid	12	6	3.6	Plastic	Intact	Moderate		4/21/2022	10	90	P5	6.61	23.8	Pregnant, deep collected		208		
+363	D19-Pso-B-1	Pegea socia	Blastozooid	80	5	65	Plastic	Intact	Moderate		4/21/2022	10	90	P6	4.89	23.8	Deep collected	In 980 ml jar	980		
+364	D19-Pso-B-2	Pegea socia	Blastozooid	65	5	50	Plastic	Intact	Moderate		4/21/2022	10	90	P7	5.24	23.8		In 980 ml jar	980		
+365	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/21/2022	10	90	P3 control	6.63	23.8	Control local seawater		72		
+366	D19-Pso-B-3	Pegea socia	Blastozooid	65	1	18	Plastic	Intact	Moderate		4/21/2022	10	120	P1	5.08	23.8	Single blastozooid		208		
+367	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/21/2022	10	120	P2	6.5	23.8	Control local seawater		208		
+368	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/21/2022	10	120	P4	6.52	23.8	Control local seawater		208		
+369	D19-Cbak-B-1	Cyclosalpa bakeri	Blastozooid	12	6	3.6	Plastic	Intact	Moderate		4/21/2022	10	120	P5	6.34	23.8	Pregnant, deep collected		208		
+370	D19-Pso-B-1	Pegea socia	Blastozooid	80	5	65	Plastic	Intact	Moderate		4/21/2022	10	120	P6	4.43	23.8	Deep collected	In 980 ml jar	980		
+371	D19-Pso-B-2	Pegea socia	Blastozooid	65	5	50	Plastic	Intact	Moderate		4/21/2022	10	120	P7	4.9	23.8		In 980 ml jar	980		
+372	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/21/2022	10	120	P3 control	6.46	23.8	Control local seawater		72		
+373	D21-BR-OS-1	Brooksia rostrata	Oozoid+Stolon	25	43	1	Plastic	Intact	Active		4/22/2022	11	0	P1	6.29	25.3	Oozoid (25mm) + stolon (42 x 1-3mm), stolon broke up halfway		208	NA	18:05
+374	D21-BR-B-1	Brooksia rostrata	Blastozooid	4	14	0.2	Plastic	Intact	Moderate		4/22/2022	11	0	P2	6.34	25.3	Colony disintegrated into loose zooids after refresh during safety stop		208	NA	18:05
+375	D21-Icyl-B-1	Iasis (Weelia) cylindrica	Blastozooid	7	21	1.3	Plastic	Intact	Moderate		4/22/2022	11	0	P4	6.31	25.3			208	NA	18:05
+376	D21-BR-OS-2	Brooksia rostrata	Oozoid+Stolon	30	37	1	Plastic	Intact	Active		4/22/2022	11	0	P5	6.35	25.3			208	NA	18:05
+377	D21-Icyl-B-2A	Iasis (Weelia) cylindrica	Blastozooid	15	28	6	Plastic	Intact	Very active		4/22/2022	11	0	P6	6.43	25.3	Same specimen as D21-Icyl-B-2B, broken up from larger colony	In 980 ml jar	980	NA	18:05
+378	D21-Icyl-B-2B	Iasis (Weelia) cylindrica	Blastozooid	15	15	3	Plastic	Intact	Very active		4/22/2022	11	0	P7	6.44	25.3	Same specimen as D21-Icyl-B-2A, broken up from larger colony	In 980 ml jar	980	NA	18:05
+379	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/22/2022	11	0	P3 control	6.38	25.3	Control local seawater		72		
+380	D21-BR-OS-1	Brooksia rostrata	Oozoid+Stolon	25	43	1	Plastic	Intact	Active		4/22/2022	11	15	P1	6.3	25.1	Oozoid (25mm) + stolon (42 x 1-3mm), stolon broke up halfway		208		
+381	D21-BR-B-1	Brooksia rostrata	Blastozooid	4	14	0.2	Plastic	Intact	Moderate		4/22/2022	11	15	P2	6.35	25.1	Colony disintegrated into loose zooids after refresh during safety stop		208		
+382	D21-Icyl-B-1	Iasis (Weelia) cylindrica	Blastozooid	7	21	1.3	Plastic	Intact	Moderate		4/22/2022	11	15	P4	6.3	25.1			208		
+383	D21-BR-OS-2	Brooksia rostrata	Oozoid+Stolon	30	37	1	Plastic	Intact	Active		4/22/2022	11	15	P5	6.36	25.1			208		
+384	D21-Icyl-B-2A	Iasis (Weelia) cylindrica	Blastozooid	15	28	6	Plastic	Intact	Very active		4/22/2022	11	15	P6	6.44	25.1	Same specimen as D21-Icyl-B-2B, broken up from larger colony	In 980 ml jar	980		
+385	D21-Icyl-B-2B	Iasis (Weelia) cylindrica	Blastozooid	15	15	3	Plastic	Intact	Very active		4/22/2022	11	15	P7	6.44	25.1	Same specimen as D21-Icyl-B-2A, broken up from larger colony	In 980 ml jar	980		
+386	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/22/2022	11	15	P3 control	6.44	25.1	Control local seawater		72		
+387	D21-BR-OS-1	Brooksia rostrata	Oozoid+Stolon	25	43	1	Plastic	Intact	Active		4/22/2022	11	30	P1	6.3	24.8	Oozoid (25mm) + stolon (42 x 1-3mm), stolon broke up halfway		208		
+388	D21-BR-B-1	Brooksia rostrata	Blastozooid	4	14	0.2	Plastic	Intact	Moderate		4/22/2022	11	30	P2	6.4	24.8	Colony disintegrated into loose zooids after refresh during safety stop		208		
+389	D21-Icyl-B-1	Iasis (Weelia) cylindrica	Blastozooid	7	21	1.3	Plastic	Intact	Moderate		4/22/2022	11	30	P4	6.3	24.8			208		
+390	D21-BR-OS-2	Brooksia rostrata	Oozoid+Stolon	30	37	1	Plastic	Intact	Active		4/22/2022	11	30	P5	6.4	24.8			208		
+391	D21-Icyl-B-2A	Iasis (Weelia) cylindrica	Blastozooid	15	28	6	Plastic	Intact	Very active		4/22/2022	11	30	P6	6.43	24.8	Same specimen as D21-Icyl-B-2B, broken up from larger colony	In 980 ml jar	980		
+392	D21-Icyl-B-2B	Iasis (Weelia) cylindrica	Blastozooid	15	15	3	Plastic	Intact	Very active		4/22/2022	11	30	P7	6.5	24.8	Same specimen as D21-Icyl-B-2A, broken up from larger colony	In 980 ml jar	980		
+393	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/22/2022	11	30	P3 control	6.48	24.8	Control local seawater		72		
+394	D21-BR-OS-1	Brooksia rostrata	Oozoid+Stolon	25	43	1	Plastic	Intact	Active		4/22/2022	11	45	P1	6.31	24.6	Oozoid (25mm) + stolon (42 x 1-3mm), stolon broke up halfway		208		
+395	D21-BR-B-1	Brooksia rostrata	Blastozooid	4	14	0.2	Plastic	Intact	Moderate		4/22/2022	11	45	P2	6.42	24.6	Colony disintegrated into loose zooids after refresh during safety stop		208		
+396	D21-Icyl-B-1	Iasis (Weelia) cylindrica	Blastozooid	7	21	1.3	Plastic	Intact	Moderate		4/22/2022	11	45	P4	6.29	24.6			208		
+397	D21-BR-OS-2	Brooksia rostrata	Oozoid+Stolon	30	37	1	Plastic	Intact	Active		4/22/2022	11	45	P5	6.42	24.6			208		
+398	D21-Icyl-B-2A	Iasis (Weelia) cylindrica	Blastozooid	15	28	6	Plastic	Intact	Very active		4/22/2022	11	45	P6	6.43	24.6	Same specimen as D21-Icyl-B-2B, broken up from larger colony	In 980 ml jar	980		
+399	D21-Icyl-B-2B	Iasis (Weelia) cylindrica	Blastozooid	15	15	3	Plastic	Intact	Very active		4/22/2022	11	45	P7	6.49	24.6	Same specimen as D21-Icyl-B-2A, broken up from larger colony	In 980 ml jar	980		
+400	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/22/2022	11	45	P3 control	6.51	24.6	Control local seawater		72		
+401	D21-BR-OS-1	Brooksia rostrata	Oozoid+Stolon	25	43	1	Plastic	Intact	Active		4/22/2022	11	60	P1	6.38	24.2	Oozoid (25mm) + stolon (42 x 1-3mm), stolon broke up halfway		208		
+402	D21-BR-B-1	Brooksia rostrata	Blastozooid	4	14	0.2	Plastic	Intact	Moderate		4/22/2022	11	60	P2	6.5	24.2	Colony disintegrated into loose zooids after refresh during safety stop		208		
+403	D21-Icyl-B-1	Iasis (Weelia) cylindrica	Blastozooid	7	21	1.3	Plastic	Intact	Moderate		4/22/2022	11	60	P4	6.35	24.2			208		
+404	D21-BR-OS-2	Brooksia rostrata	Oozoid+Stolon	30	37	1	Plastic	Intact	Active		4/22/2022	11	60	P5	6.48	24.2			208		
+405	D21-Icyl-B-2A	Iasis (Weelia) cylindrica	Blastozooid	15	28	6	Plastic	Intact	Very active		4/22/2022	11	60	P6	6.44	24.2	Same specimen as D21-Icyl-B-2B, broken up from larger colony	In 980 ml jar	980		
+406	D21-Icyl-B-2B	Iasis (Weelia) cylindrica	Blastozooid	15	15	3	Plastic	Intact	Very active		4/22/2022	11	60	P7	6.56	24.2	Same specimen as D21-Icyl-B-2A, broken up from larger colony	In 980 ml jar	980		
+407	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/22/2022	11	60	P3 control	6.56	24.2	Control local seawater		72		
+408	D21-BR-OS-1	Brooksia rostrata	Oozoid+Stolon	25	43	1	Plastic	Intact	Active		4/22/2022	11	90	P1	6.32	24.2	Oozoid (25mm) + stolon (42 x 1-3mm), stolon broke up halfway		208		
+409	D21-BR-B-1	Brooksia rostrata	Blastozooid	4	14	0.2	Plastic	Intact	Moderate		4/22/2022	11	90	P2	6.5	24.2	Colony disintegrated into loose zooids after refresh during safety stop		208		
+410	D21-Icyl-B-1	Iasis (Weelia) cylindrica	Blastozooid	7	21	1.3	Plastic	Intact	Moderate		4/22/2022	11	90	P4	6.28	24.2			208		
+411	D21-BR-OS-2	Brooksia rostrata	Oozoid+Stolon	30	37	1	Plastic	Intact	Active		4/22/2022	11	90	P5	6.46	24.2			208		
+412	D21-Icyl-B-2A	Iasis (Weelia) cylindrica	Blastozooid	15	28	6	Plastic	Intact	Very active		4/22/2022	11	90	P6	6.36	24.2	Same specimen as D21-Icyl-B-2B, broken up from larger colony	In 980 ml jar	980		
+413	D21-Icyl-B-2B	Iasis (Weelia) cylindrica	Blastozooid	15	15	3	Plastic	Intact	Very active		4/22/2022	11	90	P7	6.5	24.2	Same specimen as D21-Icyl-B-2A, broken up from larger colony	In 980 ml jar	980		
+414	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/22/2022	11	90	P3 control	6.54	24.2	Control local seawater		72		
+415	D21-BR-OS-1	Brooksia rostrata	Oozoid+Stolon	25	43	1	Plastic	Intact	Active		4/22/2022	11	120	P1	6.32	24.1	Oozoid (25mm) + stolon (42 x 1-3mm), stolon broke up halfway		208		
+416	D21-BR-B-1	Brooksia rostrata	Blastozooid	4	14	0.2	Plastic	Intact	Moderate		4/22/2022	11	120	P2	6.46	24.1	Colony disintegrated into loose zooids after refresh during safety stop		208		
+417	D21-Icyl-B-1	Iasis (Weelia) cylindrica	Blastozooid	7	21	1.3	Plastic	Intact	Moderate		4/22/2022	11	120	P4	6.23	24.1			208		
+418	D21-BR-OS-2	Brooksia rostrata	Oozoid+Stolon	30	37	1	Plastic	Intact	Active		4/22/2022	11	120	P5	6.41	24.1			208		
+419	D21-Icyl-B-2A	Iasis (Weelia) cylindrica	Blastozooid	15	28	6	Plastic	Intact	Very active		4/22/2022	11	120	P6	6.25	24.1	Same specimen as D21-Icyl-B-2B, broken up from larger colony	In 980 ml jar	980		
+420	D21-Icyl-B-2B	Iasis (Weelia) cylindrica	Blastozooid	15	15	3	Plastic	Intact	Very active		4/22/2022	11	120	P7	6.45	24.1	Same specimen as D21-Icyl-B-2A, broken up from larger colony	In 980 ml jar	980		
+421	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/22/2022	11	120	P3 control	6.52	24.1	Control local seawater		72		
+422	D21-BR-OS-1	Brooksia rostrata	Oozoid+Stolon	25	43	1	Plastic	Intact	Active		4/22/2022	11	150	P1	6.29	24.1	Oozoid (25mm) + stolon (42 x 1-3mm), stolon broke up halfway		208		
+423	D21-BR-B-1	Brooksia rostrata	Blastozooid	4	14	0.2	Plastic	Intact	Moderate		4/22/2022	11	150	P2	6.45	24.1	Colony disintegrated into loose zooids after refresh during safety stop		208		
+424	D21-Icyl-B-1	Iasis (Weelia) cylindrica	Blastozooid	7	21	1.3	Plastic	Intact	Moderate		4/22/2022	11	150	P4	6.19	24.1			208		
+425	D21-BR-OS-2	Brooksia rostrata	Oozoid+Stolon	30	37	1	Plastic	Intact	Active		4/22/2022	11	150	P5	6.39	24.1			208		
+426	D21-Icyl-B-2A	Iasis (Weelia) cylindrica	Blastozooid	15	28	6	Plastic	Intact	Very active		4/22/2022	11	150	P6	6.18	24.1	Same specimen as D21-Icyl-B-2B, broken up from larger colony	In 980 ml jar	980		
+427	D21-Icyl-B-2B	Iasis (Weelia) cylindrica	Blastozooid	15	15	3	Plastic	Intact	Very active		4/22/2022	11	150	P7	6.43	24.1	Same specimen as D21-Icyl-B-2A, broken up from larger colony	In 980 ml jar	980		
+428	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/22/2022	11	150	P3 control	6.52	24.1	Control local seawater		72		
+429	D23-BR-OS-1	Brooksia rostrata	Oozoid+Stolon	30	1	0.5	Plastic	Intact	Active		4/24/2022	12	0	P1	6.39	25	Oozoid (30mm) + broken stolon (14 2mm zooids)		208	NA	18:15
+430	D23-BR-OS-2	Brooksia rostrata	Oozoid+Stolon	25	1	0.3	Plastic	Intact	Active		4/24/2022	12	0	P2	6.39	25	Oozoid (25mm) + broken stolon (6 1mm zooids)		208	NA	18:15
+431	D23-Cpol-B-1	Cyclosalpa sewelli	Blastozooid	35	1	2.4	Plastic	Intact	Moderate		4/24/2022	12	0	P4	6.37	25	Single blastozooid		208	NA	18:15
+432	D23-Ramb-B-1	Ritteriella amboinensis	Blastozooid	40	23	40	Plastic	Intact	Moderate		4/24/2022	12	0	P5	6.31	25	Disagregated zooids, pregnant. 19 blastozooids and 4 newborn oozoids.		208	NA	18:15
+433	D23-Pso-B-1	Pegea socia	Blastozooid	30	22	44	Plastic	Intact	Moderate		4/24/2022	12	0	P6	6.14	25		In 980 ml jar	980	NA	18:15
+434	D23-Icyl-B-1	Iasis (Weelia) cylindrica	Blastozooid	15	44	14.1	Plastic	Intact	Active		4/24/2022	12	0	P7	6.4	25	Caught ~60ft deep, broke into subchains	In 980 ml jar	980	NA	18:15
+435	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/24/2022	12	0	P3 control	6.48	25	Control local seawater		72	NA	18:15
+436	D23-BR-OS-1	Brooksia rostrata	Oozoid+Stolon	30	1	0.5	Plastic	Intact	Active		4/24/2022	12	15	P1	6.35	24.7	Oozoid (30mm) + broken stolon (14 2mm zooids)		208		
+437	D23-BR-OS-2	Brooksia rostrata	Oozoid+Stolon	25	1	0.3	Plastic	Intact	Active		4/24/2022	12	15	P2	6.41	24.7	Oozoid (25mm) + broken stolon (6 1mm zooids)		208		
+438	D23-Cpol-B-1	Cyclosalpa sewelli	Blastozooid	35	1	2.4	Plastic	Intact	Moderate		4/24/2022	12	15	P4	6.36	24.7	Single blastozooid		208		
+439	D23-Ramb-B-1	Ritteriella amboinensis	Blastozooid	40	23	40	Plastic	Intact	Moderate		4/24/2022	12	15	P5	6.16	24.7	Disagregated zooids, pregnant. 19 blastozooids and 4 newborn oozoids.		208		
+440	D23-Pso-B-1	Pegea socia	Blastozooid	30	22	44	Plastic	Intact	Moderate		4/24/2022	12	15	P6	6.09	24.7		In 980 ml jar	980		
+441	D23-Icyl-B-1	Iasis (Weelia) cylindrica	Blastozooid	15	44	14.1	Plastic	Intact	Active		4/24/2022	12	15	P7	6.39	24.7	Caught ~60ft deep, broke into subchains	In 980 ml jar	980		
+442	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/24/2022	12	15	P3 control	6.51	24.7	Control local seawater		72		
+443	D23-BR-OS-1	Brooksia rostrata	Oozoid+Stolon	30	1	0.5	Plastic	Intact	Active		4/24/2022	12	30	P1	6.4	24.5	Oozoid (30mm) + broken stolon (14 2mm zooids)		208		
+444	D23-BR-OS-2	Brooksia rostrata	Oozoid+Stolon	25	1	0.3	Plastic	Intact	Active		4/24/2022	12	30	P2	6.44	24.5	Oozoid (25mm) + broken stolon (6 1mm zooids)		208		
+445	D23-Cpol-B-1	Cyclosalpa sewelli	Blastozooid	35	1	2.4	Plastic	Intact	Moderate		4/24/2022	12	30	P4	6.36	24.5	Single blastozooid		208		
+446	D23-Ramb-B-1	Ritteriella amboinensis	Blastozooid	40	23	40	Plastic	Intact	Moderate		4/24/2022	12	30	P5	6.05	24.5	Disagregated zooids, pregnant. 19 blastozooids and 4 newborn oozoids.		208		
+447	D23-Pso-B-1	Pegea socia	Blastozooid	30	22	44	Plastic	Intact	Moderate		4/24/2022	12	30	P6	6	24.5		In 980 ml jar	980		
+448	D23-Icyl-B-1	Iasis (Weelia) cylindrica	Blastozooid	15	44	14.1	Plastic	Intact	Active		4/24/2022	12	30	P7	6.36	24.5	Caught ~60ft deep, broke into subchains	In 980 ml jar	980		
+449	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/24/2022	12	30	P3 control	6.55	24.5	Control local seawater		72		
+450	D23-BR-OS-1	Brooksia rostrata	Oozoid+Stolon	30	1	0.5	Plastic	Intact	Active		4/24/2022	12	45	P1	6.43	24.4	Oozoid (30mm) + broken stolon (14 2mm zooids)		208		
+451	D23-BR-OS-2	Brooksia rostrata	Oozoid+Stolon	25	1	0.3	Plastic	Intact	Active		4/24/2022	12	45	P2	6.44	24.4	Oozoid (25mm) + broken stolon (6 1mm zooids)		208		
+452	D23-Cpol-B-1	Cyclosalpa sewelli	Blastozooid	35	1	2.4	Plastic	Intact	Moderate		4/24/2022	12	45	P4	6.35	24.4	Single blastozooid		208		
+453	D23-Ramb-B-1	Ritteriella amboinensis	Blastozooid	40	23	40	Plastic	Intact	Moderate		4/24/2022	12	45	P5	5.99	24.4	Disagregated zooids, pregnant. 19 blastozooids and 4 newborn oozoids.		208		
+454	D23-Pso-B-1	Pegea socia	Blastozooid	30	22	44	Plastic	Intact	Moderate		4/24/2022	12	45	P6	5.92	24.4		In 980 ml jar	980		
+455	D23-Icyl-B-1	Iasis (Weelia) cylindrica	Blastozooid	15	44	14.1	Plastic	Intact	Active		4/24/2022	12	45	P7	6.32	24.4	Caught ~60ft deep, broke into subchains	In 980 ml jar	980		
+456	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/24/2022	12	45	P3 control	6.58	24.4	Control local seawater		72		
+457	D23-BR-OS-1	Brooksia rostrata	Oozoid+Stolon	30	1	0.5	Plastic	Intact	Active		4/24/2022	12	60	P1	6.46	24.2	Oozoid (30mm) + broken stolon (14 2mm zooids)		208		
+458	D23-BR-OS-2	Brooksia rostrata	Oozoid+Stolon	25	1	0.3	Plastic	Intact	Active		4/24/2022	12	60	P2	6.49	24.2	Oozoid (25mm) + broken stolon (6 1mm zooids)		208		
+459	D23-Cpol-B-1	Cyclosalpa sewelli	Blastozooid	35	1	2.4	Plastic	Intact	Moderate		4/24/2022	12	60	P4	6.37	24.2	Single blastozooid		208		
+460	D23-Ramb-B-1	Ritteriella amboinensis	Blastozooid	40	23	40	Plastic	Intact	Moderate		4/24/2022	12	60	P5	5.86	24.2	Disagregated zooids, pregnant. 19 blastozooids and 4 newborn oozoids.		208		
+461	D23-Pso-B-1	Pegea socia	Blastozooid	30	22	44	Plastic	Intact	Moderate		4/24/2022	12	60	P6	5.84	24.2		In 980 ml jar	980		
+462	D23-Icyl-B-1	Iasis (Weelia) cylindrica	Blastozooid	15	44	14.1	Plastic	Intact	Active		4/24/2022	12	60	P7	6.3	24.2	Caught ~60ft deep, broke into subchains	In 980 ml jar	980		
+463	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/24/2022	12	60	P3 control	6.6	24.2	Control local seawater		72		
+464	D23-BR-OS-1	Brooksia rostrata	Oozoid+Stolon	30	1	0.5	Plastic	Intact	Active		4/24/2022	12	123	P1	6.44	23.9	Oozoid (30mm) + broken stolon (14 2mm zooids)		208		
+465	D23-BR-OS-2	Brooksia rostrata	Oozoid+Stolon	25	1	0.3	Plastic	Intact	Active		4/24/2022	12	123	P2	6.42	23.9	Oozoid (25mm) + broken stolon (6 1mm zooids)		208		
+466	D23-Cpol-B-1	Cyclosalpa sewelli	Blastozooid	35	1	2.4	Plastic	Intact	Moderate		4/24/2022	12	123	P4	6.22	23.9	Single blastozooid		208		
+467	D23-Ramb-B-1	Ritteriella amboinensis	Blastozooid	40	23	40	Plastic	Intact	Moderate		4/24/2022	12	123	P5	5.32	23.9	Disagregated zooids, pregnant. 19 blastozooids and 4 newborn oozoids.		208		
+468	D23-Pso-B-1	Pegea socia	Blastozooid	30	22	44	Plastic	Intact	Moderate		4/24/2022	12	123	P6	5.27	23.9		In 980 ml jar	980		
+469	D23-Icyl-B-1	Iasis (Weelia) cylindrica	Blastozooid	15	44	14.1	Plastic	Intact	Active		4/24/2022	12	123	P7	6.01	23.9	Caught ~60ft deep, broke into subchains	In 980 ml jar	980		
+470	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/24/2022	12	123	P3 control	6.61	23.9	Control local seawater		72		
+471	D25-Cqua-B-1	Cyclosalpa quadriluminis	Blastozooid	25	4	4	Plastic	Intact	Moderate		4/25/2022	13	0	P1	6.21	25.4			208	NA	18:08
+472	D25-BR-B-1	Brooksia rostrata	Blastozooid	4	60	1	Plastic	Intact	Moderate		4/25/2022	13	0	P2	6.39	25.4			208	NA	18:08
+473	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/25/2022	13	0	P4	6.4	25.4	Control local seawater	Sealed early in dive	208	NA	18:08
+474	D25-Pso-B-1	Pegea socia	Blastozooid	42	7	35	Plastic	Intact	Active		4/25/2022	13	0	P6	6.39	25.4		In 980 ml jar	980	NA	18:08
+475	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/25/2022	13	0	P7	6.45	25.4	Control local seawater	Sealed early in dive, in 980 ml jar	980	NA	18:08
+476	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/25/2022	13	0	P3 control	6.37	25.4	Control local seawater		72	NA	18:08
+477	D25-Cqua-B-1	Cyclosalpa quadriluminis	Blastozooid	25	4	4	Plastic	Intact	Moderate		4/25/2022	13	15	P1	6.18	25.2			208		
+478	D25-BR-B-1	Brooksia rostrata	Blastozooid	4	60	1	Plastic	Intact	Moderate		4/25/2022	13	15	P2	6.45	25.2			208		
+479	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/25/2022	13	15	P4	6.47	25.2	Control local seawater	Sealed early in dive	208		
+480	D25-Pso-B-1	Pegea socia	Blastozooid	42	7	35	Plastic	Intact	Active		4/25/2022	13	15	P6	6.37	25.2		In 980 ml jar	980		
+481	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/25/2022	13	15	P7	6.53	25.2	Control local seawater	Sealed early in dive, in 980 ml jar	980		
+482	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/25/2022	13	15	P3 control	6.46	25.2	Control local seawater		72		
+483	D25-Cqua-B-1	Cyclosalpa quadriluminis	Blastozooid	25	4	4	Plastic	Intact	Moderate		4/25/2022	13	36	P1	6.15	24.9			208		
+484	D25-BR-B-1	Brooksia rostrata	Blastozooid	4	60	1	Plastic	Intact	Moderate		4/25/2022	13	36	P2	6.46	24.9			208		
+485	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/25/2022	13	36	P4	6.52	24.9	Control local seawater	Sealed early in dive	208		
+486	D25-Pso-B-1	Pegea socia	Blastozooid	42	7	35	Plastic	Intact	Active		4/25/2022	13	36	P6	6.34	24.9		In 980 ml jar	980		
+487	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/25/2022	13	36	P7	6.59	24.9	Control local seawater	Sealed early in dive, in 980 ml jar	980		
+488	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/25/2022	13	36	P3 control	6.54	24.9	Control local seawater		72		
+489	D25-Cqua-B-1	Cyclosalpa quadriluminis	Blastozooid	25	4	4	Plastic	Intact	Moderate		4/25/2022	13	51	P1	6.08	24.7			208		
+490	D25-BR-B-1	Brooksia rostrata	Blastozooid	4	60	1	Plastic	Intact	Moderate		4/25/2022	13	51	P2	6.49	24.7			208		
+491	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/25/2022	13	51	P4	6.55	24.7	Control local seawater	Sealed early in dive	208		
+492	D25-Pso-B-1	Pegea socia	Blastozooid	42	7	35	Plastic	Intact	Active		4/25/2022	13	51	P6	6.29	24.7		In 980 ml jar	980		
+493	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/25/2022	13	51	P7	6.62	24.7	Control local seawater	Sealed early in dive, in 980 ml jar	980		
+494	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/25/2022	13	51	P3 control	6.55	24.7	Control local seawater		72		
+495	D25-Cqua-B-1	Cyclosalpa quadriluminis	Blastozooid	25	4	4	Plastic	Intact	Moderate		4/25/2022	13	66	P1	6.03	24.6			208		
+496	D25-BR-B-1	Brooksia rostrata	Blastozooid	4	60	1	Plastic	Intact	Moderate		4/25/2022	13	66	P2	6.49	24.6			208		
+497	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/25/2022	13	66	P4	6.56	24.6	Control local seawater	Sealed early in dive	208		
+498	D25-Pso-B-1	Pegea socia	Blastozooid	42	7	35	Plastic	Intact	Active		4/25/2022	13	66	P6	6.26	24.6		In 980 ml jar	980		
+499	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/25/2022	13	66	P7	6.66	24.6	Control local seawater	Sealed early in dive, in 980 ml jar	980		
+500	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/25/2022	13	66	P3 control	6.57	24.6	Control local seawater		72		
+501	D25-Cqua-B-1	Cyclosalpa quadriluminis	Blastozooid	25	4	4	Plastic	Intact	Moderate		4/25/2022	13	126	P1	5.86	24.2			208		
+502	D25-BR-B-1	Brooksia rostrata	Blastozooid	4	60	1	Plastic	Intact	Moderate		4/25/2022	13	126	P2	6.52	24.2			208		
+503	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/25/2022	13	126	P4	6.57	24.2	Control local seawater	Sealed early in dive	208		
+504	D25-Pso-B-1	Pegea socia	Blastozooid	42	7	35	Plastic	Intact	Active		4/25/2022	13	126	P6	6.05	24.2		In 980 ml jar	980		
+505	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/25/2022	13	126	P7	6.69	24.2	Control local seawater	Sealed early in dive, in 980 ml jar	980		
+506	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		4/25/2022	13	126	P3 control	6.55	24.2	Control local seawater		72		
+507	D27-Ramb-B-2	Ritteriella amboinensis	Blastozooid	15	5	2.5	Plastic	Intact	Moderate		6/26/2022	14	0	P1	6.33	25.8	One zooid broke off		208	NA	23:23
+508	D27-Pcon-B-1	Pegea confoederata	Blastozooid	28	2	3.5	Plastic	Anesthetized	Anesthetized		6/26/2022	14	0	P2	6.23	25.8	Anesthetized		208	23:21	23:23
+509	D27-Ramb-B-1	Ritteriella amboinensis	Blastozooid	28	10	3.5	Plastic	Intact	Moderate		6/26/2022	14	0	P4	6.31	25.8	With Vibilia amphipod		208	NA	23:23
+510	D27-Sfus-B-1	Salpa fusiformis	Blastozooid	15	5	1.6	Plastic	Intact	Moderate		6/26/2022	14	0	P5	6.31	25.8	Broke apart		208	NA	23:23
+511	D27-Sasp-B-2	Salpa aspera	Blastozooid	39	13	15.5	Plastic	Intact	Active		6/26/2022	14	0	P6	5.93	25.8	A few broke off	Sealed early in dive, could not refresh before surfacing	980	NA	23:23
+512	D27-Sasp-B-1	Salpa aspera	Blastozooid	45	3	8	Plastic	Intact	Active		6/26/2022	14	0	P7	6.27	25.8	2 actively-swimming crustaceans got bycaught		980	NA	23:23
+513	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		6/26/2022	14	0	P3 control	6.35	25.8	Control local seawater	Bubble found	72	NA	23:23
+514	D27-Ramb-B-2	Ritteriella amboinensis	Blastozooid	15	5	2.5	Plastic	Intact	Moderate		6/26/2022	14	15	P1	6.3	25.5	One zooid broke off		208		
+515	D27-Pcon-B-1	Pegea confoederata	Blastozooid	28	2	3.5	Plastic	Anesthetized	Anesthetized		6/26/2022	14	15	P2	6.23	25.5	Anesthetized		208		
+516	D27-Ramb-B-1	Ritteriella amboinensis	Blastozooid	28	10	3.5	Plastic	Intact	Moderate		6/26/2022	14	15	P4	6.3	25.5	With Vibilia amphipod		208		
+517	D27-Sfus-B-1	Salpa fusiformis	Blastozooid	15	5	1.6	Plastic	Intact	Moderate		6/26/2022	14	15	P5	6.32	25.5	Broke apart		208		
+518	D27-Sasp-B-2	Salpa aspera	Blastozooid	39	13	15.5	Plastic	Intact	Active		6/26/2022	14	15	P6	6.03	25.5	A few broke off	Sealed early in dive, could not refresh before surfacing	980		
+519	D27-Sasp-B-1	Salpa aspera	Blastozooid	45	3	8	Plastic	Intact	Active		6/26/2022	14	15	P7	5.81	25.5	2 actively-swimming crustaceans got bycaught		980		
+520	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		6/26/2022	14	15	P3 control	6.36	25.5	Control local seawater	Bubble found	72		
+521	D27-Ramb-B-2	Ritteriella amboinensis	Blastozooid	15	5	2.5	Plastic	Intact	Moderate		6/26/2022	14	30	P1	6.32	25.3	One zooid broke off		208		
+522	D27-Pcon-B-1	Pegea confoederata	Blastozooid	28	2	3.5	Plastic	Anesthetized	Anesthetized		6/26/2022	14	30	P2	6.26	25.3	Anesthetized		208		
+523	D27-Ramb-B-1	Ritteriella amboinensis	Blastozooid	28	10	3.5	Plastic	Intact	Moderate		6/26/2022	14	30	P4	6.31	25.3	With Vibilia amphipod		208		
+524	D27-Sfus-B-1	Salpa fusiformis	Blastozooid	15	5	1.6	Plastic	Intact	Moderate		6/26/2022	14	30	P5	6.32	25.3	Broke apart		208		
+525	D27-Sasp-B-2	Salpa aspera	Blastozooid	39	13	15.5	Plastic	Intact	Active		6/26/2022	14	30	P6	5.72	25.3	A few broke off	Sealed early in dive, could not refresh before surfacing	980		
+526	D27-Sasp-B-1	Salpa aspera	Blastozooid	45	3	8	Plastic	Intact	Active		6/26/2022	14	30	P7	6.24	25.3	2 actively-swimming crustaceans got bycaught		980		
+527	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		6/26/2022	14	30	P3 control	6.36	25.3	Control local seawater	Bubble found	72		
+528	D27-Ramb-B-2	Ritteriella amboinensis	Blastozooid	15	5	2.5	Plastic	Intact	Moderate		6/26/2022	14	45	P1	6.33	24.9	One zooid broke off		208		
+529	D27-Pcon-B-1	Pegea confoederata	Blastozooid	28	2	3.5	Plastic	Anesthetized	Anesthetized		6/26/2022	14	45	P2	6.28	24.9	Anesthetized		208		
+530	D27-Ramb-B-1	Ritteriella amboinensis	Blastozooid	28	10	3.5	Plastic	Intact	Moderate		6/26/2022	14	45	P4	6.34	24.9	With Vibilia amphipod		208		
+531	D27-Sfus-B-1	Salpa fusiformis	Blastozooid	15	5	1.6	Plastic	Intact	Moderate		6/26/2022	14	45	P5	6.35	24.9	Broke apart		208		
+532	D27-Sasp-B-2	Salpa aspera	Blastozooid	39	13	15.5	Plastic	Intact	Active		6/26/2022	14	45	P6	5.64	24.9	A few broke off	Sealed early in dive, could not refresh before surfacing	980		
+533	D27-Sasp-B-1	Salpa aspera	Blastozooid	45	3	8	Plastic	Intact	Active		6/26/2022	14	45	P7	6.26	24.9	2 actively-swimming crustaceans got bycaught		980		
+534	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		6/26/2022	14	45	P3 control	6.41	24.9	Control local seawater	Bubble found	72		
+535	D27-Ramb-B-2	Ritteriella amboinensis	Blastozooid	15	5	2.5	Plastic	Intact	Moderate		6/26/2022	14	60	P1	6.3	24.7	One zooid broke off		208		
+536	D27-Pcon-B-1	Pegea confoederata	Blastozooid	28	2	3.5	Plastic	Anesthetized	Anesthetized		6/26/2022	14	60	P2	6.22	24.7	Anesthetized		208		
+537	D27-Ramb-B-1	Ritteriella amboinensis	Blastozooid	28	10	3.5	Plastic	Intact	Moderate		6/26/2022	14	60	P4	6.32	24.7	With Vibilia amphipod		208		
+538	D27-Sfus-B-1	Salpa fusiformis	Blastozooid	15	5	1.6	Plastic	Intact	Moderate		6/26/2022	14	60	P5	6.32	24.7	Broke apart		208		
+539	D27-Sasp-B-2	Salpa aspera	Blastozooid	39	13	15.5	Plastic	Intact	Active		6/26/2022	14	60	P6	5.53	24.7	A few broke off	Sealed early in dive, could not refresh before surfacing	980		
+540	D27-Sasp-B-1	Salpa aspera	Blastozooid	45	3	8	Plastic	Intact	Active		6/26/2022	14	60	P7	6.22	24.7	2 actively-swimming crustaceans got bycaught		980		
+541	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		6/26/2022	14	60	P3 control	6.4	24.7	Control local seawater	Bubble found	72		
+542	D27-Ramb-B-2	Ritteriella amboinensis	Blastozooid	15	5	2.5	Plastic	Intact	Moderate		6/26/2022	14	90	P1	6.32	24.7	One zooid broke off		208		
+543	D27-Pcon-B-1	Pegea confoederata	Blastozooid	28	2	3.5	Plastic	Anesthetized	Anesthetized		6/26/2022	14	90	P2	6.19	24.4	Anesthetized		208		
+544	D27-Ramb-B-1	Ritteriella amboinensis	Blastozooid	28	10	3.5	Plastic	Intact	Moderate		6/26/2022	14	90	P4	6.26	24.4	With Vibilia amphipod		208		
+545	D27-Sfus-B-1	Salpa fusiformis	Blastozooid	15	5	1.6	Plastic	Intact	Moderate		6/26/2022	14	90	P5	6.29	24.4	Broke apart		208		
+546	D27-Sasp-B-2	Salpa aspera	Blastozooid	39	13	15.5	Plastic	Intact	Active		6/26/2022	14	90	P6	5.37	24.4	A few broke off	Sealed early in dive, could not refresh before surfacing	980		
+547	D27-Sasp-B-1	Salpa aspera	Blastozooid	45	3	8	Plastic	Intact	Active		6/26/2022	14	90	P7	6.22	24.4	2 actively-swimming crustaceans got bycaught		980		
+548	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		6/26/2022	14	90	P3 control	6.4	24.4	Control local seawater	Bubble found	72		
+549	D27-Ramb-B-2	Ritteriella amboinensis	Blastozooid	15	5	2.5	Plastic	Intact	Moderate		6/26/2022	14	120	P1	6.3	23.8	One zooid broke off		208		
+550	D27-Pcon-B-1	Pegea confoederata	Blastozooid	28	2	3.5	Plastic	Anesthetized	Anesthetized		6/26/2022	14	120	P2	6.22	23.8	Anesthetized		208		
+551	D27-Ramb-B-1	Ritteriella amboinensis	Blastozooid	28	10	3.5	Plastic	Intact	Moderate		6/26/2022	14	120	P4	6.27	23.8	With Vibilia amphipod		208		
+552	D27-Sfus-B-1	Salpa fusiformis	Blastozooid	15	5	1.6	Plastic	Intact	Moderate		6/26/2022	14	120	P5	6.29	23.8	Broke apart		208		
+553	D27-Sasp-B-2	Salpa aspera	Blastozooid	39	13	15.5	Plastic	Intact	Active		6/26/2022	14	120	P6	5.22	23.8	A few broke off	Sealed early in dive, could not refresh before surfacing	980		
+554	D27-Sasp-B-1	Salpa aspera	Blastozooid	45	3	8	Plastic	Intact	Active		6/26/2022	14	120	P7	6.21	23.8	2 actively-swimming crustaceans got bycaught		980		
+555	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		6/26/2022	14	120	P3 control	6.41	23.8	Control local seawater	Bubble found	72		
+556	D28-Csew-B-1	Cyclosalpa sewelli	Blastozooid	12	10	2.4	Plastic	Anesthetized	Anesthetized		6/27/2022	15	0	P1	6.3	25.3	A few broke off		208	23:34	23:40
+557	D28-Csew-B-2	Cyclosalpa sewelli	Blastozooid	8	16	2.5	Plastic	Anesthetized	Anesthetized		6/27/2022	15	0	P2	6.31	25.3	A few broke off		208	23:35	23:40
+558	NA	NA	NA	NA	NA	NA	Plastic	Intact	Anesthetized		6/27/2022	15	0	P3 control	6.36	25.3	Control local seawater	Bubble found	72	NA	23:40
+559	D28-Bros-B-1	Brooksia rostrata	Blastozooid	7	9	0.45	Plastic	Anesthetized	Anesthetized		6/27/2022	15	0	P4	6.35	25.3	One zooid broke off		208	23:36	23:40
+560	D28-Sasp-B-1	Salpa aspera	Blastozooid	20	10	3.3	Plastic	Intact	Active		6/27/2022	15	0	P5	6.09	25.3			208	NA	23:40
+561	D28-Sasp-B-2	Salpa aspera	Blastozooid	22	57	16.5	Plastic	Anesthetized	Anesthetized		6/27/2022	15	0	P6	5.71	25.3	Half broke off		980	23:32	23:40
+562	D28-Sfus-B1	Salpa fusiformis	Blastozooid	12	19	1.8	Plastic	Intact	Active		6/27/2022	15	0	P7	6.44	25.3			980	NA	23:40
+563	D28-Csew-B-1	Cyclosalpa sewelli	Blastozooid	12	10	2.4	Plastic	Anesthetized	Anesthetized		6/27/2022	15	15	P1	6.32	24.8	A few broke off		208		
+564	D28-Csew-B-2	Cyclosalpa sewelli	Blastozooid	8	16	2.5	Plastic	Anesthetized	Anesthetized		6/27/2022	15	15	P2	6.33	24.8	A few broke off		208		
+565	NA	NA	NA	NA	NA	NA	Plastic	Intact	Anesthetized		6/27/2022	15	15	P3 control	6.43	24.8	Control local seawater	Bubble found	72		
+566	D28-Bros-B-1	Brooksia rostrata	Blastozooid	7	9	0.45	Plastic	Anesthetized	Anesthetized		6/27/2022	15	15	P4	6.41	24.8	One zooid broke off		208		
+567	D28-Sasp-B-1	Salpa aspera	Blastozooid	20	10	3.3	Plastic	Intact	Active		6/27/2022	15	15	P5	6.03	24.8			208		
+568	D28-Sasp-B-2	Salpa aspera	Blastozooid	22	57	16.5	Plastic	Anesthetized	Anesthetized		6/27/2022	15	15	P6	5.75	24.8	Half broke off		980		
+569	D28-Sfus-B1	Salpa fusiformis	Blastozooid	12	19	1.8	Plastic	Intact	Active		6/27/2022	15	15	P7	6.53	24.8			980		
+570	D28-Csew-B-1	Cyclosalpa sewelli	Blastozooid	12	10	2.4	Plastic	Anesthetized	Anesthetized		6/27/2022	15	30	P1	6.29	24.5	A few broke off		208		
+571	D28-Csew-B-2	Cyclosalpa sewelli	Blastozooid	8	16	2.5	Plastic	Anesthetized	Anesthetized		6/27/2022	15	30	P2	6.33	24.5	A few broke off		208		
+572	NA	NA	NA	NA	NA	NA	Plastic	Intact	Anesthetized		6/27/2022	15	30	P3 control	6.41	24.5	Control local seawater	Bubble found	72		
+573	D28-Bros-B-1	Brooksia rostrata	Blastozooid	7	9	0.45	Plastic	Anesthetized	Anesthetized		6/27/2022	15	30	P4	6.41	24.5	One zooid broke off		208		
+574	D28-Sasp-B-1	Salpa aspera	Blastozooid	20	10	3.3	Plastic	Intact	Active		6/27/2022	15	30	P5	5.97	24.5			208		
+575	D28-Sasp-B-2	Salpa aspera	Blastozooid	22	57	16.5	Plastic	Anesthetized	Anesthetized		6/27/2022	15	30	P6	5.73	24.5	Half broke off		980		
+576	D28-Sfus-B1	Salpa fusiformis	Blastozooid	12	19	1.8	Plastic	Intact	Active		6/27/2022	15	30	P7	6.54	24.5			980		
+577	D28-Csew-B-1	Cyclosalpa sewelli	Blastozooid	12	10	2.4	Plastic	Anesthetized	Anesthetized		6/27/2022	15	60	P1	6.33	23.6	A few broke off		208		
+578	D28-Csew-B-2	Cyclosalpa sewelli	Blastozooid	8	16	2.5	Plastic	Anesthetized	Anesthetized		6/27/2022	15	60	P2	6.36	23.6	A few broke off		208		
+579	NA	NA	NA	NA	NA	NA	Plastic	Intact	Anesthetized		6/27/2022	15	60	P3 control	6.46	23.6	Control local seawater	Bubble found	72		
+580	D28-Bros-B-1	Brooksia rostrata	Blastozooid	7	9	0.45	Plastic	Anesthetized	Anesthetized		6/27/2022	15	60	P4	6.46	23.6	One zooid broke off		208		
+581	D28-Sasp-B-1	Salpa aspera	Blastozooid	20	10	3.3	Plastic	Intact	Active		6/27/2022	15	60	P5	5.88	23.6			208		
+582	D28-Sasp-B-2	Salpa aspera	Blastozooid	22	57	16.5	Plastic	Anesthetized	Anesthetized		6/27/2022	15	60	P6	5.67	23.6	Half broke off		980		
+583	D28-Sfus-B1	Salpa fusiformis	Blastozooid	12	19	1.8	Plastic	Intact	Active		6/27/2022	15	60	P7	6.6	23.6			980		
+584	D28-Csew-B-1	Cyclosalpa sewelli	Blastozooid	12	10	2.4	Plastic	Anesthetized	Anesthetized		6/27/2022	15	90	P1	6.29	23.8	A few broke off		208		
+585	D28-Csew-B-2	Cyclosalpa sewelli	Blastozooid	8	16	2.5	Plastic	Anesthetized	Anesthetized		6/27/2022	15	90	P2	6.33	23.8	A few broke off		208		
+586	NA	NA	NA	NA	NA	NA	Plastic	Intact	Anesthetized		6/27/2022	15	90	P3 control	6.48	23.8	Control local seawater	Bubble found	72		
+587	D28-Bros-B-1	Brooksia rostrata	Blastozooid	7	9	0.45	Plastic	Anesthetized	Anesthetized		6/27/2022	15	90	P4	6.43	23.8	One zooid broke off		208		
+588	D28-Sasp-B-1	Salpa aspera	Blastozooid	20	10	3.3	Plastic	Intact	Active		6/27/2022	15	90	P5	5.78	23.8			208		
+589	D28-Sasp-B-2	Salpa aspera	Blastozooid	22	57	16.5	Plastic	Anesthetized	Anesthetized		6/27/2022	15	90	P6	5.57	23.8	Half broke off		980		
+590	D28-Sfus-B1	Salpa fusiformis	Blastozooid	12	19	1.8	Plastic	Intact	Active		6/27/2022	15	90	P7	6.57	23.8			980		
+591	D28-Csew-B-1	Cyclosalpa sewelli	Blastozooid	12	10	2.4	Plastic	Anesthetized	Anesthetized		6/27/2022	15	120	P1	6.27	24.1	A few broke off		208		
+592	D28-Csew-B-2	Cyclosalpa sewelli	Blastozooid	8	16	2.5	Plastic	Anesthetized	Anesthetized		6/27/2022	15	120	P2	6.28	24.1	A few broke off		208		
+593	NA	NA	NA	NA	NA	NA	Plastic	Intact	Anesthetized		6/27/2022	15	120	P3 control	6.52	24.1	Control local seawater	Bubble found	72		
+594	D28-Bros-B-1	Brooksia rostrata	Blastozooid	7	9	0.45	Plastic	Anesthetized	Anesthetized		6/27/2022	15	120	P4	6.45	24.1	One zooid broke off		208		
+595	D28-Sasp-B-1	Salpa aspera	Blastozooid	20	10	3.3	Plastic	Intact	Active		6/27/2022	15	120	P5	5.69	24.1			208		
+596	D28-Sasp-B-2	Salpa aspera	Blastozooid	22	57	16.5	Plastic	Anesthetized	Anesthetized		6/27/2022	15	120	P6	5.54	24.1	Half broke off		980		
+597	D28-Sfus-B1	Salpa fusiformis	Blastozooid	12	19	1.8	Plastic	Intact	Active		6/27/2022	15	120	P7	6.54	24.1			980		
+598	D28-Csew-B-1	Cyclosalpa sewelli	Blastozooid	12	10	2.4	Plastic	Anesthetized	Anesthetized		6/27/2022	15	150	P1	6.34	23.9	A few broke off		208		
+599	D28-Csew-B-2	Cyclosalpa sewelli	Blastozooid	8	16	2.5	Plastic	Anesthetized	Anesthetized		6/27/2022	15	150	P2	6.35	23.9	A few broke off		208		
+600	NA	NA	NA	NA	NA	NA	Plastic	Intact	Anesthetized		6/27/2022	15	150	P3 control	6.54	23.9	Control local seawater	Bubble found	72		
+601	D28-Bros-B-1	Brooksia rostrata	Blastozooid	7	9	0.45	Plastic	Anesthetized	Anesthetized		6/27/2022	15	150	P4	6.47	23.9	One zooid broke off		208		
+602	D28-Sasp-B-1	Salpa aspera	Blastozooid	20	10	3.3	Plastic	Intact	Active		6/27/2022	15	150	P5	5.63	23.9			208		
+603	D28-Sasp-B-2	Salpa aspera	Blastozooid	22	57	16.5	Plastic	Anesthetized	Anesthetized		6/27/2022	15	150	P6	5.54	23.9	Half broke off		980		
+604	D28-Sfus-B1	Salpa fusiformis	Blastozooid	12	19	1.8	Plastic	Intact	Active		6/27/2022	15	150	P7	6.53	23.9			980		
+605	D29-Szon-B-1	Soestia zonaria	Blastozooid	7	9	0.7	Plastic	Intact	Active		6/28/2022	16	0	P1	6.18	25.8		Paired	208		23:17
+606	D29-Szon-B-1	Soestia zonaria	Blastozooid	7	9	0.7	Plastic	Intact	Active		6/28/2022	16	30	P1	6.18	24.9		Paired	208		
+607	D29-Szon-B-1	Soestia zonaria	Blastozooid	7	9	0.7	Plastic	Intact	Active		6/28/2022	16	60	P1	6.15	24.3		Paired	208		
+608	D29-Szon-B-1	Soestia zonaria	Blastozooid	7	9	0.7	Plastic	Intact	Active		6/28/2022	16	90	P1	6.17	23.9		Paired	208		
+609	D29-Szon-B-1	Soestia zonaria	Blastozooid	7	9	0.7	Plastic	Intact	Active		6/28/2022	16	120	P1	6.16	23.6		Paired	208	1:23	
+610	D29-Szon-B-1	Soestia zonaria	Blastozooid	7	9	0.7	Plastic	Anesthetized	Anesthetized		6/28/2022	16	153	P1	6.16	23.4		Paired	208		1:53
+611	D29-Szon-B-1	Soestia zonaria	Blastozooid	7	9	0.7	Plastic	Anesthetized	Anesthetized		6/28/2022	16	183	P1	6.16	23.4		Paired	208		
+612	D29-Szon-B-1	Soestia zonaria	Blastozooid	7	9	0.7	Plastic	Anesthetized	Anesthetized		6/28/2022	16	213	P1	6.11	23.4		Paired	208		
+613	D29-Szon-B-1	Soestia zonaria	Blastozooid	7	9	0.7	Plastic	Anesthetized	Anesthetized		6/28/2022	16	243	P1	6.12	23.2		Paired	208		
+614	D29-Bros-B-1	Brooksia rostrata	Blastozooid	6	8	0.23	Plastic	Intact	Active		6/28/2022	16	0	P2	6.19	25.8	Couple zooids broke off	Paired	208		23:17
+615	D29-Bros-B-1	Brooksia rostrata	Blastozooid	6	8	0.23	Plastic	Intact	Active		6/28/2022	16	30	P2	6.25	24.9	Couple zooids broke off	Paired	208		
+616	D29-Bros-B-1	Brooksia rostrata	Blastozooid	6	8	0.23	Plastic	Intact	Active		6/28/2022	16	60	P2	6.16	24.3	Couple zooids broke off	Paired	208		
+617	D29-Bros-B-1	Brooksia rostrata	Blastozooid	6	8	0.23	Plastic	Intact	Active		6/28/2022	16	90	P2	6.24	23.9	Couple zooids broke off	Paired	208		
+618	D29-Bros-B-1	Brooksia rostrata	Blastozooid	6	8	0.23	Plastic	Intact	Active		6/28/2022	16	120	P2	6.25	23.6	Couple zooids broke off	Paired	208	1:24	
+619	D29-Bros-B-1	Brooksia rostrata	Blastozooid	6	8	0.23	Plastic	Anesthetized	Anesthetized		6/28/2022	16	153	P2	6.23	23.4	Couple zooids broke off	Paired	208		1:53
+620	D29-Bros-B-1	Brooksia rostrata	Blastozooid	6	8	0.23	Plastic	Anesthetized	Anesthetized		6/28/2022	16	183	P2	6.2	23.4	Couple zooids broke off	Paired	208		
+621	D29-Bros-B-1	Brooksia rostrata	Blastozooid	6	8	0.23	Plastic	Anesthetized	Anesthetized		6/28/2022	16	213	P2	6.17	23.4	Couple zooids broke off	Paired	208		
+622	D29-Bros-B-1	Brooksia rostrata	Blastozooid	6	8	0.23	Plastic	Anesthetized	Anesthetized		6/28/2022	16	243	P2	6.16	23.2	Couple zooids broke off	Paired	208		
+623	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		6/28/2022	16	0	P3 control	6.25	25.8	Control local seawater	Paired	72		23:17
+624	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		6/28/2022	16	30	P3 control	6.3	24.9	Control local seawater	Paired	72		
+625	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		6/28/2022	16	60	P3 control	6.27	24.3	Control local seawater	Paired	72		
+626	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		6/28/2022	16	90	P3 control	6.34	23.9	Control local seawater	Paired	72		
+627	NA	NA	NA	NA	NA	NA	Plastic	Intact	NA		6/28/2022	16	120	P3 control	6.36	23.6	Control local seawater	Paired	72	1:26	
+628	NA	NA	NA	NA	NA	NA	Plastic	Anesthetized	NA		6/28/2022	16	153	P3 control	6.37	23.4	Control local seawater	Paired	72		1:53
+629	NA	NA	NA	NA	NA	NA	Plastic	Anesthetized	NA		6/28/2022	16	183	P3 control	6.34	23.4	Control local seawater	Paired	72		
+630	NA	NA	NA	NA	NA	NA	Plastic	Anesthetized	NA		6/28/2022	16	213	P3 control	6.35	23.4	Control local seawater	Paired	72		
+631	NA	NA	NA	NA	NA	NA	Plastic	Anesthetized	NA		6/28/2022	16	243	P3 control	6.34	23.2	Control local seawater	Paired	72		
+632	D29-Csew-B-1	Cyclosalpa sewelli	Blastozooid	19	5	4.5	Plastic	Intact	Moderate		6/28/2022	16	0	P4	6.05	25.8		Paired	208		23:17
+633	D29-Csew-B-1	Cyclosalpa sewelli	Blastozooid	19	5	4.5	Plastic	Intact	Moderate		6/28/2022	16	30	P4	6.07	24.9		Paired	208		
+634	D29-Csew-B-1	Cyclosalpa sewelli	Blastozooid	19	5	4.5	Plastic	Intact	Moderate		6/28/2022	16	60	P4	5.95	24.3		Paired	208		
+635	D29-Csew-B-1	Cyclosalpa sewelli	Blastozooid	19	5	4.5	Plastic	Intact	Moderate		6/28/2022	16	90	P4	5.95	23.9		Paired	208		
+636	D29-Csew-B-1	Cyclosalpa sewelli	Blastozooid	19	5	4.5	Plastic	Intact	Moderate		6/28/2022	16	120	P4	5.91	23.6		Paired	208	1:28	
+637	D29-Csew-B-1	Cyclosalpa sewelli	Blastozooid	19	5	4.5	Plastic	Anesthetized	Anesthetized		6/28/2022	16	153	P4	5.87	23.4		Paired	208		1:53
+638	D29-Csew-B-1	Cyclosalpa sewelli	Blastozooid	19	5	4.5	Plastic	Anesthetized	Anesthetized		6/28/2022	16	183	P4	5.82	23.4		Paired	208		
+639	D29-Csew-B-1	Cyclosalpa sewelli	Blastozooid	19	5	4.5	Plastic	Anesthetized	Anesthetized		6/28/2022	16	213	P4	5.77	23.4		Paired	208		
+640	D29-Csew-B-1	Cyclosalpa sewelli	Blastozooid	19	5	4.5	Plastic	Anesthetized	Anesthetized		6/28/2022	16	243	P4	5.73	23.2		Paired	208		
+641	D29-Bros-B-2	Brooksia rostrata	Blastozooid	7	17	1.1	Plastic	Intact	Active		6/28/2022	16	0	P5	6.2	25.8	Couple zooids broke off	Paired	208		23:17
+642	D29-Bros-B-2	Brooksia rostrata	Blastozooid	7	17	1.1	Plastic	Intact	Active		6/28/2022	16	30	P5	6.23	24.9	Couple zooids broke off	Paired	208		
+643	D29-Bros-B-2	Brooksia rostrata	Blastozooid	7	17	1.1	Plastic	Intact	Active		6/28/2022	16	60	P5	6.19	24.3	Couple zooids broke off	Paired	208		
+644	D29-Bros-B-2	Brooksia rostrata	Blastozooid	7	17	1.1	Plastic	Intact	Active		6/28/2022	16	90	P5	6.25	23.9	Couple zooids broke off	Paired	208		
+645	D29-Bros-B-2	Brooksia rostrata	Blastozooid	7	17	1.1	Plastic	Intact	Active		6/28/2022	16	120	P5	6.27	23.6	Couple zooids broke off	Paired	208	1:29	
+646	D29-Bros-B-2	Brooksia rostrata	Blastozooid	7	17	1.1	Plastic	Anesthetized	Anesthetized		6/28/2022	16	153	P5	6.25	23.4	Couple zooids broke off	Paired	208		1:53
+647	D29-Bros-B-2	Brooksia rostrata	Blastozooid	7	17	1.1	Plastic	Anesthetized	Anesthetized		6/28/2022	16	183	P5	6.22	23.4	Couple zooids broke off	Paired	208		
+648	D29-Bros-B-2	Brooksia rostrata	Blastozooid	7	17	1.1	Plastic	Anesthetized	Anesthetized		6/28/2022	16	213	P5	6.18	23.4	Couple zooids broke off	Paired	208		
+649	D29-Bros-B-2	Brooksia rostrata	Blastozooid	7	17	1.1	Plastic	Anesthetized	Anesthetized		6/28/2022	16	243	P5	6.16	23.2	Couple zooids broke off	Paired	208		
+650	D29-Smax-B-1a	Salpa maxima	Blastozooid	115	3	55	Plastic	Anesthetized	Anesthetized		6/28/2022	16	0	P6	6.04	25.8	1/3 zooids broke, amphipods		980	23:15	23:17
+651	D29-Smax-B-1a	Salpa maxima	Blastozooid	115	3	55	Plastic	Anesthetized	Anesthetized		6/28/2022	16	30	P6	6.01	24.9	1/3 zooids broke, amphipods		980		
+652	D29-Smax-B-1a	Salpa maxima	Blastozooid	115	3	55	Plastic	Anesthetized	Anesthetized		6/28/2022	16	60	P6	5.83	24.3	1/3 zooids broke, amphipods		980		
+653	D29-Smax-B-1a	Salpa maxima	Blastozooid	115	3	55	Plastic	Anesthetized	Anesthetized		6/28/2022	16	90	P6	5.83	23.9	1/3 zooids broke, amphipods		980		
+654	D29-Smax-B-1a	Salpa maxima	Blastozooid	115	3	55	Plastic	Anesthetized	Anesthetized		6/28/2022	16	120	P6	5.72	23.6	1/3 zooids broke, amphipods		980		
+655	D29-Smax-B-1b	Salpa maxima	Blastozooid	115	4	53	Plastic	Intact	Active		6/28/2022	16	0	P7	5.8	25.8	2/4 zooids broke, amphipods, poop	Paired	980		23:17
+656	D29-Smax-B-1b	Salpa maxima	Blastozooid	115	4	53	Plastic	Intact	Active		6/28/2022	16	30	P7	5.36	24.9	2/4 zooids broke, amphipods, poop	Paired	980		
+657	D29-Smax-B-1b	Salpa maxima	Blastozooid	115	4	53	Plastic	Intact	Active		6/28/2022	16	60	P7	4.84	24.3	2/4 zooids broke, amphipods, poop	Paired	980		
+658	D29-Smax-B-1b	Salpa maxima	Blastozooid	115	4	53	Plastic	Intact	Active		6/28/2022	16	90	P7	4.51	23.9	2/4 zooids broke, amphipods, poop	Paired	980		
+659	D29-Smax-B-1b	Salpa maxima	Blastozooid	115	4	53	Plastic	Intact	Active		6/28/2022	16	120	P7	4.12	23.6	2/4 zooids broke, amphipods, poop	Paired	980	1:31	
+660	D29-Smax-B-1b	Salpa maxima	Blastozooid	115	4	53	Plastic	Anesthetized	Anesthetized		6/28/2022	16	153	P7	3.94	23.4	2/4 zooids broke, amphipods, poop	Paired	980		1:53
+661	D29-Smax-B-1b	Salpa maxima	Blastozooid	115	4	53	Plastic	Anesthetized	Anesthetized		6/28/2022	16	183	P7	3.78	23.4	2/4 zooids broke, amphipods, poop	Paired	980		
+662	D29-Smax-B-1b	Salpa maxima	Blastozooid	115	4	53	Plastic	Anesthetized	Anesthetized		6/28/2022	16	213	P7	3.61	23.4	2/4 zooids broke, amphipods, poop	Paired	980		
+663	D29-Smax-B-1b	Salpa maxima	Blastozooid	115	4	53	Plastic	Anesthetized	Anesthetized		6/28/2022	16	243	P7	3.43	23.2	2/4 zooids broke, amphipods, poop	Paired	980		
+664	D30-Ramb-B-1	Ritteriella amboinensis	Blastozooid	18	3	1.5	Plastic	Anesthetized	Anesthetized		6/29/2022	17	0	P1	6.1	NA		No temperature recorded, strange O2 values	208	23:56	12:03
+665	D30-Ramb-B-1	Ritteriella amboinensis	Blastozooid	18	3	1.5	Plastic	Anesthetized	Anesthetized		6/29/2022	17	30	P1	6.16	25.7			208		
+666	D30-Ramb-B-1	Ritteriella amboinensis	Blastozooid	18	3	1.5	Plastic	Anesthetized	Anesthetized		6/29/2022	17	58	P1	6.17	25.4			208		
+667	D30-Ramb-B-1	Ritteriella amboinensis	Blastozooid	18	3	1.5	Plastic	Anesthetized	Anesthetized		6/29/2022	17	86	P1	6.16	25.1			208		
+668	D30-Ramb-B-1	Ritteriella amboinensis	Blastozooid	18	3	1.5	Plastic	Anesthetized	Anesthetized		6/29/2022	17	114	P1	6.17	25			208		
+669	D30-Ramb-B-1	Ritteriella amboinensis	Blastozooid	18	3	1.5	Plastic	Anesthetized	Anesthetized		6/29/2022	17	142	P1	6.19	24.8			208		
+670	D30-Icyl-B-1	Iasis (Weelia) cylindrica	Blastozooid	11	9	12	Plastic	Anesthetized	Anesthetized		6/29/2022	17	0	P2	6	NA	Some broken zooids	No temperature recorded, strange O2 values	208	23:57	12:03
+671	D30-Icyl-B-1	Iasis (Weelia) cylindrica	Blastozooid	11	9	12	Plastic	Anesthetized	Anesthetized		6/29/2022	17	30	P2	6.03	25.7	Some broken zooids		208		
+672	D30-Icyl-B-1	Iasis (Weelia) cylindrica	Blastozooid	11	9	12	Plastic	Anesthetized	Anesthetized		6/29/2022	17	58	P2	6.02	25.4	Some broken zooids		208		
+673	D30-Icyl-B-1	Iasis (Weelia) cylindrica	Blastozooid	11	9	12	Plastic	Anesthetized	Anesthetized		6/29/2022	17	86	P2	6.03	25.1	Some broken zooids		208		
+674	D30-Icyl-B-1	Iasis (Weelia) cylindrica	Blastozooid	11	9	12	Plastic	Anesthetized	Anesthetized		6/29/2022	17	114	P2	5.96	25	Some broken zooids		208		
+675	D30-Icyl-B-1	Iasis (Weelia) cylindrica	Blastozooid	11	9	12	Plastic	Anesthetized	Anesthetized		6/29/2022	17	142	P2	5.97	24.8	Some broken zooids		208		
+676	NA	NA	NA	NA	NA	NA	Plastic	Anesthetized	Anesthetized		6/29/2022	17	0	P3 control	6.25	NA	Collected in deeper water, no refresh	No temperature recorded, strange O2 values	72	23:57	12:04
+677	NA	NA	NA	NA	NA	NA	Plastic	Anesthetized	Anesthetized		6/29/2022	17	30	P3 control	6.27	25.7	Collected in deeper water, no refresh		72		
+678	NA	NA	NA	NA	NA	NA	Plastic	Anesthetized	Anesthetized		6/29/2022	17	58	P3 control	6.28	25.4	Collected in deeper water, no refresh		72		
+679	NA	NA	NA	NA	NA	NA	Plastic	Anesthetized	Anesthetized		6/29/2022	17	86	P3 control	6.27	25.1	Collected in deeper water, no refresh		72		
+680	NA	NA	NA	NA	NA	NA	Plastic	Anesthetized	Anesthetized		6/29/2022	17	114	P3 control	6.26	25	Collected in deeper water, no refresh		72		
+681	NA	NA	NA	NA	NA	NA	Plastic	Anesthetized	Anesthetized		6/29/2022	17	142	P3 control	6.3	24.8	Collected in deeper water, no refresh		72		
+682	D30-Ramb-B-2	Ritteriella amboinensis	Blastozooid	15	5	0.8	Plastic	Anesthetized	Anesthetized		6/29/2022	17	0	P4	6.13	NA		No temperature recorded, strange O2 values	208	23:59	12:04
+683	D30-Ramb-B-2	Ritteriella amboinensis	Blastozooid	15	5	0.8	Plastic	Anesthetized	Anesthetized		6/29/2022	17	30	P4	6.2	25.7			208		
+684	D30-Ramb-B-2	Ritteriella amboinensis	Blastozooid	15	5	0.8	Plastic	Anesthetized	Anesthetized		6/29/2022	17	58	P4	6.2	25.4			208		
+685	D30-Ramb-B-2	Ritteriella amboinensis	Blastozooid	15	5	0.8	Plastic	Anesthetized	Anesthetized		6/29/2022	17	86	P4	6.2	25.1			208		
+686	D30-Ramb-B-2	Ritteriella amboinensis	Blastozooid	15	5	0.8	Plastic	Anesthetized	Anesthetized		6/29/2022	17	114	P4	6.19	25			208		
+687	D30-Ramb-B-2	Ritteriella amboinensis	Blastozooid	15	5	0.8	Plastic	Anesthetized	Anesthetized		6/29/2022	17	142	P4	6.23	24.8			208		
+688	D30-Ramb-B-3	Ritteriella amboinensis	Blastozooid	17	5	1.4	Plastic	Intact	Moderate		6/29/2022	17	0	P5	6.22	NA	Air bubble found	No temperature recorded, strange O2 values	208		12:05
+689	D30-Ramb-B-3	Ritteriella amboinensis	Blastozooid	17	5	1.4	Plastic	Intact	Moderate		6/29/2022	17	30	P5	6.26	25.7	Air bubble found		208		
+690	D30-Ramb-B-3	Ritteriella amboinensis	Blastozooid	17	5	1.4	Plastic	Intact	Moderate		6/29/2022	17	58	P5	6.22	25.4	Air bubble found		208		
+691	D30-Ramb-B-3	Ritteriella amboinensis	Blastozooid	17	5	1.4	Plastic	Intact	Moderate		6/29/2022	17	86	P5	6.22	25.1	Air bubble found		208		
+692	D30-Ramb-B-3	Ritteriella amboinensis	Blastozooid	17	5	1.4	Plastic	Intact	Moderate		6/29/2022	17	114	P5	6.22	25	Air bubble found		208		
+693	D30-Ramb-B-3	Ritteriella amboinensis	Blastozooid	17	5	1.4	Plastic	Intact	Moderate		6/29/2022	17	142	P5	6.22	24.8	Air bubble found		208		
+694	D30-Pco-B-1	Pegea confoederata	Blastozooid	36	5	15	Plastic	Anesthetized	Anesthetized		6/29/2022	17	0	P6	6.23	NA		No temperature recorded, strange O2 values	980	12:01	12:05
+695	D30-Pco-B-1	Pegea confoederata	Blastozooid	36	5	15	Plastic	Anesthetized	Anesthetized		6/29/2022	17	30	P6	6.32	25.7			980		
+696	D30-Pco-B-1	Pegea confoederata	Blastozooid	36	5	15	Plastic	Anesthetized	Anesthetized		6/29/2022	17	58	P6	6.31	25.4			980		
+697	D30-Pco-B-1	Pegea confoederata	Blastozooid	36	5	15	Plastic	Anesthetized	Anesthetized		6/29/2022	17	86	P6	6.33	25.1			980		
+698	D30-Pco-B-1	Pegea confoederata	Blastozooid	36	5	15	Plastic	Anesthetized	Anesthetized		6/29/2022	17	114	P6	6.3	25			980		
+699	D30-Pco-B-1	Pegea confoederata	Blastozooid	36	5	15	Plastic	Anesthetized	Anesthetized		6/29/2022	17	142	P6	6.28	24.8			980		
+700	D30-Ramb-B-4	Ritteriella amboinensis	Blastozooid	22	38	6.3	Plastic	Anesthetized	Anesthetized		6/29/2022	17	0	P7	5.91	NA		No temperature recorded, strange O2 values	980	12:02	12:06
+701	D30-Ramb-B-4	Ritteriella amboinensis	Blastozooid	22	38	6.3	Plastic	Anesthetized	Anesthetized		6/29/2022	17	30	P7	6.04	25.7			980		
+702	D30-Ramb-B-4	Ritteriella amboinensis	Blastozooid	22	38	6.3	Plastic	Anesthetized	Anesthetized		6/29/2022	17	58	P7	5.95	25.4			980		
+703	D30-Ramb-B-4	Ritteriella amboinensis	Blastozooid	22	38	6.3	Plastic	Anesthetized	Anesthetized		6/29/2022	17	86	P7	5.96	25.1			980		
+704	D30-Ramb-B-4	Ritteriella amboinensis	Blastozooid	22	38	6.3	Plastic	Anesthetized	Anesthetized		6/29/2022	17	114	P7	5.93	25			980		
+705	D30-Ramb-B-4	Ritteriella amboinensis	Blastozooid	22	38	6.3	Plastic	Anesthetized	Anesthetized		6/29/2022	17	142	P7	5.9	24.8			980		
+706	D31-Caff-B-1	Cyclosalpa affinis	Blastozooid	32	8	5.5	Plastic	Anesthetized	Anesthetized		6/30/2022	18	0	P1	6.04	26.3	Poop		208	21:37	21:44
+707	D31-Caff-B-1	Cyclosalpa affinis	Blastozooid	32	8	5.5	Plastic	Anesthetized	Anesthetized		6/30/2022	18	30	P1	5.89	25.7	Poop		208		
+708	D31-Caff-B-1	Cyclosalpa affinis	Blastozooid	32	8	5.5	Plastic	Anesthetized	Anesthetized		6/30/2022	18	60	P1	5.74	25.4	Poop		208		
+709	D31-Caff-B-1	Cyclosalpa affinis	Blastozooid	32	8	5.5	Plastic	Anesthetized	Anesthetized		6/30/2022	18	90	P1	5.66	24.6	Poop		208		
+710	D31-Caff-B-1	Cyclosalpa affinis	Blastozooid	32	8	5.5	Plastic	Anesthetized	Anesthetized		6/30/2022	18	120	P1	5.68	24	Poop		208		
+711	D31-Caff-B-1	Cyclosalpa affinis	Blastozooid	32	8	5.5	Plastic	Anesthetized	Anesthetized		6/30/2022	18	150	P1	5.5	23.8	Poop		208		
+712	D31-Caff-B-1	Cyclosalpa affinis	Blastozooid	32	8	5.5	Plastic	Anesthetized	Anesthetized		6/30/2022	18	180	P1	5.41	23.3	Poop		208		
+713	D31-Cqua-B-1	Cyclosalpa quadriluminis	Blastozooid	13	16	2.8	Plastic	Anesthetized	Anesthetized		6/30/2022	18	0	P2	6.23	26.3	Very long peduncles	Only 1/2 colony was measured for volume, then multiplied by 2 	208	21:37	21:44
+714	D31-Cqua-B-1	Cyclosalpa quadriluminis	Blastozooid	13	16	2.8	Plastic	Anesthetized	Anesthetized		6/30/2022	18	30	P2	6.15	25.7	Very long peduncles	Only 1/2 colony was measured for volume, then multiplied by 2 	208		
+715	D31-Cqua-B-1	Cyclosalpa quadriluminis	Blastozooid	13	16	2.8	Plastic	Anesthetized	Anesthetized		6/30/2022	18	60	P2	6.11	25.4	Very long peduncles	Only 1/2 colony was measured for volume, then multiplied by 2 	208		
+716	D31-Cqua-B-1	Cyclosalpa quadriluminis	Blastozooid	13	16	2.8	Plastic	Anesthetized	Anesthetized		6/30/2022	18	90	P2	6.08	24.6	Very long peduncles	Only 1/2 colony was measured for volume, then multiplied by 2 	208		
+717	D31-Cqua-B-1	Cyclosalpa quadriluminis	Blastozooid	13	16	2.8	Plastic	Anesthetized	Anesthetized		6/30/2022	18	120	P2	6.08	24	Very long peduncles	Only 1/2 colony was measured for volume, then multiplied by 2 	208		
+718	D31-Cqua-B-1	Cyclosalpa quadriluminis	Blastozooid	13	16	2.8	Plastic	Anesthetized	Anesthetized		6/30/2022	18	150	P2	5.98	23.8	Very long peduncles	Only 1/2 colony was measured for volume, then multiplied by 2 	208		
+719	D31-Cqua-B-1	Cyclosalpa quadriluminis	Blastozooid	13	16	2.8	Plastic	Anesthetized	Anesthetized		6/30/2022	18	180	P2	5.99	23.3	Very long peduncles	Only 1/2 colony was measured for volume, then multiplied by 2 	208		
+720	NA	NA	NA	NA	NA	NA	Plastic	Anesthetized	NA		6/30/2022	18	0	P3 control	6.34	26.3	Control local seawater	High consumption readings	72	21:42	21:44
+721	NA	NA	NA	NA	NA	NA	Plastic	Anesthetized	NA		6/30/2022	18	30	P3 control	6.26	25.7	Control local seawater	High consumption readings	72		
+722	NA	NA	NA	NA	NA	NA	Plastic	Anesthetized	NA		6/30/2022	18	60	P3 control	6.19	25.4	Control local seawater	High consumption readings	72		
+723	NA	NA	NA	NA	NA	NA	Plastic	Anesthetized	NA		6/30/2022	18	90	P3 control	6.25	24.6	Control local seawater	High consumption readings	72		
+724	NA	NA	NA	NA	NA	NA	Plastic	Anesthetized	NA		6/30/2022	18	120	P3 control	6.22	24	Control local seawater	High consumption readings	72		
+725	NA	NA	NA	NA	NA	NA	Plastic	Anesthetized	NA		6/30/2022	18	150	P3 control	6.2	23.8	Control local seawater	High consumption readings	72		
+726	NA	NA	NA	NA	NA	NA	Plastic	Anesthetized	NA		6/30/2022	18	180	P3 control	6.26	23.3	Control local seawater	High consumption readings	72		
+727	D31-Caff-B-2	Cyclosalpa affinis	Blastozooid	32	6	8	Plastic	Anesthetized	Anesthetized		6/30/2022	18	0	P4	5.86	26.3	Poop		208	21:39	21:44
+728	D31-Caff-B-2	Cyclosalpa affinis	Blastozooid	32	6	8	Plastic	Anesthetized	Anesthetized		6/30/2022	18	30	P4	5.59	25.7	Poop		208		
+729	D31-Caff-B-2	Cyclosalpa affinis	Blastozooid	32	6	8	Plastic	Anesthetized	Anesthetized		6/30/2022	18	60	P4	5.6	25.4	Poop		208		
+730	D31-Caff-B-2	Cyclosalpa affinis	Blastozooid	32	6	8	Plastic	Anesthetized	Anesthetized		6/30/2022	18	90	P4	5.443	24.6	Poop		208		
+731	D31-Caff-B-2	Cyclosalpa affinis	Blastozooid	32	6	8	Plastic	Anesthetized	Anesthetized		6/30/2022	18	120	P4	5.26	24	Poop		208		
+732	D31-Caff-B-2	Cyclosalpa affinis	Blastozooid	32	6	8	Plastic	Anesthetized	Anesthetized		6/30/2022	18	150	P4	5.27	23.8	Poop		208		
+733	D31-Caff-B-2	Cyclosalpa affinis	Blastozooid	32	6	8	Plastic	Anesthetized	Anesthetized		6/30/2022	18	180	P4	5.21	23.3	Poop		208		
+734	D31-Bros-B-1	Brooksia rostrata	Blastozooid	3	7	0.1	Plastic	Intact	Moderate		6/30/2022	18	0	P5	6.31	26.3		Low consumption readings	208		21:44
+735	D31-Bros-B-1	Brooksia rostrata	Blastozooid	3	7	0.1	Plastic	Intact	Moderate		6/30/2022	18	30	P5	6.29	25.7		Low consumption readings	208		
+736	D31-Bros-B-1	Brooksia rostrata	Blastozooid	3	7	0.1	Plastic	Intact	Moderate		6/30/2022	18	60	P5	6.29	25.4		Low consumption readings	208		
+737	D31-Bros-B-1	Brooksia rostrata	Blastozooid	3	7	0.1	Plastic	Intact	Moderate		6/30/2022	18	90	P5	6.34	24.6		Low consumption readings	208		
+738	D31-Bros-B-1	Brooksia rostrata	Blastozooid	3	7	0.1	Plastic	Intact	Moderate		6/30/2022	18	120	P5	6.35	24		Low consumption readings	208		
+739	D31-Bros-B-1	Brooksia rostrata	Blastozooid	3	7	0.1	Plastic	Intact	Moderate		6/30/2022	18	150	P5	6.32	23.8		Low consumption readings	208		
+740	D31-Bros-B-1	Brooksia rostrata	Blastozooid	3	7	0.1	Plastic	Intact	Moderate		6/30/2022	18	180	P5	6.34	23.3		Low consumption readings	208		
+741	D31-Pcon-B-2	Pegea confoederata	Blastozooid	41	3	9	Plastic	Intact	Moderate		6/30/2022	18	0	P6	6.23	26.3			980		21:44
+742	D31-Pcon-B-2	Pegea confoederata	Blastozooid	41	3	9	Plastic	Intact	Moderate		6/30/2022	18	30	P6	6.2	25.7			980		
+743	D31-Pcon-B-2	Pegea confoederata	Blastozooid	41	3	9	Plastic	Intact	Moderate		6/30/2022	18	60	P6	6.17	25.4			980		
+744	D31-Pcon-B-2	Pegea confoederata	Blastozooid	41	3	9	Plastic	Intact	Moderate		6/30/2022	18	90	P6	6.17	24.6			980		
+745	D31-Pcon-B-2	Pegea confoederata	Blastozooid	41	3	9	Plastic	Intact	Moderate		6/30/2022	18	120	P6	6.14	24			980		
+746	D31-Pcon-B-2	Pegea confoederata	Blastozooid	41	3	9	Plastic	Intact	Moderate		6/30/2022	18	150	P6	6.05	23.8			980		
+747	D31-Pcon-B-2	Pegea confoederata	Blastozooid	41	3	9	Plastic	Intact	Moderate		6/30/2022	18	180	P6	6.01	23.3			980		
+748	D31-Smax-B-2	Salpa maxima	Blastozooid	80	3	20	Plastic	Intact	Moderate		6/30/2022	18	0	P7	6.01	26.3	Poop, all zooids broken off		980		21:44
+749	D31-Smax-B-2	Salpa maxima	Blastozooid	80	3	20	Plastic	Intact	Moderate		6/30/2022	18	30	P7	5.85	25.7	Poop, all zooids broken off		980		
+750	D31-Smax-B-2	Salpa maxima	Blastozooid	80	3	20	Plastic	Intact	Moderate		6/30/2022	18	60	P7	5.68	25.4	Poop, all zooids broken off		980		
+751	D31-Smax-B-2	Salpa maxima	Blastozooid	80	3	20	Plastic	Intact	Moderate		6/30/2022	18	90	P7	5.61	24.6	Poop, all zooids broken off		980		
+752	D31-Smax-B-2	Salpa maxima	Blastozooid	80	3	20	Plastic	Intact	Moderate		6/30/2022	18	120	P7	5.47	24	Poop, all zooids broken off		980		
+753	D31-Smax-B-2	Salpa maxima	Blastozooid	80	3	20	Plastic	Intact	Moderate		6/30/2022	18	150	P7	5.33	23.8	Poop, all zooids broken off		980		
+754	D31-Smax-B-2	Salpa maxima	Blastozooid	80	3	20	Plastic	Intact	Moderate		6/30/2022	18	180	P7	5.22	23.3	Poop, all zooids broken off		980		
+755	D32-Sasp-B-1	Salpa aspera	Blastozooid	28	9	6	Plastic	Anesthetized	Anesthetized		7/1/2022	19	0	P1	5.3	26.5			208	20:53	21:00
+756	D32-Sasp-B-1	Salpa aspera	Blastozooid	28	9	6	Plastic	Anesthetized	Anesthetized		7/1/2022	19	30	P1	5.23	26.2		Temperature interpolated, not measured	208		
+757	D32-Sasp-B-1	Salpa aspera	Blastozooid	28	9	6	Plastic	Anesthetized	Anesthetized		7/1/2022	19	60	P1	5.01	25.9			208		
+758	D32-Sasp-B-1	Salpa aspera	Blastozooid	28	9	6	Plastic	Anesthetized	Anesthetized		7/1/2022	19	90	P1	4.86	25.1			208		
+759	D32-Sasp-B-1	Salpa aspera	Blastozooid	28	9	6	Plastic	Anesthetized	Anesthetized		7/1/2022	19	120	P1	4.68	24.3			208		
+760	D32-Sasp-B-1	Salpa aspera	Blastozooid	28	9	6	Plastic	Anesthetized	Anesthetized		7/1/2022	19	150	P1	4.5	23.8			208		
+761	D32-Sasp-B-1	Salpa aspera	Blastozooid	28	9	6	Plastic	Anesthetized	Anesthetized		7/1/2022	19	180	P1	4.49	23.4			208		
+762	D32-Icyl-B-1	Iasis (Weelia) cylindrica	Blastozooid	6	26	0.1	Plastic	Anesthetized	Anesthetized		7/1/2022	19	0	P2	6.22	26.5	yellowtail		208	20:54	21:00
+763	D32-Icyl-B-2	Iasis (Weelia) cylindrica	Blastozooid	6	26	0.1	Plastic	Anesthetized	Anesthetized		7/1/2022	19	30	P2	6.28	26.2	yellowtail	Temperature interpolated, not measured	208		
+764	D32-Icyl-B-3	Iasis (Weelia) cylindrica	Blastozooid	6	26	0.1	Plastic	Anesthetized	Anesthetized		7/1/2022	19	60	P2	6.28	25.9	yellowtail		208		
+765	D32-Icyl-B-4	Iasis (Weelia) cylindrica	Blastozooid	6	26	0.1	Plastic	Anesthetized	Anesthetized		7/1/2022	19	90	P2	6.27	25.1	yellowtail		208		
+766	D32-Icyl-B-5	Iasis (Weelia) cylindrica	Blastozooid	6	26	0.1	Plastic	Anesthetized	Anesthetized		7/1/2022	19	120	P2	6.34	24.3	yellowtail		208		
+767	D32-Icyl-B-6	Iasis (Weelia) cylindrica	Blastozooid	6	26	0.1	Plastic	Anesthetized	Anesthetized		7/1/2022	19	150	P2	6.35	23.8	yellowtail		208		
+768	D32-Icyl-B-7	Iasis (Weelia) cylindrica	Blastozooid	6	26	0.1	Plastic	Anesthetized	Anesthetized		7/1/2022	19	180	P2	6.33	23.4	yellowtail		208		
+769	NA	NA	NA	NA	NA	NA	Plastic	Anesthetized	NA		7/1/2022	19	0	P3 control	6.31	26.5			72		21:00
+770	NA	NA	NA	NA	NA	NA	Plastic	Anesthetized	NA		7/1/2022	19	30	P3 control	6.35	26.2		Temperature interpolated, not measured	72		
+771	NA	NA	NA	NA	NA	NA	Plastic	Anesthetized	NA		7/1/2022	19	60	P3 control	6.34	25.9			72		
+772	NA	NA	NA	NA	NA	NA	Plastic	Anesthetized	NA		7/1/2022	19	90	P3 control	6.43	25.1			72		
+773	NA	NA	NA	NA	NA	NA	Plastic	Anesthetized	NA		7/1/2022	19	120	P3 control	6.44	24.3			72		
+774	NA	NA	NA	NA	NA	NA	Plastic	Anesthetized	NA		7/1/2022	19	150	P3 control	6.46	23.8			72		
+775	NA	NA	NA	NA	NA	NA	Plastic	Anesthetized	NA		7/1/2022	19	180	P3 control	6.47	23.4			72		
+776	D32-Icyl-B2	Iasis (Weelia) cylindrica	Blastozooid	7	76	0.5	Plastic	Intact	Active		7/1/2022	19	0	P4	5.99	26.5	yellowtail, many broken		208		21:00
+777	D32-Icyl-B2	Iasis (Weelia) cylindrica	Blastozooid	7	76	0.5	Plastic	Intact	Active		7/1/2022	19	30	P4	5.87	26.2	yellowtail, many broken	Temperature interpolated, not measured	208		
+778	D32-Icyl-B2	Iasis (Weelia) cylindrica	Blastozooid	7	76	0.5	Plastic	Intact	Active		7/1/2022	19	60	P4	5.71	25.9	yellowtail, many broken		208		
+779	D32-Icyl-B2	Iasis (Weelia) cylindrica	Blastozooid	7	76	0.5	Plastic	Intact	Active		7/1/2022	19	90	P4	5.56	25.1	yellowtail, many broken		208		
+780	D32-Icyl-B2	Iasis (Weelia) cylindrica	Blastozooid	7	76	0.5	Plastic	Intact	Active		7/1/2022	19	120	P4	5.49	24.3	yellowtail, many broken		208		
+781	D32-Icyl-B2	Iasis (Weelia) cylindrica	Blastozooid	7	76	0.5	Plastic	Intact	Active		7/1/2022	19	150	P4	5.47	23.8	yellowtail, many broken		208		
+782	D32-Icyl-B2	Iasis (Weelia) cylindrica	Blastozooid	7	76	0.5	Plastic	Intact	Active		7/1/2022	19	180	P4	5.47	23.4	yellowtail, many broken		208		
+783	D32-Cbak-B-1	Cyclosalpa bakeri	Blastozooid	12	5	1.3	Plastic	Anesthetized	Anesthetized		7/1/2022	19	0	P5	6.29	26.5	2 zooids broke		208	20:56	21:00
+784	D32-Cbak-B-1	Cyclosalpa bakeri	Blastozooid	12	5	1.3	Plastic	Anesthetized	Anesthetized		7/1/2022	19	30	P5	6.35	26.2	2 zooids broke	Temperature interpolated, not measured	208		
+785	D32-Cbak-B-1	Cyclosalpa bakeri	Blastozooid	12	5	1.3	Plastic	Anesthetized	Anesthetized		7/1/2022	19	60	P5	6.34	25.9	2 zooids broke		208		
+786	D32-Cbak-B-1	Cyclosalpa bakeri	Blastozooid	12	5	1.3	Plastic	Anesthetized	Anesthetized		7/1/2022	19	90	P5	6.36	25.1	2 zooids broke		208		
+787	D32-Cbak-B-1	Cyclosalpa bakeri	Blastozooid	12	5	1.3	Plastic	Anesthetized	Anesthetized		7/1/2022	19	120	P5	6.44	24.3	2 zooids broke		208		
+788	D32-Cbak-B-1	Cyclosalpa bakeri	Blastozooid	12	5	1.3	Plastic	Anesthetized	Anesthetized		7/1/2022	19	150	P5	6.44	23.8	2 zooids broke		208		
+789	D32-Cbak-B-1	Cyclosalpa bakeri	Blastozooid	12	5	1.3	Plastic	Anesthetized	Anesthetized		7/1/2022	19	180	P5	6.46	23.4	2 zooids broke		208		
+790	D32-Cpol-B-1	Cyclosalpa polae	Blastozooid	28	13	6	Plastic	Intact	Low		7/1/2022	19	0	P6	6.3	26.5	1 zooid broke		980		
+791	D32-Cpol-B-1	Cyclosalpa polae	Blastozooid	28	13	6	Plastic	Intact	Low		7/1/2022	19	30	P6	6.2	26.2	1 zooid broke	Temperature interpolated, not measured	980		
+792	D32-Cpol-B-1	Cyclosalpa polae	Blastozooid	28	13	6	Plastic	Intact	Low		7/1/2022	19	60	P6	6.16	25.9	1 zooid broke		980		
+793	D32-Cpol-B-1	Cyclosalpa polae	Blastozooid	28	13	6	Plastic	Intact	Low		7/1/2022	19	90	P6	6.13	25.1	1 zooid broke		980		
+794	D32-Cpol-B-1	Cyclosalpa polae	Blastozooid	28	13	6	Plastic	Intact	Low		7/1/2022	19	120	P6	6.16	24.3	1 zooid broke		980		
+795	D32-Cpol-B-1	Cyclosalpa polae	Blastozooid	28	13	6	Plastic	Intact	Low		7/1/2022	19	150	P6	6.14	23.8	1 zooid broke		980		
+796	D32-Cpol-B-1	Cyclosalpa polae	Blastozooid	28	13	6	Plastic	Intact	Low		7/1/2022	19	180	P6	6.07	23.4	1 zooid broke		980		
+797	D32-Rsp-B-1	Ritteriella sp.	Blastozooid	30	55	34	Plastic	Intact	Moderate		7/1/2022	19	0	P7	5.01	26.5	many amphipods		980		21:00
+798	D32-Rsp-B-1	Ritteriella sp.	Blastozooid	30	55	34	Plastic	Intact	Moderate		7/1/2022	19	30	P7	4.47	26.2	many amphipods	Temperature interpolated, not measured	980		
+799	D32-Rsp-B-1	Ritteriella sp.	Blastozooid	30	55	34	Plastic	Intact	Moderate		7/1/2022	19	60	P7	3.98	25.9	many amphipods		980		
+800	D32-Rsp-B-1	Ritteriella sp.	Blastozooid	30	55	34	Plastic	Intact	Moderate		7/1/2022	19	90	P7	3.58	25.1	many amphipods		980		
+801	D32-Rsp-B-1	Ritteriella sp.	Blastozooid	30	55	34	Plastic	Intact	Moderate		7/1/2022	19	120	P7	3.12	24.3	many amphipods		980		
+802	D32-Rsp-B-1	Ritteriella sp.	Blastozooid	30	55	34	Plastic	Intact	Moderate		7/1/2022	19	150	P7	2.91	23.8	many amphipods		980		
+803	D32-Rsp-B-1	Ritteriella sp.	Blastozooid	30	55	34	Plastic	Intact	Moderate		7/1/2022	19	180	P7	2.02	23.4	many amphipods		980		
