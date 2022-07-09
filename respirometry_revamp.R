@@ -377,11 +377,25 @@ ggplot(COT_species, aes(x=Species,y=COT_C.abs))+
   geom_point(aes(size=Speed.cm.s,color=Speed.cm.s))+
   theme_bw()+
   theme(axis.text.x = element_text(angle = 90))+
-  ylab("Cost of Transport (mgO2/mgCarbon per cm moved)")
+  ylab("Cost of Transport (mgO2/mgC per cm moved)")
 
 ggplot(COT_species, aes(x=Species,y=COT_C.rel))+
   geom_point(aes(size=Speed.body.s,color=Speed.body.s))+
   theme_bw()+
   theme(axis.text.x = element_text(angle = 90))+
-  ylab("Cost of Transport (mgO2/mgCarbon per body length moved)")
+  ylab("Cost of Transport (mgO2/mgC per body length moved)")
+
+### plots with speed
+ggplot(COT_intact, aes(x=Speed.cm.s,y=COT.abs))+
+  geom_point(aes(color=Species))+
+  theme_bw()+
+ geom_smooth(method="lm")+
+  ylab("Cost of Living (mgO2/ml per body length moved)")+ylim(-0.15,1)
+
+ggplot(COT_species, aes(x=Speed.cm.s,y=COT.abs))+
+  geom_point(aes(color=Species))+
+  geom_text(aes(label=Species),vjust=-1,hjust=c(-0.05,1,-0.05,-0.05))+
+  theme_bw()+
+  geom_smooth(method="lm")+
+  ylab("Cost of Transport (mgO2/ml per body length moved)")
 
