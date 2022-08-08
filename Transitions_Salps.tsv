@@ -1,20 +1,26 @@
-Species	TO	OL	LB	TW	WC
-Brooksia rostrata	Oblique	Linear	Bipinnate	Non-whorl	Non-cluster
-Cyclosalpa affinis	Non-Oblique	Non-linear	Non-bipinnate	Whorl	Non-cluster
-Cyclosalpa floridiana	Non-Oblique	Non-linear	Non-bipinnate	Whorl	Non-cluster
-Cyclosalpa quadriluminis	Non-Oblique	Non-linear	Non-bipinnate	Whorl	Non-cluster
-Cyclosalpa polae	Non-Oblique	Non-linear	Non-bipinnate	Whorl	Cluster
-Cyclosalpa sewelli	Non-Oblique	Non-linear	Non-bipinnate	Whorl	Cluster
-Iasis cylindrica	Oblique	Linear	Non-bipinnate	Non-whorl	Non-cluster
-Ihlea racovitzai	Oblique	Linear	Non-bipinnate	Non-whorl	Non-cluster
-Pegea bicaudata	Non-Oblique	Non-linear	Non-bipinnate	Non-whorl	Non-cluster
-Pegea confoederata	Non-Oblique	Non-linear	Non-bipinnate	Non-whorl	Non-cluster
-Ritteriella retracta	Oblique	Linear	Non-bipinnate	Non-whorl	Non-cluster
-Salpa aspera	Oblique	Linear	Non-bipinnate	Non-whorl	Non-cluster
-Salpa fusiformis	Oblique	Linear	Non-bipinnate	Non-whorl	Non-cluster
-Salpa maxima	Oblique	Linear	Non-bipinnate	Non-whorl	Non-cluster
-Salpa thompsoni	Oblique	Linear	Non-bipinnate	Non-whorl	Non-cluster
-Soestia zonaria	Oblique	Linear	Non-bipinnate	Non-whorl	Non-cluster
-Thalia democratica	Oblique	Non-linear	Non-bipinnate	Non-whorl	Non-cluster
-Thalia orientalis	Oblique	Non-linear	Non-bipinnate	Non-whorl	Non-cluster
-Thetys vagina	Oblique	Non-linear	Non-bipinnate	Non-whorl	Non-cluster
+Species	TO	OL	LB	TW	WC TH
+Brooksia rostrata	Oblique	Linear	Bipinnate	Non-whorl	Non-cluster	Non-helical	Non-helical
+Cyclosalpa affinis	Non-Oblique	Non-linear	Non-bipinnate	Whorl	Non-cluster	Non-helical
+Cyclosalpa bakeri	Non-Oblique	Non-linear	Non-bipinnate	Whorl	Non-cluster	Non-helical
+Cyclosalpa floridiana	Non-Oblique	Non-linear	Non-bipinnate	Whorl	Non-cluster	Non-helical
+Cyclosalpa quadriluminis	Non-Oblique	Non-linear	Non-bipinnate	Whorl	Non-cluster	Non-helical
+Cyclosalpa polae	Non-Oblique	Non-linear	Non-bipinnate	Whorl	Cluster	Non-helical
+Cyclosalpa pinnata	Non-Oblique	Non-linear	Non-bipinnate	Whorl	Cluster	Non-helical
+Cyclosalpa sewelli	Non-Oblique	Non-linear	Non-bipinnate	Whorl	Cluster	Non-helical
+Iasis cylindrica	Oblique	Linear	Non-bipinnate	Non-whorl	Non-cluster	Non-helical
+Ihlea punctata	Oblique	Linear	Non-bipinnate	Non-whorl	Non-cluster	Non-helical
+Ihlea racovitzai	Oblique	Linear	Non-bipinnate	Non-whorl	Non-cluster	Non-helical
+Pegea bicaudata	Non-Oblique	Non-linear	Non-bipinnate	Non-whorl	Non-cluster	Non-helical
+Pegea confoederata	Non-Oblique	Non-linear	Non-bipinnate	Non-whorl	Non-cluster	Non-helical
+Pegea socia	Non-Oblique	Non-linear	Non-bipinnate	Non-whorl	Non-cluster	Non-helical
+Ritteriella retracta	Oblique	Linear	Non-bipinnate	Non-whorl	Non-cluster	Non-helical
+Ritteriella amboinensis	Oblique	Linear	Non-bipinnate	Non-whorl	Non-cluster	Non-helical
+Salpa aspera	Oblique	Linear	Non-bipinnate	Non-whorl	Non-cluster	Non-helical
+Salpa fusiformis	Oblique	Linear	Non-bipinnate	Non-whorl	Non-cluster	Non-helical
+Salpa maxima	Oblique	Linear	Non-bipinnate	Non-whorl	Non-cluster	Non-helical
+Salpa thompsoni	Oblique	Linear	Non-bipinnate	Non-whorl	Non-cluster	Non-helical
+Soestia zonaria	Oblique	Linear	Non-bipinnate	Non-whorl	Non-cluster	Non-helical
+Thalia democratica	Oblique	Non-linear	Non-bipinnate	Non-whorl	Non-cluster	Non-helical
+Thalia orientalis	Oblique	Non-linear	Non-bipinnate	Non-whorl	Non-cluster	Non-helical
+Thetys vagina	Oblique	Non-linear	Non-bipinnate	Non-whorl	Non-cluster	Non-helical
+Helicosalpa younti	Non-Oblique	Non-linear	Non-bipinnate	Non-whorl	Non-cluster	Helical

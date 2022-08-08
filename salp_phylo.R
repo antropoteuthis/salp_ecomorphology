@@ -7,6 +7,8 @@ library(geiger)
 library(corHMM)
 library(bayou)
 library(surface)
+library(RColorBrewer)
+library(phylolm)
 #library(diversitree)
 
 setwd("~/salp_ecomorphology/")
@@ -63,61 +65,164 @@ lapply(Strees_clado, function(TRE){
     #cophenetic(TRE)["Salpa aspera","Cyclosalpa polae"]<cophenetic(TRE)["Ritteriella retracta","Cyclosalpa polae"] &
     }) %>% unlist() %>% table() -> cr; print(cr/30.01)
 
+#Append species to phylogeny based on taxonomy and morphological similarity -- ARBITRARY EDGE LENGTHS
+#ori_phylo <- chronos(tree_salp); ori_phylo$tip.label <- (str_replace_all(tree_salp$tip.label, " ", "_"))
+#extended_phylo <- add.species.to.genus(ori_phylo, "Ihlea_punctata", "Ihlea")
+extended_phylo <- bind.tip(tree_salp, "Ihlea punctata", position=0.1, where = 18, edge.length = 0.1)
+extended_phylo <-  bind.tip(extended_phylo, "Cyclosalpa bakeri", position=0.02, where = 4, edge.length = 0.02)
+extended_phylo <-  bind.tip(extended_phylo, "Helicosalpa younti", position=0.15, where = 31, edge.length = 0.15+0.099358)
+extended_phylo <-  bind.tip(extended_phylo, "Cyclosalpa pinnata", position=0.02, where = 36, edge.length = 0.02712)
+extended_phylo <-  bind.tip(extended_phylo, "Ritteriella amboinensis", position=0.1, where = 16, edge.length = 0.1)
+extended_phylo <-  bind.tip(extended_phylo, "Pegea socia", position=0.02, where = 25, edge.length = 0.02)
+
+plot(extended_phylo)
+edgelabels(extended_phylo$edge.length)
+plot(extended_phylo); nodelabels(); tiplabels()
+
 #Load literature data
-traits <- read.csv("salplit.tsv", sep="\t", stringsAsFactors = F)
+salplit <- read.csv("salplit.tsv", sep="\t", stringsAsFactors = F)
+traits <- read.csv("SalpPreliminaryPass.tsv", sep="\t", stringsAsFactors = F)
   #correct spellings
-traits$Species[which(traits$Species == "Iasis (Weelia) cylindrica")] <- "Iasis cylindrica"
-traits$Species[which(traits$Species == "Soestia (Iasis) zonaria")] <- "Soestia zonaria"
+salplit$Species[which(salplit$Species == "Iasis (Weelia) cylindrica")] <- "Iasis cylindrica"
+salplit$Species[which(salplit$Species == "Soestia (Iasis) zonaria")] <- "Soestia zonaria"
+
   #prune tree
-tree_salp_pruned <- drop.tip(tree_salp, which(!(tree_salp$tip.label %in% unique(traits$Species))))
+#tree_salp_pruned <- drop.tip(tree_salp, which(!(tree_salp$tip.label %in% unique(traits$Species))))
+tree_salp_pruned <- drop.tip(extended_phylo, which(!(extended_phylo$tip.label %in% unique(traits$Species))))
   #prune traits
-pruned_traits <- traits[which(traits$Species %in% tree_salp$tip.label),]
+pruned_traits <- traits[which(traits$Species %in% extended_phylo$tip.label),]
 unique_traits <- unique(pruned_traits)
+
+
+#### [0] #### HYDRODYNAMICS
+
+#ONLY Taxa with Speed
+
+kineTraits <- unique_traits[!is.na(unique_traits$Speed..cm.s.),]
+rownames(kineTraits) <- kineTraits$Species
+
+kineTree <- drop.tip(tree_salp_pruned, 
+         which(tree_salp_pruned$tip.label %in% 
+                 traits$Species[is.na(traits$Speed..cm.s.)]))
+contColors <- function(trait, color1, color2){
+  C <- kineTraits[,trait]
+  cM <- contMap(kineTree, setNames(C, kineTraits$Species))
+  cM$cols[1:length(cM$cols)]<-colorRampPalette(c(color1,color2), space="Lab")(length(cM$cols))
+  plot(cM, legend=FALSE)
+  add.color.bar(0.5, cM$cols,title=trait,prompt=FALSE,x=0, y=2-0.08*(Ntip(cM$tree)-1),lwd=4,fsize=0.8)
+}
+
+contColors(names(kineTraits)[15], "white", "black") #speed cm
+contColors(names(kineTraits)[18], "white", "black") #speed z/s
+contColors(names(kineTraits)[19], "white", "black") #speed colony
+
+phenogram(kineTree, setNames(kineTraits$Speed..colonysize.min.,kineTraits$Species))
+phenogram(tree_salp_pruned, setNames(unique_traits$DV.Zooid..Stolon.angle,unique_traits$Species))
+
+phylogit = pgls.Ives(kineTree, setNames(kineTraits$Speed..colonysize.min.,kineTraits$Species), setNames(kineTraits$Architecture,kineTraits$Species))
+print(phylogit)
+c("Soft specilization", "Number of nematocyst types", phylogit$n, phylogit$aic, coef(summary(phylogit))[2,6], coef(summary(phylogit))[2,1], logit$aic, coef(summary(logit))[2,4], coef(summary(logit))[2,1])
+
+#Jet angle, colony speed - color is architecture
+ggplot(kineTraits, aes(SN.Jet.Motion.angle, Speed..colonysize.min.)) +
+  geom_point(aes(color=Architecture)) +
+  geom_text(label=kineTraits$Species, vjust = 0.9, hjust=-0.1)+ 
+  theme_bw()
+
+
+#Zooid angle, colony speed - color is architecture
+ggplot(kineTraits, aes(zDV.Zooid..Stolon.angle, Speed..colonysize.min.)) +
+  geom_point(aes(color=Architecture)) +
+  geom_text(label=kineTraits$Species, vjust = 0.9, hjust=-0.1)+
+  xlim(c(0, 110))+
+  theme_bw()
+
+#CSA, colony speed - color is architecture
+ggplot(kineTraits, aes(Zooid.area.cross.section.packing, Speed..colonysize.min.)) +
+  geom_point(aes(color=Architecture)) +
+  geom_text(label=kineTraits$Species, vjust = 0.9, hjust=-0.1)+
+  xlim(c(0, 40))+
+  theme_bw()
+
+#packing, colony speed - color is architecture
+ggplot(kineTraits, aes(Zooid.length.packing, Speed..colonysize.min.)) +
+  geom_point(aes(color=Architecture)) +
+  geom_text(label=kineTraits$Species, vjust = 0.9, hjust=-0.1)+
+  xlim(c(1, 10))+
+  theme_bw()
+
+#COT, species - color is architecture
+ggplot(kineTraits %>% filter(!is.na(X..Cost.from.Swimming)), aes(x=Speed..cm.s., y=X..Cost.from.Swimming)) +
+  geom_point(aes(color=Species)) +
+  theme_bw()
+
+PMScolor <- function(data, tree, x, y, chromo){
+  data <- data[match(tree$tip.label, data$Species),]
+  tip.cols <- brewer.pal(8,"Set1")[data[,chromo] %>%  as.character() %>% as.factor() %>% as.numeric()]
+  tip.cols <- c()
+  names(tip.cols)<-tree$tip.label
+  cols<-c(tip.cols[tree$tip.label],rep("black",tree$Nnode))
+  cols<-c(tip.cols[tree$tip.label],rep("black",tree$Nnode))
+  names(cols)<-1:(length(tree$tip)+tree$Nnode)
+  phylomorphospace(tree,as.matrix(data[,c(x,y)]),control=list(col.node=cols),label="horizontal", xlab=colnames(data)[x], ylab=colnames(data)[y])
+}
+par(oma=rep(4,4))
+names(kineTraits)
+simZDSV<-make.simmap(kineTree,setNames(kineTraits$Architecture,kineTraits$Species),nsim=25,model="ER")
+
+phylomorphospace(kineTraits, simZDSV[[9]], 29, 19, 2)
+
+#All taxa
 
 #### [1] #### Whole colony architecture #####
 morph <- setNames(unique_traits[which(unique_traits$Variable=="Chain architecture"),4], unique_traits[which(unique_traits$Variable=="Chain architecture"),1])
 morph <- c(morph,setNames("Linear", "Soestia zonaria"),setNames("Oblique", "Thalia orientalis"),setNames("Transversal", "Pegea confoederata"),setNames("Whorl","Cyclosalpa quadriluminis"))
-tree_salp_morph <- drop.tip(tree_salp, which(!(tree_salp$tip.label %in% names(morph))))
+tree_salp_morph <- drop.tip(extended_phylo, which(!(extended_phylo$tip.label %in% names(morph))))
 STree_morph <- lapply(Strees, function(t){drop.tip(t,which(!(t$tip.label %in% names(morph))))})
 morph <- morph[which(names(morph) %in% tree_salp_morph$tip.label)]
 morph[match(tree_salp_morph$tip.label,names(morph))] -> morph
+
+morph <- setNames(unique_traits$Architecture, unique_traits$Species)
 
   #Model selection
 
 models=c("ER","SYM","ARD")
 for(i in 1:3){
   print(models[i])
-  fitDiscrete(tree_salp_morph, morph, model=models[i])$opt$aicc %>% print()
+  fitDiscrete(tree_salp_pruned, morph, model=models[i])$opt$aicc %>% print() #instead of tree_salp_morph
 }
-fitDiscrete(tree_salp_morph, morph, model="meristic", symmetric=T)$opt$aicc %>% print()
+fitDiscrete(tree_salp_pruned, morph, model="meristic", symmetric=T)$opt$aicc %>% print()
 fitDiscrete(tree_salp_morph, morph, model="meristic", symmetric=F)$opt$aicc %>% print()
 
   #SIMMAP plotting
-simmorph<-make.simmap(tree_salp_morph,morph,nsim=25,model="ARD",pi=table(morph)/sum(table(morph)))
+Morph <- c(setNames("Linear", "Ihlea racovitzai"),setNames("Oblique", "Thalia orientalis"),setNames("Linear","Salpa younti"),
+           setNames(unique_traits[,2],unique_traits$Species), setNames("Bipinnate","Ritteriella amboinensis"), 
+           setNames("Linear","Salpa thompsoni"))
+Mphylo <- drop.tip(extended_phylo, which(extended_phylo$tip.label=="Cyclosalpa floridiana" | extended_phylo$tip.label=="Brooksia lacromae"))
+simmorph<-make.simmap(Mphylo,Morph[match(Mphylo$tip.label,names(Morph))],nsim=25,model="ER")
 par(ask=F)
 obj_t<-summary(simmorph,plot=FALSE)
-cols_t<-setNames(palette()[1:6],mapped.states(simmorph)[,1])
+cols_t<-setNames(c("turquoise", "magenta","gold","dark orange","red","dark green","purple"),mapped.states(simmorph)[,1])
 plot(obj_t,colors=cols_t,fsize=0.8,cex=c(0.9,0.5), ftype="i")
-add.simmap.legend(colors=cols_t,x=0, y=4,prompt=FALSE,fsize=0.9,)
+add.simmap.legend(colors=cols_t,x=0, y=8 ,prompt=FALSE,fsize=0.9,)
 
   #ACE plotting
 fitMorph <- ace(morph,tree_salp_morph,"discrete")
 plotTree(tree_salp_morph,fsize=0.8,ftype="i", offset=1)
-cols=c("black","red","green","blue","cyan","pink")
+cols=brewer.pal(8,"Set1")[1:7]
 nodelabels(node=1:tree_salp_morph$Nnode+Ntip(tree_salp_morph),pie=fitMorph$lik.anc,piecol=cols,cex=0.7)
-tiplabels(pie=to.matrix(morph,sort(unique(morph))),piecol=cols,cex=0.5)
-add.simmap.legend(colors=cols,prompt=FALSE,x=0,y=2,fsize=0.8)
+tiplabels(pie=to.matrix(morph,morph), piecol=cols,cex=0.5)
 
   #corHMM
-hidMorph <- corHMM(tree_salp_morph,cbind(names(morph),morph),rate.cat=1)
-hidMorph$solution[is.na(hidMorph$solution)] <- 0
-diag(hidMorph$solution) <- -rowSums(hidMorph$solution)
+#hidMorph <- corHMM(tree_salp_morph,cbind(names(morph),morph),rate.cat=1)
+#hidMorph$solution[is.na(hidMorph$solution)] <- 0
+#diag(hidMorph$solution) <- -rowSums(hidMorph$solution)
 
-MorphSimmap <- makeSimmap(tree_salp_morph,cbind(names(morph),morph), model=hidMorph$solution, rate.cat=1)
-plotSimmap(MorphSimmap[[1]], fsize = 0.5)
+#MorphSimmap <- makeSimmap(tree_salp_morph,cbind(names(morph),morph), model=hidMorph$solution, rate.cat=1)
+#plotSimmap(MorphSimmap[[1]], fsize = 0.5)
 
-#### [2] #### Whole colony architecture EXCLUDING Bipinnate for being autapomorphic #####
-morph_nb <- morph[which(morph!="Bipinnate")]
+#### [2] #### Whole colony architecture EXCLUDING Helical for being autapomorphic #####
+morph_nb <- morph[which(morph!="Helical")]
 nbTree <- drop.tip(tree_salp, which(!(tree_salp$tip.label %in% names(morph_nb))))
 
   #Model selection

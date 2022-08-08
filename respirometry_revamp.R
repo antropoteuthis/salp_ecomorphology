@@ -116,6 +116,7 @@ join_presens %>%
   geom_point(aes(col= Species)) + ylab("O2 (mg)") + 
   geom_line(aes(col = Species, group=Specimen)) + 
   theme_bw() +
+  ylim(c(-5,0))+
   facet_wrap(~Treatment)
 
 join_presens %>% filter(is.paired=="Yes") %>% 
@@ -123,8 +124,7 @@ join_presens %>% filter(is.paired=="Yes") %>%
   ggplot(aes(x=Time.point..min., y=abs_O2.mg.specific)) + 
   geom_point(aes(col=Species, alpha=Treatment))+ ylab("O2 (mg)") + 
   geom_line(aes(col = Species, group=Specimen, alpha=Treatment)) + 
-  theme_bw() +
-  vline()
+  theme_bw()
 
   #Swimmers
 join_swim <- full_join(specimens_swim, controls_swim[c("Date","Experiment","Time.point..min.","abs_O2.mg.","Container.volume..ml.")], 
@@ -203,7 +203,18 @@ factSPsp(join_presens)
 
 ### PLOTS ###
 
+ggplot(join_swim, aes(x=Time.point..min., y=abs_O2.mg.specific)) +
+  geom_point(aes(col=Species)) +
+  ylab("O2 (mg) Difference Intact") +
+  geom_line(aes(col = Species, group=Specimen)) +
+  ylim(c(-2.1,0)) +
+  theme_bw()
 
+ggplot(join_ko, aes(x=Time.point..min., y=abs_O2.mg.specific)) +
+  geom_point(aes(col=Species)) +
+  ylab("O2 (mg) Difference Intact") +
+  geom_line(aes(col = Species, group=Specimen)) +
+  theme_bw()
 
 #Raw O2 plots for swim
 rawControlswim <- ggplot(join_swim, aes(x=Time.point..min., y=abs_O2.mg._control)) + geom_point(aes(cex=log(Container.volume..ml._control))) + ylab("O2 (mg) Controls Intact") + geom_line(aes(group=Specimen)) + theme_bw()
@@ -255,6 +266,12 @@ mm_to_carbon$Generation[mm_to_carbon$Species=="Iasis (Weelia) cylindrica"] <- "a
 slopes %>% left_join(mm_to_carbon[which(mm_to_carbon$Generation=="a"),c(1,4,5)], by="Species") %>% 
   mutate(mgC = Regression_b*Zooid.length..mm.^Regression_a) %>% mutate(Slopes_mgC = Slope_O2/mgC) -> slopes
 
+slopes$Species %>% factor(levels=c("Pegea socia", "Pegea confoederata", "Cyclosalpa affinis", 
+                                      "Cyclosalpa bakeri", "Cyclosalpa quadriluminis",  "Cyclosalpa polae",
+                                      "Cyclosalpa sewelli", "Ritteriella sp.", "Ritteriella amboinensis",
+                                      "Brooksia rostrata", "Salpa fusiformis", "Salpa aspera", "Salpa maxima", 
+                                      "Iasis (Weelia) cylindrica", "Soestia zonaria")) -> slopes$Species
+
 pdf("Figures_respirometry/Kona2022/slopes.pdf", height=6, width=10)
 slopes %>% filter(Treatment=="Intact") %>% 
   ggplot(aes(x=Species,y=-Slope_O2))+
@@ -264,8 +281,8 @@ slopes %>% filter(Treatment=="Intact") %>%
   geom_point(data=slopes %>% filter(Treatment=="Anesthetized"), color="blue",fill="red", alpha=0.7)+
   ylab("-Slope / Specimen biovolume (ml)")+
   theme_bw()+
-  theme(axis.text.x = element_text(angle = 90))+
-  facet_wrap(~Paired)
+  theme(axis.text.x = element_text(angle = 90))#+
+  #facet_wrap(~Paired)
 dev.off()
 
 pdf("Figures_respirometry/Kona2022/slopes_volume.pdf", height=6, width=10)
@@ -299,15 +316,30 @@ dev.off()
 salplit <- read.csv("salplit.tsv", sep='\t', stringsAsFactors = F)
 swimraw <- salplit[,c(1,2,4)] %>% filter(Variable=="Mean swimming speed cms")
 swim <- data.frame(Species=swimraw$Species, Speed.cm.s=as.numeric(swimraw$Value))
+
+swim <- read.csv("SalpPreliminaryPass.tsv",sep='\t', stringsAsFactors = F)[,c(1,15)]
+swim <- swim[!is.na(swim$Speed..cm.s.),]
+names(swim)[2] <- "Speed.cm.s"
+energetics[energetics$Species=="Iasis (Weelia) cylindrica",1] <- "Iasis cylindrica"
 energetics <- left_join(slopes, swim, by="Species") 
-energetics$Zooid.length..mm. <- as.numeric(COT$Zooid.length..mm.)
-energetics$Number.of.zooids <- as.numeric(COT$Number.of.zooids)
+energetics$Zooid.length..mm. <- as.numeric(energetics$Zooid.length..mm.)
+energetics$Number.of.zooids <- as.numeric(energetics$Number.of.zooids)
 energetics %>% mutate(Speed.body.s = Zooid.length..mm.*Speed.cm.s/10) -> energetics #speed per body lengths
 energetics %>% group_by(Species) %>% summarize(-Slope_normalized %>% mean(na.rm=T))
 
 #Define COST of LIVING: COT.abs as mgO2/(Zooid.vol*cm_moved)  v.v. COT.rel as mgO2/(Zooid.vol*bodylength)
-energetics %>% filter(energetics$Treatment=="Intact") %>% mutate(COT.abs.ml = -Slope_normalized/(Speed.cm.s*60), COT.rel.ml = -Slope_normalized/(Speed.body.s*60), COT.abs.mgC = -Slopes_mgC/(Speed.cm.s*60), COT.rel.mgC = -Slopes_mgC/(Speed.body.s*60))->COT_intact
+energetics %>% filter(energetics$Treatment=="Intact") %>% 
+  mutate(COT.abs.ml = -Slope_normalized/(Speed.cm.s*60), 
+         COT.rel.ml = -Slope_normalized/(Speed.body.s*60), 
+         COT.abs.mgC = -Slopes_mgC/(Speed.cm.s*60), 
+         COT.rel.mgC = -Slopes_mgC/(Speed.body.s*60)) -> COT_intact
 COT_intact <- COT_intact[which(!is.na(COT_intact$COT.abs.ml)),]
+
+COT_intact$Species %>% factor(levels=c("Pegea socia", "Pegea confoederata", "Cyclosalpa affinis", 
+                                   "Cyclosalpa bakeri", "Cyclosalpa quadriluminis",  "Cyclosalpa polae",
+                                   "Cyclosalpa sewelli", "Ritteriella sp.", "Ritteriella amboinensis",
+                                   "Brooksia rostrata", "Salpa fusiformis", "Salpa aspera", "Salpa maxima", 
+                                   "Iasis (Weelia) cylindrica", "Soestia zonaria")) -> COT_intact$Species
 
 #raw cost of living by volume per cm
 pdf("Figures_respirometry/Kona2022/rawCOT_intact_abs.pdf", height=6, width=10)
@@ -387,12 +419,30 @@ mutate(COT.abs.ml = -(Slope_normalized_Intact-Slope_normalized_Anesthetized)/(Sp
   mutate(COT.abs.mgC = -(Slopes_mgC_Intact-Slopes_mgC_Anesthetized)/(Speed.cm.s*60), 
          COT.rel.mgC = -(Slopes_mgC_Intact-Slopes_mgC_Anesthetized)/(Speed.body.s*60)) %>% 
   mutate(COT.p.ml = Slope_normalized_Intact/Slope_normalized_Anesthetized, COT.p.mgC = Slopes_mgC_Intact/Slopes_mgC_Anesthetized)-> COT_species
+COT_species[,c(1,4,5)] %>% filter(!is.na(Slope_normalized_Anesthetized)) %>% 
+  mutate(diff=round(Slope_normalized_Intact-Slope_normalized_Anesthetized,5))
 
-ggplot(COT_species %>% filter(!is.na(COT.abs.ml)), aes(x=Species,y=COT.abs.ml))+
-  geom_point(aes(size=Speed.cm.s,color=Speed.cm.s))+
+COT_species$Species %>% factor(levels=c("Pegea socia", "Pegea confoederata", "Cyclosalpa affinis", 
+                                       "Cyclosalpa bakeri", "Cyclosalpa quadriluminis",  "Cyclosalpa polae",
+                                       "Cyclosalpa sewelli", "Ritteriella sp.", "Ritteriella amboinensis",
+                                       "Brooksia rostrata", "Salpa fusiformis", "Salpa aspera", "Salpa maxima", 
+                                       "Iasis (Weelia) cylindrica", "Soestia zonaria")) -> COT_species$Species
+
+ggplot(COT_species %>% filter(!is.na(COT.abs.ml)), aes(x=Speed.cm.s,y=COT.abs.ml))+
+  geom_point(aes(color=Species))+
   theme_bw()+
-  theme(axis.text.x = element_text(angle = 90))+
+  geom_text(label=COT_species %>% filter(!is.na(COT.abs.ml)) %>% .$Species)+
   ylab("Cost of Transport (mgO2/ml per cm moved)")
+
+mutate(COT_species, percentSwim = 100*((-Slope_normalized_Intact)-(-Slope_normalized_Anesthetized))/(-Slope_normalized_Intact) )
+
+ggplot(mutate(COT_species, percentSwim = 100*((-Slope_normalized_Intact)-(-Slope_normalized_Anesthetized))/(-Slope_normalized_Intact) ) %>% 
+         filter(!is.na(percentSwim)), aes(x=Speed.cm.s,y=percentSwim))+
+  geom_point(aes(color=Species))+
+  theme_bw()+
+  ylim(0,100)+
+  geom_text(label=mutate(COT_species, 
+                         percentSwim = 100*((-Slope_normalized_Intact)-(-Slope_normalized_Anesthetized))/(-Slope_normalized_Intact)) %>% filter(!is.na(percentSwim)) %>% .$Species)
 
 ggplot(COT_species %>% filter(!is.na(COT.rel.ml)), aes(x=Species,y=COT.rel.ml))+
   geom_point(aes(size=Speed.body.s,color=Speed.body.s))+
@@ -426,12 +476,12 @@ ggplot(COT_species %>% filter(!is.na(COT.p.mgC)), aes(x=Species,y=COT.p.mgC))+
 
 ### plots with speed
 ggplot(COT_intact, aes(x=Speed.cm.s,y=COT.abs.ml))+
-  geom_point(aes(color=Species))+
+  geom_point()+
   theme_bw()+
  geom_smooth(method="lm")+
   ylab("Cost of Living (mgO2/ml per body length moved)")
 
-ggplot(COT_species, aes(x=Speed.cm.s,y=COT.abs.mgC))+
+ggplot(COT_species, aes(x=Speed.cm.s,y=COT.abs.ml))+
   geom_point(aes(color=Species))+
   geom_text(aes(label=Species))+
   theme_bw()+
