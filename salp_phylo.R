@@ -4,7 +4,7 @@ library(phytools)
 library(reshape2)
 library(data.table)
 library(geiger)
-library(corHMM)
+#library(corHMM)
 library(bayou)
 library(surface)
 library(RColorBrewer)
@@ -117,11 +117,41 @@ contColors(names(kineTraits)[18], "white", "black") #speed z/s
 contColors(names(kineTraits)[19], "white", "black") #speed colony
 
 phenogram(kineTree, setNames(kineTraits$Speed..colonysize.min.,kineTraits$Species))
+phenogram(kineTree, setNames(kineTraits$Speed..zooid.s,kineTraits$Species))
 phenogram(tree_salp_pruned, setNames(unique_traits$DV.Zooid..Stolon.angle,unique_traits$Species))
 
-phylogit = pgls.Ives(kineTree, setNames(kineTraits$Speed..colonysize.min.,kineTraits$Species), setNames(kineTraits$Architecture,kineTraits$Species))
-print(phylogit)
-c("Soft specilization", "Number of nematocyst types", phylogit$n, phylogit$aic, coef(summary(phylogit))[2,6], coef(summary(phylogit))[2,1], logit$aic, coef(summary(logit))[2,4], coef(summary(logit))[2,1])
+#Front drag
+kineTraits[,c(2,8,13)] %>% mutate(baseCSA = Zooid.area.cross.section.packing/Zooid.number)->CSA
+for(r in 1:nrow(CSA)){
+  species <- mutate(CSA[r,], Species = rownames(CSA[r,]))
+  ZNcum <- rbind(species,ZN)
+  for(z in 3:60){
+    ZN <- species
+    ZN$Zooid.number <- z
+    ZN$Zooid.area.cross.section.packing <- z*ZN$baseCSA
+    ZNcum <- rbind(species,ZN)
+    print(ZN)
+  }
+  CSAcum <- rbind(species,ZNcum)
+  print(dim(CSAcum))
+}
+
+rbind()
+3:60 %>% length() #58
+
+#Power scaling
+power <- full_join(CSA, kineTraits)
+power %>% mutate(JetPower = Zooid.number.kine*Zooid.length.kine..cm.)
+ggplot(power, aes(, Speed..cm.s.)) +
+  geom_point(aes(color=Architecture)) +
+  geom_text(label=kineTraits$Species, vjust = 0.9, hjust=-0.1)+ 
+  theme_bw()
+
+ggplot(kineTraits[-15,], aes(x=Zooid.number*log((Zooid.length..mm.^3)), y = Speed..colonysize.min.)) +
+  geom_line(aes(color=Architecture), cex=2) +
+  theme_bw()+
+  scale_color_manual(values=setNames(c("turquoise","purple","magenta", "yellow", "orange", "green", "red"), unique(unique_traits$Architecture)))+
+  theme(axis.text.x = element_text(angle = 90))
 
 #Jet angle, colony speed - color is architecture
 ggplot(kineTraits, aes(SN.Jet.Motion.angle, Speed..colonysize.min.)) +
@@ -152,7 +182,16 @@ ggplot(kineTraits, aes(Zooid.length.packing, Speed..colonysize.min.)) +
   theme_bw()
 
 #COT, species - color is architecture
-ggplot(kineTraits %>% filter(!is.na(X..Cost.from.Swimming)), aes(x=Speed..cm.s., y=X..Cost.from.Swimming)) +
+ggplot(kineTraits %>% filter(!is.na(Mean.Net.Cost..mgO2.ml.m.)), aes(x=Speed..colonysize.min., y=Mean.Net.Cost..mgO2.ml.m.)) +
+  geom_point(aes(color=Species, size=Speed..cm.s.)) +
+  theme_bw()
+
+#COT vs %cost, species - color is architecture
+ggplot(kineTraits %>% filter(!is.na(Mean.Net.Cost..mgO2.ml.m.)), aes(x=X..Cost.from.Swimming, y=Mean.Net.Cost..mgO2.ml.m.)) +
+  geom_point(aes(color=Species)) +
+  theme_bw()
+
+ggplot(kineTraits %>% filter(!is.na(Mean.Net.Cost..mgO2.ml.m.)), aes(x=Mean.Gross.COT..mgO2.ml.m., y=DV.Zooid..Stolon.angle)) +
   geom_point(aes(color=Species)) +
   theme_bw()
 
@@ -173,6 +212,19 @@ simZDSV<-make.simmap(kineTree,setNames(kineTraits$Architecture,kineTraits$Specie
 phylomorphospace(kineTraits, simZDSV[[9]], 29, 19, 2)
 
 #All taxa
+
+ggplot(unique_traits %>% filter(!is.na(Mean.Gross.COT..mgO2.ml.m.)), aes(x=Species, y = Mean.Gross.COT..mgO2.ml.m.)) +
+  geom_point(aes(color=Architecture)) +
+  theme_bw()+
+  theme(axis.text.x = element_text(angle = 90))
+
+ggplot(unique_traits[-17,], aes(x=Zooid.number, y = (Colony.cross.sectional.area...mm2./(Zooid.width..mm.^2)))) +
+  geom_line(aes(color=Architecture), cex=2) +
+  theme_bw()+
+  scale_color_manual(values=setNames(c("turquoise","purple","magenta", "yellow", "orange", "green", "red"), unique(unique_traits$Architecture)))+
+  theme(axis.text.x = element_text(angle = 90))
+
+
 
 #### [1] #### Whole colony architecture #####
 morph <- setNames(unique_traits[which(unique_traits$Variable=="Chain architecture"),4], unique_traits[which(unique_traits$Variable=="Chain architecture"),1])
@@ -199,7 +251,7 @@ Morph <- c(setNames("Linear", "Ihlea racovitzai"),setNames("Oblique", "Thalia or
            setNames(unique_traits[,2],unique_traits$Species), setNames("Bipinnate","Ritteriella amboinensis"), 
            setNames("Linear","Salpa thompsoni"))
 Mphylo <- drop.tip(extended_phylo, which(extended_phylo$tip.label=="Cyclosalpa floridiana" | extended_phylo$tip.label=="Brooksia lacromae"))
-simmorph<-make.simmap(Mphylo,Morph[match(Mphylo$tip.label,names(Morph))],nsim=25,model="ER")
+simmorph<-make.simmap(Mphylo,Morph[match(Mphylo$tip.label,names(Morph))],nsim=100,model="ER")
 par(ask=F)
 obj_t<-summary(simmorph,plot=FALSE)
 cols_t<-setNames(c("turquoise", "magenta","gold","dark orange","red","dark green","purple"),mapped.states(simmorph)[,1])
@@ -518,7 +570,7 @@ print(phylogit)
 
 #### [7] #### Continuous characters from the literature #####
 cast_num <- dcast(pruned_traits[which(pruned_traits$Class=="number"),], Species~Variable, value.var="Value", fun.aggregate = function(x){mean(as.numeric(x), na.rm = T)})
-
+cast_num <- pruned_traits[,c(1,3:23,29)]
   #Phylogenetic signals and contMaps for each character
 for(i in 2:ncol(cast_num)){
   CH_I=as.numeric(cast_num[,i])
@@ -537,6 +589,7 @@ for(i in 2:ncol(cast_num)){
     grey<-setMap(obj,c("white","black"))
     par(mfrow=c(1,1))
     plot(grey,lwd=7,legend=2, leg.txt=names(cast_num)[i], fsize=c(1,0.5))
+    phenogram(treeI, CH_I)
   }
 }
 
@@ -762,9 +815,12 @@ expected_angles[,1:6] <- sapply(expected_angles[,1:6],as.numeric)
 surfaceALL(expected_angles[,5:6],angleTree)
 
 #### [9] #### REVBAYES COLONY ARCHITECTURE EVOLUTION ################
-morphAncStates <- read.table("RB_PCM/morph_output/morph.states",sep='\t',header = T,stringsAsFactors = F, )[,c(-1:-21)]
+RBPCMtree <- read.("RB_PCM/morph_output/ase_morph.tree")
+morphAncStates <- read.table("RB_PCM/morph_output/morph.states",sep='\t',header = T,stringsAsFactors = F)[,c(-1:-2)]
+morphAncStates[morphAncStates==TRUE] <- "T"
 apply(morphAncStates, 2, function(n){round(100*table(n)/sum(table(n)),2)->tabz;return(setNames(as.vector(tabz),names(tabz)))}) -> nodeStates
 par(mfrow=c(4,5),mar=c(1,1,1,1))
+
 lapply(nodeStates, function(v){
   if(names(v)==c("C","W")){colors=c("yellow","magenta")}
   if(names(v)==c("C", "O", "T", "W")){colors=c("yellow","cyan","purple", "magenta")}

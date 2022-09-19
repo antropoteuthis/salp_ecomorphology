@@ -9,7 +9,7 @@ library(mgcv)
 setwd("~/salp_ecomorphology/")
 
 #Load data and label control rows
-presens <- read.csv("respirometry_Kona21-22.tsv", header = T, sep = "\t", stringsAsFactors = F)
+presens <- read.csv("respirometry_Kona21-22s.tsv", header = T, sep = "\t", stringsAsFactors = F)
 presens$Species[which(is.na(presens$Species))] <- "Control"
 presens$Specimen[which(is.na(presens$Specimen))] <- "Control"
 
@@ -39,7 +39,7 @@ imputed_vols <- data.frame(imputed_vol = round(presens[which(!is.na(presens$Colo
                            Zooid.length..mm. = presens[which(!is.na(presens$Colony.volume..ml.)),"Zooid.length..mm."],
                            Species = presens[which(!is.na(presens$Colony.volume..ml.)),"Species"]) 
 
-mutate(imputed_vols, estimate_vol=Number.of.zooids*(0.00015*pi*Zooid.length..mm.*((0.35*Zooid.length..mm.)^2 - ((0.25*Zooid.length..mm.)^2)))) %>%
+mutate(imputed_vols, estimate_vol=Number.of.zooids*(ifelse(Species=="Salpa maxima",0.00005,0.00015)*pi*Zooid.length..mm.*((0.35*Zooid.length..mm.)^2 - ((0.25*Zooid.length..mm.)^2)))) %>%
   ggplot(aes(x=real_vol, y=estimate_vol)) + 
   geom_point(aes(col=Species))
 

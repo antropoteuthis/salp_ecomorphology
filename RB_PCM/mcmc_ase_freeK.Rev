@@ -14,7 +14,7 @@
 
 # Import the morphological character matrix #
 # this file contains only the taxa for which morphological characters are available #
-morpho <- readDiscreteCharacterData("data/mammals_thinned_placenta_type.nex")
+morpho <- readDiscreteCharacterData("morph.nex")
 
 # Create some vector for the moves and monitors of this analysis
 moves    = VectorMoves()
@@ -29,7 +29,7 @@ monitors = VectorMonitors()
 # Here we use a fixed tree topology of mammals on a family level sampling
 # Note that the readTrees function always returns a vector of trees, 
 # so we simple take the first tree
-phylogeny <- readTrees("Chordata18Srev_morph.tree")[1]
+phylogeny <- readTrees("Extendedpylo.tre")[1]
 
 
 #########################

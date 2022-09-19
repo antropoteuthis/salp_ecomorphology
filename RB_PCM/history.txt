@@ -1,1 +1,86 @@
 q()
+morpho <- readDiscreteCharacterData("morph.nex")
+moves    = VectorMoves()
+monitors = VectorMonitors()
+##############
+# Tree model #
+##############
+# Note that the readTrees function always returns a vector of trees, 
+# so we simple take the first tree
+phylogeny <- readTrees("Extendedpylo.tre")[1]############################################     Morphological substitution model    ############################################# Create the Q matrix. th ~ dnExponential( 1 )th.setValue( 1 )cw ~ dnExponential( 1 )cw.setValue( 1 )#wc ~ dnExponential( 1 )#wc.setValue( 1 )#wt ~ dnExponential( 1 )#wt.setValue( 1 )#tw ~ dnExponential( 1 )#tw.setValue( 1 )to ~ dnExponential( 1 )to.setValue( 1 )#ot ~ dnExponential( 1 )#ot.setValue( 1 )#ol ~ dnExponential( 1 )#ol.setValue( 1 )#lo ~ dnExponential( 1 )#lo.setValue( 1 )lb ~ dnExponential( 1 )lb.setValue( 1 )#bl ~ dnExponential( 1 )#bl.setValue( 1 )rates := [ [ 0.0, th, 0.0, 0.0, 0.0, 0.0, 0.0,],           [ th 0.0, cw, 0.0, 0.0, 0.0, 0.0 ],           [ 0.0, cw, 0.0, cw, 0.0, 0.0, 0.0 ],           [ 0.0, 0.0, cw, 0.0, to, 0.0, 0.0 ],           [ 0.0, 0.0, 0.0, to, 0.0, to, 0.0 ],           [ 0.0, 0.0, 0.0, 0.0, to ,0.0, lb ],           [ 0.0, 0.0, 0.0, 0.0, 0.0, lb, 0.0 ] ]Q_morpho := fnFreeK(rates)
+P <- Q_morpho.getTransitionProbabilities(rate=0.1)
+P
+# Moves on the parameters to the Gamma distribution.
+moves.append( mvScale(cw, weight=2.0) )
+#moves.append( mvScale(wc, weight=2.0) )
+#moves.append( mvScale(wt, weight=2.0) )
+#moves.append( mvScale(tw, weight=2.0) )
+moves.append( mvScale(to, weight=2.0) )
+#moves.append( mvScale(ot, weight=2.0) )
+#moves.append( mvScale(ol, weight=2.0) )
+#moves.append( mvScale(lo, weight=2.0) )
+moves.append( mvScale(lb, weight=2.0) )
+#moves.append( mvScale(bl, weight=2.0) )
+# Combine all of our elements into a CTMC.
+phyMorpho ~ dnPhyloCTMC(tree=phylogeny, Q=Q_morpho, type="Standard")
+phyMorpho.clamp(morpho)
+morpho
+morpho <- readDiscreteCharacterData("binDevelopmentalTransits.nex")
+moves    = VectorMoves()monitors = VectorMonitors()############### Tree model ################ Note that the readTrees function always returns a vector of trees, # so we simple take the first treephylogeny <- readTrees("Extendedpylo.tre")[1]############################################     Morphological substitution model    ############################################# Create the Q matrix. th ~ dnExponential( 1 )th.setValue( 1 )cw ~ dnExponential( 1 )cw.setValue( 1 )#wc ~ dnExponential( 1 )#wc.setValue( 1 )#wt ~ dnExponential( 1 )#wt.setValue( 1 )#tw ~ dnExponential( 1 )#tw.setValue( 1 )to ~ dnExponential( 1 )to.setValue( 1 )#ot ~ dnExponential( 1 )#ot.setValue( 1 )#ol ~ dnExponential( 1 )#ol.setValue( 1 )#lo ~ dnExponential( 1 )#lo.setValue( 1 )lb ~ dnExponential( 1 )lb.setValue( 1 )#bl ~ dnExponential( 1 )#bl.setValue( 1 )rates := [ [ 0.0, th, 0.0, 0.0, 0.0, 0.0, 0.0,],           [ th 0.0, cw, 0.0, 0.0, 0.0, 0.0 ],           [ 0.0, cw, 0.0, cw, 0.0, 0.0, 0.0 ],           [ 0.0, 0.0, cw, 0.0, to, 0.0, 0.0 ],
+           [ 0.0, 0.0, 0.0, to, 0.0, to, 0.0 ],
+           [ 0.0, 0.0, 0.0, 0.0, to ,0.0, lb ],
+           [ 0.0, 0.0, 0.0, 0.0, 0.0, lb, 0.0 ] ]
+Q_morpho := fnFreeK(rates)
+P <- Q_morpho.getTransitionProbabilities(rate=0.1)
+P
+# Moves on the parameters to the Gamma distribution.
+moves.append( mvScale(cw, weight=2.0) )
+#moves.append( mvScale(wc, weight=2.0) )
+#moves.append( mvScale(wt, weight=2.0) )
+#moves.append( mvScale(tw, weight=2.0) )
+moves.append( mvScale(to, weight=2.0) )
+#moves.append( mvScale(ot, weight=2.0) )
+#moves.append( mvScale(ol, weight=2.0) )
+#moves.append( mvScale(lo, weight=2.0) )
+moves.append( mvScale(lb, weight=2.0) )
+#moves.append( mvScale(bl, weight=2.0) )
+# Combine all of our elements into a CTMC.
+phyMorpho ~ dnPhyloCTMC(tree=phylogeny, Q=Q_morpho, type="Standard")
+phyMorpho.clamp(morpho)
+rates := [ [ 0.0, th, 0.0, 0.0, 0.0, 0.0, 0.0,],
+           [ th, 0.0, cw, 0.0, 0.0, 0.0, 0.0 ],
+           [ 0.0, cw, 0.0, cw, 0.0, 0.0, 0.0 ],
+           [ 0.0, 0.0, cw, 0.0, to, 0.0, 0.0 ],
+           [ 0.0, 0.0, 0.0, to, 0.0, to, 0.0 ],
+           [ 0.0, 0.0, 0.0, 0.0, to ,0.0, lb ],
+           [ 0.0, 0.0, 0.0, 0.0, 0.0, lb, 0.0 ] ]
+Q_morpho := fnFreeK(rates)
+P <- Q_morpho.getTransitionProbabilities(rate=0.1)
+P
+morpho <- readDiscreteCharacterData("binDevelopmentalTransits.nex")
+moves    = VectorMoves()monitors = VectorMonitors()############### Tree model ################ Note that the readTrees function always returns a vector of trees, # so we simple take the first treephylogeny <- readTrees("Extendedpylo.tre")[1]############################################     Morphological substitution model    ############################################# Create the Q matrix. th ~ dnExponential( 1 )th.setValue( 1 )cw ~ dnExponential( 1 )cw.setValue( 1 )#wc ~ dnExponential( 1 )#wc.setValue( 1 )#wt ~ dnExponential( 1 )#wt.setValue( 1 )#tw ~ dnExponential( 1 )#tw.setValue( 1 )to ~ dnExponential( 1 )to.setValue( 1 )#ot ~ dnExponential( 1 )#ot.setValue( 1 )#ol ~ dnExponential( 1 )#ol.setValue( 1 )#lo ~ dnExponential( 1 )#lo.setValue( 1 )lb ~ dnExponential( 1 )lb.setValue( 1 )#bl ~ dnExponential( 1 )#bl.setValue( 1 )rates := [ [ 0.0, th, 0.0, 0.0, 0.0, 0.0, 0.0],           [ th, 0.0, cw, 0.0, 0.0, 0.0, 0.0 ],           [ 0.0, cw, 0.0, cw, 0.0, 0.0, 0.0 ],           [ 0.0, 0.0, cw, 0.0, to, 0.0, 0.0 ],
+           [ 0.0, 0.0, 0.0, to, 0.0, to, 0.0 ],
+           [ 0.0, 0.0, 0.0, 0.0, to ,0.0, lb ],
+           [ 0.0, 0.0, 0.0, 0.0, 0.0, lb, 0.0 ] ]
+q()
+morpho <- readDiscreteCharacterData("morph.nex")
+moves    = VectorMoves()
+monitors = VectorMonitors()phylogeny <- readTrees("Extendedpylo.tre")[1]############################################     Morphological substitution model    ############################################# Create the Q matrix. #T<>Hth ~ dnExponential( 1 )th.setValue( 1 )#T<>C<>Wcw ~ dnExponential( 1 )cw.setValue( 1 )#unused C<>W#wc ~ dnExponential( 1 )#wc.setValue( 1 )#unused T<>W#wt ~ dnExponential( 1 )#wt.setValue( 1 )#tw ~ dnExponential( 1 )#tw.setValue( 1 )#T<>O<>Lto ~ dnExponential( 1 )to.setValue( 1 )#unused T<>o#ot ~ dnExponential( 1 )#ot.setValue( 1 )#unused O<>L#ol ~ dnExponential( 1 )#ol.setValue( 1 )#lo ~ dnExponential( 1 )#lo.setValue( 1 )#L<>Blb ~ dnExponential( 1 )lb.setValue( 1 )#unused B<>L#bl ~ dnExponential( 1 )#bl.setValue( 1 )
+Q
+rates := [ [ 0.0, th, 0.0, 0.0, 0.0, 0.0, 0.0],
+           [ th, 0.0, cw, 0.0, 0.0, 0.0, 0.0 ],
+           [ 0.0, cw, 0.0, cw, 0.0, 0.0, 0.0 ],
+           [ 0.0, 0.0, cw, 0.0, to, 0.0, 0.0 ],
+           [ 0.0, 0.0, 0.0, to, 0.0, to, 0.0 ],
+           [ 0.0, 0.0, 0.0, 0.0, to ,0.0, lb ],
+           [ 0.0, 0.0, 0.0, 0.0, 0.0, lb, 0.0 ] ]
+th
+th ~ dnExponential( 1 )
+th.setValue( 1 )
+th
+cw
+q()
+Q
+morph
+q()q()
+q()

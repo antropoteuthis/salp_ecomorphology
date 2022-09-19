@@ -1,33 +1,34 @@
 #NEXUS
 
 Begin data;
-Dimensions ntax=25 nchar=5;
+Dimensions ntax=26 nchar=6;
 Format datatype=Standard symbols="0 1" missing=? gap=-;
 Matrix
-Brooksia_rostrata	11000
-Cyclosalpa_affinis	00100
-Cyclosalpa_bakeri	00100
-Cyclosalpa_floridiana	00100
-Cyclosalpa_quadriluminis	00100
-Cyclosalpa_polae	00110
-Cyclosalpa_sewelli	00110
-Cyclosalpa_pinnata	00110
-Helicosalpa_younti	00001
-Iasis_cylindrica	11000
-Ihlea_racovitzai	11000
-Ihlea_punctata	11000
-Pegea_bicaudata	00000
-Pegea_confoederata	00000
-Pegea_socia	00000
-Ritteriella_retracta	11000
-Ritteriella_amboinensis	11000
-Salpa_aspera	11000
-Salpa_fusiformis	11000
-Salpa_maxima	11000
-Salpa_thompsoni	11000
-Soestia_zonaria	11000
-Thalia_democratica	10000
-Thalia_orientalis	10000
-Thetys_vagina	10000
+Brooksia_rostrata	111000
+Cyclosalpa_affinis	000100
+Cyclosalpa_bakeri	000100
+Cyclosalpa_floridiana	0000100
+Cyclosalpa_quadriluminis	000100
+Cyclosalpa_polae	000110
+Cyclosalpa_sewelli	000110
+Cyclosalpa_pinnata	000110
+Helicosalpa_younti	000001
+Iasis_cylindrica	110000
+Ihlea_racovitzai	110000
+Ihlea_punctata	110000
+Pegea_bicaudata	000000
+Pegea_confoederata	000000
+Pegea_socia	000000
+Ritteriella_retracta	111000
+Ritteriella_amboinensis	111000
+Salpa_aspera	110000
+Salpa_fusiformis	110000
+Salpa_maxima	110000
+Salpa_thompsoni	110000
+Soestia_zonaria	110000
+Thalia_democratica	100000
+Thalia_longicauda	100000
+Thalia_orientalis	100000
+Thetys_vagina	100000
 ;
 END;
