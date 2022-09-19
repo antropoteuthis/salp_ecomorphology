@@ -8,20 +8,15 @@ require(data.table)
 library(mgcv)
 setwd("~/salp_ecomorphology/")
 
-#Load data and label control rows
+#Load data and label: control rows, paired specimens
 presens <- read.csv("respirometry_Kona21-22s.tsv", header = T, sep = "\t", stringsAsFactors = F)
 presens$Species[which(is.na(presens$Species))] <- "Control"
 presens$Specimen[which(is.na(presens$Specimen))] <- "Control"
+presens <- mutate(presens, is.paired=ifelse(Measurement.notes=="Paired", "Yes", "No"))
+as.numeric(as.factor(presens$Injection.time)) -> presens$Injection.time 
 
-#Filter by plastic and intact treatments
-presens <- presens[which(presens$Container=="Plastic" & presens$Treatment != "MgCl2"),]
-
-#Filter by blastozooids
-presens <- presens[which(presens$Stage != "Oozoid" & presens$Stage != "Oozoid+Stolon" | is.na(presens$Stage)),]
-
-#Fill in contained volume
-presens$Container.volume..ml.[which(is.na(presens$Container.volume..ml.) & presens$Sensor.ID %in% c("P1","P2","P4","P5"))] <- 208
-presens$Container.volume..ml.[which(is.na(presens$Container.volume..ml.) & presens$Sensor.ID == "P3 control")] <- 72
+#Filter to get only plastic and non-mgcl2 blastozooid measurements
+presens <- presens[which(presens$Container=="Plastic" & presens$Treatment != "MgCl2" & presens$Stage != "Oozoid" & presens$Stage != "Oozoid+Stolon"),]
 
 #Estimate absolute oxygen mg
 ggplot(presens,aes(x=Specimen,y=O2..mg.L.))+geom_point(aes(col=Time.point..min.))+ theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
@@ -32,56 +27,56 @@ ggplot(presens,aes(x=Specimen,y=abs_O2.mg.))+geom_point(aes(col=Container.volume
 #presens$Temperature...C.[which(is.na(presens$Temperature...C.))]<-29 #### MAKING SHIT UP ####
 #presens <- mutate(presens, sat_O2 = O2..mg.L./oxySol(presens$Temperature...C., 30.1, 1))
 
-#Colony volume imputation
+#Colony volume imputation for those specimens where we didn't measure the specimen biovolume in the field
 imputed_vols <- data.frame(imputed_vol = round(presens[which(!is.na(presens$Colony.volume..ml.)),"Number.of.zooids"]*pi*presens[which(!is.na(presens$Colony.volume..ml.)),"Zooid.length..mm."]*((presens[which(!is.na(presens$Colony.volume..ml.)),"Zooid.length..mm."]/2)^2)*0.001,1),
                            real_vol = presens[which(!is.na(presens$Colony.volume..ml.)),"Colony.volume..ml."], 
                            Number.of.zooids = presens[which(!is.na(presens$Colony.volume..ml.)), "Number.of.zooids"],
                            Zooid.length..mm. = presens[which(!is.na(presens$Colony.volume..ml.)),"Zooid.length..mm."],
                            Species = presens[which(!is.na(presens$Colony.volume..ml.)),"Species"]) 
 
+  #try out an imputation fit by hand using a 3D ellipsoid formula
 mutate(imputed_vols, estimate_vol=Number.of.zooids*(ifelse(Species=="Salpa maxima",0.00005,0.00015)*pi*Zooid.length..mm.*((0.35*Zooid.length..mm.)^2 - ((0.25*Zooid.length..mm.)^2)))) %>%
   ggplot(aes(x=real_vol, y=estimate_vol)) + 
   geom_point(aes(col=Species))
 
+  #try a GAM-based modeling for the imputation
 fit3 = gam(real_vol~Zooid.length..mm.+Number.of.zooids, data = imputed_vols)
 fit3$coefficients[1] <- 0
-
 unknown=as.data.frame(presens[which(is.na(presens$Colony.volume..ml.) & presens$Species != "Control"),c("Number.of.zooids","Zooid.length..mm.")])
 presens$Colony.volume..ml.[which(is.na(presens$Colony.volume..ml.) & presens$Species != "Control")] <- predict.gam(fit3, unknown) %>% as.vector()
 
-#Sensitivity of container effects
+#Sensitivity of container effects by species (needs more development)
 ggplot(presens[which(presens$Time.point..min.>115),],aes(x=Sensor.ID,y=O2..mg.L.))+geom_point(aes(col=Species))+ theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
 ggplot(presens[which(presens$Time.point..min.>115),],aes(x=Sensor.ID,y=abs_O2.mg.))+geom_point(aes(col=Species))+ theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
 
 ########### ANALYSES ##############
 
-#Subset controls and specimen measures for swimmers, anesthesized, and paired experiments
-  #Keep only controls with the largest jar volume and in case of a tie, those that report the highest O2 concentration (purportedly those with least organic matter decay).
+#Subset controls and specimen measures for swimmers, anesthetized, and paired experiments
 
-#### SOME CONTROLS's TREATMENTS DONT MATCH THE TREATMENT OF THEIR SPECIMENS!!!  ####
+#### SOME CONTROLS' TREATMENTS DONT MATCH THE TREATMENT OF THEIR SPECIMENS!!!  ####
 
-controls_swim <- presens[which(presens$Specimen=="Control" & presens$Treatment == "Intact" & !str_detect(presens$Measurement.notes, "Paired")),] %>% 
-  group_by(Experiment, Time.point..min.) %>% 
-  filter(Container.volume..ml. == max(Container.volume..ml.) & O2..mg.L. == max(O2..mg.L.)) %>% .[,-which(names(.)=="Sensor.ID" | names(.)=="Measurement")] %>% unique()
-controls_ko <-  presens[which(presens$Specimen=="Control" & presens$Treatment == "Anesthetized" & !str_detect(presens$Measurement.notes, "Paired")),] %>% 
-  group_by(Experiment, Time.point..min.) %>% 
-  filter(Container.volume..ml. == max(Container.volume..ml.) & O2..mg.L. == max(O2..mg.L.)) %>% .[,-which(names(.)=="Sensor.ID" | names(.)=="Measurement")] %>% unique()
-controls_swim_paired <- presens[which(presens$Specimen=="Control" & presens$Treatment == "Intact" & str_detect(presens$Measurement.notes, "Paired")),] %>% 
-  group_by(Experiment, Time.point..min.) %>% 
-  filter(Container.volume..ml. == max(Container.volume..ml.) & O2..mg.L. == max(O2..mg.L.)) %>% .[,-which(names(.)=="Sensor.ID" | names(.)=="Measurement")] %>% unique()
-controls_ko_paired <- presens[which(presens$Specimen=="Control" & presens$Treatment == "Anesthetized" & str_detect(presens$Measurement.notes, "Paired")),] %>% 
-  group_by(Experiment, Time.point..min.) %>% 
-  filter(Container.volume..ml. == max(Container.volume..ml.) & O2..mg.L. == max(O2..mg.L.)) %>% .[,-which(names(.)=="Sensor.ID" | names(.)=="Measurement")] %>% unique()
-
-controls <- presens[which(presens$Specimen=="Control"),] %>%  group_by(Experiment, Time.point..min.) %>%  filter(Container.volume..ml. == max(Container.volume..ml.) & O2..mg.L. == max(O2..mg.L.)) %>% .[,-which(names(.)=="Sensor.ID" | names(.)=="Measurement")] %>% unique()
+# controls_swim <- presens[which(presens$Specimen=="Control" & presens$Treatment == "Intact" & !str_detect(presens$Measurement.notes, "Paired")),] %>% 
+#   group_by(Experiment, Time.point..min.) %>% 
+#   filter(Container.volume..ml. == max(Container.volume..ml.) & O2..mg.L. == max(O2..mg.L.)) %>% .[,-which(names(.)=="Sensor.ID" | names(.)=="Measurement")] %>% unique()
+# controls_ko <-  presens[which(presens$Specimen=="Control" & presens$Treatment == "Anesthetized" & !str_detect(presens$Measurement.notes, "Paired")),] %>% 
+#   group_by(Experiment, Time.point..min.) %>% 
+#   filter(Container.volume..ml. == max(Container.volume..ml.) & O2..mg.L. == max(O2..mg.L.)) %>% .[,-which(names(.)=="Sensor.ID" | names(.)=="Measurement")] %>% unique()
+# controls_swim_paired <- presens[which(presens$Specimen=="Control" & presens$Treatment == "Intact" & str_detect(presens$Measurement.notes, "Paired")),] %>% 
+#   group_by(Experiment, Time.point..min.) %>% 
+#   filter(Container.volume..ml. == max(Container.volume..ml.) & O2..mg.L. == max(O2..mg.L.)) %>% .[,-which(names(.)=="Sensor.ID" | names(.)=="Measurement")] %>% unique()
+# controls_ko_paired <- presens[which(presens$Specimen=="Control" & presens$Treatment == "Anesthetized" & str_detect(presens$Measurement.notes, "Paired")),] %>% 
+#   group_by(Experiment, Time.point..min.) %>% 
+#   filter(Container.volume..ml. == max(Container.volume..ml.) & O2..mg.L. == max(O2..mg.L.)) %>% .[,-which(names(.)=="Sensor.ID" | names(.)=="Measurement")] %>% unique()
+# 
+# controls <- presens[which(presens$Specimen=="Control"),] %>%  group_by(Experiment, Time.point..min.) %>%  filter(Container.volume..ml. == max(Container.volume..ml.) & O2..mg.L. == max(O2..mg.L.)) %>% .[,-which(names(.)=="Sensor.ID" | names(.)=="Measurement")] %>% unique()
 
   #Specimens
-specimens_swim <- presens[which(presens$Specimen != "Control" & presens$Treatment == "Intact" & !str_detect(presens$Measurement.notes, "Paired")),]
-specimens_ko <- presens[which(presens$Specimen != "Control" & presens$Treatment == "Anesthetized" & !str_detect(presens$Measurement.notes, "Paired")),]
-specimens_swim_paired <- presens[which(presens$Specimen != "Control" & presens$Treatment == "Intact" & str_detect(presens$Measurement.notes, "Paired")),]
-specimens_ko_paired <- presens[which(presens$Specimen != "Control" & presens$Treatment == "Anesthetized" & str_detect(presens$Measurement.notes, "Paired")),]
-
-specimens <- presens[which(presens$Specimen != "Control"),]
+# specimens_swim <- presens[which(presens$Specimen != "Control" & presens$Treatment == "Intact" & !str_detect(presens$Measurement.notes, "Paired")),]
+# specimens_ko <- presens[which(presens$Specimen != "Control" & presens$Treatment == "Anesthetized" & !str_detect(presens$Measurement.notes, "Paired")),]
+# specimens_swim_paired <- presens[which(presens$Specimen != "Control" & presens$Treatment == "Intact" & str_detect(presens$Measurement.notes, "Paired")),]
+# specimens_ko_paired <- presens[which(presens$Specimen != "Control" & presens$Treatment == "Anesthetized" & str_detect(presens$Measurement.notes, "Paired")),]
+# 
+# specimens <- presens[which(presens$Specimen != "Control"),]
 
 
 #Extract T0 points and calculate O2 consumed
@@ -95,93 +90,98 @@ specimens <- presens[which(presens$Specimen != "Control"),]
 
 #Join Specimens+Controls and subtract correcting for the difference in volume for specific O2 measurements
 
-  #TOTAL
-join_presens <- full_join(specimens, controls[c("Date","Experiment","Time.point..min.","abs_O2.mg.","Container.volume..ml.")], 
-                          by=c("Experiment","Time.point..min.","Date"), suffix=c("_animal","_control"))
-join_presens <- mutate(join_presens, abs_O2.mg.specific = abs_O2.mg._animal-(abs_O2.mg._control*(Container.volume..ml._animal/Container.volume..ml._control)))
-join_presens <- join_presens[which(!is.na(join_presens$Measurement)),]
-join_presens <- mutate(join_presens, is.paired=ifelse(Measurement.notes=="Paired", "Yes", "No"))
+#Match each measurement with its relevant control
+#join_presens <- mutate(join_presens, abs_O2.mg.specific = abs_O2.mg._animal-(abs_O2.mg._control*(Container.volume..ml._animal/Container.volume..ml._control)))
 # join_presens$Injection.time[join_presens$Injection.time==""]<-NA
 # join_presens$Start.time[join_presens$Start.time==""]<-NA
-# as.numeric(as.factor(join_presens$Injection.time)) -> join_presens$Injection.time
+# ggplot(join_presens,aes(x=Specimen,y=abs_O2.mg.specific)) +
+#   geom_point(aes(col=Container.volume..ml. %>% log())) +
+#   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
 
-ggplot(join_presens,aes(x=Specimen,y=abs_O2.mg.specific)) +
-  geom_point(aes(col=Container.volume..ml._animal %>% log())) +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+# join_presens %>% 
+#   mutate(exbool = as.character(Experiment)) %>% 
+#   group_by(Treatment) %>% 
+#   ggplot(aes(x=Time.point..min., y=abs_O2.mg.specific)) + 
+#   geom_point(aes(col= Species)) + ylab("O2 (mg)") + 
+#   geom_line(aes(col = Species, group=Specimen)) + 
+#   theme_bw() +
+#   ylim(c(-5,0))+
+#   facet_wrap(~Treatment)
 
-join_presens %>% 
-  mutate(exbool = as.character(Experiment)) %>% 
-  group_by(Treatment) %>% 
-  ggplot(aes(x=Time.point..min., y=abs_O2.mg.specific)) + 
-  geom_point(aes(col= Species)) + ylab("O2 (mg)") + 
-  geom_line(aes(col = Species, group=Specimen)) + 
-  theme_bw() +
-  ylim(c(-5,0))+
-  facet_wrap(~Treatment)
+# join_presens %>% filter(is.paired=="Yes") %>% 
+#   mutate(exbool = as.character(Experiment)) %>% 
+#   ggplot(aes(x=Time.point..min., y=abs_O2.mg.specific)) + 
+#   geom_point(aes(col=Species, alpha=Treatment))+ ylab("O2 (mg)") + 
+#   geom_line(aes(col = Species, group=Specimen, alpha=Treatment)) + 
+#   theme_bw()
+# 
+#   #Swimmers
+# join_swim <- full_join(specimens_swim, controls_swim[c("Date","Experiment","Time.point..min.","abs_O2.mg.","Container.volume..ml.")], 
+#                             by=c("Experiment","Time.point..min.","Date"), suffix=c("_animal","_control"))
+# join_swim <- mutate(join_swim, abs_O2.mg.specific = abs_O2.mg._animal-(abs_O2.mg._control*(Container.volume..ml._animal/Container.volume..ml._control)))
+# join_swim <- join_swim[which(!is.na(join_swim$Measurement)),]
+# 
+# ggplot(join_swim,aes(x=Specimen,y=abs_O2.mg.specific))+geom_point(aes(col=Container.volume..ml._animal %>% log()))+ theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+# join_swim %>% 
+#   mutate(exbool = as.character(Experiment)) %>% 
+# ggplot(aes(x=Time.point..min., y=abs_O2.mg.specific)) + 
+#   geom_point(aes(col= Species)) + ylab("O2 (mg)") + 
+#   geom_line(aes(col = Species, group=Specimen)) + 
+#   theme_bw()
+# 
+#   #Anesthetized
+# join_ko <- full_join(specimens_ko, controls_ko[c("Date","Experiment","Time.point..min.","abs_O2.mg.","Container.volume..ml.")], 
+#                      by=c("Experiment","Time.point..min.","Date"), suffix=c("_animal","_control"))
+# join_ko <- mutate(join_ko, abs_O2.mg.specific = abs_O2.mg._animal-(abs_O2.mg._control*(Container.volume..ml._animal/Container.volume..ml._control)))
+# join_ko <- join_ko[which(!is.na(join_ko$Measurement)),]
+# 
+# ggplot(join_ko,aes(x=Specimen,y=abs_O2.mg.specific))+geom_point(aes(col=Container.volume..ml._animal %>% log()))+ theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+# join_ko %>% 
+#   mutate(exbool = as.character(Experiment)) %>% 
+#   ggplot(aes(x=Time.point..min., y=abs_O2.mg.specific)) + 
+#   geom_point(aes(col= Species)) + ylab("O2 (mg)") + 
+#   geom_line(aes(col = Species, group=Specimen)) + 
+#   theme_bw()
+# 
+#   #Paired
+# join_swim_paired <- full_join(specimens_swim_paired, controls_swim_paired[c("Date","Experiment","Time.point..min.","abs_O2.mg.","Container.volume..ml.")], 
+#                               by=c("Experiment","Time.point..min.","Date"), suffix=c("_swim_animal","_swim_control"))
+# join_swim_paired <- mutate(join_swim_paired, abs_O2.mg._swim_specific = abs_O2.mg._swim_animal-(abs_O2.mg._swim_control*(Container.volume..ml._swim_animal/Container.volume..ml._swim_control)))
+# join_swim_paired <- join_swim_paired[which(!is.na(join_swim_paired$Measurement)),]
+# 
+# ggplot(join_swim_paired,aes(x=Specimen,y=abs_O2.mg._swim_specific))+geom_point(aes(col=Container.volume..ml._swim_animal %>% log()))+ theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+# join_swim_paired %>% 
+#   mutate(exbool = as.character(Experiment)) %>% 
+#   ggplot(aes(x=Time.point..min., y=abs_O2.mg._swim_specific)) + 
+#   geom_point(aes(col= Species)) + ylab("O2 (mg)") + 
+#   geom_line(aes(col = Species, group=Specimen)) + 
+#   theme_bw()
+# 
+# join_ko_paired <- full_join(specimens_ko_paired, controls_ko_paired[c("Date","Experiment","Time.point..min.","abs_O2.mg.","Container.volume..ml.")], 
+#                               by=c("Experiment","Time.point..min.","Date"), suffix=c("_ko_animal","_ko_control"))
+# join_ko_paired <- mutate(join_ko_paired, abs_O2.mg._ko_specific = abs_O2.mg._ko_animal-(abs_O2.mg._ko_control*(Container.volume..ml._ko_animal/Container.volume..ml._ko_control)))
+# join_ko_paired <- join_ko_paired[which(!is.na(join_ko_paired$Measurement)),]
+# 
+# ggplot(join_ko_paired,aes(x=Specimen,y=abs_O2.mg._ko_specific))+geom_point(aes(col=Container.volume..ml._ko_animal %>% log()))+ theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+# join_ko_paired %>% 
+#   mutate(exbool = as.character(Experiment)) %>% 
+#   ggplot(aes(x=Time.point..min., y=abs_O2.mg._ko_specific)) + 
+#   geom_point(aes(col= Species)) + ylab("O2 (mg)") + 
+#   geom_line(aes(col = Species, group=Specimen)) + 
+#   theme_bw()
 
-join_presens %>% filter(is.paired=="Yes") %>% 
-  mutate(exbool = as.character(Experiment)) %>% 
-  ggplot(aes(x=Time.point..min., y=abs_O2.mg.specific)) + 
-  geom_point(aes(col=Species, alpha=Treatment))+ ylab("O2 (mg)") + 
-  geom_line(aes(col = Species, group=Specimen, alpha=Treatment)) + 
-  theme_bw()
+#######
 
-  #Swimmers
-join_swim <- full_join(specimens_swim, controls_swim[c("Date","Experiment","Time.point..min.","abs_O2.mg.","Container.volume..ml.")], 
-                            by=c("Experiment","Time.point..min.","Date"), suffix=c("_animal","_control"))
-join_swim <- mutate(join_swim, abs_O2.mg.specific = abs_O2.mg._animal-(abs_O2.mg._control*(Container.volume..ml._animal/Container.volume..ml._control)))
-join_swim <- join_swim[which(!is.na(join_swim$Measurement)),]
+#Match each measurement with its relevant control
+presens$abs_O2.mg._control <- presens$Measurement #placeholder column
+for(i in 1:nrow(presens)){
+  if(!is.na(presens$Relevant.control[i]) & presens$Specimen[i] != "Control"){
+    presens$abs_O2.mg._control[i] <- presens$abs_O2.mg.[which(presens$Measurement == presens$Relevant.control[i])]
+  }
+}
 
-ggplot(join_swim,aes(x=Specimen,y=abs_O2.mg.specific))+geom_point(aes(col=Container.volume..ml._animal %>% log()))+ theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
-join_swim %>% 
-  mutate(exbool = as.character(Experiment)) %>% 
-ggplot(aes(x=Time.point..min., y=abs_O2.mg.specific)) + 
-  geom_point(aes(col= Species)) + ylab("O2 (mg)") + 
-  geom_line(aes(col = Species, group=Specimen)) + 
-  theme_bw()
-
-  #Anesthetized
-join_ko <- full_join(specimens_ko, controls_ko[c("Date","Experiment","Time.point..min.","abs_O2.mg.","Container.volume..ml.")], 
-                     by=c("Experiment","Time.point..min.","Date"), suffix=c("_animal","_control"))
-join_ko <- mutate(join_ko, abs_O2.mg.specific = abs_O2.mg._animal-(abs_O2.mg._control*(Container.volume..ml._animal/Container.volume..ml._control)))
-join_ko <- join_ko[which(!is.na(join_ko$Measurement)),]
-
-ggplot(join_ko,aes(x=Specimen,y=abs_O2.mg.specific))+geom_point(aes(col=Container.volume..ml._animal %>% log()))+ theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
-join_ko %>% 
-  mutate(exbool = as.character(Experiment)) %>% 
-  ggplot(aes(x=Time.point..min., y=abs_O2.mg.specific)) + 
-  geom_point(aes(col= Species)) + ylab("O2 (mg)") + 
-  geom_line(aes(col = Species, group=Specimen)) + 
-  theme_bw()
-
-  #Paired
-join_swim_paired <- full_join(specimens_swim_paired, controls_swim_paired[c("Date","Experiment","Time.point..min.","abs_O2.mg.","Container.volume..ml.")], 
-                              by=c("Experiment","Time.point..min.","Date"), suffix=c("_swim_animal","_swim_control"))
-join_swim_paired <- mutate(join_swim_paired, abs_O2.mg._swim_specific = abs_O2.mg._swim_animal-(abs_O2.mg._swim_control*(Container.volume..ml._swim_animal/Container.volume..ml._swim_control)))
-join_swim_paired <- join_swim_paired[which(!is.na(join_swim_paired$Measurement)),]
-
-ggplot(join_swim_paired,aes(x=Specimen,y=abs_O2.mg._swim_specific))+geom_point(aes(col=Container.volume..ml._swim_animal %>% log()))+ theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
-join_swim_paired %>% 
-  mutate(exbool = as.character(Experiment)) %>% 
-  ggplot(aes(x=Time.point..min., y=abs_O2.mg._swim_specific)) + 
-  geom_point(aes(col= Species)) + ylab("O2 (mg)") + 
-  geom_line(aes(col = Species, group=Specimen)) + 
-  theme_bw()
-
-join_ko_paired <- full_join(specimens_ko_paired, controls_ko_paired[c("Date","Experiment","Time.point..min.","abs_O2.mg.","Container.volume..ml.")], 
-                              by=c("Experiment","Time.point..min.","Date"), suffix=c("_ko_animal","_ko_control"))
-join_ko_paired <- mutate(join_ko_paired, abs_O2.mg._ko_specific = abs_O2.mg._ko_animal-(abs_O2.mg._ko_control*(Container.volume..ml._ko_animal/Container.volume..ml._ko_control)))
-join_ko_paired <- join_ko_paired[which(!is.na(join_ko_paired$Measurement)),]
-
-ggplot(join_ko_paired,aes(x=Specimen,y=abs_O2.mg._ko_specific))+geom_point(aes(col=Container.volume..ml._ko_animal %>% log()))+ theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
-join_ko_paired %>% 
-  mutate(exbool = as.character(Experiment)) %>% 
-  ggplot(aes(x=Time.point..min., y=abs_O2.mg._ko_specific)) + 
-  geom_point(aes(col= Species)) + ylab("O2 (mg)") + 
-  geom_line(aes(col = Species, group=Specimen)) + 
-  theme_bw()
-
-#######.......
+#remove control rows
+rename(as_tibble(presens) %>% filter(presens$Specimen != "Control"), abs_O2.mg._animal=abs_O2.mg.) %>% as.data.frame() -> presens
 
 #Remove unorthodox measuements
 #norm_presens <- join_presens[which(join_presens$Specimen != "D4-CP-B-1"),] #remove weird C.polae from MGCL2 experiment
@@ -195,67 +195,87 @@ factSPsp <- function(df){
   df$Experiment <- as.factor(df$Specimen)
 }
 
-factSPsp(join_ko)
-factSPsp(join_ko_paired)
-factSPsp(join_swim)
-factSPsp(join_swim_paired)
-factSPsp(join_presens)
+factSPsp(presens)
+# factSPsp(join_ko)
+# factSPsp(join_ko_paired)
+# factSPsp(join_swim)
+# factSPsp(join_swim_paired)
+# factSPsp(join_presens)
 
 ### PLOTS ###
 
-ggplot(join_swim, aes(x=Time.point..min., y=abs_O2.mg.specific)) +
-  geom_point(aes(col=Species)) +
-  ylab("O2 (mg) Difference Intact") +
-  geom_line(aes(col = Species, group=Specimen)) +
-  ylim(c(-2.1,0)) +
-  theme_bw()
-
-ggplot(join_ko, aes(x=Time.point..min., y=abs_O2.mg.specific)) +
-  geom_point(aes(col=Species)) +
-  ylab("O2 (mg) Difference Intact") +
-  geom_line(aes(col = Species, group=Specimen)) +
-  theme_bw()
+# ggplot(join_swim, aes(x=Time.point..min., y=abs_O2.mg.specific)) +
+#   geom_point(aes(col=Species)) +
+#   ylab("O2 (mg) Difference Intact") +
+#   geom_line(aes(col = Species, group=Specimen)) +
+#   ylim(c(-2.1,0)) +
+#   theme_bw()
+# 
+# ggplot(join_ko, aes(x=Time.point..min., y=abs_O2.mg.specific)) +
+#   geom_point(aes(col=Species)) +
+#   ylab("O2 (mg) Difference Intact") +
+#   geom_line(aes(col = Species, group=Specimen)) +
+#   theme_bw()
 
 #Raw O2 plots for swim
-rawControlswim <- ggplot(join_swim, aes(x=Time.point..min., y=abs_O2.mg._control)) + geom_point(aes(cex=log(Container.volume..ml._control))) + ylab("O2 (mg) Controls Intact") + geom_line(aes(group=Specimen)) + theme_bw()
-rawAnimalswim <- ggplot(join_swim, aes(x=Time.point..min., y=abs_O2.mg._animal)) + geom_point(aes(col=Species)) + ylab("O2 (mg) Animals Intact") + geom_line(aes(col = Species, group=Specimen)) + theme_bw()+ theme(legend.position = "none")
-rawDifferenceSwim <- ggplot(join_swim, aes(x=Time.point..min., y=abs_O2.mg.specific)) + geom_point(aes(col=Species)) + ylab("O2 (mg) Difference Intact") + geom_line(aes(col = Species, group=Specimen)) + theme_bw()
+rawControlswim <- ggplot(presens, aes(x=Time.point..min., y=abs_O2.mg._control)) +
+  geom_point() +
+  ylab("O2 (mg) Controls Intact") +
+  theme_bw()
+rawAnimalswim <- ggplot(presens, aes(x=Time.point..min., y=abs_O2.mg._animal)) +
+  geom_point(aes(col=Species)) +
+  ylab("O2 (mg) Animals Intact") +
+  geom_line(aes(col = Species, group=Specimen)) +
+  theme_bw()
+
+# rawDifferenceSwim <- ggplot(presens %>% 
+#                               filter(Treatment=="Intact"), aes(x=Time.point..min., y=abs_O2.mg.specific)) +
+#   geom_point(aes(col=Species)) + 
+#   ylab("O2 (mg) Difference Intact") + 
+#   geom_line(aes(col = Species, group=Specimen)) + 
+#   theme_bw()
 
 pdf("Figures_respirometry/Kona2022/RawO2.pdf", height=4, width=14)
-wrap_plots(rawControlswim,rawAnimalswim,rawDifferenceSwim)
+wrap_plots(rawControlswim,rawAnimalswim)
 dev.off()
 
 #Estimate slopes   ### ALERT WE ARE REMOVING -VE NUMBERS AND PUTTING ZEROES INSTEAD  ####
 
-#TOTAL
-slopes <- as.data.frame(matrix(ncol=10,nrow=length(unique(paste0(join_presens$Specimen,join_presens$Treatment)))))
-names(slopes) <- c("Species","Specimen","Colony.volume..ml.","Zooid.length..mm.","Number.of.zooids","Slope_O2","Timespan","Temperature...C.","Treatment","Paired")
-for(i in 1:length(unique(paste0(join_presens$Specimen,join_presens$Treatment)))){
-  spm_i <- unique(paste(join_presens$Specimen,join_presens$Treatment),sep=" ")[i] %>% 
+#SLOPE CALCULATIONS
+slopes <- as.data.frame(matrix(ncol=12,nrow=length(unique(paste0(join_presens$Specimen,join_presens$Treatment)))))
+names(slopes) <- c("Species","Specimen","Colony.volume..ml.","Zooid.length..mm.","Number.of.zooids","Slope_O2", "Slope_O2.control", "Slope_O2_dif", "Timespan","Temperature_range","Treatment","Paired")
+for(i in 1:length(unique(paste0(presens$Specimen,presens$Treatment)))){
+  spm_i <- unique(paste(presens$Specimen,presens$Treatment),sep=" ")[i] %>% 
     str_split(pattern=" ") %>%
     .[[1]] %>% .[1]
-  treat_i <- unique(paste(join_presens$Specimen,join_presens$Treatment),sep=" ")[i] %>% 
+  treat_i <- unique(paste(presens$Specimen,presens$Treatment),sep=" ")[i] %>% 
     str_split(pattern=" ") %>%
     .[[1]] %>% .[2]
-  series_i <- join_presens[which(join_presens$Specimen==spm_i & join_presens$Treatment==treat_i),c("Specimen","Species","Zooid.length..mm.","Number.of.zooids","Colony.volume..ml.","Time.point..min.","Temperature...C.","abs_O2.mg.specific","Treatment","is.paired")]
-  lm_i <- lm(abs_O2.mg.specific~Time.point..min., series_i)
-  print(series_i$Specimen[1] %>% as.character());print(series_i$Species[1] %>% as.character());print(lm_i$coefficients)
+  series_i <- presens[which(presens$Specimen==spm_i & presens$Treatment==treat_i),c("Specimen","Species","Zooid.length..mm.","Number.of.zooids","Colony.volume..ml.","Time.point..min.","Temperature...C.","abs_O2.mg._animal","abs_O2.mg._control","Treatment","is.paired")]
+  lm_animal <- lm(abs_O2.mg._animal~Time.point..min., series_i)
+  lm_control <- lm(abs_O2.mg._control~Time.point..min., series_i)
+  print(series_i$Specimen[1] %>% as.character());print(series_i$Species[1] %>% as.character());print(lm_animal$coefficients);print(lm_control$coefficients)
   time.span_i <- max(series_i$Time.point..min.)-min(series_i$Time.point..min.)
+  #"Species","Specimen","Colony.volume..ml.","Zooid.length..mm.","Number.of.zooids",
   slopes[i,1] <- series_i$Species[1] %>% as.character()
   slopes[i,2] <- series_i$Specimen[1] %>% as.character()
   slopes[i,3] <- series_i$Colony.volume..ml.[1] %>% as.numeric()
   slopes[i,4] <- series_i$Zooid.length..mm.[1] %>% as.numeric()
   slopes[i,5] <- series_i$Number.of.zooids[1] %>% as.numeric()
-  slopes[i,6] <- ifelse(lm_i$coefficients[2]<0, lm_i$coefficients[2], 0)  #### ALERT WE ARE HERE REMOVING STRANGE -ve NUMBERS  ####
-  slopes[i,7] <- time.span_i
-  slopes[i,8] <- series_i$Temperature...C. %>% mean(na.rm=T)
+  #"Slope_O2", "Slope_O2.control", "Slope_O2_dif"
+  slopes[i,6] <- lm_animal$coefficients[2]
+  slopes[i,7] <- lm_control$coefficients[2]
+  slopes[i,8] <- lm_animal$coefficients[2] - lm_control$coefficients[2]
+  #"Timespan","Temperature_range","Treatment","Paired"
+  slopes[i,9] <- time.span_i
+  slopes[i,10] <- if(!is.na(mean(series_i$Temperature...C., na.rm = T))){max(series_i$Temperature...C., na.rm=T) - min(series_i$Temperature...C., na.rm=T)} else NA
   print(series_i$Treatment)
-  slopes[i,9] <- series_i$Treatment %>% unique()
-  slopes[i,10] <- series_i$is.paired %>% unique()
+  slopes[i,11] <- series_i$Treatment %>% unique()
+  slopes[i,12] <- series_i$is.paired %>% unique()
 }
 
-#Normalize by volume
-slopes %>% mutate(Slope_normalized = Slope_O2/Colony.volume..ml.) -> slopes
+#Normalize by colony volume
+slopes %>% mutate(Slope_normalized = Slope_O2/Colony.volume..ml., Slope_O2_dif_normalized = Slope_O2_dif/Colony.volume..ml.) -> slopes
 
 #Get carbon estimates
 #Estimate Carbon content for each species and recalculate carbon-based rawCOT
@@ -264,15 +284,16 @@ mm_to_carbon$Generation[mm_to_carbon$Species=="Iasis (Weelia) cylindrica"] <- "a
 
 #Normalize by carbon
 slopes %>% left_join(mm_to_carbon[which(mm_to_carbon$Generation=="a"),c(1,4,5)], by="Species") %>% 
-  mutate(mgC = Regression_b*Zooid.length..mm.^Regression_a) %>% mutate(Slopes_mgC = Slope_O2/mgC) -> slopes
+  mutate(mgC = Regression_b*Zooid.length..mm.^Regression_a) %>% 
+  mutate(Slopes_mgC = Slope_O2/mgC, Slopes_dif_mgC = Slope_O2_dif/mgC) -> slopes
 
-slopes$Species %>% factor(levels=c("Pegea socia", "Pegea confoederata", "Cyclosalpa affinis", 
-                                      "Cyclosalpa bakeri", "Cyclosalpa quadriluminis",  "Cyclosalpa polae",
+slopes$Species %>% factor(levels=c("Pegea sp.", "Helicosalpa virgula","Cyclosalpa affinis", 
+                                      "Cyclosalpa bakeri", "Cyclosalpa quadriluminis","Cyclosalpa polae",
                                       "Cyclosalpa sewelli", "Ritteriella sp.", "Ritteriella amboinensis",
-                                      "Brooksia rostrata", "Salpa fusiformis", "Salpa aspera", "Salpa maxima", 
+                                      "Brooksia rostrata", "Thalia sp.", "Metcalfina hexagona", "Salpa fusiformis", "Salpa aspera", "Salpa maxima", 
                                       "Iasis (Weelia) cylindrica", "Soestia zonaria")) -> slopes$Species
 
-pdf("Figures_respirometry/Kona2022/slopes.pdf", height=6, width=10)
+pdf("Figures_respirometry/Kona2022/slopes_raw.pdf", height=6, width=10)
 slopes %>% filter(Treatment=="Intact") %>% 
   ggplot(aes(x=Species,y=-Slope_O2))+
   geom_violin(color="red",fill="red", alpha=0.7)+
@@ -285,6 +306,19 @@ slopes %>% filter(Treatment=="Intact") %>%
   #facet_wrap(~Paired)
 dev.off()
 
+pdf("Figures_respirometry/Kona2022/slope_diffs.pdf", height=6, width=10)
+slopes %>% filter(Treatment=="Intact") %>% 
+  ggplot(aes(x=Species,y=-Slope_O2_dif))+
+  geom_violin(color="red",fill="red", alpha=0.7)+
+  geom_point(color="red",fill="red", alpha=0.7)+
+  geom_violin(data=slopes %>% filter(Treatment=="Anesthetized"), color="blue", fill="blue", alpha=0.7, width = 0.5)+
+  geom_point(data=slopes %>% filter(Treatment=="Anesthetized"), color="blue",fill="red", alpha=0.7)+
+  ylab("-Slope / Specimen biovolume (ml)")+
+  theme_bw()+
+  theme(axis.text.x = element_text(angle = 90))#+
+#facet_wrap(~Paired)
+dev.off()
+
 pdf("Figures_respirometry/Kona2022/slopes_volume.pdf", height=6, width=10)
 slopes %>% filter(Treatment=="Intact") %>% 
   ggplot(aes(x=Species,y=-Slope_normalized))+
@@ -293,6 +327,18 @@ slopes %>% filter(Treatment=="Intact") %>%
   geom_violin(data=slopes %>% filter(Treatment=="Anesthetized"), color="blue", fill="blue", alpha=0.7, width = 0.5)+
   geom_point(data=slopes %>% filter(Treatment=="Anesthetized"), color="blue",fill="red", alpha=0.7)+
   ylab("-Slope / Specimen biovolume (ml)")+
+  theme_bw()+
+  theme(axis.text.x = element_text(angle = 90))
+dev.off()
+
+pdf("Figures_respirometry/Kona2022/slope_diffs_volume.pdf", height=6, width=10)
+slopes %>% filter(Treatment=="Intact") %>% 
+  ggplot(aes(x=Species,y=-Slope_O2_dif_normalized))+
+  geom_violin(color="red",fill="red", alpha=0.7)+
+  geom_point(color="red",fill="red", alpha=0.7)+
+  geom_violin(data=slopes %>% filter(Treatment=="Anesthetized"), color="blue", fill="blue", alpha=0.7, width = 0.5)+
+  geom_point(data=slopes %>% filter(Treatment=="Anesthetized"), color="blue",fill="red", alpha=0.7)+
+  ylab("-Slope difference / Specimen biovolume (ml)")+
   theme_bw()+
   theme(axis.text.x = element_text(angle = 90))
 dev.off()
@@ -309,6 +355,18 @@ slopes %>% filter(Treatment=="Intact", !is.na(Slopes_mgC)) %>%
   theme(axis.text.x = element_text(angle = 90))
 dev.off()
 
+pdf("Figures_respirometry/Kona2022/slopes_mgC_dif.pdf", height=6, width=10)
+slopes %>% filter(Treatment=="Intact", !is.na(Slopes_dif_mgC)) %>% 
+  ggplot(aes(x=Species,y=-Slopes_dif_mgC))+
+  geom_violin(color="red",fill="red", alpha=0.7)+
+  geom_point(color="red",fill="red", alpha=0.7)+
+  geom_violin(data=slopes %>% filter(Treatment=="Anesthetized", !is.na(Slopes_dif_mgC)), color="blue", fill="blue", alpha=0.7, width = 0.5)+
+  geom_point(data=slopes %>% filter(Treatment=="Anesthetized", !is.na(Slopes_dif_mgC)), color="blue",fill="red", alpha=0.7)+
+  ylab("-Slope difference / Specimen carbon (mg)")+
+  theme_bw()+
+  theme(axis.text.x = element_text(angle = 90))
+dev.off()
+
 ## GROUP BY Specimen ##
 
 ### COST OF TRANSPORT ###
@@ -320,60 +378,62 @@ swim <- data.frame(Species=swimraw$Species, Speed.cm.s=as.numeric(swimraw$Value)
 swim <- read.csv("SalpPreliminaryPass.tsv",sep='\t', stringsAsFactors = F)[,c(1,15)]
 swim <- swim[!is.na(swim$Speed..cm.s.),]
 names(swim)[2] <- "Speed.cm.s"
-energetics[energetics$Species=="Iasis (Weelia) cylindrica",1] <- "Iasis cylindrica"
+
+energetics <- mutate(slopes, Species=as.character(Species))
+energetics$Species[energetics$Species=="Iasis (Weelia) cylindrica"] <- "Iasis cylindrica"
 energetics <- left_join(slopes, swim, by="Species") 
 energetics$Zooid.length..mm. <- as.numeric(energetics$Zooid.length..mm.)
 energetics$Number.of.zooids <- as.numeric(energetics$Number.of.zooids)
 energetics %>% mutate(Speed.body.s = Zooid.length..mm.*Speed.cm.s/10) -> energetics #speed per body lengths
-energetics %>% group_by(Species) %>% summarize(-Slope_normalized %>% mean(na.rm=T))
+energetics %>% group_by(Species) %>% summarize(-Slope_O2_dif_normalized %>% mean(na.rm=T))
 
 #Define COST of LIVING: COT.abs as mgO2/(Zooid.vol*cm_moved)  v.v. COT.rel as mgO2/(Zooid.vol*bodylength)
 energetics %>% filter(energetics$Treatment=="Intact") %>% 
-  mutate(COT.abs.ml = -Slope_normalized/(Speed.cm.s*60), 
-         COT.rel.ml = -Slope_normalized/(Speed.body.s*60), 
-         COT.abs.mgC = -Slopes_mgC/(Speed.cm.s*60), 
-         COT.rel.mgC = -Slopes_mgC/(Speed.body.s*60)) -> COT_intact
+  mutate(COT.abs.ml = Slope_O2_dif_normalized/(Speed.cm.s*60), 
+         COT.rel.ml = Slope_O2_dif_normalized/(Speed.body.s*60), 
+         COT.abs.mgC = Slope_O2_dif_normalized/(Speed.cm.s*60), 
+         COT.rel.mgC = Slope_O2_dif_normalized/(Speed.body.s*60)) -> COT_intact
 COT_intact <- COT_intact[which(!is.na(COT_intact$COT.abs.ml)),]
 
-COT_intact$Species %>% factor(levels=c("Pegea socia", "Pegea confoederata", "Cyclosalpa affinis", 
-                                   "Cyclosalpa bakeri", "Cyclosalpa quadriluminis",  "Cyclosalpa polae",
-                                   "Cyclosalpa sewelli", "Ritteriella sp.", "Ritteriella amboinensis",
-                                   "Brooksia rostrata", "Salpa fusiformis", "Salpa aspera", "Salpa maxima", 
-                                   "Iasis (Weelia) cylindrica", "Soestia zonaria")) -> COT_intact$Species
+COT_intact$Species %>% factor(levels=c("Pegea sp.", "Helicosalpa virgula","Cyclosalpa affinis", 
+                                        "Cyclosalpa bakeri", "Cyclosalpa quadriluminis","Cyclosalpa polae",
+                                        "Cyclosalpa sewelli", "Ritteriella sp.", "Ritteriella amboinensis",
+                                        "Brooksia rostrata", "Thalia sp.", "Metcalfina hexagona", "Salpa fusiformis", "Salpa aspera", "Salpa maxima", 
+                                        "Iasis (Weelia) cylindrica", "Soestia zonaria")) -> COT_intact$Species
 
 #raw cost of living by volume per cm
 pdf("Figures_respirometry/Kona2022/rawCOT_intact_abs.pdf", height=6, width=10)
 COT_intact %>% filter(!is.na(COT.abs.ml)) %>% 
-  ggplot(aes(x=Species,y=COT.abs.ml))+
+  ggplot(aes(x=Species,y=-COT.abs.ml %>% log() %>% -.))+
   geom_boxplot(aes(fill=Speed.cm.s))+
-  theme_bw()+theme(axis.text.x = element_text(angle = 90))+ylab("Cost of Living (mgO2/Biovolume per cm moved)")
+  theme_bw()+theme(axis.text.x = element_text(angle = 90))+ylab("Cost of Living log(mgO2/Biovolume per cm moved)")
 dev.off()
 
 #raw cost of living by volume per body length
 pdf("Figures_respirometry/Kona2022/rawCOT_intact_rel.pdf", height=6, width=10)
 COT_intact %>% filter(!is.na(COT.rel.ml)) %>% 
-  ggplot(aes(x=Species,y=COT.rel.ml))+
+  ggplot(aes(x=Species,y=-COT.rel.ml %>% log() %>% -.))+
   geom_boxplot(aes(fill=Speed.cm.s))+
-  theme_bw()+theme(axis.text.x = element_text(angle = 90))+ylab("Cost of Living (mgO2/Biovolume per body length moved)")
+  theme_bw()+theme(axis.text.x = element_text(angle = 90))+ylab("Cost of Living log(mgO2/Biovolume per body length moved)")
 dev.off()
 
 #raw cost of living by carbon per cm
 pdf("Figures_respirometry/Kona2022/COT_mgC_abs.pdf", height=6, width=10)
 COT_intact %>% filter(!is.na(COT.abs.mgC)) %>% 
-  ggplot(aes(x=Species,y=COT.abs.mgC))+
+  ggplot(aes(x=Species,y=-COT.abs.mgC %>% log() %>% -.))+
   geom_boxplot(aes(fill=Speed.cm.s))+
-  theme_bw()+theme(axis.text.x = element_text(angle = 90))+ylab("Cost of Living (mgO2/mgC per cm moved)")
+  theme_bw()+theme(axis.text.x = element_text(angle = 90))+ylab("Cost of Living log(mgO2/mgC per cm moved)")
 dev.off()
 
 #raw cost of living by carbon per bodylength
 pdf("Figures_respirometry/Kona2022/COT_mgC_rel.pdf", height=6, width=10)
 COT_intact %>% filter(!is.na(COT.rel.mgC)) %>% 
-  ggplot(aes(x=Species,y=COT.rel.mgC))+
-  geom_boxplot(aes(fill=Speed.body.s %>% as.factor()))+
-  theme_bw()+theme(axis.text.x = element_text(angle = 90))+ylab("Cost of Living (mgO2/mgC per body length moved)")
+  ggplot(aes(x=Species,y=-COT.rel.mgC %>% log() %>% -.))+
+  geom_boxplot()+
+  theme_bw()+theme(axis.text.x = element_text(angle = 90))+ylab("Cost of Living log(mgO2/mgC per body length moved)")
 dev.off()
 
-#COT for paired species
+#COT for paired species   ####NEEDS FIX####
 energetics[,c(-6:-8)] %>% 
   filter(Paired=="Yes") %>% 
   pivot_wider(names_from = Treatment, values_from = c(Slope_normalized, Slopes_mgC)) %>% 
