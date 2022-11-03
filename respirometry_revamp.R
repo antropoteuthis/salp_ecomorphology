@@ -16,11 +16,14 @@ presens <- mutate(presens, is.paired=ifelse(Measurement.notes=="Paired", "Yes", 
 as.numeric(as.factor(presens$Injection.time)) -> presens$Injection.time 
 
 #Filter to get only plastic and non-mgcl2 blastozooid measurements
-presens <- presens[which(presens$Container=="Plastic" & presens$Treatment != "MgCl2" & presens$Stage != "Oozoid" & presens$Stage != "Oozoid+Stolon"),]
+presens <- presens[which(presens$Container=="Plastic" & presens$Treatment != "MgCl2"),]
+presens <- presens[which(presens$Stage=="Blastozooid" | is.na(presens$Stage)),]
 
 #Estimate absolute oxygen mg
 ggplot(presens,aes(x=Specimen,y=O2..mg.L.))+geom_point(aes(col=Time.point..min.))+ theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+
 presens <- mutate(presens, abs_O2.mg. = O2..mg.L.*Container.volume..ml./1000)
+
 ggplot(presens,aes(x=Specimen,y=abs_O2.mg.))+geom_point(aes(col=Container.volume..ml. %>% log()))+ theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
 
 #Correct for O2 saturation limit wit temperature
@@ -91,9 +94,9 @@ ggplot(presens[which(presens$Time.point..min.>115),],aes(x=Sensor.ID,y=abs_O2.mg
 #Join Specimens+Controls and subtract correcting for the difference in volume for specific O2 measurements
 
 #Match each measurement with its relevant control
-#join_presens <- mutate(join_presens, abs_O2.mg.specific = abs_O2.mg._animal-(abs_O2.mg._control*(Container.volume..ml._animal/Container.volume..ml._control)))
-# join_presens$Injection.time[join_presens$Injection.time==""]<-NA
-# join_presens$Start.time[join_presens$Start.time==""]<-NA
+# presens <- mutate(presens, abs_O2.mg.specific = abs_O2.mg._animal-(abs_O2.mg._control*(Container.volume..ml._animal/Container.volume..ml._control)))
+# presens$Injection.time[join_presens$Injection.time==""]<-NA
+# presens$Start.time[join_presens$Start.time==""]<-NA
 # ggplot(join_presens,aes(x=Specimen,y=abs_O2.mg.specific)) +
 #   geom_point(aes(col=Container.volume..ml. %>% log())) +
 #   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
@@ -242,7 +245,7 @@ dev.off()
 #Estimate slopes   ### ALERT WE ARE REMOVING -VE NUMBERS AND PUTTING ZEROES INSTEAD  ####
 
 #SLOPE CALCULATIONS
-slopes <- as.data.frame(matrix(ncol=12,nrow=length(unique(paste0(join_presens$Specimen,join_presens$Treatment)))))
+slopes <- as.data.frame(matrix(ncol=12,nrow=length(unique(paste0(presens$Specimen,presens$Treatment)))))
 names(slopes) <- c("Species","Specimen","Colony.volume..ml.","Zooid.length..mm.","Number.of.zooids","Slope_O2", "Slope_O2.control", "Slope_O2_dif", "Timespan","Temperature_range","Treatment","Paired")
 for(i in 1:length(unique(paste0(presens$Specimen,presens$Treatment)))){
   spm_i <- unique(paste(presens$Specimen,presens$Treatment),sep=" ")[i] %>% 
@@ -274,18 +277,19 @@ for(i in 1:length(unique(paste0(presens$Specimen,presens$Treatment)))){
   slopes[i,12] <- series_i$is.paired %>% unique()
 }
 
-#Normalize by colony volume
-slopes %>% mutate(Slope_normalized = Slope_O2/Colony.volume..ml., Slope_O2_dif_normalized = Slope_O2_dif/Colony.volume..ml.) -> slopes
+#Normalize by colony volume, transform to PicoGrams of O2
+slopes %>% mutate(Slope_normalized = 1000000*Slope_O2/Colony.volume..ml., Slope_O2_dif_normalized = 1000000*Slope_O2_dif/Colony.volume..ml.) -> slopes
 
 #Get carbon estimates
 #Estimate Carbon content for each species and recalculate carbon-based rawCOT
 mm_to_carbon <- read.csv("Madin1981_salpcarbon.tsv", header=T, stringsAsFactors = F, sep='\t')
 mm_to_carbon$Generation[mm_to_carbon$Species=="Iasis (Weelia) cylindrica"] <- "a" ##PROXY 
+mm_to_carbon$Species[mm_to_carbon$Species=="Thalia democratica"] <- "Thalia sp."  #### amalgamation!
 
 #Normalize by carbon
-slopes %>% left_join(mm_to_carbon[which(mm_to_carbon$Generation=="a"),c(1,4,5)], by="Species") %>% 
+slopes %>% left_join(mm_to_carbon[which(mm_to_carbon$Generation=="a"),c(1,4,5)], by="Species") %>%
   mutate(mgC = Regression_b*Zooid.length..mm.^Regression_a) %>% 
-  mutate(Slopes_mgC = Slope_O2/mgC, Slopes_dif_mgC = Slope_O2_dif/mgC) -> slopes
+  mutate(Slopes_mgC = 1000000*Slope_O2/mgC, Slopes_dif_mgC = 1000000*Slope_O2_dif/mgC) -> slopes
 
 slopes$Species %>% factor(levels=c("Pegea sp.", "Helicosalpa virgula","Cyclosalpa affinis", 
                                       "Cyclosalpa bakeri", "Cyclosalpa quadriluminis","Cyclosalpa polae",
@@ -300,7 +304,7 @@ slopes %>% filter(Treatment=="Intact") %>%
   geom_point(color="red",fill="red", alpha=0.7)+
   geom_violin(data=slopes %>% filter(Treatment=="Anesthetized"), color="blue", fill="blue", alpha=0.7, width = 0.5)+
   geom_point(data=slopes %>% filter(Treatment=="Anesthetized"), color="blue",fill="red", alpha=0.7)+
-  ylab("-Slope / Specimen biovolume (ml)")+
+  ylab("Gross respiration rate (pgO2/min)")+
   theme_bw()+
   theme(axis.text.x = element_text(angle = 90))#+
   #facet_wrap(~Paired)
@@ -313,7 +317,7 @@ slopes %>% filter(Treatment=="Intact") %>%
   geom_point(color="red",fill="red", alpha=0.7)+
   geom_violin(data=slopes %>% filter(Treatment=="Anesthetized"), color="blue", fill="blue", alpha=0.7, width = 0.5)+
   geom_point(data=slopes %>% filter(Treatment=="Anesthetized"), color="blue",fill="red", alpha=0.7)+
-  ylab("-Slope / Specimen biovolume (ml)")+
+  ylab("Net respiration rate (mgO2/min)")+
   theme_bw()+
   theme(axis.text.x = element_text(angle = 90))#+
 #facet_wrap(~Paired)
@@ -326,7 +330,7 @@ slopes %>% filter(Treatment=="Intact") %>%
   geom_point(color="red",fill="red", alpha=0.7)+
   geom_violin(data=slopes %>% filter(Treatment=="Anesthetized"), color="blue", fill="blue", alpha=0.7, width = 0.5)+
   geom_point(data=slopes %>% filter(Treatment=="Anesthetized"), color="blue",fill="red", alpha=0.7)+
-  ylab("-Slope / Specimen biovolume (ml)")+
+  ylab("Raw respiration rate (pgO2/min) per specimen biovolume (ml)")+
   theme_bw()+
   theme(axis.text.x = element_text(angle = 90))
 dev.off()
@@ -338,7 +342,7 @@ slopes %>% filter(Treatment=="Intact") %>%
   geom_point(color="red",fill="red", alpha=0.7)+
   geom_violin(data=slopes %>% filter(Treatment=="Anesthetized"), color="blue", fill="blue", alpha=0.7, width = 0.5)+
   geom_point(data=slopes %>% filter(Treatment=="Anesthetized"), color="blue",fill="red", alpha=0.7)+
-  ylab("-Slope difference / Specimen biovolume (ml)")+
+  ylab("Net respiration rate (pgO2/min) per specimen biovolume (ml)")+
   theme_bw()+
   theme(axis.text.x = element_text(angle = 90))
 dev.off()
@@ -350,7 +354,7 @@ slopes %>% filter(Treatment=="Intact", !is.na(Slopes_mgC)) %>%
   geom_point(color="red",fill="red", alpha=0.7)+
   geom_violin(data=slopes %>% filter(Treatment=="Anesthetized", !is.na(Slopes_mgC)), color="blue", fill="blue", alpha=0.7, width = 0.5)+
   geom_point(data=slopes %>% filter(Treatment=="Anesthetized", !is.na(Slopes_mgC)), color="blue",fill="red", alpha=0.7)+
-  ylab("-Slope / Specimen carbon (mg)")+
+  ylab("Raw respiration rate (pgO2/min) / Specimen carbon (mg)")+
   theme_bw()+
   theme(axis.text.x = element_text(angle = 90))
 dev.off()
@@ -358,11 +362,9 @@ dev.off()
 pdf("Figures_respirometry/Kona2022/slopes_mgC_dif.pdf", height=6, width=10)
 slopes %>% filter(Treatment=="Intact", !is.na(Slopes_dif_mgC)) %>% 
   ggplot(aes(x=Species,y=-Slopes_dif_mgC))+
-  geom_violin(color="red",fill="red", alpha=0.7)+
   geom_point(color="red",fill="red", alpha=0.7)+
-  geom_violin(data=slopes %>% filter(Treatment=="Anesthetized", !is.na(Slopes_dif_mgC)), color="blue", fill="blue", alpha=0.7, width = 0.5)+
   geom_point(data=slopes %>% filter(Treatment=="Anesthetized", !is.na(Slopes_dif_mgC)), color="blue",fill="red", alpha=0.7)+
-  ylab("-Slope difference / Specimen carbon (mg)")+
+  ylab("Net respiration rate (pgO2/min) / Specimen carbon (mg)")+
   theme_bw()+
   theme(axis.text.x = element_text(angle = 90))
 dev.off()
@@ -379,162 +381,289 @@ swim <- read.csv("SalpPreliminaryPass.tsv",sep='\t', stringsAsFactors = F)[,c(1,
 swim <- swim[!is.na(swim$Speed..cm.s.),]
 names(swim)[2] <- "Speed.cm.s"
 
+      #### CAUTION ##### WE ARE SWAPPING NAMES HERE
+swim$Species[swim$Species=="Helicosalpa younti"] <- "Helicosalpa virgula"
+swim$Species[swim$Species=="Pegea socia"] <- "Pegea sp."
+swim$Species[swim$Species=="Ritteriella retracta"] <- "Ritteriella sp."
+swim$Species[swim$Species=="Rittereilla amboinensis"] <- "Ritteriella amboinensis"
+swim$Species[swim$Species=="Thalia democratica"] <- "Thalia sp."
+
 energetics <- mutate(slopes, Species=as.character(Species))
 energetics$Species[energetics$Species=="Iasis (Weelia) cylindrica"] <- "Iasis cylindrica"
-energetics <- left_join(slopes, swim, by="Species") 
+energetics <- left_join(energetics, swim, by="Species") 
 energetics$Zooid.length..mm. <- as.numeric(energetics$Zooid.length..mm.)
 energetics$Number.of.zooids <- as.numeric(energetics$Number.of.zooids)
-energetics %>% mutate(Speed.body.s = Zooid.length..mm.*Speed.cm.s/10) -> energetics #speed per body lengths
+energetics %>% mutate(Speed.body.s = 10*Speed.cm.s/Zooid.length..mm.) -> energetics #speed per body lengths
 energetics %>% group_by(Species) %>% summarize(-Slope_O2_dif_normalized %>% mean(na.rm=T))
 
 #Define COST of LIVING: COT.abs as mgO2/(Zooid.vol*cm_moved)  v.v. COT.rel as mgO2/(Zooid.vol*bodylength)
 energetics %>% filter(energetics$Treatment=="Intact") %>% 
-  mutate(COT.abs.ml = Slope_O2_dif_normalized/(Speed.cm.s*60), 
-         COT.rel.ml = Slope_O2_dif_normalized/(Speed.body.s*60), 
-         COT.abs.mgC = Slope_O2_dif_normalized/(Speed.cm.s*60), 
-         COT.rel.mgC = Slope_O2_dif_normalized/(Speed.body.s*60)) -> COT_intact
+  mutate(COT.abs.ml = -Slope_O2_dif_normalized/(Speed.cm.s*60), 
+         COT.rel.ml = -Slope_O2_dif_normalized/(Speed.body.s*60), 
+         COT.abs.mgC = -Slope_O2_dif_normalized/(Speed.cm.s*60), 
+         COT.rel.mgC = -Slope_O2_dif_normalized/(Speed.body.s*60)) -> COT_intact
 COT_intact <- COT_intact[which(!is.na(COT_intact$COT.abs.ml)),]
 
 COT_intact$Species %>% factor(levels=c("Pegea sp.", "Helicosalpa virgula","Cyclosalpa affinis", 
                                         "Cyclosalpa bakeri", "Cyclosalpa quadriluminis","Cyclosalpa polae",
                                         "Cyclosalpa sewelli", "Ritteriella sp.", "Ritteriella amboinensis",
                                         "Brooksia rostrata", "Thalia sp.", "Metcalfina hexagona", "Salpa fusiformis", "Salpa aspera", "Salpa maxima", 
-                                        "Iasis (Weelia) cylindrica", "Soestia zonaria")) -> COT_intact$Species
+                                        "Iasis cylindrica", "Soestia zonaria")) -> COT_intact$Species
 
 #raw cost of living by volume per cm
 pdf("Figures_respirometry/Kona2022/rawCOT_intact_abs.pdf", height=6, width=10)
 COT_intact %>% filter(!is.na(COT.abs.ml)) %>% 
-  ggplot(aes(x=Species,y=-COT.abs.ml %>% log() %>% -.))+
+  ggplot(aes(x=Species,y=COT.abs.ml))+
   geom_boxplot(aes(fill=Speed.cm.s))+
-  theme_bw()+theme(axis.text.x = element_text(angle = 90))+ylab("Cost of Living log(mgO2/Biovolume per cm moved)")
+  theme_bw()+theme(axis.text.x = element_text(angle = 90))+ylab("Gross Cost of Transport (pgO2/Biovolume per cm moved)") #+ ylim(c(0, 7e-05))
 dev.off()
 
 #raw cost of living by volume per body length
 pdf("Figures_respirometry/Kona2022/rawCOT_intact_rel.pdf", height=6, width=10)
 COT_intact %>% filter(!is.na(COT.rel.ml)) %>% 
-  ggplot(aes(x=Species,y=-COT.rel.ml %>% log() %>% -.))+
+  ggplot(aes(x=Species,y=COT.rel.ml))+
   geom_boxplot(aes(fill=Speed.cm.s))+
-  theme_bw()+theme(axis.text.x = element_text(angle = 90))+ylab("Cost of Living log(mgO2/Biovolume per body length moved)")
+  theme_bw()+theme(axis.text.x = element_text(angle = 90))+ylab("Gross Cost of Transport (pgO2/Biovolume per zooid length moved)")  #+ ylim(c(0, 6e-05))
 dev.off()
 
 #raw cost of living by carbon per cm
 pdf("Figures_respirometry/Kona2022/COT_mgC_abs.pdf", height=6, width=10)
 COT_intact %>% filter(!is.na(COT.abs.mgC)) %>% 
-  ggplot(aes(x=Species,y=-COT.abs.mgC %>% log() %>% -.))+
+  ggplot(aes(x=Species,y=COT.abs.mgC))+
   geom_boxplot(aes(fill=Speed.cm.s))+
-  theme_bw()+theme(axis.text.x = element_text(angle = 90))+ylab("Cost of Living log(mgO2/mgC per cm moved)")
+  theme_bw()+theme(axis.text.x = element_text(angle = 90))+ylab("Gross Cost of Transport (pgO2/mgC per cm moved)") #+ ylim(c(0, 6e-05))
 dev.off()
 
 #raw cost of living by carbon per bodylength
 pdf("Figures_respirometry/Kona2022/COT_mgC_rel.pdf", height=6, width=10)
 COT_intact %>% filter(!is.na(COT.rel.mgC)) %>% 
-  ggplot(aes(x=Species,y=-COT.rel.mgC %>% log() %>% -.))+
-  geom_boxplot()+
-  theme_bw()+theme(axis.text.x = element_text(angle = 90))+ylab("Cost of Living log(mgO2/mgC per body length moved)")
+  ggplot(aes(x=Species,y=COT.rel.mgC))+
+  geom_boxplot(aes(fill=Speed.cm.s))+
+  theme_bw()+theme(axis.text.x = element_text(angle = 90))+ylab("Gross Cost of Transport (pgO2/mgC per zooid length moved)")
 dev.off()
 
-#COT for paired species   ####NEEDS FIX####
-energetics[,c(-6:-8)] %>% 
-  filter(Paired=="Yes") %>% 
-  pivot_wider(names_from = Treatment, values_from = c(Slope_normalized, Slopes_mgC)) %>% 
-  mutate(COT.abs.ml = -(Slope_normalized_Intact-Slope_normalized_Anesthetized)/(Speed.cm.s*60), 
-         COT.rel.ml = -(Slope_normalized_Intact-Slope_normalized_Anesthetized)/(Speed.body.s*60)) %>% 
-  mutate(COT.abs.mgC = -(Slopes_mgC_Intact-Slopes_mgC_Anesthetized)/(Speed.cm.s*60), 
-         COT.rel.mgC = -(Slopes_mgC_Intact-Slopes_mgC_Anesthetized)/(Speed.body.s*60)) -> COT_paired
+#COT for paired species 
+COT <- energetics[,c("Species","Specimen","Colony.volume..ml.","Zooid.length..mm.","Number.of.zooids","Treatment","Paired","Slope_O2_dif_normalized","Slopes_dif_mgC","Speed.cm.s","Speed.body.s")]
   
+##### WARNING ##### SKETCHY STUFF TO REMOVE NEGATIVES !!!!
+COT$Slope_O2_dif_normalized[which(COT$Slope_O2_dif_normalized>0)] <- 0
+
+COT %>% filter(Paired=="Yes") %>% 
+  pivot_wider(names_from = Treatment, values_from = c(Slope_O2_dif_normalized, Slopes_dif_mgC)) %>% 
+  mutate(COT.abs.ml = -(Slope_O2_dif_normalized_Intact-Slope_O2_dif_normalized_Anesthetized)/(Speed.cm.s*60), 
+         COT.rel.ml = -(Slope_O2_dif_normalized_Intact-Slope_O2_dif_normalized_Anesthetized)/(Speed.body.s*60)) %>% 
+  mutate(COT.abs.mgC = -(Slopes_dif_mgC_Intact-Slopes_dif_mgC_Anesthetized)/(Speed.cm.s*60), 
+         COT.rel.mgC = -(Slopes_dif_mgC_Intact-Slopes_dif_mgC_Anesthetized)/(Speed.body.s*60)) -> COT_paired
+
+#COT by biovolume per cm across species
 COT_paired %>% filter(!is.na(COT.abs.ml)) %>% 
-ggplot(aes(x=Species,y=COT.abs.ml))+
-  geom_boxplot()+
+ggplot(aes(x=Species,y=(COT.abs.ml) ))+
+  geom_boxplot(aes(col=Speed.cm.s, fill= Speed.cm.s))+
   theme_bw()+
   theme(axis.text.x = element_text(angle = 90))+
-  ylab("Cost of Transport (mgO2/ml per cm moved)")
+  ylab("Net cost of Transport (pgO2/ml per cm moved)")
 
+#COT by biovolume per zooid length across species
 COT_paired %>% filter(!is.na(COT.rel.ml)) %>% 
-  ggplot(aes(x=Species,y=COT.rel.ml))+
+  ggplot(aes(x=Species,y=(COT.rel.ml) ))+
+  geom_boxplot(aes(col=Speed.cm.s, fill= Speed.cm.s))+
+  theme_bw()+
+  theme(axis.text.x = element_text(angle = 90))+
+  ylab("Net cost of Transport (pgO2/ml per zooid length moved)")
+
+#COT by mgC per cm across species
+COT_paired %>% filter(!is.na(COT.abs.mgC)) %>%
+  ggplot(aes(x=Species,y=(COT.abs.mgC) ))+
   geom_boxplot()+
   theme_bw()+
   theme(axis.text.x = element_text(angle = 90))+
-  ylab("Cost of Transport (mgO2/ml per body length moved)")
+  ylab("Net cost of Transport (pgO2/mgC per cm moved)")
 
-ggplot(COT_paired, aes(x=Species,y=COT.abs.mgC))+
+#COT by mgC per zooid length across species
+COT_paired %>% filter(!is.na(COT.rel.mgC)) %>% 
+  ggplot(aes(x=Species,y=COT.rel.mgC ))+
   geom_boxplot()+
   theme_bw()+
   theme(axis.text.x = element_text(angle = 90))+
-  ylab("Cost of Transport (mgO2/mgC per cm moved)")
+  ylab("Net cost of Transport (pgO2/mgC per zooid length moved)")
 
-ggplot(COT_paired, aes(x=Species,y=COT.rel.mgC))+
-  geom_boxplot()+
-  theme_bw()+
-  theme(axis.text.x = element_text(angle = 90))+
-  ylab("Cost of Transport (mgO2/mgC per body length moved)")
-
-#COT paired by species
-energetics[,c(-6:-8)] %>% 
-  pivot_wider(names_from = Treatment, values_from = c(Slope_normalized, Slopes_mgC)) %>% 
+###  COT paired by species   ###
+COT %>% filter(!is.na(Species)) %>% 
+  pivot_wider(names_from = Treatment, values_from = c(Slope_O2_dif_normalized, Slopes_dif_mgC)) %>% 
   group_by(Species) %>% 
-  summarise_at(vars("Speed.cm.s", "Speed.body.s", "Slope_normalized_Intact", "Slope_normalized_Anesthetized", "Slopes_mgC_Intact", "Slopes_mgC_Anesthetized"),
-               function(x){mean(x, na.rm=T)}) %>% as.data.frame() %>% 
-mutate(COT.abs.ml = -(Slope_normalized_Intact-Slope_normalized_Anesthetized)/(Speed.cm.s*60), 
-         COT.rel.ml = -(Slope_normalized_Intact-Slope_normalized_Anesthetized)/(Speed.body.s*60)) %>% 
-  mutate(COT.abs.mgC = -(Slopes_mgC_Intact-Slopes_mgC_Anesthetized)/(Speed.cm.s*60), 
-         COT.rel.mgC = -(Slopes_mgC_Intact-Slopes_mgC_Anesthetized)/(Speed.body.s*60)) %>% 
-  mutate(COT.p.ml = Slope_normalized_Intact/Slope_normalized_Anesthetized, COT.p.mgC = Slopes_mgC_Intact/Slopes_mgC_Anesthetized)-> COT_species
-COT_species[,c(1,4,5)] %>% filter(!is.na(Slope_normalized_Anesthetized)) %>% 
-  mutate(diff=round(Slope_normalized_Intact-Slope_normalized_Anesthetized,5))
+  summarise_at(vars("Speed.cm.s", "Speed.body.s", "Slope_O2_dif_normalized_Intact", "Slope_O2_dif_normalized_Anesthetized", "Slopes_dif_mgC_Intact", "Slopes_dif_mgC_Anesthetized", "Zooid.length..mm."),
+               function(x){median(x, na.rm=T)}) %>% as.data.frame() -> COT_species
 
-COT_species$Species %>% factor(levels=c("Pegea socia", "Pegea confoederata", "Cyclosalpa affinis", 
-                                       "Cyclosalpa bakeri", "Cyclosalpa quadriluminis",  "Cyclosalpa polae",
-                                       "Cyclosalpa sewelli", "Ritteriella sp.", "Ritteriella amboinensis",
-                                       "Brooksia rostrata", "Salpa fusiformis", "Salpa aspera", "Salpa maxima", 
-                                       "Iasis (Weelia) cylindrica", "Soestia zonaria")) -> COT_species$Species
+##### WARNING ##### SKETCHY STUFF TO REMOVE NEGATIVES !!!!
+#COT_species$Slope_O2_dif_normalized_Intact[which(COT_species$Slope_O2_dif_normalized_Intact>COT_species$Slope_O2_dif_normalized_Anesthetized)] <- COT_species$Slope_O2_dif_normalized_Anesthetized[which(COT_species$Slope_O2_dif_normalized_Intact>COT_species$Slope_O2_dif_normalized_Anesthetized)]
 
+#Systemic corrections
+COT_species[,c(1,4,5)] -> playDF
+  ## Calculate maximum negative deviation between intact and anesthetized across species
+max(playDF[which(playDF$Slope_O2_dif_normalized_Intact>
+               playDF$Slope_O2_dif_normalized_Anesthetized),"Slope_O2_dif_normalized_Intact"]-
+  playDF[which(playDF$Slope_O2_dif_normalized_Intact>
+                 playDF$Slope_O2_dif_normalized_Anesthetized),"Slope_O2_dif_normalized_Anesthetized"]) -> Intact_systemic_correction
+playDF$Slope_O2_dif_normalized_Intact <- playDF$Slope_O2_dif_normalized_Intact - Intact_systemic_correction
+  ## Calculate maximum anesthetized slope
+# max(playDF$Slope_O2_dif_normalized_Anesthetized, na.rm = T) -> Anesthetized_systemic_correction
+# playDF$Slope_O2_dif_normalized_Anesthetized <- playDF$Slope_O2_dif_normalized_Anesthetized - Anesthetized_systemic_correction
+# playDF$Slope_O2_dif_normalized_Intact <- playDF$Slope_O2_dif_normalized_Intact - Anesthetized_systemic_correction
+
+playDF %>%  mutate(Percent=100*round((Slope_O2_dif_normalized_Intact-Slope_O2_dif_normalized_Anesthetized)/Slope_O2_dif_normalized_Intact,6))-> playDF
+playDF
+ COT_species[,c("Slope_O2_dif_normalized_Intact","Slope_O2_dif_normalized_Anesthetized")] <- playDF[,c("Slope_O2_dif_normalized_Intact","Slope_O2_dif_normalized_Anesthetized")]
+
+ COT_species %>% mutate(COT.abs.ml = -(Slope_O2_dif_normalized_Intact-Slope_O2_dif_normalized_Anesthetized)/(Speed.cm.s*60), 
+                        COT.rel.ml = -(Slope_O2_dif_normalized_Intact-Slope_O2_dif_normalized_Anesthetized)/(Speed.body.s*60)) %>% 
+   mutate(COT.abs.mgC = -(Slopes_dif_mgC_Intact-Slopes_dif_mgC_Anesthetized)/(Speed.cm.s*60), 
+          COT.rel.mgC = -(Slopes_dif_mgC_Intact-Slopes_dif_mgC_Anesthetized)/(Speed.body.s*60)) %>% 
+   mutate(COT.p.ml = -100*(Slope_O2_dif_normalized_Anesthetized-Slope_O2_dif_normalized_Intact)/Slope_O2_dif_normalized_Intact, 
+          COT.p.mgC = -100*(Slopes_dif_mgC_Anesthetized-Slopes_dif_mgC_Intact)/Slopes_dif_mgC_Intact) %>% 
+   mutate(COL.abs.ml = -Slope_O2_dif_normalized_Intact/(Speed.cm.s*60), 
+          COL.rel.ml = -Slope_O2_dif_normalized_Intact/(Speed.body.s*60), 
+          COL.abs.mgC = -Slope_O2_dif_normalized_Intact/(Speed.cm.s*60), 
+          COL.rel.mgC = -Slope_O2_dif_normalized_Intact/(Speed.body.s*60))-> COT_species 
+ 
+#order species as factors by architecture
+COT_species$Species %>% factor(levels=c("Pegea sp.", "Helicosalpa virgula","Cyclosalpa affinis", 
+                                        "Cyclosalpa bakeri", "Cyclosalpa quadriluminis","Cyclosalpa polae",
+                                        "Cyclosalpa sewelli", "Ritteriella sp.", "Ritteriella amboinensis",
+                                        "Brooksia rostrata", "Thalia sp.", "Metcalfina hexagona", "Salpa fusiformis", "Salpa aspera", "Salpa maxima", 
+                                        "Iasis cylindrica", "Soestia zonaria")) -> COT_species$Species
+
+#COT_species <- filter(COT_species, Species != "Cyclosalpa bakeri")  ### REMOVED OUTLIER WONKY SPP !!!
+COT_species[,c(1,15,9,13)]
+
+
+#Net respiration rate by biovolume in Swimmers and KO
+COT_species %>% filter(!is.na(COT.abs.ml)) %>% 
+  ggplot(aes(x=Species))+
+  geom_point(aes(y=(-Slope_O2_dif_normalized_Intact)),color="red", alpha=0.7)+
+  geom_point(aes(y=(-Slope_O2_dif_normalized_Anesthetized)), color="blue",alpha=0.7)+
+  ylab("Net respiration rate (pgO2/min) per specimen biovolume (ml)")+
+  theme_bw()+
+  theme(axis.text.x = element_text(angle = 90))
+
+#COT by biovolume per cm across absolute speeds
 ggplot(COT_species %>% filter(!is.na(COT.abs.ml)), aes(x=Speed.cm.s,y=COT.abs.ml))+
-  geom_point(aes(color=Species))+
+  geom_point(aes(color=Speed.body.s ),cex=3)+
   theme_bw()+
-  geom_text(label=COT_species %>% filter(!is.na(COT.abs.ml)) %>% .$Species)+
-  ylab("Cost of Transport (mgO2/ml per cm moved)")
+  geom_text(label=COT_species %>% filter(!is.na(COT.abs.ml)) %>% .$Species, hjust=0.4, vjust=-0.7)+
+  ylab("Net cost of Transport (pgO2/ml per cm moved)")
 
-mutate(COT_species, percentSwim = 100*((-Slope_normalized_Intact)-(-Slope_normalized_Anesthetized))/(-Slope_normalized_Intact) )
-
-ggplot(mutate(COT_species, percentSwim = 100*((-Slope_normalized_Intact)-(-Slope_normalized_Anesthetized))/(-Slope_normalized_Intact) ) %>% 
-         filter(!is.na(percentSwim)), aes(x=Speed.cm.s,y=percentSwim))+
-  geom_point(aes(color=Species))+
+#COT by biovolume per cm across relative speeds
+ggplot(COT_species %>% filter(!is.na(COT.abs.ml)), aes(x=Speed.body.s,y=COT.abs.ml))+
+  geom_point(aes(color=Speed.cm.s ),cex=3)+
   theme_bw()+
-  ylim(0,100)+
-  geom_text(label=mutate(COT_species, 
-                         percentSwim = 100*((-Slope_normalized_Intact)-(-Slope_normalized_Anesthetized))/(-Slope_normalized_Intact)) %>% filter(!is.na(percentSwim)) %>% .$Species)
+  geom_text(label=COT_species %>% filter(!is.na(COT.abs.ml)) %>% .$Species, hjust=0.4, vjust=-0.7)+
+  ylab("Net cost of Transport (pgO2/ml per body length moved)")
 
+# COT_species <- mutate(COT_species, percentSwim = -5000*(Slope_O2_dif_normalized_Intact - Slope_O2_dif_normalized_Anesthetized) )
+# 
+# ggplot(COT_species %>% filter(!is.na(percentSwim)), aes(x=Speed.cm.s,y=percentSwim))+
+#   geom_point()+
+#   geom_text(label=COT_species %>% filter(!is.na(percentSwim)) %>% .$Species)+
+#   theme_bw()
+
+#COT by biovolume per cm across species
+ggplot(COT_species %>% filter(!is.na(COT.abs.ml)), aes(x=Species,y=COT.abs.ml))+
+  geom_point(aes(color=Speed.cm.s))+
+  theme_bw()+
+  theme(axis.text.x = element_text(angle = 90))+
+  ylab("Net cost of Transport (pgO2/mgC per cm moved)")
+
+#COT by biovolume per zooid length across species
 ggplot(COT_species %>% filter(!is.na(COT.rel.ml)), aes(x=Species,y=COT.rel.ml))+
-  geom_point(aes(size=Speed.body.s,color=Speed.body.s))+
+  geom_point(aes(color=Speed.body.s))+
   theme_bw()+
   theme(axis.text.x = element_text(angle = 90))+
-  ylab("Cost of Transport (mgO2/ml per body length moved)")
+  ylab("Net cost of Transport (pgO2/ml per body length moved)")
 
-ggplot(COT_species %>% filter(!is.na(COT.abs.mgC)), aes(x=Species,y=COT.abs.mgC))+
-  geom_point(aes(size=Speed.cm.s,color=Speed.cm.s))+
+#COT by biovolume per zooid length across absolute speeds
+ggplot(COT_species %>% filter(!is.na(COT.rel.ml)), aes(x=Speed.cm.s,y=COT.rel.ml))+
+  geom_point(aes(color=Speed.cm.s))+
   theme_bw()+
+  geom_text(label=COT_species %>% filter(!is.na(COT.rel.ml)) %>% .$Species, hjust=0.4, vjust=-0.7)+
   theme(axis.text.x = element_text(angle = 90))+
-  ylab("Cost of Transport (mgO2/mgC per cm moved)")
+  ylab("Net cost of Transport (pgO2/ml per body length moved)")
 
+#COT by biovolume per zooid length across relative speeds
+ggplot(COT_species %>% filter(!is.na(COT.rel.ml)), aes(x=Speed.body.s,y=COT.rel.ml))+
+  geom_point(aes(color=Speed.body.s))+
+  theme_bw()+
+  geom_text(label=COT_species %>% filter(!is.na(COT.rel.ml)) %>% .$Species, hjust=0.4, vjust=-0.7)+
+  theme(axis.text.x = element_text(angle = 90))+
+  ylab("Net cost of Transport (pgO2/ml per body length moved)")
+
+#COT by mgC per zooid length across species
 ggplot(COT_species %>% filter(!is.na(COT.rel.mgC)), aes(x=Species,y=COT.rel.mgC))+
-  geom_point(aes(size=Speed.body.s,color=Speed.body.s))+
+  geom_point(aes(size=Zooid.length..mm.,color=Speed.body.s))+
   theme_bw()+
   theme(axis.text.x = element_text(angle = 90))+
-  ylab("Cost of Transport (mgO2/mgC per body length moved)") 
+  ylab("Cost of Transport (pgO2/mgC per body length moved)") 
 
-ggplot(COT_species %>% filter(!is.na(COT.p.mgC)), aes(x=Species,y=COT.p.ml))+
-  geom_point(aes(size=Speed.cm.s,color=Speed.cm.s))+
+# % cost (by biovolume) invested in swimming across species order: COT.p, color: Speed_cm
+ggplot(COT_species %>%  filter(!is.na(COT.p.ml)), aes(x = reorder(Species %>% as.character(), Speed.cm.s),y=COT.p.ml))+
+  geom_point(aes(size=Zooid.length..mm.,color=log(Speed.cm.s)))+
   theme_bw()+
   theme(axis.text.x = element_text(angle = 90))+
+ # ylim(c(0,100))+
+  xlab("Species")+
   ylab("% Cost of Transport Volume-normalized")
 
-ggplot(COT_species %>% filter(!is.na(COT.p.mgC)), aes(x=Species,y=COT.p.mgC))+
-  geom_point(aes(size=Speed.cm.s,color=Speed.cm.s))+
+# % cost (by biovolume) invested in swimming across species order: COT.p, , color: COT
+ggplot(COT_species %>%  filter(!is.na(COT.p.ml)), aes(x = reorder(Species %>% as.character(), COL.abs.ml),y=COT.p.ml))+
+  geom_point(aes(size=Zooid.length..mm.,color=COL.abs.ml))+
   theme_bw()+
   theme(axis.text.x = element_text(angle = 90))+
+  # ylim(c(0,100))+
+  xlab("Species")+
+  ylab("% Cost of Transport Volume-normalized")
+
+
+# % cost (by biovolume) invested in swimming across absolute SPEED , color: Species
+ggplot(COT_species %>%  filter(!is.na(COT.p.ml)), aes(x = Speed.cm.s,y=COT.p.ml))+
+  geom_point(aes(size=Zooid.length..mm.,color=Species))+
+  theme_bw()+
+  theme(axis.text.x = element_text(angle = 90))+
+  #ylim(c(0,100))+
+  ylab("% Cost of Transport Volume-normalized")
+
+# % cost (by biovolume) invested in swimming across relative SPEED , color: Species
+ggplot(COT_species %>%  filter(!is.na(COT.p.ml)), aes(x = Speed.body.s,y=COT.p.ml))+
+  geom_point(aes(size=Zooid.length..mm.,color=Species))+
+  theme_bw()+
+  theme(axis.text.x = element_text(angle = 90))+
+  #ylim(c(0,100))+
+  ylab("% Cost of Transport Volume-normalized")
+
+# % cost (by biovolume) invested in swimming across COT_vol , color: Species
+ggplot(COT_species %>%  filter(!is.na(COT.p.ml)), aes(x = COT.abs.ml,y=COT.p.ml))+
+  geom_point(aes(size=Zooid.length..mm.,color=Species))+
+  theme_bw()+
+  theme(axis.text.x = element_text(angle = 90))+
+  #ylim(c(0,100))+
+  ylab("% Cost of Transport Volume-normalized")
+
+# % cost (by biovolume) invested in swimming across basal rate , color: Species
+ggplot(COT_species %>%  filter(!is.na(COT.p.ml)), aes(x = COL.abs.ml-COT.abs.ml,y=COT.p.ml))+
+  geom_point(aes(size=Zooid.length..mm.,color=Species))+
+  theme_bw()+
+  theme(axis.text.x = element_text(angle = 90))+
+  #ylim(c(0,100))+
+  ylab("% Cost of Transport Volume-normalized")+xlab("Basal rate")
+
+# % cost (by biovolume) invested in swimming across species , color: Relative speed
+ggplot(COT_species %>% filter(!is.na(COT.p.mgC)), aes(x=Species,y=COT.p.mgC))+
+  geom_point(aes(size=Speed.cm.s,color=Speed.body.s))+
+  theme_bw()+
+  theme(axis.text.x = element_text(angle = 90))+
+  #ylim(c(0,100))+
   ylab("% Cost of Transport Carbon-normalized") #
 
-### plots with speed
+### plots with speed  ###
+
 ggplot(COT_intact, aes(x=Speed.cm.s,y=COT.abs.ml))+
   geom_point()+
   theme_bw()+
@@ -542,8 +671,8 @@ ggplot(COT_intact, aes(x=Speed.cm.s,y=COT.abs.ml))+
   ylab("Cost of Living (mgO2/ml per body length moved)")
 
 ggplot(COT_species, aes(x=Speed.cm.s,y=COT.abs.ml))+
-  geom_point(aes(color=Species))+
-  geom_text(aes(label=Species))+
+  geom_point()+
+  geom_text(aes(label=Species), vjust=-0.8)+
   theme_bw()+
   geom_smooth(method="lm")+
   ylab("Cost of Transport (mgO2/mgC per body length moved)")
