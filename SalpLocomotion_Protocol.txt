@@ -1,0 +1,95 @@
+# Measuring speed:
+
+- Look at the video in WMP to identify best part to analyze - animal in frame, swimming steadily in a straight line, good reference particle.
+- Identify Picture directory = E:/SortedVideos/SPECIES (will be the folder with the name of the species)
+- Move or copy calibration files Left.Cam and Right.Cam files to your picture directory
+- Open EventMeasure
+- Start a new session:
+	>Measurement/New measurement file
+- Set picture directory
+	>Picture/Set picture directory (select the picture directory with the video you are working on with the .Cam files in it)
+- Identify the Secondary video that matches the Master video (First part of the name after the A/B initial letter is identical, check length and size too;  alternatively look at thumbnail)
+- Load Master and Secodary videos: 
+	>Picture/Load Picture (hit Ok box)
+	>Stereo/Load picture (hit Ok box)
+- Load calibrations: 
+	>Stereo/Cameras/Left (select E:/SortedVideos/your_picture_directory/Left.Cam)
+	>Stereo/Cameras/Right (select E:/SortedVideos/your_picture_directory/Right.Cam)
+- Set parameters:
+	>Measurement/Information fields/Edit field values 
+	OpCode = 1, TapeReader = 1
+- To zoom in: CRTL+MouseMove
+- Count the number of zooids in the colony. If there are many, see instructions below for measuring length as an aid to count them by placing points on every viscera.
+- Measure lengths: 
+	>Stereo/Length measurements/Compound
+	Left click on at least 2 points along the line of measurement. Do so in both master and stereo panels.
+	Right click on screen. 
+	>Add length.
+	Colony motion length:
+		Linear chain: Click on frontal point, if curved -- click on a few intermediary bending points using the same viscera count as reference, and click on the rearmost point. 
+		Stolon-wise length: Linear, bipinnate, transversal, oblique
+		Non-stolon-wise length: 
+	Colony stolon length: 
+		Same as colony motion length for Linear, bipinnate, transversal, oblique.
+		In cluster or whorl forms, measure wheel diameter.
+		In helical forms, click on points following the solenoid line formed by the viscera.
+	Zooid length: in a frame where a zooids lie with their longest axis perpendicular to are light of sight, measure the total length of three zooids. Choose the three most different zooids you can find if there is any visible variation.
+	Zooid width: Measure the widest point of three zooids, orientation is less important here. Choose the three most different zooids you can find if there is any visible variation.
+
+-Measure points in time:
+	Click a tick on the frame box "Lock" (top left).
+
+-Set a point in XYZt: 
+	SHIFT+Click on the viscera/reference_particle (both on the left and right panels). 
+	Press X. A box will pop up.
+	In the attribute box, set a number for the point:
+		Reference particle: 0
+		1: first viscera
+		2: last viscera (any two if the chain is not linear. can also do front end and rear end projections if viscera are not well visible)
+		You may add more viscera and number them.
+	In the Stage box, mark F for the front zooid, AD for any other zooid, and J for the reference particle.
+
+-Collect points every 10 frame at least 15 times total, 150 frames ~ 2.1s). To skip 10 frames, hit CTRL+Right_arrow
+
+-If the reference particle moves out of frame, stop recording points.
+
+-Save data in picture directory to continue later or to add more points in each measured frame: 
+	>Measurement/Save
+	Choose EMOBS format
+	Name after the Master video file (A starting).
+
+-Export data: 
+	>Measurement/Measurement Summaries/3D/3D point measurements. 
+	>File/Save to TextFile
+	Name after Master (A starting) video .csv
+
+-Measuring cross sectional area (if possible): {IMAGE J}
+	Find a frame where the colony is swimming towards or away from the camera.
+	Take a screenshot and open it with ImageJ. Save the screenshot with the name of the video + _CSA
+	Use the straight line tool to match the length of the horizontal bar of the "L-frame" in the picture.
+	>Analyze/Set scale... 
+		Change unit of length to mm.
+		In the 'Known distance' box, write 27mm [I think... double check with real frame]
+	Use the freehand tool in ImageJ to carefully delineate the outline.
+	Press CTRL+M to get the measurement.
+	Save (CTRL+S) the measurement .csv file for reproducibility, name it the same as the screenshot.
+
+-Measuring angles: {IMAGE J}
+	Jetting angle (if fluorescein video)
+		Find a frame where the colony is swimming in a straight line, the jets are visible, not overlapping with the animal, and shooting within the plane that is perpendicular to our line of sight. 
+		Record the frame number or time stamp.
+		Take a screenshot and open it with ImageJ. Save the screenshot with the name of the video + _FLUOR
+		Use the angle tool to select three points: the end of the jet plume, the opening of the exhalent siphon emitting the plume, and a third point in the line of motion (where the exhalent siphon was a few frames ago.)
+		Press CTRL+M to get the measurement.
+		Repeat this in three zooids or frames.
+		Save (CTRL+S) the .csv measurement file for reproducibility, name it the same as the screenshot.
+	Dorso-Ventral Zooid Stolon angle
+		Find a frame where the zooid is oriented with its dorsal or ventral side facing us. 
+		Record the frame number or time stamp.
+		Take a screenshot and open it with ImageJ. Save the screenshot with the name of the video + _DVZSA
+		Use the angle tool to select three points: the end of the jet plume, the opening of the exhalent siphon emitting the plume, and a third point in the line of motion (where the exhalent siphon was a few frames ago.)
+		Press CTRL+M to get the measurement.
+		Repeat this in three zooids or frames.
+		Save (CTRL+S) the .csv measurement file for reproducibility, name it the same as the screenshot.
+
+
