@@ -1,0 +1,11 @@
+Sanger Geneious processing notebook
+
+
+Following https://help.geneious.com/hc/en-us/articles/360044626752-How-do-I-assemble-F-and-R-pairs-of-Sanger-sequences-
+
+-Annotate & Predict > Trim Ends
+-Error: 0.05
+-Rename to extraction#_R/F
+-De Novo assembly by name _ (Geneious Assembler, Medium sensnitivity/Fast)
+-Tools -> Generate Consensus sequence _>> Quality threshold 60%
+-Export Document fasta

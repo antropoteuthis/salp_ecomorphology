@@ -1,0 +1,25 @@
+Sample ID,Sample Name,Primer,Primer Source,Vector Size,Insert or PCR Product Size,Sample Comment
+1,3f,166F,other,,1277,forward primer
+2,4f,166F,other,,1277,forward primer
+3,6f,166F,other,,1277,forward primer
+4,7f,166F,other,,1277,forward primer
+5,9f,166F,other,,1277,forward primer
+6,13f,166F,other,,1277,forward primer
+7,16f,166F,other,,1277,forward primer
+8,20f,166F,other,,1277,forward primer
+9,26f,166F,other,,1277,forward primer
+10,27f,166F,other,,1277,forward primer
+11,28f,166F,other,,1277,forward primer
+12,31f,166F,other,,1277,forward primer
+13,3r,134R,other,,1277,reverse primer
+14,4r,134R,other,,1277,reverse primer
+15,6r,134R,other,,1277,reverse primer
+16,7r,134R,other,,1277,reverse primer
+17,9r,134R,other,,1277,reverse primer
+18,13r,134R,other,,1277,reverse primer
+19,16r,134R,other,,1277,reverse primer
+20,20r,134R,other,,1277,reverse primer
+21,26r,134R,other,,1277,reverse primer
+22,27r,134R,other,,1277,reverse primer
+23,28r,134R,other,,1277,reverse primer
+24,31r,134R,other,,1277,reverse primer

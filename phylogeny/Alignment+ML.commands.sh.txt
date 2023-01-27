@@ -169,6 +169,10 @@ mafft --auto --inputorder "GovUNIONCho-AB921975Mman+news.fasta" > "GovUNIONCho-A
 	#with MUSCLE+GBLOCKS
 	./Gblocks GovUNIONCho-AB921975Mman+news_MUSCLE.afa -t DNA -b5 h > GovUNIONCho-AB921975Mman+news_MUSCLE.afa-gb
 	../iqtree -s Seqs_and_Alignments/GovUNIONCho-AB921975Mman+news_MUSCLE.afa-gb -nt AUTO -bb 1000
+
+## Gov2011 including AY903925.1  H. igaboja + AJ250778 Ciona intestinalis and the NEW SEQUENCES for salps B. lacromae, T. longicauda, S. younti + the SANGER SEQUENCED ##
+#Labeled as DS-Union-Gov11 minus M. manhattensis + news
+GovUNIONCho-AB921975Mman+news
 	
 ######
 
