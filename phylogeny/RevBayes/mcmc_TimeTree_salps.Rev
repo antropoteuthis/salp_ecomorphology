@@ -4,7 +4,7 @@
 ############################################################################################
 
 ### Load the sequence alignment
-D <- readDiscreteCharacterData(file="../Seqs_and_Alignments/GovUNIONCho-AB921975Mman+news_MUSCLE.afa")
+D <- readDiscreteCharacterData(file="../Seqs_and_Alignments/GUC-Mm+N+Sanger_MUSCLE.afa")
 
 ### initialize an iterator for the moves vector
 mi = 1
@@ -30,8 +30,8 @@ source("m_UCLN_salps.Rev")
 mymodel = model(er)
 
 ### set up the monitors that will output parameter values to file and screen 
-monitors[1] = mnModel(filename="TIMETREE_Gov2011+Higa+Cint+news_MUSCLE_output/TimeTree_GovUNIONCho-AB921975Mman+news_MUSCLE_mcmc.log", printgen=10)
-monitors[2] = mnFile(filename="TIMETREE_Gov2011+Higa+Cint+news_MUSCLE_output/TimeTree_GovUNIONCho-AB921975Mman+news_MUSCLE_mcmc.trees", printgen=10, timetree)
+monitors[1] = mnModel(filename="TIMETREE_GUC-Mm+N+Sanger_MUSCLE_output/TimeTree_GUC-Mm+N+Sanger_MUSCLE_mcmc.log", printgen=10)
+monitors[2] = mnFile(filename="TIMETREE_GUC-Mm+N+Sanger_MUSCLE_output/TimeTree_GUC-Mm+N+Sanger_MUSCLE_mcmc.trees", printgen=10, timetree)
 
 ### workspace mcmc ###
 mymcmc = mcmc(mymodel, monitors, moves)
@@ -46,11 +46,11 @@ mymcmc.run(generations=10000)
 mymcmc.operatorSummary()
 
 ### summarize the trees ###
-tt = readTreeTrace("TIMETREE_Gov2011+Higa+Cint+news_MUSCLE_output/TimeTree_GovUNIONCho-AB921975Mman+news_MUSCLE_mcmc.trees", "clock")
+tt = readTreeTrace("TIMETREE_GUC-Mm+N+Sanger_MUSCLE_output/TimeTree_GUC-Mm+N+Sanger_MUSCLE_mcmc.trees", "clock")
 tt.summarize()
 
 ### write MAP tree to file
-mapTree(tt, "TIMETREE_Gov2011+Higa+Cint+news_MUSCLE_output/TimeTree_GovUNIONCho-AB921975Mman+news_MUSCLE_mcmc_MAP.tre")
+mapTree(tt, "TIMETREE_GUC-Mm+N+Sanger_MUSCLE_output/TimeTree_GUC-Mm+N+Sanger_MUSCLE_mcmc_MAP.tre")
 
 ## quit ##
 q()

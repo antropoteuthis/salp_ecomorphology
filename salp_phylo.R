@@ -14,28 +14,48 @@ library(phylolm)
 setwd("~/salp_ecomorphology/")
 
 #LOAD consensus tree
-tree_salp <- read.nexus("phylogeny/RevBayes/TIMETREE_Gov2011+Higa+Cint+news_MUSCLE_output/TimeTree_GovUNIONCho-AB921975Mman+news_MUSCLE_mcmc_MAP.tre")
+tree_salp <- read.nexus("phylogeny/RevBayes/TIMETREE_GUC-Mm+N+Sanger_MUSCLE_output/TimeTree_GUC-Mm+N+Sanger_MUSCLE_mcmc_MAP.tre")
   #Remove duplicate and ingroup undescribed salp species
 
     ### ATTENTION: MAKE SURE THESE MAXIMIZE BRANCH LENGTHS  ####
-tree_salp <- drop.tip(tree_salp, c("HQ015387.1_Pegea_confoederata","HQ015397.1_Cyclosalpa_quadriluminis","HQ015391.1_Cyclosalpa_affinis","HQ015396.1_Cyclosalpa_polae","HQ015398.1_Cyclosalpa_sewelli","FM244866.1_Iasis_cylindrica","HQ015399.1_Iasis_cylindrica","HQ015402.1_Iasis_cylindrica","HQ015401.1_Iasis_cylindrica","HQ015413.1_Thalia_democratica","HQ015414.1_Thalia_democratica","D14366.1_Thalia_democratica","HQ015410.1_Ritteriella_retracta","HQ015404.1_Brooksia_rostrata","HQ015408.1_Salpa_maxima","HQ015406.1_Salpa_thompsoni", "HQ015377.1_Salpidae_gen._nov._sp._nov._A", "FM244865.1_Ihlea_racovitzai", "KR057222.1_Brooksia_lacromae"))
+tree_salp <- drop.tip(tree_salp, c("HQ015387.1_Pegea_confoederata","HQ015397.1_Cyclosalpa_quadriluminis","HQ015391.1_Cyclosalpa_affinis",
+                                   "HQ015396.1_Cyclosalpa_polae","HQ015398.1_Cyclosalpa_sewelli","FM244866.1_Iasis_cylindrica","HQ015399.1_Iasis_cylindrica",
+                                   "HQ015402.1_Iasis_cylindrica","HQ015401.1_Iasis_cylindrica","HQ015413.1_Thalia_democratica","HQ015414.1_Thalia_democratica",
+                                   "D14366.1_Thalia_democratica","HQ015410.1_Ritteriella_retracta","HQ015404.1_Brooksia_rostrata",
+                                   "HQ015408.1_Salpa_maxima","HQ015406.1_Salpa_thompsoni", "HQ015377.1_Salpidae_gen._nov._sp._nov._A", 
+                                   "FM244865.1_Ihlea_racovitzai", "KR057222.1_Brooksia_lacromae", "9_Helicosalpa_virgula_MarcHughes_specimen2",
+                                   "26_Cyclosalpa_quadriluminis_D39CquaOS1", "27_Cyclosalpa_polae_D38CpolB1", "16_Ritteriella_amboinensis_D28RambOS1",
+                                   "3_Ihlea_punctata_non-spotted_D24MhexB1", "20_Ihlea_punctata_D31IpunOS1-2", "6_Iasis_cf_cylindrica_yellow-tail_D22SyouB1"))
   #Remove accession codes and _
 tree_salp$tip.label <- str_remove_all(tree_salp$tip.label, ".+\\..+?_")
 tree_salp$tip.label <- str_replace_all(tree_salp$tip.label, "_", " ")
+tree_salp$tip.label <- str_remove_all(tree_salp$tip.label, "^\\d+ ")
+tree_salp$tip.label <- str_remove_all(tree_salp$tip.label, " D\\d+.+$")
   #Correct spellings
 tree_salp$tip.label[which(tree_salp$tip.label == "Cyclosalpa floridana")] <- "Cyclosalpa floridiana"
   #Remove outgroups
 tree_salp <- drop.tip(tree_salp, c("Pyrosomella verticillata", "Pyrosoma atlanticum", "Pyrosoma godeauxi","Pyrostremma spinosum", "Clavelina meridionalis", "Pycnoclavella aff. detorta", "Ascidia ceratodes", "Perophora sagamiensis","Megalodicopia hians", "Chelyosoma siboja", "Ciona intestinalis", "Molgula manhattensis", "Oikopleura dioica","Halocynthia igaboja", "Echinorhinus cookei", "Myxine glutinosa", "Branchiostoma floridae", "Doliolum denticulatum", "Doliolum nationalis")) 
+write.tree(tree_salp, "GUCMmNSanger_TimeTree_salp18Sphylo.tre")
 
 #Load phylogenetic uncertainty tree set (3001 trees from RevBayes)
-#Strees <- read.tree("phylogeny/RevBayes/TOPOLOGY_Gov2011+Higa+Cint_MUSCLE_output/Gov2011HigaCint_MUSCLE_18S_multitrees.trees")
-Strees <- read.tree("phylogeny/RevBayes/TOPOLOGY_Gov2011+HigaCint+New_MUSCLE_output/Gov2011+HigaCint+New_MUSCLE_18S.trees")
+Strees <- read.tree("phylogeny/RevBayes/TOPOLOGY_GUC-Mm+N+Sanger_MUSCLE_output/GUC-Mm+N+Sanger_MUSCLE_18S.trees")
   #remove duplicate species and undescribed ingroup
-Strees <- lapply(Strees, drop.tip, c("HQ015387.1_Pegea_confoederata","HQ015397.1_Cyclosalpa_quadriluminis","HQ015391.1_Cyclosalpa_affinis","HQ015396.1_Cyclosalpa_polae","HQ015398.1_Cyclosalpa_sewelli","FM244866.1_Iasis_cylindrica","HQ015399.1_Iasis_cylindrica","HQ015402.1_Iasis_cylindrica","HQ015401.1_Iasis_cylindrica","HQ015413.1_Thalia_democratica","HQ015414.1_Thalia_democratica","D14366.1_Thalia_democratica","HQ015410.1_Ritteriella_retracta","HQ015404.1_Brooksia_rostrata","HQ015408.1_Salpa_maxima","HQ015406.1_Salpa_thompsoni", "HQ015377.1_Salpidae_gen._nov._sp._nov._A", "FM244865.1_Ihlea_racovitzai", "KR057222.1_Brooksia_lacromae"))
+Strees <- lapply(Strees, drop.tip, c("HQ015387.1_Pegea_confoederata","HQ015397.1_Cyclosalpa_quadriluminis","HQ015391.1_Cyclosalpa_affinis",
+                                     "HQ015396.1_Cyclosalpa_polae","HQ015398.1_Cyclosalpa_sewelli","FM244866.1_Iasis_cylindrica","HQ015399.1_Iasis_cylindrica",
+                                     "HQ015402.1_Iasis_cylindrica","HQ015401.1_Iasis_cylindrica","HQ015413.1_Thalia_democratica","HQ015414.1_Thalia_democratica",
+                                     "D14366.1_Thalia_democratica","HQ015410.1_Ritteriella_retracta","HQ015404.1_Brooksia_rostrata",
+                                     "HQ015408.1_Salpa_maxima","HQ015406.1_Salpa_thompsoni", "HQ015377.1_Salpidae_gen._nov._sp._nov._A", 
+                                     "FM244865.1_Ihlea_racovitzai", "KR057222.1_Brooksia_lacromae", "9_Helicosalpa_virgula_MarcHughes_specimen2",
+                                     "26_Cyclosalpa_quadriluminis_D39CquaOS1", "27_Cyclosalpa_polae_D38CpolB1", "16_Ritteriella_amboinensis_D28RambOS1",
+                                     "3_Ihlea_punctata_non-spotted_D24MhexB1", "20_Ihlea_punctata_D31IpunOS1-2", "6_Iasis_cf_cylindrica_yellow-tail_D22SyouB1"))
   #Remove straneous characters and Accession codes from tip labels
 Strees <- lapply(Strees, function(t){t$tip.label %>% 
     str_remove_all(".+\\..+?_") %>% 
-      str_replace_all("_", " ") -> t$tip.label; return(t)})
+      str_replace_all("_", " ") %>% 
+    str_remove_all("^\\d+ ") %>% 
+    str_remove_all(" D\\d+.+$") -> t$tip.label; return(t)})
+#reroot trees
+Strees <- lapply(Strees, function(t){reroot(t, 71)})
   #Remove outgroups
 Strees <- lapply(Strees, drop.tip, c("Pyrosomella verticillata", "Pyrosoma atlanticum", "Pyrosoma godeauxi","Pyrostremma spinosum", "Clavelina meridionalis", "Pycnoclavella aff. detorta", "Ascidia ceratodes", "Perophora sagamiensis","Megalodicopia hians", "Chelyosoma siboja", "Ciona intestinalis", "Molgula manhattensis", "Oikopleura dioica","Halocynthia igaboja", "Echinorhinus cookei", "Myxine glutinosa", "Branchiostoma floridae", "Doliolum denticulatum", "Doliolum nationalis"))
   #correct spelling
@@ -53,8 +73,9 @@ round(BS_ratios,2) %>% sort() %>% .[length(BS_ratios):1]
 Strees_Unique <- Strees_Unique[order(BS_ratios)[length(BS_ratios):1]]
 
 #Plot each unique tree variant
-par(mfrow=c(7,7),mar=c(0,0,0,0), oma=c(0,0,0,0))
-lapply(Strees_Unique,function(t){plot.phylo(t, use.edge.length = F, cex=0.2)})
+par(mfrow=c(3,3),mar=c(0,0,0,0), oma=c(0,0,0,0))
+lapply(Strees_Unique[1:9],function(t){plot.phylo(t, use.edge.length = F)})
+#lapply(Strees_Unique,function(t){plot.phylo(t, use.edge.length = F, cex=0.2)})
 
 #Test proportion of specific nodes
   #Make unitary BLs and ultrametric
@@ -65,14 +86,12 @@ lapply(Strees_clado, function(TRE){
     #cophenetic(TRE)["Salpa aspera","Cyclosalpa polae"]<cophenetic(TRE)["Ritteriella retracta","Cyclosalpa polae"] &
     }) %>% unlist() %>% table() -> cr; print(cr/30.01)
 
+par(mfrow=c(1,1),mar=c(0,0,0,0), oma=c(0,0,0,0))
 #Append species to phylogeny based on taxonomy and morphological similarity -- ARBITRARY EDGE LENGTHS
-#ori_phylo <- chronos(tree_salp); ori_phylo$tip.label <- (str_replace_all(tree_salp$tip.label, " ", "_"))
-#extended_phylo <- add.species.to.genus(ori_phylo, "Ihlea_punctata", "Ihlea")
-extended_phylo <- bind.tip(tree_salp, "Ihlea punctata", position=0.1, where = 18, edge.length = 0.1)
-extended_phylo <-  bind.tip(extended_phylo, "Cyclosalpa bakeri", position=0.02, where = 4, edge.length = 0.02)
-extended_phylo <-  bind.tip(extended_phylo, "Helicosalpa younti", position=0.15, where = 31, edge.length = 0.15+0.099358)
+ori_phylo <- chronos(tree_salp); ori_phylo$tip.label <- (str_replace_all(tree_salp$tip.label, " ", "_"))
+extended_phylo <- add.species.to.genus(ori_phylo, "Pegea sp.", "Pegea")
+extended_phylo <-  bind.tip(extended_phylo, "Helicosalpa younti", position=0.15, where = 7, edge.length = 0.15+0.099358)
 extended_phylo <-  bind.tip(extended_phylo, "Cyclosalpa pinnata", position=0.02, where = 36, edge.length = 0.02712)
-extended_phylo <-  bind.tip(extended_phylo, "Ritteriella amboinensis", position=0.1, where = 16, edge.length = 0.1)
 extended_phylo <-  bind.tip(extended_phylo, "Pegea socia", position=0.02, where = 25, edge.length = 0.02)
 
 plot(extended_phylo)
@@ -247,14 +266,16 @@ fitDiscrete(tree_salp_pruned, morph, model="meristic", symmetric=T)$opt$aicc %>%
 fitDiscrete(tree_salp_morph, morph, model="meristic", symmetric=F)$opt$aicc %>% print()
 
   #SIMMAP plotting
-Morph <- c(setNames("Linear", "Ihlea racovitzai"),setNames("Oblique", "Thalia orientalis"),setNames("Linear","Salpa younti"),
+Morph <- c(setNames("Linear", "Ihlea punctata"),setNames("Oblique", "Thalia orientalis"),setNames("Linear","Salpa younti"),
            setNames(unique_traits[,2],unique_traits$Species), setNames("Bipinnate","Ritteriella amboinensis"), 
-           setNames("Linear","Salpa thompsoni"))
+           setNames("Linear","Salpa thompsoni"), setNames("Linear","Metcalfina hexagona"), setNames("Whorl","Cyclosalpa bakeri"),
+           setNames("Helical","Helicosalpa virgula"))
 Mphylo <- drop.tip(extended_phylo, which(extended_phylo$tip.label=="Cyclosalpa floridiana" | extended_phylo$tip.label=="Brooksia lacromae"))
+Mphylo <- drop.tip(extended_phylo, which(!(extended_phylo$tip.label %in% names(Morph))))
 simmorph<-make.simmap(Mphylo,Morph[match(Mphylo$tip.label,names(Morph))],nsim=100,model="ER")
 par(ask=F)
 obj_t<-summary(simmorph,plot=FALSE)
-cols_t<-setNames(c("turquoise", "magenta","gold","dark orange","red","dark green","purple"),mapped.states(simmorph)[,1])
+cols_t<-setNames(c("turquoise", "magenta","gold","orange","red","green","purple"),mapped.states(simmorph)[,1])
 plot(obj_t,colors=cols_t,fsize=0.8,cex=c(0.9,0.5), ftype="i")
 add.simmap.legend(colors=cols_t,x=0, y=8 ,prompt=FALSE,fsize=0.9,)
 
@@ -815,7 +836,7 @@ expected_angles[,1:6] <- sapply(expected_angles[,1:6],as.numeric)
 surfaceALL(expected_angles[,5:6],angleTree)
 
 #### [9] #### REVBAYES COLONY ARCHITECTURE EVOLUTION ################
-RBPCMtree <- read.("RB_PCM/morph_output/ase_morph.tree")
+RBPCMtree <- read.nexus("RB_PCM/morph_output/ase_morph.tree")
 morphAncStates <- read.table("RB_PCM/morph_output/morph.states",sep='\t',header = T,stringsAsFactors = F)[,c(-1:-2)]
 morphAncStates[morphAncStates==TRUE] <- "T"
 apply(morphAncStates, 2, function(n){round(100*table(n)/sum(table(n)),2)->tabz;return(setNames(as.vector(tabz),names(tabz)))}) -> nodeStates

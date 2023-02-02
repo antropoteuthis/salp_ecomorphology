@@ -15,7 +15,7 @@
 morpho <- readDiscreteCharacterData("morph.nex")
 moves    = VectorMoves()
 monitors = VectorMonitors()
-phylogeny <- readTrees("Extendedpylo.tre")[1]
+phylogeny <- readTrees("GUCMmNSanger_TimeTree_salp18Sphylo.tre")[1]
 
 ###########################################
 #     Morphological substitution model    #

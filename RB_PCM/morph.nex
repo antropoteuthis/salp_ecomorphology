@@ -1,24 +1,21 @@
 #NEXUS
 
 Begin data;
-Dimensions ntax=27 nchar=1;
+Dimensions ntax=24 nchar=1;
 Format datatype=Standard symbols="C W T O L B H" missing=? gap=-;
 Matrix
 Brooksia_rostrata	B
 Cyclosalpa_affinis	W
 Cyclosalpa_bakeri	W
-Cyclosalpa_floridiana	W
 Cyclosalpa_quadriluminis	W
 Cyclosalpa_polae	C
 Cyclosalpa_sewelli	C
-Cyclosalpa_pinnata	C
-Helicosalpa_younti	H
+Helicosalpa_virgula	H
 Iasis_cylindrica	L
-Ihlea_racovitzai	L
 Ihlea_punctata	L
+Metcalfina_hexagona	L
 Pegea_bicaudata	T
 Pegea_confoederata	T
-Pegea_socia	T
 Ritteriella_retracta	B
 Ritteriella_amboinensis	B
 Salpa_aspera	L

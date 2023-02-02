@@ -1,0 +1,11 @@
+IQ-TREE multicore version 1.6.12 for Mac OS X 64-bit built Aug 15 2019
+Developed by Bui Quang Minh, Nguyen Lam Tung, Olga Chernomor,
+Heiko Schmidt, Dominik Schrempf, Michael Woodhams.
+
+Host:    dyn-128-223-93-121.uoregon.edu (SSE4.2, 32 GB RAM)
+Command: ../iqtree -s GUC-Mm+N+Sanger_aligned.fa-gb -nt AUTO -bb 1000
+Seed:    584566 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Fri Jan 27 14:43:00 2023
+Kernel:  SSE2 - auto-detect threads (10 CPU cores detected)
+
+Reading alignment file GUC-Mm+N+Sanger_aligned.fa-gb ... ERROR: Unknown sequence format, please use PHYLIP, FASTA, CLUSTAL, MSF, or NEXUS format

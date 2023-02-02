@@ -171,8 +171,20 @@ mafft --auto --inputorder "GovUNIONCho-AB921975Mman+news.fasta" > "GovUNIONCho-A
 	../iqtree -s Seqs_and_Alignments/GovUNIONCho-AB921975Mman+news_MUSCLE.afa-gb -nt AUTO -bb 1000
 
 ## Gov2011 including AY903925.1  H. igaboja + AJ250778 Ciona intestinalis and the NEW SEQUENCES for salps B. lacromae, T. longicauda, S. younti + the SANGER SEQUENCED ##
-#Labeled as DS-Union-Gov11 minus M. manhattensis + news
-GovUNIONCho-AB921975Mman+news
+#Labeled as GUC-Mm+N+Sanger
+mafft --auto --inputorder "Sanger/GUC-Mm+N+Sanger.fa" > "GUC-Mm+N+Sanger_aligned.fa"
+../iqtree -s GUC-Mm+N+Sanger_aligned.fa -nt AUTO -bb 1000
+
+#with GTR+I+G
+	../iqtree -s GUC-Mm+N+Sanger_aligned.fa -nt AUTO -bb 1000 -m GTR+I+G
+
+	#with GBLOCKS
+	didntwork ###./Gblocks GUC-Mm+N+Sanger_aligned.fa -t DNA -b5 h > GUC-Mm+N+Sanger_aligned.fa-gb ###
+
+	#with MUSCLE
+	../muscle5.1.macos_arm64 -align Sanger/GUC-Mm+N+Sanger.fa -output GUC-Mm+N+Sanger_MUSCLE.afa
+	../iqtree -s GUC-Mm+N+Sanger_MUSCLE.afa -nt AUTO -bb 1000
+
 	
 ######
 
@@ -211,3 +223,13 @@ TOPOLOGY_Gov2011+Higaboja_output
 
 	#with MAFFT
 	TOPOLOGY_Gov2011+HigaCint+New_MAFFT_output
+
+## Gov2011 including AY903925.1  H. igaboja + AJ250778 Ciona intestinalis and the NEW SEQUENCES for salps B. lacromae, T. longicauda, S. younti + the SANGER SEQUENCED ##
+#Labeled as GUC-Mm+N+Sanger
+
+	#with MUSCLE
+		TOPOLOGY_GUC-Mm+N+Sanger_MUSCLE_output
+			#timetree
+			TIMETREE_Gov2011+Higa+Cint_MUSCLE_output
+
+
