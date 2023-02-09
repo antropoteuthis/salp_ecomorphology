@@ -299,7 +299,8 @@ slopes$Species %>% factor(levels=c("Pegea sp.", "Helicosalpa virgula","Cyclosalp
 
 pdf("Figures_respirometry/Kona2022/slopes_raw.pdf", height=6, width=10)
 slopes %>% filter(Treatment=="Intact") %>% 
-  ggplot(aes(x=Species,y=-Slope_O2))+
+  ggplot(aes(x=Species,y=-Slope_O2))->slope_plot
+slope_plot+
   geom_violin(color="red",fill="red", alpha=0.7)+
   geom_point(color="red",fill="red", alpha=0.7)+
   geom_violin(data=slopes %>% filter(Treatment=="Anesthetized"), color="blue", fill="blue", alpha=0.7, width = 0.5)+
@@ -382,7 +383,6 @@ swim <- swim[!is.na(swim$Speed..cm.s.),]
 names(swim)[2] <- "Speed.cm.s"
 
       #### CAUTION ##### WE ARE SWAPPING NAMES HERE
-swim$Species[swim$Species=="Helicosalpa younti"] <- "Helicosalpa virgula"
 swim$Species[swim$Species=="Pegea socia"] <- "Pegea sp."
 swim$Species[swim$Species=="Ritteriella retracta"] <- "Ritteriella sp."
 swim$Species[swim$Species=="Rittereilla amboinensis"] <- "Ritteriella amboinensis"
@@ -423,6 +423,7 @@ pdf("Figures_respirometry/Kona2022/rawCOT_intact_rel.pdf", height=6, width=10)
 COT_intact %>% filter(!is.na(COT.rel.ml)) %>% 
   ggplot(aes(x=Species,y=COT.rel.ml))+
   geom_boxplot(aes(fill=Speed.cm.s))+
+  #scale_fill_gradient(low="white",high="red")+
   theme_bw()+theme(axis.text.x = element_text(angle = 90))+ylab("Gross Cost of Transport (pgO2/Biovolume per zooid length moved)")  #+ ylim(c(0, 6e-05))
 dev.off()
 
@@ -545,9 +546,16 @@ COT_species %>% filter(!is.na(COT.abs.ml)) %>%
   theme_bw()+
   theme(axis.text.x = element_text(angle = 90))
 
+COT_species %>% filter(!is.na(COT.abs.ml)) %>% 
+  ggplot(aes(x=Species))+
+  geom_bar(aes(y=5-Slope_O2_dif_normalized_Intact+Slope_O2_dif_normalized_Anesthetized), stat="identity")+
+  ylab("Net respiration rate (pgO2/min) per specimen biovolume (ml)")+
+  theme_bw()+
+  theme(axis.text.x = element_text(angle = 90))
+
 #COT by biovolume per cm across absolute speeds
 ggplot(COT_species %>% filter(!is.na(COT.abs.ml)), aes(x=Speed.cm.s,y=COT.abs.ml))+
-  geom_point(aes(color=Speed.body.s ),cex=3)+
+  #geom_point(aes(color=Speed.body.s ),cex=3)+
   theme_bw()+
   geom_text(label=COT_species %>% filter(!is.na(COT.abs.ml)) %>% .$Species, hjust=0.4, vjust=-0.7)+
   ylab("Net cost of Transport (pgO2/ml per cm moved)")

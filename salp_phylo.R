@@ -35,7 +35,7 @@ tree_salp$tip.label <- str_remove_all(tree_salp$tip.label, " D\\d+.+$")
 tree_salp$tip.label[which(tree_salp$tip.label == "Cyclosalpa floridana")] <- "Cyclosalpa floridiana"
   #Remove outgroups
 tree_salp <- drop.tip(tree_salp, c("Pyrosomella verticillata", "Pyrosoma atlanticum", "Pyrosoma godeauxi","Pyrostremma spinosum", "Clavelina meridionalis", "Pycnoclavella aff. detorta", "Ascidia ceratodes", "Perophora sagamiensis","Megalodicopia hians", "Chelyosoma siboja", "Ciona intestinalis", "Molgula manhattensis", "Oikopleura dioica","Halocynthia igaboja", "Echinorhinus cookei", "Myxine glutinosa", "Branchiostoma floridae", "Doliolum denticulatum", "Doliolum nationalis")) 
-write.tree(tree_salp, "GUCMmNSanger_TimeTree_salp18Sphylo.tre")
+#write.tree(tree_salp, "GUCMmNSanger_TimeTree_salp18Sphylo.tre")
 
 #Load phylogenetic uncertainty tree set (3001 trees from RevBayes)
 Strees <- read.tree("phylogeny/RevBayes/TOPOLOGY_GUC-Mm+N+Sanger_MUSCLE_output/GUC-Mm+N+Sanger_MUSCLE_18S.trees")
@@ -106,6 +106,7 @@ salplit$Species[which(salplit$Species == "Iasis (Weelia) cylindrica")] <- "Iasis
 salplit$Species[which(salplit$Species == "Soestia (Iasis) zonaria")] <- "Soestia zonaria"
 
   #prune tree
+#extended_phylo = tree_salp
 #tree_salp_pruned <- drop.tip(tree_salp, which(!(tree_salp$tip.label %in% unique(traits$Species))))
 tree_salp_pruned <- drop.tip(extended_phylo, which(!(extended_phylo$tip.label %in% unique(traits$Species))))
   #prune traits
@@ -141,30 +142,63 @@ phenogram(tree_salp_pruned, setNames(unique_traits$DV.Zooid..Stolon.angle,unique
 
 #Front drag
 kineTraits[,c(2,8,13)] %>% mutate(baseCSA = Zooid.area.cross.section.packing/Zooid.number)->CSA
+CSA = mutate(CSA, Species = rownames(CSA))
+CSAcum=CSA
 for(r in 1:nrow(CSA)){
-  species <- mutate(CSA[r,], Species = rownames(CSA[r,]))
-  ZNcum <- rbind(species,ZN)
+  species <- CSA[r,]
   for(z in 3:60){
     ZN <- species
     ZN$Zooid.number <- z
+    if(ZN)
     ZN$Zooid.area.cross.section.packing <- z*ZN$baseCSA
-    ZNcum <- rbind(species,ZN)
-    print(ZN)
+    CSAcum <- rbind(CSAcum,ZN)
   }
-  CSAcum <- rbind(species,ZNcum)
-  print(dim(CSAcum))
 }
 
-rbind()
-3:60 %>% length() #58
+CSAspeed <- left_join(CSA, kineTraits[,c(1,15,18,19)])
+
+#ggplot(CSAspeed %>% group_by(Architecture), aes(Zooid.number, Zooid.area.cross.section.packing*baseCSA))+geom_point(aes(color=Architecture), alpha=0.5)+theme_bw()
+ggplot(CSAspeed, aes(Architecture, Zooid.area.cross.section.packing)) +
+  geom_violin(aes(color=Architecture,fill=Architecture)) +
+  geom_text(label=CSAspeed$Species, vjust = 1)+ 
+  scale_color_manual(values=setNames(c("orange","chartreuse","green", "cornflowerblue", "turquoise", "turquoise", "cyan"), unique(CSAspeed$Architecture)))+
+  scale_fill_manual(values=setNames(c("orange","chartreuse","green", "cornflowerblue", "turquoise", "turquoise", "cyan"), unique(CSAspeed$Architecture)))+
+  theme_bw()
+
+ggplot(CSAspeed, aes(Zooid.area.cross.section.packing, Speed..colonysize.min.)) +
+  geom_point(aes(color=Architecture)) +
+  geom_text(label=CSAspeed$Species, vjust = 0.9, hjust=-0.1)+ 
+  scale_color_manual(values=setNames(c("orange","chartreuse","green", "cornflowerblue", "turquoise", "turquoise", "cyan"), unique(CSAspeed$Architecture)))+
+  theme_bw()
+
+ggplot(kineTraits, aes(DV.Zooid..Stolon.angle, SN.Jet.Motion.angle)) +
+  geom_point(aes(color=Architecture)) +
+  geom_text(label=CSAspeed$Species, vjust = 0.9, hjust=-0.1)+ 
+  scale_color_manual(values=setNames(c("orange","chartreuse","green", "cornflowerblue", "turquoise", "turquoise", "cyan"), unique(CSAspeed$Architecture)))+
+  theme_bw()
 
 #Power scaling
 power <- full_join(CSA, kineTraits)
-power %>% mutate(JetPower = Zooid.number.kine*Zooid.length.kine..cm.)
-ggplot(power, aes(, Speed..cm.s.)) +
+power %>% mutate(JetPower = Zooid.number.kine*Zooid.length.kine..cm.) %>% 
+ggplot(aes(JetPower, Speed..cm.s.)) +
   geom_point(aes(color=Architecture)) +
-  geom_text(label=kineTraits$Species, vjust = 0.9, hjust=-0.1)+ 
+  geom_text(label=power$Species, vjust = 0.9, hjust=-0.1)+ 
   theme_bw()
+
+glm(Speed..colonysize.min. ~ JetPower, data=power %>% mutate(JetPower = Zooid.number.kine*Zooid.length.kine..cm.)) %>% 
+  summary()
+
+cbind(power, glm(Speed..colonysize.min. ~ JetPower, data=power %>% mutate(JetPower = Zooid.number.kine*Zooid.length.kine..cm.)) %>% 
+        .$residuals)->power
+names(power)[31] <- "jet_scaling"
+
+ggplot(power, aes(Architecture, jet_scaling)) +
+  geom_violin(aes(color=Architecture, fill=Architecture)) +
+  geom_text(label=power$Species)+ 
+  scale_color_manual(values=setNames(c("orange","chartreuse","green", "cornflowerblue", "turquoise", "turquoise", "cyan"), unique(power$Architecture)))+
+  theme_bw()+
+  scale_fill_manual(values=setNames(c("orange","chartreuse","green", "cornflowerblue", "turquoise", "turquoise", "cyan"), unique(power$Architecture)))
+  
 
 ggplot(kineTraits[-15,], aes(x=Zooid.number*log((Zooid.length..mm.^3)), y = Speed..colonysize.min.)) +
   geom_line(aes(color=Architecture), cex=2) +
