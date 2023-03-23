@@ -1,0 +1,15 @@
+Sample ID,Sample Name,Primer,Primer Source,Vector Size,Insert or PCR Product Size,Sample Comment
+1,10F,166F,other,,1277,forward, blue tubes
+2,12F,166F,other,,1277,forward, blue tubes
+3,14F,166F,other,,1277,forward, blue tubes
+4,15F,166F,other,,1277,forward, blue tubes
+5,22F,166F,other,,1277,forward, blue tubes
+6,23F,166F,other,,1277,forward, blue tubes
+7,24F,166F,other,,1277,forward, blue tubes
+8,10R,134R,other,,1277,reverse, pink tubes
+9,12R,134R,other,,1277,reverse, pink tubes
+10,14R,134R,other,,1277,reverse, pink tubes
+11,15R,134R,other,,1277,reverse, pink tubes
+12,22R,134R,other,,1277,reverse, pink tubes
+13,23R,134R,other,,1277,reverse, pink tubes
+14,24R,134R,other,,1277,reverse, pink tubes
