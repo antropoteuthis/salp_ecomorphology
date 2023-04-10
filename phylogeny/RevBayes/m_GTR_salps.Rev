@@ -6,7 +6,7 @@
 # Reading in the Data #
 #######################
 
-data = readDiscreteCharacterData("../Seqs_and_Alignments/GUC-Mm+N+Sanger_MUSCLE.afa")
+data = readDiscreteCharacterData("../Seqs_and_Alignments/GUC-Mm+N+Sanger2_MUSCLE.afa")
 
 # Get some useful variables from the data. We need these later on.
 taxa <- data.taxa()

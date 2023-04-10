@@ -185,7 +185,21 @@ mafft --auto --inputorder "Sanger/GUC-Mm+N+Sanger.fa" > "GUC-Mm+N+Sanger_aligned
 	../muscle5.1.macos_arm64 -align Sanger/GUC-Mm+N+Sanger.fa -output GUC-Mm+N+Sanger_MUSCLE.afa
 	../iqtree -s GUC-Mm+N+Sanger_MUSCLE.afa -nt AUTO -bb 1000
 
-	
+## Gov2011 including AY903925.1  H. igaboja + AJ250778 Ciona intestinalis and the NEW SEQUENCES for salps B. lacromae, T. longicauda, S. younti + the SANGER SEQUENCED SECOND BATCH ##
+#Labeled as GUC-Mm+N+Sanger2
+mafft --auto --inputorder "Sanger/GUC-Mm+N+Sanger2.fa" > "GUC-Mm+N+Sanger2_aligned.fa"
+../iqtree -s GUC-Mm+N+Sanger2_aligned.fa -nt AUTO -bb 1000
+
+#with GTR+I+G
+	../iqtree -s GUC-Mm+N+Sanger2_aligned.fa -nt AUTO -bb 1000 -m GTR+I+G
+
+	#with GBLOCKS
+	didntwork ###./Gblocks GUC-Mm+N+Sanger2_aligned.fa -t DNA -b5 h > GUC-Mm+N+Sanger2_aligned.fa-gb ###
+
+	#with MUSCLE
+	../muscle5.1.macos_arm64 -align Sanger/GUC-Mm+N+Sanger2.fa -output GUC-Mm+N+Sanger2_MUSCLE.afa
+	../iqtree -s GUC-Mm+N+Sanger2_MUSCLE.afa -nt AUTO -bb 1000
+
 ######
 
 ### BAYESIAN Analyses in RevBayes ####

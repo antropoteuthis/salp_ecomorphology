@@ -1,17 +1,19 @@
 #NEXUS
 
 Begin data;
-Dimensions ntax=26 nchar=6;
+Dimensions ntax=29 nchar=6;
 Format datatype=Standard symbols="0 1" missing=? gap=-;
 Matrix
 Brooksia_rostrata	111000
 Cyclosalpa_affinis	000100
 Cyclosalpa_bakeri	000100
-Cyclosalpa_floridiana	0000100
+Cyclosalpa_floridiana	000100
+Cyclosalpa_pinnata	000110
 Cyclosalpa_quadriluminis	000100
 Cyclosalpa_polae	000110
 Cyclosalpa_sewelli	000110
 Cyclosalpa_pinnata	000110
+Helicosalpa_virgula	000001
 Helicosalpa_younti	000001
 Iasis_cylindrica	110000
 Ihlea_racovitzai	110000
@@ -30,5 +32,6 @@ Thalia_democratica	100000
 Thalia_longicauda	100000
 Thalia_orientalis	100000
 Thetys_vagina	100000
+Metcalfina_hexagona	110000
 ;
 END;

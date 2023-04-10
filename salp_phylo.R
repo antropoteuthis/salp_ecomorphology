@@ -14,15 +14,15 @@ library(phylolm)
 setwd("~/salp_ecomorphology/")
 
 #LOAD consensus tree
-tree_salp <- read.nexus("phylogeny/RevBayes/TIMETREE_GUC-Mm+N+Sanger_MUSCLE_output/TimeTree_GUC-Mm+N+Sanger_MUSCLE_mcmc_MAP.tre")
+tree_salp <- read.nexus("phylogeny/RevBayes/TIMETREE_GUC-Mm+N+Sanger2_MUSCLE_output/TimeTree_GUC-Mm+N+Sanger2_MUSCLE_mcmc_MAP.tre")
   #Remove duplicate and ingroup undescribed salp species
 
     ### ATTENTION: MAKE SURE THESE MAXIMIZE BRANCH LENGTHS  ####
 tree_salp <- drop.tip(tree_salp, c("HQ015387.1_Pegea_confoederata","HQ015397.1_Cyclosalpa_quadriluminis","HQ015391.1_Cyclosalpa_affinis",
                                    "HQ015396.1_Cyclosalpa_polae","HQ015398.1_Cyclosalpa_sewelli","FM244866.1_Iasis_cylindrica","HQ015399.1_Iasis_cylindrica",
                                    "HQ015402.1_Iasis_cylindrica","HQ015401.1_Iasis_cylindrica","HQ015413.1_Thalia_democratica","HQ015414.1_Thalia_democratica",
-                                   "D14366.1_Thalia_democratica","HQ015410.1_Ritteriella_retracta","HQ015404.1_Brooksia_rostrata",
-                                   "HQ015408.1_Salpa_maxima","HQ015406.1_Salpa_thompsoni", "HQ015377.1_Salpidae_gen._nov._sp._nov._A", 
+                                   "D14366.1_Thalia_democratica","HQ015410.1_Ritteriella_retracta","23_D37-Rsp-B-1_Ritteriella_sp", "24_D37-Rret-OS-1_Ritteriella_retracta",
+                                   "HQ015404.1_Brooksia_rostrata","HQ015408.1_Salpa_maxima","HQ015406.1_Salpa_thompsoni", "HQ015377.1_Salpidae_gen._nov._sp._nov._A", 
                                    "FM244865.1_Ihlea_racovitzai", "KR057222.1_Brooksia_lacromae", "9_Helicosalpa_virgula_MarcHughes_specimen2",
                                    "26_Cyclosalpa_quadriluminis_D39CquaOS1", "27_Cyclosalpa_polae_D38CpolB1", "16_Ritteriella_amboinensis_D28RambOS1",
                                    "3_Ihlea_punctata_non-spotted_D24MhexB1", "20_Ihlea_punctata_D31IpunOS1-2", "6_Iasis_cf_cylindrica_yellow-tail_D22SyouB1"))
@@ -31,6 +31,7 @@ tree_salp$tip.label <- str_remove_all(tree_salp$tip.label, ".+\\..+?_")
 tree_salp$tip.label <- str_replace_all(tree_salp$tip.label, "_", " ")
 tree_salp$tip.label <- str_remove_all(tree_salp$tip.label, "^\\d+ ")
 tree_salp$tip.label <- str_remove_all(tree_salp$tip.label, " D\\d+.+$")
+tree_salp$tip.label <- str_remove_all(tree_salp$tip.label, "D\\d+.+? ")
   #Correct spellings
 tree_salp$tip.label[which(tree_salp$tip.label == "Cyclosalpa floridana")] <- "Cyclosalpa floridiana"
   #Remove outgroups
@@ -38,29 +39,30 @@ tree_salp <- drop.tip(tree_salp, c("Pyrosomella verticillata", "Pyrosoma atlanti
 #write.tree(tree_salp, "GUCMmNSanger_TimeTree_salp18Sphylo.tre")
 
 #Load phylogenetic uncertainty tree set (3001 trees from RevBayes)
-Strees <- read.tree("phylogeny/RevBayes/TOPOLOGY_GUC-Mm+N+Sanger_MUSCLE_output/GUC-Mm+N+Sanger_MUSCLE_18S.trees")
+Strees <- read.tree("phylogeny/RevBayes/TOPOLOGY_GUC-Mm+N+Sanger2_MUSCLE_output/GUC-Mm+N+Sanger2_MUSCLE_18S.trees")
   #remove duplicate species and undescribed ingroup
 Strees <- lapply(Strees, drop.tip, c("HQ015387.1_Pegea_confoederata","HQ015397.1_Cyclosalpa_quadriluminis","HQ015391.1_Cyclosalpa_affinis",
                                      "HQ015396.1_Cyclosalpa_polae","HQ015398.1_Cyclosalpa_sewelli","FM244866.1_Iasis_cylindrica","HQ015399.1_Iasis_cylindrica",
                                      "HQ015402.1_Iasis_cylindrica","HQ015401.1_Iasis_cylindrica","HQ015413.1_Thalia_democratica","HQ015414.1_Thalia_democratica",
-                                     "D14366.1_Thalia_democratica","HQ015410.1_Ritteriella_retracta","HQ015404.1_Brooksia_rostrata",
-                                     "HQ015408.1_Salpa_maxima","HQ015406.1_Salpa_thompsoni", "HQ015377.1_Salpidae_gen._nov._sp._nov._A", 
+                                     "D14366.1_Thalia_democratica","HQ015410.1_Ritteriella_retracta","23_D37-Rsp-B-1_Ritteriella_sp", "24_D37-Rret-OS-1_Ritteriella_retracta",
+                                     "HQ015404.1_Brooksia_rostrata","HQ015408.1_Salpa_maxima","HQ015406.1_Salpa_thompsoni", "HQ015377.1_Salpidae_gen._nov._sp._nov._A", 
                                      "FM244865.1_Ihlea_racovitzai", "KR057222.1_Brooksia_lacromae", "9_Helicosalpa_virgula_MarcHughes_specimen2",
                                      "26_Cyclosalpa_quadriluminis_D39CquaOS1", "27_Cyclosalpa_polae_D38CpolB1", "16_Ritteriella_amboinensis_D28RambOS1",
                                      "3_Ihlea_punctata_non-spotted_D24MhexB1", "20_Ihlea_punctata_D31IpunOS1-2", "6_Iasis_cf_cylindrica_yellow-tail_D22SyouB1"))
   #Remove straneous characters and Accession codes from tip labels
 Strees <- lapply(Strees, function(t){t$tip.label %>% 
     str_remove_all(".+\\..+?_") %>% 
-      str_replace_all("_", " ") %>% 
+    str_replace_all("_", " ") %>% 
     str_remove_all("^\\d+ ") %>% 
-    str_remove_all(" D\\d+.+$") -> t$tip.label; return(t)})
+    str_remove_all(" D\\d+.+$") %>% 
+    str_remove_all("D\\d+.+? ") -> t$tip.label; return(t)})
 #reroot trees
-Strees <- lapply(Strees, function(t){reroot(t, 71)})
+Strees <- lapply(Strees, function(t){reroot(t, 80)}) 
   #Remove outgroups
 Strees <- lapply(Strees, drop.tip, c("Pyrosomella verticillata", "Pyrosoma atlanticum", "Pyrosoma godeauxi","Pyrostremma spinosum", "Clavelina meridionalis", "Pycnoclavella aff. detorta", "Ascidia ceratodes", "Perophora sagamiensis","Megalodicopia hians", "Chelyosoma siboja", "Ciona intestinalis", "Molgula manhattensis", "Oikopleura dioica","Halocynthia igaboja", "Echinorhinus cookei", "Myxine glutinosa", "Branchiostoma floridae", "Doliolum denticulatum", "Doliolum nationalis"))
   #correct spelling
 Strees <- lapply(Strees, function(t){t$tip.label[which(t$tip.label == "Cyclosalpa floridana")] <- "Cyclosalpa floridiana"; return(t)})
-  #Ladderize for homogeneity in tip order
+#Ladderize for homogeneity in tip order
 Strees <- lapply(Strees, ladderize)
   #Make ultrametric
 Strees <- lapply(Strees, chronos)
@@ -106,7 +108,8 @@ salplit$Species[which(salplit$Species == "Iasis (Weelia) cylindrica")] <- "Iasis
 salplit$Species[which(salplit$Species == "Soestia (Iasis) zonaria")] <- "Soestia zonaria"
 
   #prune tree
-#extended_phylo = tree_salp
+extended_phylo = tree_salp
+#  write.tree(extended_phylo, "RB_PCM/GUCMmNSanger2_TimeTree_salp18Sphylo.tre")
 #tree_salp_pruned <- drop.tip(tree_salp, which(!(tree_salp$tip.label %in% unique(traits$Species))))
 tree_salp_pruned <- drop.tip(extended_phylo, which(!(extended_phylo$tip.label %in% unique(traits$Species))))
   #prune traits
