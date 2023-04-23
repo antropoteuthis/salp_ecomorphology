@@ -194,11 +194,15 @@ mafft --auto --inputorder "Sanger/GUC-Mm+N+Sanger2.fa" > "GUC-Mm+N+Sanger2_align
 	../iqtree -s GUC-Mm+N+Sanger2_aligned.fa -nt AUTO -bb 1000 -m GTR+I+G
 
 	#with GBLOCKS
-	didntwork ###./Gblocks GUC-Mm+N+Sanger2_aligned.fa -t DNA -b5 h > GUC-Mm+N+Sanger2_aligned.fa-gb ###
+	./Gblocks  Seqs_and_Alignments/GUC-Mm+N+Sanger2_aligned.fa -t DNA -b5 h > Seqs_and_Alignments/GUC-Mm+N+Sanger2_aligned.fa-gb
+	../iqtree -s Seqs_and_Alignments/GUC-Mm+N+Sanger2_aligned.fa-gb -nt AUTO -bb 1000
 
 	#with MUSCLE
 	../muscle5.1.macos_arm64 -align Sanger/GUC-Mm+N+Sanger2.fa -output GUC-Mm+N+Sanger2_MUSCLE.afa
 	../iqtree -s GUC-Mm+N+Sanger2_MUSCLE.afa -nt AUTO -bb 1000
+	#with GBLOCKS
+	./Gblocks GUC-Mm+N+Sanger2_MUSCLE.afa -t DNA -b5 h > GUC-Mm+N+Sanger2_aMUSCLE.afa-gb
+	../iqtree -s Seqs_and_Alignments/GUC-Mm+N+Sanger2_MUSCLE.afa-gb -nt AUTO -bb 1000
 
 ######
 

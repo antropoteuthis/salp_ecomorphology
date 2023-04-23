@@ -627,7 +627,7 @@ phylogit = phyloglm(temp~angle,phy=treeIJ,data=datIJ,boot=100, btol=30)
 print(phylogit)
 
 #### [7] #### Continuous characters from the literature #####
-cast_num <- dcast(pruned_traits[which(pruned_traits$Class=="number"),], Species~Variable, value.var="Value", fun.aggregate = function(x){mean(as.numeric(x), na.rm = T)})
+#cast_num <- dcast(pruned_traits[which(pruned_traits$Class=="number"),], Species~Variable, value.var="Value", fun.aggregate = function(x){mean(as.numeric(x), na.rm = T)})
 cast_num <- pruned_traits[,c(1,3:23,29)]
   #Phylogenetic signals and contMaps for each character
 for(i in 2:ncol(cast_num)){
