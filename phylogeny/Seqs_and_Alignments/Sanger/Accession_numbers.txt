@@ -1,0 +1,17 @@
+Accession_number	Specimen
+OQ863569	28_Metcalfina_hexagona_D39-Mhex-B1       
+OQ863570	3_Ihlea_punctata_non-spotted_D24-Ipun-B-1
+OQ863571	4_Ihlea_punctata_D24-Ipun-B-1            
+OQ863572	13_Cyclosalpa_bakeri_D27-Cbak-B-1        
+OQ863573	6_Iasis_cylindrica_D22-Icyl-B-1          
+OQ863574	27_Cyclosalpa_polae_D38-Cpol-B-1         
+OQ863575	7_Ritteriella_amboinensis_D23-Ramb-B-1   
+OQ863576	26_Cyclosalpa_quadriluminis_D39-Cqua-OS-1
+OQ863577	31_Helicosalpa_virgula_D42-Hvir-B-1      
+OQ863578	9_Helicosalpa_virgula_MarcHughes_specimen2
+OQ863579	16_Ritteriella_amboinensis_D28-Ramb-OS-1 
+OQ863580	20_Ihlea_punctata_D31-Ipun-OS-1+2        
+OQ863581	12_Helicosalpa_younti_D27-Hyou-B-1       
+OQ863582	15_Cyclosalpa_pinnata_D28-Cpin-B-1       
+OQ863583	23_Ritteriella_retracta_D37-Rsp-B-1      
+OQ863584	24_Ritteriella_retracta_D37-Rret-OS-1    

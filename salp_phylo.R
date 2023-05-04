@@ -283,33 +283,39 @@ ggplot(unique_traits[-17,], aes(x=Zooid.number, y = (Colony.cross.sectional.area
 
 
 #### [1] #### Whole colony architecture #####
-morph <- setNames(unique_traits[which(unique_traits$Variable=="Chain architecture"),4], unique_traits[which(unique_traits$Variable=="Chain architecture"),1])
-morph <- c(morph,setNames("Linear", "Soestia zonaria"),setNames("Oblique", "Thalia orientalis"),setNames("Transversal", "Pegea confoederata"),setNames("Whorl","Cyclosalpa quadriluminis"))
+morph <- setNames(unique_traits$Architecture, unique_traits$Species)
+morph <- c(morph,setNames("Linear", "Soestia zonaria"),
+           setNames("Oblique", "Thalia orientalis"),
+           setNames("Linear", "Salpa younti"),
+           setNames("Linear", "Salpa thompsoni"),
+           setNames("Bipinnate", "Ritteriella amboinensis"),
+           setNames("Helical", "Helicosalpa younti"),
+           setNames("Whorl","Cyclosalpa quadriluminis"))
 tree_salp_morph <- drop.tip(extended_phylo, which(!(extended_phylo$tip.label %in% names(morph))))
 STree_morph <- lapply(Strees, function(t){drop.tip(t,which(!(t$tip.label %in% names(morph))))})
 morph <- morph[which(names(morph) %in% tree_salp_morph$tip.label)]
 morph[match(tree_salp_morph$tip.label,names(morph))] -> morph
-
-morph <- setNames(unique_traits$Architecture, unique_traits$Species)
 
   #Model selection
 
 models=c("ER","SYM","ARD")
 for(i in 1:3){
   print(models[i])
-  fitDiscrete(tree_salp_pruned, morph, model=models[i])$opt$aicc %>% print() #instead of tree_salp_morph
+  fitDiscrete(tree_salp_morph, morph, model=models[i])$opt$aicc %>% print() 
 }
 fitDiscrete(tree_salp_pruned, morph, model="meristic", symmetric=T)$opt$aicc %>% print()
 fitDiscrete(tree_salp_morph, morph, model="meristic", symmetric=F)$opt$aicc %>% print()
 
   #SIMMAP plotting
-Morph <- c(setNames("Linear", "Ihlea punctata"),setNames("Oblique", "Thalia orientalis"),setNames("Linear","Salpa younti"),
-           setNames(unique_traits[,2],unique_traits$Species), setNames("Bipinnate","Ritteriella amboinensis"), 
-           setNames("Linear","Salpa thompsoni"), setNames("Linear","Metcalfina hexagona"), setNames("Whorl","Cyclosalpa bakeri"),
-           setNames("Helical","Helicosalpa virgula"))
-Mphylo <- drop.tip(extended_phylo, which(extended_phylo$tip.label=="Cyclosalpa floridiana" | extended_phylo$tip.label=="Brooksia lacromae"))
-Mphylo <- drop.tip(extended_phylo, which(!(extended_phylo$tip.label %in% names(Morph))))
-simmorph<-make.simmap(Mphylo,Morph[match(Mphylo$tip.label,names(Morph))],nsim=100,model="ER")
+# Morph <- c(setNames("Linear", "Ihlea punctata"),setNames("Oblique", "Thalia orientalis"),setNames("Linear","Salpa younti"),
+#            setNames(unique_traits[,2],unique_traits$Species), setNames("Bipinnate","Ritteriella amboinensis"), 
+#            setNames("Linear","Salpa thompsoni"), setNames("Linear","Metcalfina hexagona"), setNames("Whorl","Cyclosalpa bakeri"),
+#            setNames("Helical","Helicosalpa virgula"))
+# Mphylo <- drop.tip(extended_phylo, which(extended_phylo$tip.label=="Cyclosalpa floridiana" | extended_phylo$tip.label=="Brooksia lacromae"))
+# Mphylo <- drop.tip(extended_phylo, which(!(extended_phylo$tip.label %in% names(Morph))))
+
+
+simmorph<-make.simmap(tree_salp_morph,morph,nsim=100,model="ER")
 par(ask=F)
 obj_t<-summary(simmorph,plot=FALSE)
 cols_t<-setNames(c("turquoise", "magenta","gold","orange","red","green","purple"),mapped.states(simmorph)[,1])
