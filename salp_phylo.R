@@ -57,7 +57,7 @@ Strees <- lapply(Strees, function(t){t$tip.label %>%
     str_remove_all(" D\\d+.+$") %>% 
     str_remove_all("D\\d+.+? ") -> t$tip.label; return(t)})
 #reroot trees
-Strees <- lapply(Strees, function(t){reroot(t, 80)}) 
+Strees <- lapply(Strees, function(t){reroot(t, which(t$tip.label == "Branchiostoma floridae"))}) 
   #Remove outgroups
 Strees <- lapply(Strees, drop.tip, c("Pyrosomella verticillata", "Pyrosoma atlanticum", "Pyrosoma godeauxi","Pyrostremma spinosum", "Clavelina meridionalis", "Pycnoclavella aff. detorta", "Ascidia ceratodes", "Perophora sagamiensis","Megalodicopia hians", "Chelyosoma siboja", "Ciona intestinalis", "Molgula manhattensis", "Oikopleura dioica","Halocynthia igaboja", "Echinorhinus cookei", "Myxine glutinosa", "Branchiostoma floridae", "Doliolum denticulatum", "Doliolum nationalis"))
   #correct spelling
@@ -657,17 +657,15 @@ for(i in 2:ncol(cast_num)){
   }
 }
 
-#### [8] #### EXPECTED ANGLES ################
-expected_angles <- read.csv("expected_angles.tsv",sep="\t",header = T, row.names = 1, stringsAsFactors = F)[,-c(7,8)] #remove variables with all zeroes
-
+#### [8] ####  ANGLES ################
 #DorsoVentral StolonZooid Expected angle
-angleTree <- drop.tip(tree_salp,which(!(tree_salp$tip.label %in% row.names(expected_angles))))
-dvsz <- setNames(expected_angles$DVN_Stolon.Zooid, row.names(expected_angles))
+angleTree <- drop.tip(tree_salp,which(!(tree_salp$tip.label %in% unique_traits$Species)))
+dvsz <- setNames(unique_traits$DV.Zooid..Stolon.angle, unique_traits$Species)
 #contMap
 DVSZ<-contMap(angleTree, dvsz,plot=FALSE)
-DVSZ<-setMap(DVSZ,c("white","black"))
+DVSZ<-setMap(DVSZ,c("white","orange","red","green"))
 par(mfrow=c(1,1))
-plot(DVSZ,lwd=7,legend=2, leg.txt=names(expected_angles)[6], fsize=c(1,0.5))
+plot(DVSZ,lwd=7,legend=2, leg.txt="Dorsoventral Zooid-Stolon Angle", fsize=c(1,0.5))
 # estimate ancestors
 AncDVSZ<-fastAnc(angleTree,dvsz,CI=TRUE)
 treePaint<-paintSubTree(angleTree,node=length(angleTree$tip)+1,"1")
@@ -680,9 +678,6 @@ for(i in 0:50){
   phenogram(angleTree,c(dvsz,(1-p)*AncDVSZ$CI95[,2]+p*AncDVSZ$ace), colors=setNames(paste("#0000ff",trans[i+1],sep=""),1), add=TRUE)
 }
 phenogram(angleTree,c(dvsz,AncDVSZ$ace),add=TRUE, colors=setNames("black",1))
-
-#multirate Brownian
-brownie.lite(angleTree,dvsz)
 
 #GEIGER Reversible Jump MCMC
   #relaxed BM
@@ -699,6 +694,18 @@ RBMdvsz$log[which(RBMdvsz$log[,9]==max(RBMdvsz$log[,9])),8]
 RBMdvsz$log[,9] %>% aicm()
 
 rjmcmc.bm(angleTree, dvsz, ngen=10000, type="rbm", constrainSHIFT=3)
+RBMdvsz <- load.rjmcmc("relaxedBM.result")
+plot(x=RBMdvsz, par="shifts", burnin=0.25, edge.width=2)
+RBMdvsz$log[which(RBMdvsz$log[,9]==max(RBMdvsz$log[,9])),8]
+RBMdvsz$log[,9] %>% aicm()
+
+rjmcmc.bm(angleTree, dvsz, ngen=10000, type="rbm", constrainSHIFT=4)
+RBMdvsz <- load.rjmcmc("relaxedBM.result")
+plot(x=RBMdvsz, par="shifts", burnin=0.25, edge.width=2)
+RBMdvsz$log[which(RBMdvsz$log[,9]==max(RBMdvsz$log[,9])),8]
+RBMdvsz$log[,9] %>% aicm() #WInner
+
+rjmcmc.bm(angleTree, dvsz, ngen=10000, type="rbm", constrainSHIFT=5)
 RBMdvsz <- load.rjmcmc("relaxedBM.result")
 plot(x=RBMdvsz, par="shifts", burnin=0.25, edge.width=2)
 RBMdvsz$log[which(RBMdvsz$log[,9]==max(RBMdvsz$log[,9])),8]
@@ -732,7 +739,7 @@ BMJdvsz$log[,9] %>% aicm()
 pp.mcmc(phy=angleTree, d=dvsz)
 
   #relaxed BM + jumps
-rjmcmc.bm(angleTree, dvsz, ngen=10000, type="jump-rbm", constrainJUMP=2)
+rjmcmc.bm(angleTree, dvsz, ngen=10000, type="jump-rbm", constrainJUMP=2, constrainSHIFT=2)
 RBMJdvsz <- load.rjmcmc("jump-relaxedBM.result")
 plot(x=RBMJdvsz, par="jumps", burnin=0.25, edge.width=2)
 dev.new()
@@ -748,48 +755,15 @@ lapply(Strees, function(t){
   return(PS)
 }) %>% unlist() %>% summary()
 
-#MRCA
-fastAnc(angleTree, setNames(expected_angles$DVN_Stolon.Zooid, row.names(expected_angles)))["20"]
-
-lapply(Strees, function(t){
-  treeI = drop.tip(t,which(!(t$tip.label %in% row.names(expected_angles))))
-  MRCA <- fastAnc(treeI, setNames(expected_angles$DVN_Stolon.Zooid, row.names(expected_angles)))["20"]
-  return(MRCA)
-}) %>% unlist() %>% summary()
-
 ###
 
-#ContMaps phylogenetic signals
-for(i in 2:ncol(expected_angles)){
-  CH_I=as.numeric(expected_angles[,i])
-  names(CH_I) = row.names(expected_angles)
-  CH_I= CH_I[!is.na(CH_I)]
-  treeI = drop.tip(tree_salp,which(!(tree_salp$tip.label %in% names(CH_I))))
-  PSIG <- phylosig(treeI, CH_I, test=T)
-  print(names(expected_angles)[i])
-  PSIG$K %>% print()
-  PSIG$P %>% print()
-  length(CH_I) %>% print()
-  #dotTree(treeI,CH_I)
-  if(length(CH_I)>4){
-    obj<-contMap(treeI,CH_I,plot=FALSE)
-    grey<-setMap(obj,c("white","black"))
-    par(mfrow=c(1,1))
-    plot(grey,lwd=7,legend=2, leg.txt=names(expected_angles)[i], fsize=c(1,0.5))
-  }
-}
-
-  #Model comparison on expected angles
+#Model comparison
 AICdf = as.data.frame(matrix(ncol=6,nrow=2))
 colnames(AICdf) = c("Variable", "white_noise", "starBM", "BM", "EB", "OU")
-angle_tree <- chronos(tree_salp)
 #angle_tree <- chronos(drop.tip(tree_salp, which(tree_salp$tip.label %in% c("Pegea confoederata","Pegea bicaudata","Cyclosalpa affinis","Cyclosalpa polae","Cyclosalpa sewelli","Cyclosalpa floridiana"))))
-startree <- rescale(angle_tree, "lambda", 0)
-for(c in 5:ncol(expected_angles)){
-  C = expected_angles[which(rownames(expected_angles) %in% angle_tree$tip.label),c]
-  names(C) = rownames(expected_angles)[which(rownames(expected_angles) %in% angle_tree$tip.label)]
-  C = C[!is.na(C)]
-  Ctree = drop.tip(angle_tree, which(!(angle_tree$tip.label %in% names(C))))
+startree <- rescale(angleTree, "lambda", 0)
+  C = dvsz
+  Ctree = angleTree
   startree_C = drop.tip(startree, which(!(startree$tip.label %in% names(C))))
   model_matrix = matrix("NA", nrow = 5, ncol = 3)
   colnames(model_matrix) = c("aicc","aicc_best","dAICc")
@@ -803,7 +777,7 @@ for(c in 5:ncol(expected_angles)){
     }
     model_matrix = apply(model_matrix,2, as.numeric)
     row.names(model_matrix) = c("white", "starBM", "BM", "EB", "OU")
-    model_matrix[j, "aicc"] <- temp_model$aicc
+    model_matrix[j, "aicc"] <- temp_model$aic
   }
   model_matrix[,"aicc_best"] <- min(model_matrix[,"aicc"])
   model_matrix[,"dAICc"] <- model_matrix[, "aicc"] - model_matrix[j, "aicc_best"]
@@ -811,7 +785,7 @@ for(c in 5:ncol(expected_angles)){
   string_c <- c(names(expected_angles)[c], model_matrix[,3])
   names(string_c) = colnames(AICdf)
   AICdf[c,] <- string_c
-}
+
 AICdf[,2:6] = apply(AICdf[,2:6], 2, as.numeric) %>% apply(2, function(x){round(x,3)})
 
   #OUWie Model comparison dvsz vs temperate
