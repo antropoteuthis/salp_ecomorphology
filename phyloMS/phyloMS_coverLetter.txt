@@ -1,0 +1,17 @@
+Dear Editor,
+
+We are submitting our manuscript titled “A new molecular phylogeny of salps (Tunicata: Thalicea: Salpida) and the evolutionary history of their colonial architecture” for publication in <JOURNAL NAME>. The article describes our efforts to collect and sequence DNA from eight species of salps that had never been sequenced before, infer the phylogenetic relationships among salps, and reconstruct the evolutionary history of salp colony architecture.
+
+The evolutionary history of salp colonial architecture and their distinct zooid orientations has remained obscure due to the lack of a homology-based ontology to characterize architectures, as well as a lack of phylogenetic taxon sampling and resolution of critical nodes. To overcome these challenges, we collected salp specimens via offshore SCUBA diving, dissected tissue samples, extracted their DNA, amplified their 18S gene, and sequenced them using Sanger technology. We inferred a new molecular phylogeny using both Maximum Likelihood and Bayesian approaches and reconstructed the ancestral states of colony architecture using an ordered Markov model informed by the presence and absence of specific developmental mechanisms that lead to each architecture.
+
+Our results demonstrate that the evolutionary history of salp colony architecture is more complex than previously thought. We found that the ancestral salp architecture is either oblique or linear, with every other state being derived. Moreover, linear chains have evolved independently at least three times. While transversal chains are developmentally basal and hypothesized to be ancestral, our phylogenetic topology and reconstructions strongly indicate that they are evolutionarily derived through the loss of zooid torsion. Moreover, we find that linear chains have evolved independently at least three times, which radically changes the paradigm of salp colony architecture evolution.
+
+Our study also provides insight into the functional implications of salp colony architecture for locomotion and migration. The differential arrangement of blastozooids in a colony affects the orientation of the propulsive jets to each other and to the overall colony motion axis. Our study hypothesizes that different architectures will differ in how cross-sectional area scales with the number and size of propeller zooids, as a function of its motion-orthogonal frontal drag.
+
+We believe that our study makes a significant contribution to the field of marine biology and tunicate evolution. We are confident that our study will be of interest to a broad readership interested in comparative evolutionary biology, colonial invertebrate zoology, thaliacean biology, and plankton ecology.
+
+Thank you for considering our manuscript.
+
+Sincerely,
+
+Alejandro Damian-Serrano

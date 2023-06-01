@@ -116,6 +116,13 @@ tree_salp_pruned <- drop.tip(extended_phylo, which(!(extended_phylo$tip.label %i
 pruned_traits <- traits[which(traits$Species %in% extended_phylo$tip.label),]
 unique_traits <- unique(pruned_traits)
 
+dvsz_fiji <- read.csv("DV_Zooid.stolon.angle.tsv", sep="\t", stringsAsFactors = F)[,c(5,8,12)]
+names(dvsz_fiji)[3] <- "DVZS_Angle"
+
+PEGEA_tree = extended_phylo
+PEGEA_tree$tip.label[which(PEGEA_tree$tip.label == "Pegea confoederata")] <- "Pegea socia"
+pruned_dvsz <- dvsz_fiji[which(dvsz_fiji$Species %in% PEGEA_tree$tip.label),]
+dvsz_tree <- drop.tip(PEGEA_tree, which(!(PEGEA_tree$tip.label %in% unique(dvsz_fiji$Species))))
 
 #### [0] #### HYDRODYNAMICS
 
@@ -659,8 +666,11 @@ for(i in 2:ncol(cast_num)){
 
 #### [8] ####  ANGLES ################
 #DorsoVentral StolonZooid Expected angle
-angleTree <- drop.tip(tree_salp,which(!(tree_salp$tip.label %in% unique_traits$Species)))
-dvsz <- setNames(unique_traits$DV.Zooid..Stolon.angle, unique_traits$Species)
+angleTree <- dvsz_tree
+mean_dvzs = aggregate(DVZS_Angle ~ Species, data = pruned_dvsz, mean)
+se_dvzs = aggregate(DVZS_Angle ~ Species, data = pruned_dvsz, function(x){sd(x)/sqrt(length(x))})
+
+dvsz <- setNames(mean_dvzs$DVZS_Angle, mean_dvzs$Species)
 #contMap
 DVSZ<-contMap(angleTree, dvsz,plot=FALSE)
 DVSZ<-setMap(DVSZ,c("white","orange","red","green"))
@@ -669,6 +679,7 @@ plot(DVSZ,lwd=7,legend=2, leg.txt="Dorsoventral Zooid-Stolon Angle", fsize=c(1,0
 # estimate ancestors
 AncDVSZ<-fastAnc(angleTree,dvsz,CI=TRUE)
 treePaint<-paintSubTree(angleTree,node=length(angleTree$tip)+1,"1")
+
 # phenogram
 trans<-as.character(floor(0:50/2))
 trans[as.numeric(trans)<10]<- paste("0", trans[as.numeric(trans)<10],sep="")
@@ -678,6 +689,9 @@ for(i in 0:50){
   phenogram(angleTree,c(dvsz,(1-p)*AncDVSZ$CI95[,2]+p*AncDVSZ$ace), colors=setNames(paste("#0000ff",trans[i+1],sep=""),1), add=TRUE)
 }
 phenogram(angleTree,c(dvsz,AncDVSZ$ace),add=TRUE, colors=setNames("black",1))
+
+phylosig(angleTree, dvsz, se=setNames(se_dvzs$DVZS_Angle, mean_dvzs$Species), test=TRUE)
+fitContinuous(angleTree, dvsz, SE= setNames(se_dvzs$DVZS_Angle, mean_dvzs$Species))
 
 #GEIGER Reversible Jump MCMC
   #relaxed BM
@@ -703,9 +717,15 @@ rjmcmc.bm(angleTree, dvsz, ngen=10000, type="rbm", constrainSHIFT=4)
 RBMdvsz <- load.rjmcmc("relaxedBM.result")
 plot(x=RBMdvsz, par="shifts", burnin=0.25, edge.width=2)
 RBMdvsz$log[which(RBMdvsz$log[,9]==max(RBMdvsz$log[,9])),8]
-RBMdvsz$log[,9] %>% aicm() #WInner
+RBMdvsz$log[,9] %>% aicm() 
 
 rjmcmc.bm(angleTree, dvsz, ngen=10000, type="rbm", constrainSHIFT=5)
+RBMdvsz <- load.rjmcmc("relaxedBM.result")
+plot(x=RBMdvsz, par="shifts", burnin=0.25, edge.width=2)
+RBMdvsz$log[which(RBMdvsz$log[,9]==max(RBMdvsz$log[,9])),8]
+RBMdvsz$log[,9] %>% aicm() #WInner
+
+rjmcmc.bm(angleTree, dvsz, ngen=10000, type="rbm", constrainSHIFT=6)
 RBMdvsz <- load.rjmcmc("relaxedBM.result")
 plot(x=RBMdvsz, par="shifts", burnin=0.25, edge.width=2)
 RBMdvsz$log[which(RBMdvsz$log[,9]==max(RBMdvsz$log[,9])),8]
@@ -722,13 +742,13 @@ rjmcmc.bm(angleTree, dvsz, ngen=10000, type="jump-bm", constrainJUMP=3)
 BMJdvsz <- load.rjmcmc("jump-BM.result")
 plot(x=BMJdvsz, par="jumps", burnin=0.25, edge.width=2)
 BMJdvsz$log[which(BMJdvsz$log[,9]==max(BMJdvsz$log[,9])),8]
-BMJdvsz$log[,9] %>% aicm() #WINNER!
+BMJdvsz$log[,9] %>% aicm()
 
 rjmcmc.bm(angleTree, dvsz, ngen=10000, type="jump-bm", constrainJUMP=2)
 BMJdvsz <- load.rjmcmc("jump-BM.result")
 plot(x=BMJdvsz, par="jumps", burnin=0.25, edge.width=2)
 BMJdvsz$log[which(BMJdvsz$log[,9]==max(BMJdvsz$log[,9])),8]
-BMJdvsz$log[,9] %>% aicm()
+BMJdvsz$log[,9] %>% aicm()  #WINNER!
 
 rjmcmc.bm(angleTree, dvsz, ngen=10000, type="jump-bm", constrainJUMP=1)
 BMJdvsz <- load.rjmcmc("jump-BM.result")
@@ -749,11 +769,22 @@ RBMJdvsz$log[,9] %>% aicm()
 
 #MULTIPHYLO DV-St:Zoo
 #Phylosig
-phylosig(angleTree, setNames(expected_angles$DVN_Stolon.Zooid, row.names(expected_angles)))
-lapply(Strees, function(t){
-  PS <- phylosig(t, setNames(expected_angles$DVN_Stolon.Zooid, row.names(expected_angles)))
-  return(PS)
-}) %>% unlist() %>% summary()
+Strees_PS = list()
+for(i in 1:length(Strees_Unique)){
+  tree_i = Strees_Unique[[i]]
+  tree_i$tip.label[which(tree_i$tip.label == "Pegea confoederata")] <- "Pegea socia"
+  data_i <- dvsz_fiji[which(dvsz_fiji$Species %in% tree_i$tip.label),]
+  tree_i <- drop.tip(tree_i, which(!(tree_i$tip.label %in% unique(data_i$Species))))
+  mean_i = aggregate(DVZS_Angle ~ Species, data = data_i, mean)
+  se_i = aggregate(DVZS_Angle ~ Species, data = data_i, function(x){sd(x)/sqrt(length(x))})
+  mean_iv <- setNames(mean_i$DVZS_Angle, mean_i$Species)
+  se_iv <- setNames(se_i$DVZS_Angle, se_i$Species)
+  PS <- phylosig(tree_i, mean_iv, se=se_iv, test=TRUE)
+  print(PS)
+  Strees_PS[[i]] <- PS
+}
+
+#%>% unlist() %>% summary()
 
 ###
 
