@@ -1,0 +1,83 @@
+Dear Dr. Halanych,
+
+Thank you for your consideration and review efforts on our manuscript. I was hoping to get your advice on how to proceed from here after I clarify some aspects of this work.
+
+I recognize that this manuscript is indeed unusual in nature since the novel deliverables it presents are of three kinds:
+(1) a theoretical framework with which to measure and compare attributes of salp colonies, (2) hypotheses generated from observations on salp colony development, and (3) descriptive empirical findings based on such observations. It is not exactly a traditional research article with a pre-existing hypothesis being assessed through data analyses. Given the largely unexplored nature of salp colonial architecture, this manuscript aims to lay the hypothesis-generating foundation from which to begin the hypothesis testing process. We are willing to consider resubmitting it as a Position Paper as Reviewer 1 suggested, if you think it would be appropriate.
+
+We have submitted a phylogeny paper (in review at IOB, manuscript draft attached for context) that utilizes this ontology to measure and compare colonial architectures, and uses Fig. 6 as a template for an ordered Markov model of permissible state transitions under a framework of gains and losses of specific developmental mechanisms.
+
+We addressed your comments as wella s those of Reviewer 1 below, with out responses marked with a '>' sign.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Ref.:  Ms. No. 23023
+A developmental ontology for the colonial architecture of salps
+The Biological Bulletin
+
+Editor comments:
+
+Dear Dr. Damian Serrano,
+Thank you for your submission to Biological Bulletin and sorry for the delayed response. Your manuscript has been assessed by one review and myself. I did not want to delay it further waiting on a second reviewer, so I filled that role. The scope of this work does fit with the journal, however, as the other reviewer mentioned there is work that needs to be done. Thus, the manuscript was scored as a re-review after major revision. To be frank a good bit of work needs to be completed. Most comments fall into two general categories. One is that needed details are not presented in sufficient detail and the other is that the analytical process (the main conclusion) comes across as subjective in nature.
+
+>Once again, we thank the editor for the review work and for the generous consideration of our unusual manuscript for re-review.
+
+As for the details please consider issues such as sample numbers are not given, 
+
+>We included a supplementary table (SM Table 1) with the number of samples/specimens observed as adult and developing colonies for each species within each architecture
+
+there is no mention of what type of cameras were used in the field or how close the subjects were (i.e. what could you really see with recordings/photos from the field?), 
+
+>While we did do a lot of in situ imaging in the field, these were not the photographs that were used for the observations pertinent to this study. Those we carried out on close-up animals using a tripod-mounted DSLR with a macro lens in glass dishes, once out of the water. Details are explicit in the methods. We removed mentions to videographiong animals in the field.
+
+how were the animals identified?, 
+
+>We added details on the primary diagnostic characters employed for identification, as well as to the literature resources used to key them out.
+
+how many total species were examined? 
+
+>We examined 90 specimens across 22 species in total. This detail was included in the methods text, but we made it more visible and broke down the 90 animals we imaged and observed into each species and stage though SM Table 1.
+
+Another example is that you mention Govindarajan et al. 2011 as the first thaliacean molecular tree. Although this is true in one sense, there were other works earlier notably Tsagkogeorga et al. 2009. This work only had a limited number of thaliaceans but may not hurt to fill the reader in a bit more what is known. For example, are there any morphological phylogenetic hypothesis?  The reader should be informed of this.
+
+>We agree with this comment. We changed the discussion text to: "Metcalf (1918) hypothesized phylogenetic relationships among salps based on gut morphology, with Cyclosalpa as the most distant relative to other salps due to its linear gut shape. Half a century later, Madin (1974) hypothesized that colonial architecture is phylogenetically conserved and that fast-swimming linear and bipinnate chains are monophyletic. Years later, Tsakogeorga et al. (2009) reconstructed the first molecular phylogeny using 18S sequences to resolve relationships between thaliacean groups, supporting the monophyly of salps. Following this work, Govindarajan et al. (2011) included a more extensive taxon sampling within salps, revealing that salps with linear chain architectures are not monophyletic, and that the transversal architecture in Pegea is likely derived, despite having been hypothesized as ancestral (Madin 1990)."
+
+Figure 6 represents the main conclusion but discussion of the objective process, or criteria used, to produce this hypothesis is lacking. It comes across as too arbitrary. 
+
+>We appreciate that our attention has been brought to this. We realize that our use of language in the results sounded arbitrary, with no clarity to what claims were definitions, which one were hypothetical speculation, and which were heavily grounded on our direct observations. We have thoroughly edited the Results section regarding the elucidation of Figure 6 to more explicitly reflect these differentiations, as well as to indicate in which species were each processes clearly observed.
+
+Also, how does it compare to other evolutionary or developmental data. 
+
+>We toned down the evolutionary-oriented nuances in the text (such as homology claims) which were inadvertently based on our parallel knowledge of novel phylogenetic relationships and character evolutoonary histories, which are not provided in this manuscript as evidence, and are pertinent to another parallel study we conducted. The claims we make in this manuscript are not evolutionary in nature, though we believe they have an impact on our understanding of salp evolution.
+
+Similarly consider in Figure 5 of adding example species under each of the colony types presented. Information as to whether the authors observed all of these forms is not easily accessible to the reader. The reader is left questioning if more information was pulled in besides the observations (and what was mentioned in discussion).
+
+>We agree with this comment and added a column to Figure 5 listing in which species we found each terminal adult architecture. Moreover, we also included this information in further detail in SM Table 1.
+
+Importantly, as noted by the reviewer, the work is largely descriptive in nature. 
+
+>This work is indeed descriptive in nature as it was intended to be. We set out with the question of how are the different architectures formed, and in which equivalent variables do they vary relative to each other.
+
+Please consider if the work can be phrased as a question or hypothesis being explored as it would be more consistent with works presented by the journal.
+
+>We considered this option, but we do not feel it would be an honest approach as it would propose a hypothesis post-hoc. There are studies that indicate theoretical and ethical issues with these approaches (e.g. https://doi.org/10.1111/j.1740-8784.2011.00222.x) and advocate for stronger recognition for the validity of descriptive work. We are inclined to stick with the true nature of this work rather than performatively passing it as a more conventional hypothesis-testing manuscript. However, we are not sure how to best address this issue otherwise, and we would be grateful for your advice on the matter. Would the scope of this work be acceptable for a Position Paper in the Biological Bulletin (as Reviewer 1 suggests) once we iron out the other clarity and transparency issues?
+
+Reviewer comments:
+
+Reviewer #1: The authors present a potentially interesting study of colony morphology in salps and argue that all known salp morphologies map onto intermediate or terminal stages along three different developmental pathways. These results have important implications for salp biology and ecology, as well as possible comparative applications to the study of other colonial invertebrates. I think the topic would be of interest to The Biological Bulletin's broad readership.
+
+>We thank Reviewer 1 for their generous comments and review efforts.
+
+Having said that, I do not think the manuscript as currently conceived is ready for full review or publication. Some important parts of the methodology may be missing. In particular, we are never really told how the final developmental framework was constructed from the observations. Is there an analytical step that is missing? How was the branching topology constructed? Or was the developmental framework instead established purely subjectively, with the observations more of descriptive tool? If the later, I have trouble seeing this manuscript fitting into the research report model, under which I would expect a clear process of data collection and quantitative analysis. You photographed and measured, but how was that information used to construct the three-path framework?
+
+>As we mentioned in the response to the editor, we appreciate that our attention has been brought to this matter. We realize that our use of language lacked clarity to what claims were subjective definitions, which one were hypothetical speculation, and which were heavily grounded on our empirical observations. We have now thoroughly reworked the Results section regarding the steps leading to the elucidation of Figure 6 to more explicitly reflect these differences, as well as to indicate in which species were each processes clearly observed. The three paths are hypotheses generated from our observations. Three apparently independent sets of developmental processes that lead colonial development in one direction or another from a shared initial stage.
+
+Alternatively, the topic might be better approached as a position paper, with photographic data used to support a subjectively-established framework. 
+
+>We greatly appreciate this suggestions, as we agree that the nature of this manuscript is somewhat misfitted to a traditional hypothesis-testing research report model.
+
+However, even within the context of a position paper, the authors should keep in mind that The Biological Bulletin does not publish purely descriptive work. The important and novel conclusion that the paper reaches is that all colony morphologies fall into three pathways. That conclusion seems to go beyond pure description, but we need to better understand how you reached it.
+
+A related issue is that I do not see a clear demarcation between the materials and methods and the results. The entire first section of the results reads like a method section. That contributes to the perception that you are more describing a thought process than an analysis per se.
+
+I will mostly refrain from detailed comments until the big picture issue has been addressed. However, Fig. 6 does not seem like the clearest way to present three developmental pathways. The figure is admirably concise, but it is essentially an unrooted network, and we have to know from the text that the transversal state is considered primitive. I think a rooted tree would be easier for the reader to grasp quickly. Also, a clearer delineation between states and processes would be helpful. Because the processes are illustrated with morphologies, I initially interpreted them as branches, not a process applied to a transition between states. The use of dotted lines to map the processes onto state transitions contributed to the problem. I ultimately understood the figure, but only after putting too much work into it.
