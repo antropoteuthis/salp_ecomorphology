@@ -2,26 +2,33 @@
 
 ## DOABLE:
 
-Provide sample numbers and how many total species were examined
+>>> Mention how many total species were examined
 
 >>> Remove mentions of cameras used in the field 
 
-Explain or show what could you really see with recordings/photos from the field
+>>> Explain how were the animals identified
 
-Explain how were the animals identified
+>>> You mention Govindarajan et al. 2011 as the first thaliacean molecular tree. Although this is true in one sense, there were other works earlier notably Tsagkogeorga et al. 2009.
 
-You mention Govindarajan et al. 2011 as the first thaliacean molecular tree. Although this is true in one sense, there were other works earlier notably Tsagkogeorga et al. 2009.
+>>> Mention any morphological phylogenetic hypotheses
 
-Mention any morphological phylogenetic hypotheses
-
-Explain how the final developmental framework was constructed from the observations. Discuss the objective process, or criteria used, to produce Fig. 6 hypothesis. 
-
-How does Fig. 6 compare to other evolutionary or developmental data. 
+>>> Explain how the final developmental framework was constructed from the observations. Discuss the objective process, or criteria used, to produce Fig. 6 hypothesis. 
 
 >>> In Figure 5 add example species under each of the colony types presented. Information as to whether the authors observed all of these forms is not easily accessible to the reader. 
 
-Figure 6 make clearer delineation between states and processes. Because the processes are illustrated with morphologies, I initially interpreted them as branches, not a process applied to a transition between states. The use of dotted lines to map the processes onto state transitions contributed to the problem. I ultimately understood the figure, but only after putting too much work into it.
+>>> Figure 6 make clearer delineation between states and processes. Because the processes are illustrated with morphologies, I initially interpreted them as branches, not a process applied to a transition between states. The use of dotted lines to map the processes onto state transitions contributed to the problem. 
 
+>>> You photographed and measured, but how was that information used to construct the three-path framework?
+
+>>> Fig. 6 clarity -- Make clear that the transversal state is considered primitive. 
+
+Provide sample numbers 
+
+How does Fig. 6 compare to other evolutionary or developmental data. 
+
+Explain or show what could you really see with recordings/photos from the field
+
+Check species describing authorities and genus spellouts in first mention after revisions
 
 ## NOT DOABLE:
 
@@ -29,10 +36,12 @@ The analytical process (the main conclusion) comes across as subjective in natur
 
 Please consider if the work can be phrased as a question or hypothesis being explored as it would be more consistent with works presented by the journal.
 
-Was the developmental framework instead established purely subjectively, with the observations more of descriptive tool? If the later, I have trouble seeing this manuscript fitting into the research report model, under which I would expect a clear process of data collection and quantitative analysis. You photographed and measured, but how was that information used to construct the three-path framework? \
+Was the developmental framework instead established purely subjectively, with the observations more of descriptive tool? If the later, I have trouble seeing this manuscript fitting into the research report model, under which I would expect a clear process of data collection and quantitative analysis. 
+
+
 
 The topic might be better approached as a position paper, with photographic data used to support a subjectively-established framework. However, even within the context of a position paper, the authors should keep in mind that The Biological Bulletin does not publish purely descriptive work. The important and novel conclusion that the paper reaches is that all colony morphologies fall into three pathways. That conclusion seems to go beyond pure description, but we need to better understand how you reached it.
 
 A related issue is that I do not see a clear demarcation between the materials and methods and the results. The entire first section of the results reads like a method section. That contributes to the perception that you are more describing a thought process than an analysis per se.
 
-Fig. 6 clarity -- Make clear that the transversal state is considered primitive. I think a rooted tree would be easier for the reader to grasp quickly. 
+FIg. 6. -- I think a rooted tree would be easier for the reader to grasp quickly. 
