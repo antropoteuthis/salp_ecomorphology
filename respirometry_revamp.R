@@ -9,7 +9,7 @@ library(mgcv)
 setwd("~/salp_ecomorphology/")
 
 #Load data and label: control rows, paired specimens
-presens <- read.csv("respirometry_Kona21-23.tsv", header = T, sep = "\t", stringsAsFactors = F)
+presens <- read.csv("~/salp_ecomorphology/respirometry_Kona21-23.tsv", header = T, sep = "\t", stringsAsFactors = F)
 presens$Species[which(is.na(presens$Species))] <- "Control"
 presens$Specimen[which(is.na(presens$Specimen))] <- "Control"
 presens <- mutate(presens, is.paired=ifelse(grepl("Paired", Measurement.notes), "Yes", "No"))
@@ -282,7 +282,7 @@ slopes %>% mutate(Slope_normalized = 1000000*Slope_O2/Colony.volume..ml., Slope_
 
 #Get carbon estimates
 #Estimate Carbon content for each species and recalculate carbon-based rawCOT
-mm_to_carbon <- read.csv("Madin1981_salpcarbon.tsv", header=T, stringsAsFactors = F, sep='\t')
+mm_to_carbon <- read.csv("~/salp_ecomorphology/Madin1981_salpcarbon.tsv", header=T, stringsAsFactors = F, sep='\t')
 mm_to_carbon$Generation[mm_to_carbon$Species=="Iasis (Weelia) cylindrica"] <- "a" ##PROXY 
 mm_to_carbon$Species[mm_to_carbon$Species=="Thalia democratica"] <- "Thalia sp."  #### amalgamation!
 
@@ -376,7 +376,7 @@ dev.off()
 
 ### COST OF TRANSPORT ###
 #Get swimming speeds from literature
-salplit <- read.csv("salplit.tsv", sep='\t', stringsAsFactors = F)
+salplit <- read.csv("~/salp_ecomorphology/salplit.tsv", sep='\t', stringsAsFactors = F)
 swimraw <- salplit[,c(1,2,4)] %>% filter(Variable=="Mean swimming speed cms")
 swim <- data.frame(Species=swimraw$Species, Speed.cm.s=as.numeric(swimraw$Value))
 
@@ -386,7 +386,7 @@ swim <- swim[!is.na(swim$Speed..cm.s.),]
 names(swim)[2] <- "Speed.cm.s"
 
 #Get swimming speeds on Event Measure
-swim <- read.csv("EMSpeeds_final_annotated.tsv",stringsAsFactors = F) #[,c(20,21,25)]
+swim <- read.csv("~/salp_ecomorphology/EMSpeeds_final_annotated.tsv",stringsAsFactors = F) #[,c(20,21,25)]
 summarized_raw=swim
 # rawswim <- read.csv("EMspeed_R_annotated.tsv",stringsAsFactors = F)
 # summarized_raw <- rawswim[,c(1,20,21,22,24)] %>% group_by(Filename) %>%
@@ -604,6 +604,7 @@ COT_species$Architecture[which(COT_species$Species == "Helicosalpa virgula")] <-
 COT_species$Architecture[which(COT_species$Species == "Ihlea punctata")] <- "Linear"
 COT_species$Architecture[which(COT_species$Species == "Cyclosalpa quadriluminis")] <- "Whorl"
 
+COT_species %>% unique() -> COT_species
 
 #Net respiration rate by biovolume in Swimmers and KO
 COT_species %>% filter(!is.na(COT.abs.ml)) %>% 
