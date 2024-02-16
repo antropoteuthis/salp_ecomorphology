@@ -634,6 +634,7 @@ COT_with_means <- COT %>%
   left_join(COT_species %>% select(Species, Slope_O2_dif_normalized_Anesthetized, Slopes_dif_mgC_Anesthetized), by = "Species")
 
 COT_with_means %>% filter(Slope_O2_dif_normalized_Anesthetized>Slope_O2_dif_normalized) -> COT_with_means
+COT_species %>% filter(Slope_O2_dif_normalized_Anesthetized>Slope_O2_dif_normalized_Intact) -> COT_species
 
 ##### WARNING ##### SKETCHY STUFF TO REMOVE NEGATIVES !!!!
 #COT_species$Slope_O2_dif_normalized_Intact[which(COT_species$Slope_O2_dif_normalized_Intact>COT_species$Slope_O2_dif_normalized_Anesthetized)] <- COT_species$Slope_O2_dif_normalized_Anesthetized[which(COT_species$Slope_O2_dif_normalized_Intact>COT_species$Slope_O2_dif_normalized_Anesthetized)]
@@ -692,8 +693,6 @@ COT_with_means$Species %>% factor(levels=c("Pegea sp.", "Helicosalpa virgula","C
                                         "Brooksia rostrata", "Thalia sp.", "Metcalfina hexagona", "Salpa fusiformis", "Salpa aspera", "Salpa maxima",
                                         "Iasis cylindrica", "Ihlea punctata", "Soestia zonaria")) -> COT_with_means$Species
 
-
-#COT_species <- filter(COT_species, Species != "Cyclosalpa bakeri")  ### REMOVED OUTLIER WONKY SPP !!!
 COT_species <- unique(COT_species)
 
 
@@ -827,7 +826,7 @@ COT_with_means %>%
 architecture_order <- c("Transversal", "Linear", "Bipinnate", "Whorl", "Cluster","Helical")
 
 F7A <- ggplot(COT_with_means %>% 
-                filter(COT.abs.ml>-1000000 & Architecture != "Whorl chain" & Species != "Thalia sp." & Species != "Metcalfina hexagona"), 
+                filter(COT.abs.ml>-1000000 & Architecture != "Whorl chain" & Species != "Thalia sp."), 
        aes(factor(Species %>% as.character(), levels = unique(Species[order(factor(Architecture, levels = architecture_order))])), 
            y=COT.abs.ml, fill=Architecture)) +
   stat_summary(fun = "mean", geom = "bar", position = "dodge") +
@@ -843,16 +842,16 @@ F7A <- ggplot(COT_with_means %>%
 
 #COT by biovolume per bodylength across Species
 F7B <- ggplot(COT_with_means %>% 
-                filter(COT.rel.ml>-10000000 & Species!="Thalia sp." & Architecture != "Whorl chain" & Species != "Metcalfina hexagona"), 
+                filter(COT.rel.ml>-10000000 & Architecture != "Whorl chain"), 
        aes(factor(Species %>% as.character(), levels = unique(Species[order(factor(Architecture, levels = architecture_order))])), 
-           y=COT.rel.ml, fill=Architecture)) +
+           y=COT.rel.ml %>% log(), fill=Architecture)) +
   stat_summary(fun = "mean", geom = "bar", position = "dodge") +
   stat_summary(fun.data = "mean_se", geom = "errorbar", position = "dodge", width = 0.25) +  # Add error bars
   scale_fill_manual(values = c("Transversal" = "green4", "Oblique" = "red1", "Linear" = "darkorange1", 
                                "Bipinnate" = "cyan4", "Helical" = "gold1", "Whorl" = "darkorchid4", 
                                "Cluster" = "magenta")) +
   theme_bw()+theme(axis.text.x = element_text(angle = 90, hjust=1))+
-  ylab("Cost of Transport (pgO2/ml per body length moved)")+
+  ylab("log10 Cost of Transport (pgO2/ml per body length moved)")+
   xlab("Species")
 
 wrap_plots(F7A, F7B)
@@ -861,86 +860,46 @@ wrap_plots(F7A, F7B)
 
 #### Figure 8A ####
 
-#COT by biovolume per cm across absolute speeds
-ggplot(COT_species %>% filter(!is.na(COT.abs.ml) & Species!="Brooksia rostrata" & Architecture != "Whorl chain"), aes(x=Speed_mm_s,y=COT.abs.ml)) +
-  geom_smooth(method="lm", color="white") +
-  geom_point(aes(color=Architecture), cex=3) +
-  scale_color_manual(values = c("Transversal" = "green4", "Oblique" = "red1", "Linear" = "darkorange1", 
-                               "Bipinnate" = "cyan4", "Helical" = "gold1", "Whorl" = "darkorchid4", 
-                               "Cluster" = "magenta")) +
-  geom_text(label=COT_species %>% filter(!is.na(COT.abs.ml) & Species!="Brooksia rostrata" & Architecture != "Whorl chain") %>% .$Species, hjust=0.4, vjust=-0.7, color="white") +
-  ylab("Cost of Transport (pgO2/ml per mm moved)") + 
-  xlab("Speed (mm/s)") + 
-  guides(color = "none") + 
-  theme_dark() +
-  theme(
-    panel.grid.major = element_blank(),  # Remove major grid lines
-    panel.grid.minor = element_blank(),  # Remove minor grid lines
-    axis.line = element_line(color = "black"),  # Set axis line color to black
-    text = element_text(color = "white"),  # Set text color to white
-    axis.text = element_text(color = "white"),  # Set axis text color to white
-    panel.background = element_rect(fill = "black")  # Set panel background color to black
-  )
-
+#COT by biovolume per mm across absolute speeds
 
 F8A <- ggplot(COT_with_means %>% 
-                filter(COT.abs.ml>-10 & Architecture != "Whorl chain" & Species != "Thalia sp." ), 
-              aes(x=Speed_mm_s,y=COT.abs.ml)) +
-  geom_smooth(method="lm", color="black") +
+                filter(COT.abs.ml>-10 & Architecture != "Whorl chain"), 
+              aes(x=Speed_mm_s,y=COT.abs.ml %>% log())) +
+  geom_smooth(method="lm", color="black", formula = y ~ log(x)) +
   stat_summary(fun = mean, geom = "point", aes(col = Architecture), size = 3) +
   stat_summary(fun.data = mean_se, geom = "errorbar", aes(col = Architecture), width = 0.2) +
   scale_color_manual(values = c("Transversal" = "green4", "Oblique" = "red1", "Linear" = "darkorange1", 
                                 "Bipinnate" = "cyan4", "Helical" = "gold1", "Whorl" = "darkorchid4", 
                                 "Cluster" = "magenta")) +
-  ylab("Cost of Transport (pgO2/ml per mm moved)") + 
+  ylab("logn Cost of Transport (pgO2/ml per mm moved)") + 
   xlab("Speed (mm/s)") + 
   theme_bw()+
   guides(color = "none") 
 
 COT_with_means %>% filter(COT.abs.ml>-10 & Architecture != "Whorl chain" & Species != "Thalia sp." ) %>% 
-  lm(COT.abs.ml~Speed_mm_s, data=.) %>% summary()  ## WE HAVE AN ISSUE HERE
+  lm(log(COT.abs.ml)~Speed_mm_s, data=.) %>% summary()  ## WE HAVE AN ISSUE HERE
 
 ##### Figure 8B #####
 
 #COT by biovolume per cm across relative speeds
-ggplot(COT_species %>% filter(COT.abs.ml>0 & Architecture != "Whorl chain"), aes(x=BLperSecond,y=COT.rel.ml))+
-  geom_point(aes(color=Architecture),cex=3)+
-  scale_color_manual(values = c("Transversal" = "green4", "Oblique" = "red1", "Linear" = "darkorange1", 
-                               "Bipinnate" = "cyan4", "Helical" = "gold1", "Whorl" = "darkorchid4", 
-                               "Cluster" = "magenta")) +
-  theme_bw()+
-  geom_text(label=COT_species %>% filter(COT.abs.ml>0 & Architecture != "Whorl chain") %>% .$Species, hjust=0.4, vjust=-0.7, color="white")+
-  geom_smooth(method="lm", color="white")+
-  ylab("Cost of Transport (pgO2/ml per body length moved)") +
-  xlab("Speed (Body lengths per second)")+ 
-  theme_dark() +
-  theme(
-    panel.grid.major = element_blank(),  # Remove major grid lines
-    panel.grid.minor = element_blank(),  # Remove minor grid lines
-    axis.line = element_line(color = "black"),  # Set axis line color to black
-    text = element_text(color = "white"),  # Set text color to white
-    axis.text = element_text(color = "white"),  # Set axis text color to white
-    panel.background = element_rect(fill = "black")  # Set panel background color to black
-  )
-
 
 F8B <- ggplot(COT_with_means %>% 
-                filter(COT.abs.ml>-10 & Architecture != "Whorl chain" & Species != "Thalia sp." ), 
-              aes(x=BLperSecond,y=COT.rel.ml)) +
-  geom_smooth(method="lm", color="black") +
+                filter(COT.abs.ml>-10 & Architecture != "Whorl chain"), 
+              aes(x=BLperSecond,y=COT.rel.ml %>% log())) +
+  geom_smooth(method="lm", color="black", formula = y ~ log(x)) +
   stat_summary(fun = mean, geom = "point", aes(col = Architecture), size = 3) +
   stat_summary(fun.data = mean_se, geom = "errorbar", aes(col = Architecture), width = 0.2) +
   scale_color_manual(values = c("Transversal" = "green4", "Oblique" = "red1", "Linear" = "darkorange1", 
                                 "Bipinnate" = "cyan4", "Helical" = "gold1", "Whorl" = "darkorchid4", 
                                 "Cluster" = "magenta")) +
-  ylab("Cost of Transport (pgO2/ml per body length moved)") +
+  ylab("logn Cost of Transport (pgO2/ml per body length moved)") +
   xlab("Speed (Body lengths per second)")+ 
   theme_bw()
 
 wrap_plots(F8A, F8B)
 
-glm(COT.abs.ml ~ Speed_mm_s, data=COT_with_means %>% filter(!is.na(COT.abs.ml) & Species!="Brooksia rostrata" & Architecture != "Whorl chain")) %>% summary()
-glm(COT.rel.ml ~ BLperSecond, data=COT_with_means %>% filter(!is.na(COT.rel.ml) & Species!="Brooksia rostrata" & Architecture != "Whorl chain")) %>% summary()
+glm(log(COT.abs.ml) ~ Speed_mm_s, data=COT_with_means %>% filter(!is.na(COT.abs.ml) & Species!="Thalia sp." & Architecture != "Whorl chain")) %>% summary()
+glm(log(COT.rel.ml) ~ BLperSecond, data=COT_with_means %>% filter(!is.na(COT.rel.ml) & Species!="Thalia sp." & Architecture != "Whorl chain")) %>% summary()
 
 #########################
 
@@ -951,42 +910,13 @@ glm(COT.rel.ml ~ BLperSecond, data=COT_with_means %>% filter(!is.na(COT.rel.ml) 
 #   geom_text(label=COT_species %>% filter(!is.na(percentSwim)) %>% .$Species)+
 #   theme_bw()
 
-#COT by biovolume per mm across species
-ggplot(COT_species %>% filter(!is.na(COT.abs.ml)), aes(x=Species,y=COT.abs.ml))+
-  geom_point(aes(color=Speed_mm_s))+
-  theme_bw()+
-  theme(axis.text.x = element_text(angle = 90))+
-  ylab("Net cost of Transport (pgO2/mgC per mm moved)")
-
-#COT by biovolume per zooid length across species
-ggplot(COT_species %>% filter(!is.na(COT.rel.ml)), aes(x=Species,y=COT.rel.ml))+
-  geom_point(aes(color=BLperSecond))+
-  theme_bw()+
-  theme(axis.text.x = element_text(angle = 90))+
-  ylab("Net cost of Transport (pgO2/ml per body length moved)")
-
-#COT by biovolume per zooid length across absolute speeds
-ggplot(COT_species %>% filter(!is.na(COT.rel.ml)), aes(x=Zooid.length..mm.,y=COT.abs.ml))+
-  geom_point(aes(color=Speed_mm_s))+
-  theme_bw()+
-  geom_text(label=COT_species %>% filter(!is.na(COT.abs.ml)) %>% .$Species, hjust=0.4, vjust=-0.7)+
-  theme(axis.text.x = element_text(angle = 90))+
-  ylab("Net cost of Transport (pgO2/ml per mm moved)")
-
 #COT by biovolume per zooid length across relative speeds
-ggplot(COT_species %>% filter(!is.na(COT.rel.ml)), aes(x=BLperSecond,y=COT.rel.ml))+
+ggplot(COT_species %>% filter(!is.na(COT.rel.ml)), aes(x=BLperSecond,y=log(COT.rel.ml)))+
   geom_point(aes(color=BLperSecond))+
   theme_bw()+
   geom_text(label=COT_species %>% filter(!is.na(COT.rel.ml)) %>% .$Species, hjust=0.4, vjust=-0.7)+
   theme(axis.text.x = element_text(angle = 90))+
-  ylab("Net cost of Transport (pgO2/ml per body length moved)")
-
-#COT by mgC per zooid length across species
-ggplot(COT_species %>% filter(!is.na(COT.rel.mgC)), aes(x=Species,y=COT.rel.mgC))+
-  geom_point(aes(size=Zooid.length..mm.,color=Speed.body.s))+
-  theme_bw()+
-  theme(axis.text.x = element_text(angle = 90))+
-  ylab("Cost of Transport (pgO2/mgC per body length moved)") 
+  ylab("Cost of Transport (pgO2/ml per body length moved)")
 
 #### SM Figure 5 ####
 
@@ -1006,93 +936,6 @@ ggplot(COT_with_means %>% filter(!is.na(COT.p.ml) & Species != "Brooksia rostrat
   ylab("Proportion of Metabolic Cost Spent on Swimming (%)") +theme_bw()+theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust=0.5))
 
 ###########################
-
-# % cost (by biovolume) invested in swimming across species order: COT.p, , by: COT
-ggplot(COT_species %>%  filter(!is.na(COT.p.ml)), aes(x = COT.abs.ml,y=COT.p.ml))+
-  geom_point(size=2,aes(col=Architecture))+
-  geom_smooth(method="gam")+
-  theme_bw()+
-  theme(axis.text.x = element_text(angle = 90))+
-  # ylim(c(0,100))+
-  xlab("Net cost of Transport (pgO2/ml per mm moved)")+
-  ylab("% Cost of Transport Volume-normalized")
-
-ggplot(COT_species %>%  filter(!is.na(COT.p.ml)), aes(x = COT.rel.ml,y=COT.p.ml))+
-  geom_point(size=2,aes(col=Architecture))+
-  geom_smooth(method="gam")+
-  theme_bw()+
-  theme(axis.text.x = element_text(angle = 90))+
-  # ylim(c(0,100))+
-  xlab("Net cost of Transport (pgO2/ml per body length moved)")+
-  ylab("% Cost of Transport Volume-normalized")
-
-# % cost (by biovolume) invested in swimming across species order: COT.p, , by: Speed mm/s
-ggplot(COT_species %>%  filter(!is.na(COT.p.ml)), aes(x = Speed.mm.s,y=COT.p.ml))+
-  geom_point(size=2,aes(col=Architecture))+
-  geom_smooth(method="gam")+
-  geom_text(label=COT_species %>% filter(!is.na(COT.p.ml)) %>% .$Species, hjust=0.4, vjust=-0.7)+
-  theme_bw()+
-  theme(axis.text.x = element_text(angle = 90))+
-  # ylim(c(0,100))+
-  xlab("Speed (mm/s)")+
-  ylab("% Cost of Transport Volume-normalized")
-
-# % cost (by biovolume) invested in swimming across species order: COT.p, , color: COT
-ggplot(COT_species %>%  filter(!is.na(COT.p.ml)), aes(x = reorder(Species %>% as.character(), COL.abs.ml),y=COT.p.ml))+
-  geom_point(aes(size=Zooid.length..mm.,color=COL.abs.ml))+
-  theme_bw()+
-  theme(axis.text.x = element_text(angle = 90))+
-  # ylim(c(0,100))+
-  xlab("Species")+
-  ylab("% Cost of Transport Volume-normalized")
-
-
-# % cost (by biovolume) invested in swimming across absolute SPEED , color: Species
-ggplot(COT_species %>%  filter(!is.na(COT.p.ml)), aes(x = Speed.mm.s,y=COT.p.ml))+
-  geom_point(aes(color=Species))+
-  theme_bw()+
-  theme(axis.text.x = element_text(angle = 90))+
-  #ylim(c(0,100))+
-  ylab("% Cost of Transport Volume-normalized")
-
-# % cost (by biovolume) invested in swimming across relative SPEED , color: Species
-ggplot(COT_species %>%  filter(!is.na(COT.p.ml) & !is.na(Species)), aes(x = BLperSecond,y=COT.p.ml))+
-  geom_point(aes(size=Zooid.length..mm.,color=Species))+
-  geom_text(label=COT_species %>% filter(!is.na(COT.p.ml) & !is.na(Species)) %>% .$Species, hjust=0.4, vjust=-0.7)+
-  theme_bw()+
-  theme(axis.text.x = element_text(angle = 90))+
-  ylab("% Cost of Transport Volume-normalized")
-
-ggplot(COT_species %>%  filter(!is.na(COT.p.ml) & !is.na(Species) & Architecture != "Whorl chain"), aes(x = Pulses_per_second, y=COT.p.ml))+
-  geom_point(aes(col = Architecture))+
-  geom_smooth(method="lm", color="white")+
-  geom_text(label=COT_species %>% filter(!is.na(COT.p.ml) & !is.na(Species) & Architecture != "Whorl chain") %>% 
-              .$Species, hjust=0.4, vjust=-0.7, color="white", cex=3)+
-  scale_color_manual(values = c("cyan4", "red1", "darkorange1", "magenta", "gold1", "darkorchid4", "green4")[c(1, 4, 5, 3, 2, 7, 6)]) +
-  xlab("Puslation rate (pulses/s)") +
-  ylab("Proportion of Metabolic Cost Spent on Swimming (%)")+ theme_dark()+ theme(
-    axis.text.x = element_text(angle = 90, hjust = 1, vjust=0.5, color = "white"),
-    axis.text.y = element_text(color = "white"),
-    panel.grid.major = element_blank(),  # Remove major grid lines
-    panel.grid.minor = element_blank(),  # Remove minor grid lines
-    axis.line = element_line(color = "white"),  # Set axis line color to black
-    text = element_text(color = "white"),  # Set text color to white
-    panel.background = element_rect(fill = "black")  # Set panel background color to black
-  )
-
-ggplot(COT_species %>%  filter(!is.na(COT.p.ml) & !is.na(Species) & Architecture != "Whorl chain" & Species != "Brooksia rostrata"), 
-       aes(x = Pulses_per_second, y=COT.p.ml))+
-  geom_point(aes(col = Architecture))+
-  geom_smooth(method="lm", color="black")+
-  geom_text(label=COT_species %>% filter(!is.na(COT.p.ml) & !is.na(Species) & Architecture != "Whorl chain"  & Species != "Brooksia rostrata") %>% 
-              .$Species, hjust=0.4, vjust=-0.7, color="black", cex=3)+
-  scale_color_manual(values = c("cyan4", "red1", "darkorange1", "magenta", "gold1", "darkorchid4", "green4")[c(1, 4, 5, 3, 2, 7, 6)]) +
-  xlab("Puslation rate (pulses/s)") +
-  ylab("Proportion of Metabolic Cost Spent on Swimming (%)")+ theme_bw()
-
-glm(COT.p.ml ~ Pulses_per_second, data = COT_species %>% 
-      filter(!is.na(COT.p.ml) & !is.na(Species) & Architecture != "Whorl chain" & Species != "Brooksia rostrata"), 
-    family = gaussian(link = "identity")) %>% summary()
 
 ###### SM FIGURE 6 ####### # % cost (by biovolume) invested in swimming across pulstion rates , color: Species
 
@@ -1126,161 +969,67 @@ glm(COT.p.ml ~ Pulses_per_second,
 
 #############
 
-ggplot(COT_species %>%  filter(!is.na(COT.abs.ml) & !is.na(Species) & Architecture != "Whorl chain"), aes(x = Pulses_per_second, y=COT.abs.ml))+
-  geom_point(aes(col = Architecture))+
-  geom_smooth(method="lm", color="white")+
-  geom_text(label=COT_species %>% 
-              filter(!is.na(COT.abs.ml) & !is.na(Species) & Architecture != "Whorl chain") %>% 
-              .$Species, hjust=0.4, vjust=-0.7, color="white", cex=3)+
-  scale_color_manual(values = c("cyan4", "red1", "darkorange1", "magenta", "gold1", "darkorchid4", "green4")[c(1, 4, 5, 3, 2, 7, 6)]) +
-  xlab("Puslation rate (pulses/s)") +
-  ylab("Cost of Transport (pgO2/mgC per mm moved)")+ theme_dark()+ theme(
-    axis.text.x = element_text(angle = 90, hjust = 1, vjust=0.5, color = "white"),
-    axis.text.y = element_text(color = "white"),
-    panel.grid.major = element_blank(),  # Remove major grid lines
-    panel.grid.minor = element_blank(),  # Remove minor grid lines
-    axis.line = element_line(color = "white"),  # Set axis line color to black
-    text = element_text(color = "white"),  # Set text color to white
-    panel.background = element_rect(fill = "black")  # Set panel background color to black
-  )
+glm(COT.p.ml ~ Speed_mm_s, data = COT_with_means %>%  
+      filter(!is.na(COT.p.ml) & !is.na(Species) & Architecture != "Whorl chain"), 
+    family = gaussian(link = "identity")) %>% summary()
 
-ggplot(COT_species %>%  filter(!is.na(COT.rel.ml) & !is.na(Species) & Architecture != "Whorl chain"), aes(x = Pulses_per_second, y=COT.rel.ml))+
-  geom_point(aes(col = Architecture))+
-  geom_smooth(method="lm", color="white")+
-  geom_text(label=COT_species %>% 
-              filter(!is.na(COT.rel.ml) & !is.na(Species) & Architecture != "Whorl chain") %>% 
-              .$Species, hjust=0.4, vjust=-0.7, color="white", cex=3)+
-  scale_color_manual(values = c("cyan4", "red1", "darkorange1", "magenta", "gold1", "darkorchid4", "green4")[c(1, 4, 5, 3, 2, 7, 6)]) +
-  xlab("Puslation rate (pulses/s)") +
-  ylab("Cost of Transport (pgO2/mgC per body length moved)")+ theme_dark()+ theme(
-    axis.text.x = element_text(angle = 90, hjust = 1, vjust=0.5, color = "white"),
-    axis.text.y = element_text(color = "white"),
-    panel.grid.major = element_blank(),  # Remove major grid lines
-    panel.grid.minor = element_blank(),  # Remove minor grid lines
-    axis.line = element_line(color = "white"),  # Set axis line color to black
-    text = element_text(color = "white"),  # Set text color to white
-    panel.background = element_rect(fill = "black")  # Set panel background color to black
-  )
-
-
-glm(COT.p.ml ~ Speed.mm.s, data = COT_with_means %>%  filter(!is.na(COT.p.ml) & !is.na(Species) & Architecture != "Whorl chain"), family = gaussian(link = "identity")) %>% summary()
-glm(COT.p.ml ~ BLperSecond, data = COT_with_means %>%  filter(!is.na(COT.p.ml) & !is.na(Species) & Architecture != "Whorl chain"), family = gaussian(link = "identity")) %>% summary()
-
-wrap_plots(IvS1, IvS2)
+glm(COT.p.ml ~ BLperSecond, data = COT_with_means %>%  
+      filter(!is.na(COT.p.ml) & !is.na(Species) & Architecture != "Whorl chain"), 
+    family = gaussian(link = "identity")) %>% summary()
 
 ##### SM FIGURE 7 #####
 
 # % cost (by biovolume) invested in swimming across COT_vol_mm , color: Species
-ggplot(COT_species %>%  filter(!is.na(COT.p.ml) & !is.na(Species) & Architecture != "Whorl chain"), aes(y = COT.abs.ml,x=COT.p.ml))+
-  geom_point(aes(color=Architecture))+
-  geom_smooth(method="lm", color="white")+
-  geom_text(label=COT_species %>% filter(!is.na(COT.p.ml) & !is.na(Species) & Architecture != "Whorl chain") %>% 
-              .$Species, hjust=0.4, vjust=-0.7, color="white")+
-  theme_bw()+
-  theme(axis.text.x = element_text(angle = 90))+
-  scale_color_manual(values = c("cyan4", "red1", "darkorange1", "magenta", "gold1", "darkorchid4", "green4")[c(1, 4, 5, 3, 2, 7, 6)]) +
-  xlim(0,100)+
-  ylab("Cost of Transport (pgO2/mgC per mm moved)")+
-  xlab("Proportion of Metabolic Cost Spent on Swimming (%)") + guides(color="none")+ theme_dark()+ theme(
-    axis.text.x = element_text(angle = 90, hjust = 1, vjust=0.5, color = "white"),
-    axis.text.y = element_text(color = "white"),
-    panel.grid.major = element_blank(),  # Remove major grid lines
-    panel.grid.minor = element_blank(),  # Remove minor grid lines
-    axis.line = element_line(color = "white"),  # Set axis line color to black
-    text = element_text(color = "white"),  # Set text color to white
-    panel.background = element_rect(fill = "black"),  # Set panel background color to black
-    axis.ticks = element_line(color = "white")
-  )
 
-Sm6A <- ggplot(COT_with_means %>%  filter(!is.na(COT.p.ml) & !is.na(Species) & Architecture != "Whorl chain" & Species != "Thalia sp."), 
+Sm6A <- ggplot(COT_with_means %>%  filter(!is.na(COT.p.ml) & !is.na(Species) & Species != "Thalia sp."), 
                aes(y = COT.abs.ml,x=COT.p.ml))+
-  geom_point(aes(color=Architecture))+
+  stat_summary(fun = mean, geom = "point", aes(col = Architecture), size = 3) +
+  stat_summary(fun.data = mean_se, geom = "errorbar", aes(col = Architecture), width = 0.2) +
   geom_smooth(method="lm", color="black")+
  # geom_text(label=COT_species %>% filter(!is.na(COT.p.ml) & !is.na(Species) & Architecture != "Whorl chain" & Species != "Thalia sp.") %>% 
   #            .$Species, hjust=0.4, vjust=-0.7, color="black")+
   theme_bw()+
   theme(axis.text.x = element_text(angle = 90))+
-  scale_color_manual(values = c("cyan4", "red1", "darkorange1", "magenta", "gold1", "darkorchid4", "green4")[c(1, 4, 5, 3, 2, 7, 6)]) +
+  scale_color_manual(values = c("Transversal" = "green4", "Oblique" = "red1", "Linear" = "darkorange1", 
+                                "Bipinnate" = "cyan4", "Helical" = "gold1", "Whorl" = "darkorchid4", 
+                                "Cluster" = "magenta")) +
   xlim(0,100)+
   ylab("Cost of Transport (pgO2/mgC per mm moved)")+
-  xlab("Proportion of Metabolic Cost Spent on Swimming (%)") + guides(color="none")+ theme_bw()
+  xlab("Proportion of Metabolic Cost Spent on Swimming (%)") + guides(color="none")
 
 # % cost (by biovolume) invested in swimming across COT_vol_mm , color: Species
-ggplot(COT_species %>%  filter(!is.na(COT.p.ml) & !is.na(Species) & Architecture != "Whorl chain"), aes(y = COT.rel.ml,x=COT.p.ml))+
-  geom_point(aes(color=Architecture))+
-  geom_smooth(method="lm", color="white")+
-  geom_text(label=COT_species %>% filter(!is.na(COT.p.ml) & !is.na(Species) & Architecture != "Whorl chain") %>% 
-              .$Species, hjust=0.4, vjust=-0.7, color="white")+
-  theme_bw()+
-  theme(axis.text.x = element_text(angle = 90))+
-  scale_color_manual(values = c("cyan4", "red1", "darkorange1", "magenta", "gold1", "darkorchid4", "green4")[c(1, 4, 5, 3, 2, 7, 6)]) +
-  xlim(0,100)+
-  ylab("Cost of Transport (pgO2/mgC per zooid length moved)")+
-  xlab("Proportion of Metabolic Cost Spent on Swimming (%)")+ theme_dark()+ theme(
-    axis.text.x = element_text(angle = 90, hjust = 1, vjust=0.5, color = "white"),
-    axis.text.y = element_text(color = "white"),
-    panel.grid.major = element_blank(),  # Remove major grid lines
-    panel.grid.minor = element_blank(),  # Remove minor grid lines
-    axis.line = element_line(color = "white"),  # Set axis line color to black
-    text = element_text(color = "white"),  # Set text color to white
-    panel.background = element_rect(fill = "black"),  # Set panel background color to black
-    axis.ticks = element_line(color = "white")
-  )
 
-Sm6B <- ggplot(COT_species %>%  filter(!is.na(COT.p.ml) & !is.na(Species) & Architecture != "Whorl chain"), aes(y = COT.rel.ml,x=COT.p.ml))+
-  geom_point(aes(color=Architecture))+
+Sm6B <- ggplot(COT_with_means %>%  filter(!is.na(COT.p.ml) & !is.na(Species) & Species!="Thalia sp."), aes(y = COT.rel.ml,x=COT.p.ml))+
+  stat_summary(fun = mean, geom = "point", aes(col = Architecture), size = 3) +
+  stat_summary(fun.data = mean_se, geom = "errorbar", aes(col = Architecture), width = 0.2) +
   geom_smooth(method="lm", color="black")+
-  geom_text(label=COT_species %>% filter(!is.na(COT.p.ml) & !is.na(Species) & Architecture != "Whorl chain") %>% 
-              .$Species, hjust=0.4, vjust=-0.7, color="black")+
   theme_bw()+
-  theme(axis.text.x = element_text(angle = 90))+
-  scale_color_manual(values = c("cyan4", "red1", "darkorange1", "magenta", "gold1", "darkorchid4", "green4")[c(1, 4, 5, 3, 2, 7, 6)]) +
+  scale_color_manual(values = c("Transversal" = "green4", "Oblique" = "red1", "Linear" = "darkorange1", 
+                                "Bipinnate" = "cyan4", "Helical" = "gold1", "Whorl" = "darkorchid4", 
+                                "Cluster" = "magenta")) +
   xlim(0,100)+
   ylab("Cost of Transport (pgO2/mgC per zooid length moved)")+
-  xlab("Proportion of Metabolic Cost Spent on Swimming (%)")+ theme_bw()
+  xlab("Proportion of Metabolic Cost Spent on Swimming (%)")
 
 wrap_plots(Sm6A, Sm6B)
 
-glm(COT.p.ml ~ COT.abs.ml, data = COT_species %>%  
-      filter(!is.na(COT.p.ml) & !is.na(Species) & Architecture != "Whorl chain"), 
+glm(COT.p.ml ~ COT.abs.ml, data = COT_with_means %>%  
+      filter(!is.na(COT.p.ml) & !is.na(Species) & Species != "Thalia sp."), 
     family = gaussian(link = "identity")) %>% summary()
 
-glm(COT.p.ml ~ COT.rel.ml, data = COT_species %>%  
-      filter(!is.na(COT.p.ml) & !is.na(Species) & Architecture != "Whorl chain"), 
+glm(COT.p.ml ~ COT.rel.ml, data = COT_with_means %>%  
+      filter(!is.na(COT.p.ml) & !is.na(Species) & Species != "Thalia sp."), 
     family = gaussian(link = "identity")) %>% summary()
 
 ##########################
 
 # % cost (by biovolume) invested in swimming across basal rate , color: Species
-ggplot(COT_species %>%  filter(!is.na(COT.p.ml)), aes(x = COL.abs.ml-COT.abs.ml,y=COT.p.ml))+
+ggplot(COT_species %>%  filter(!is.na(COT.p.ml) & Species != "Thalia sp."), aes(x = -Slope_O2_dif_normalized_Anesthetized,y=COT.p.ml))+
   geom_point(aes(size=Zooid.length..mm.,color=Species))+
   theme_bw()+
   theme(axis.text.x = element_text(angle = 90))+
   #ylim(c(0,100))+
   ylab("% Cost of Transport Volume-normalized")+xlab("Basal rate")
-
-# % cost (by biovolume) invested in swimming across species , color: Relative speed
-ggplot(COT_species %>% filter(!is.na(COT.p.mgC)), aes(x=Species,y=COT.p.mgC))+
-  geom_point(aes(size=Speed.cm.s,color=Speed.body.s))+
-  theme_bw()+
-  theme(axis.text.x = element_text(angle = 90))+
-  #ylim(c(0,100))+
-  ylab("% Cost of Transport Carbon-normalized") #
-
-### plots with speed  ###
-
-ggplot(COT_intact, aes(x=Speed.cm.s,y=COT.abs.ml))+
-  geom_point()+
-  theme_bw()+
- geom_smooth(method="lm")+
-  ylab("Cost of Living (mgO2/ml per body length moved)")
-
-ggplot(COT_species, aes(x=Speed.cm.s,y=COT.abs.ml))+
-  geom_point()+
-  geom_text(aes(label=Species), vjust=-0.8)+
-  theme_bw()+
-  geom_smooth(method="lm")+
-  ylab("Cost of Transport (mgO2/mgC per body length moved)")
 
 ## SUMMARY TABLES ##
 
