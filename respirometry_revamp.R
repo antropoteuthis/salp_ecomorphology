@@ -1,5 +1,7 @@
 ############ LOAD UP AND SET UP ##############
 
+# COREECT exponentially for body mass/vol ???????? ######
+
 library(tidyverse)
 library(wql)
 library(ggrepel)
@@ -300,7 +302,8 @@ for(i in 1:length(unique(paste0(presens$Specimen,presens$Treatment)))){
 slopes %>% filter(Slope_O2_dif<0) -> slopes
 
 #Normalize by colony volume, transform to PicoGrams of O2
-slopes %>% mutate(Slope_normalized = 1000000*Slope_O2/Colony.volume..ml., Slope_O2_dif_normalized = 1000000*Slope_O2_dif/Colony.volume..ml.) -> slopes
+    # slopes %>% mutate(Slope_normalized = 1000000*Slope_O2/(Colony.volume..ml.^0.75), Slope_O2_dif_normalized = 1000000*Slope_O2_dif/(Colony.volume..ml.^0.75)) -> slopes
+slopes %>% mutate(Slope_normalized = 1000000*Slope_O2/(Colony.volume..ml.), Slope_O2_dif_normalized = 1000000*Slope_O2_dif/(Colony.volume..ml.)) -> slopes
 
 #Get carbon estimates
 #Estimate Carbon content for each species and recalculate carbon-based rawCOT
@@ -409,10 +412,10 @@ dev.off()
 
 ## SM Figure 4 ##
 
-slopes %>%  ggplot(aes(x=Species,y=-Slope_O2_dif_normalized/1000000))+
-  geom_boxplot(aes(fill=Treatment))+
-  ylab("Respiration rate (mgO2/min) per specimen biovolume (ml)")+
-  ylim(NA,0.002)+
+slopes %>% filter(-Slope_O2_dif_normalized/1000000 < 0.0025) %>% 
+  ggplot(aes(x=Species,y=-Slope_O2_dif_normalized/1000000))+
+  geom_boxplot(aes(fill=Treatment), size = 0.5)+
+  ylab("Respiration rate (mgO2/min) per biovolume (ml)")+
   scale_fill_manual(values = c("lightblue","pink"))+
   theme_bw()+
   theme(axis.text.x = element_text(angle = 90, hjust=1))
@@ -556,6 +559,8 @@ energetics_merged %>% mutate(Speed.bl.p = BLperSecond/Pulses_per_second) -> ener
 COT <- energetics_merged[,c("Species","Specimen","Colony.volume..ml.","Zooid.length..mm.","Number.of.zooids",
                             "Treatment","Paired","Slope_O2_dif_normalized","Slopes_dif_mgC","Speed_mm_s",
                             "BLperSecond","Pulses_per_second", "Speed.bl.p")]
+
+COT %>% filter(Slope_O2_dif_normalized>-3000) -> COT
   
 ##### WARNING ##### SKETCHY STUFF TO REMOVE NEGATIVES !!!!
 #COT$Slope_O2_dif_normalized[which(COT$Slope_O2_dif_normalized>0)] <- 0
@@ -772,10 +777,10 @@ COT_with_means %>% filter(-(Slope_O2_dif_normalized - Slope_O2_dif_normalized_An
   theme(axis.text.x = element_text(angle = 90, hjust=1))
 
 #COT by biovolume per cm across Architecture
-COT_with_means %>%
-  filter(!is.na(COT.abs.ml)  & Architecture != "Whorl chain") %>% filter(Species!="Thalia sp.") %>% 
+COT_with_means %>% filter(Slope_O2_dif_normalized>-900) %>% 
+  filter(!is.na(COT.abs.ml) & Architecture != "Whorl chain") %>% 
   ggplot(aes(x = factor(Species %>% as.character(), levels = unique(Species[order(factor(Architecture, levels = architecture_order))])),
-             y = COT.abs.ml, col = Architecture, fill=Architecture)) +
+             y = COT.abs.ml/Colony.volume..ml.^0.75, col = Architecture, fill=Architecture)) +
   stat_summary(fun = "mean", geom = "bar", position = "dodge") +
   stat_summary(fun.data = "mean_se", geom = "errorbar", position = "dodge", width = 0.25) +  # Add error bars
   scale_color_manual(values = c("Transversal" = "green4", "Oblique" = "red1", "Linear" = "darkorange1", 
@@ -785,10 +790,10 @@ COT_with_means %>%
                                 "Bipinnate" = "cyan4", "Helical" = "gold1", "Whorl" = "darkorchid4", 
                                 "Cluster" = "magenta")) +
   theme_bw() + theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
-  ylab("Cost of Transport (pgO2/ml per mm moved)") + xlab("Species")
+  ylab("Cost of Transport (pgO2/ml per mm moved)") + xlab("Species") 
 
 COT_with_means %>%
-  filter(!is.na(COT.abs.ml)  & Architecture != "Whorl chain") %>% filter(Species!="Thalia sp.") %>% 
+  filter(!is.na(COT.abs.ml)  & Architecture != "Whorl chain") %>% 
   ggplot(aes(x = factor(Species %>% as.character(), levels = unique(Species[order(factor(Architecture, levels = architecture_order))])),
              y = COT.abs.ml*4.75, fill=Architecture)) +
   stat_summary(fun = "mean", geom = "bar", position = "dodge") +
@@ -826,7 +831,7 @@ COT_with_means %>%
 architecture_order <- c("Transversal", "Linear", "Bipinnate", "Whorl", "Cluster","Helical")
 
 F7A <- ggplot(COT_with_means %>% 
-                filter(COT.abs.ml>-1000000 & Architecture != "Whorl chain" & Species != "Thalia sp."), 
+                filter(COT.abs.ml>-1000000 & Architecture != "Whorl chain"), 
        aes(factor(Species %>% as.character(), levels = unique(Species[order(factor(Architecture, levels = architecture_order))])), 
            y=COT.abs.ml, fill=Architecture)) +
   stat_summary(fun = "mean", geom = "bar", position = "dodge") +
@@ -844,17 +849,49 @@ F7A <- ggplot(COT_with_means %>%
 F7B <- ggplot(COT_with_means %>% 
                 filter(COT.rel.ml>-10000000 & Architecture != "Whorl chain"), 
        aes(factor(Species %>% as.character(), levels = unique(Species[order(factor(Architecture, levels = architecture_order))])), 
-           y=COT.rel.ml %>% log(), fill=Architecture)) +
+           y=COT.rel.ml, fill=Architecture)) +
   stat_summary(fun = "mean", geom = "bar", position = "dodge") +
   stat_summary(fun.data = "mean_se", geom = "errorbar", position = "dodge", width = 0.25) +  # Add error bars
   scale_fill_manual(values = c("Transversal" = "green4", "Oblique" = "red1", "Linear" = "darkorange1", 
                                "Bipinnate" = "cyan4", "Helical" = "gold1", "Whorl" = "darkorchid4", 
                                "Cluster" = "magenta")) +
   theme_bw()+theme(axis.text.x = element_text(angle = 90, hjust=1))+
-  ylab("log10 Cost of Transport (pgO2/ml per body length moved)")+
+  ylab("Cost of Transport (pgO2/ml per body length moved)")+ guides(fill="none",color="none")+
   xlab("Species")
 
-wrap_plots(F7A, F7B)
+#### Figure 7C #####
+architecture_order <- c("Transversal", "Linear", "Bipinnate", "Whorl", "Cluster","Helical")
+
+F7C <- ggplot(COT_with_means %>% 
+                filter(COT.abs.ml>-1000000 & Architecture != "Whorl chain"), 
+              aes(Architecture, 
+                  y=COT.abs.ml, fill=Architecture)) +
+  stat_summary(fun = "mean", geom = "bar", position = "dodge") +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", position = "dodge", width = 0.25) +  # Add error bars
+  scale_fill_manual(values = c("Transversal" = "green4", "Oblique" = "red1", "Linear" = "darkorange1", 
+                               "Bipinnate" = "cyan4", "Helical" = "gold1", "Whorl" = "darkorchid4", 
+                               "Cluster" = "magenta")) +
+  theme_bw()+theme(axis.text.x = element_text(angle = 90, hjust=1))+
+  ylab("Cost of Transport (pgO2/ml per mm moved)") + guides(fill="none",color="none")+
+  xlab("Architecture")
+
+#### Figure 7D #####
+
+#COT by biovolume per bodylength across Species
+F7D <- ggplot(COT_with_means %>% 
+                filter(COT.rel.ml>-10000000 & Architecture != "Whorl chain"), 
+              aes(Architecture, 
+                  y=COT.rel.ml, fill=Architecture)) +
+  stat_summary(fun = "mean", geom = "bar", position = "dodge") +
+  stat_summary(fun.data = "mean_se", geom = "errorbar", position = "dodge", width = 0.25) +  # Add error bars
+  scale_fill_manual(values = c("Transversal" = "green4", "Oblique" = "red1", "Linear" = "darkorange1", 
+                               "Bipinnate" = "cyan4", "Helical" = "gold1", "Whorl" = "darkorchid4", 
+                               "Cluster" = "magenta")) +
+  theme_bw()+theme(axis.text.x = element_text(angle = 90, hjust=1))+
+  ylab("Cost of Transport (pgO2/ml per body length moved)")+
+  xlab("Architecture")
+
+wrap_plots(F7A, F7B, F7C, F7D)
 
 ####################
 
