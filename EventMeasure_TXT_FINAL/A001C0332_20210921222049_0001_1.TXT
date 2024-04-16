@@ -1,0 +1,11 @@
+3D Point Measurements
+
+Generated: Wednesday 07 December 2022 14:42:31
+
+Filename	Frame	Time (mins)	Period	Period time (mins)	X (mm)	Y (mm)	Z (mm)	sX (mm)	sY (mm)	sZ (mm)	RMS (mm)	Range (mm)	Direction (deg)	OpCode	TapeReader	Depth	Comment									Family	Genus	Species	Code	Number	Stage	Activity	Comment		
+A001C0332_20210921222049_0001.MOV	3500	0.4866			-37.862	11.253	-545.028	0.086	0.080	0.533	0.516	546.457	4.088	1	1															0	J	Passing			
+A001C0332_20210921222049_0001.MOV	3500	0.4866			14.191	-68.365	-425.143	0.064	0.080	0.330	0.239	430.839	9.540	1	1															1	F	Passing			
+A001C0332_20210921222049_0001.MOV	3500	0.4866			41.838	-5.073	-386.876	0.063	0.057	0.276	0.206	389.165	6.247	1	1															2	AD	Passing			
+A001C0332_20210921222049_0001.MOV	3520	0.4894			-41.995	9.184	-542.789	0.087	0.079	0.528	0.240	544.489	4.487	1	1															0	J	Passing			
+A001C0332_20210921222049_0001.MOV	3520	0.4894			7.305	-71.888	-424.208	0.063	0.081	0.329	0.025	430.318	9.884	1	1															1	F	Passing			
+A001C0332_20210921222049_0001.MOV	3520	0.4894			38.635	-8.975	-388.202	0.063	0.057	0.278	0.252	390.223	5.887	1	1															2	AD	Passing			
