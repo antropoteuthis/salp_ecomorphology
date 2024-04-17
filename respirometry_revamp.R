@@ -904,6 +904,11 @@ F5D <- ggplot(COT_with_means %>%
 
 wrap_plots(F5A, F5B, F5C, F5D)
 
+COT_with_means %>%
+  filter(Architecture %in% c("Oblique", "Transversal")) %>%
+  group_by(Architecture) %>%
+  t.test(COT.abs.ml ~ Architecture, data = .) %>% list() %>% .[[1]] %>% print()
+
 ####################
 
 #### Figure 6A ####
@@ -1015,6 +1020,10 @@ glm(COT.p.ml ~ Pulses_per_second,
     data = COT_with_means %>% 
       filter(COT.p.ml>0 & !is.na(Species) & Architecture != "Whorl chain"), 
     family = gaussian(link = "identity")) %>% summary()
+
+COT_with_means %>% filter(!is.na(COT.p.ml) & Species != "Brooksia rostrata" & Architecture != "Whorl chain") %>% 
+  .[,c("Species","COT.p.ml")] %>% group_by(Species) %>% 
+  summarise(mean(COT.p.ml))
 
 
 #############
