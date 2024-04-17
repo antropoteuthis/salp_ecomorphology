@@ -827,10 +827,10 @@ COT_with_means %>%
 
 ########################
 
-#### Figure 6A #####
+#### Figure 5A #####
 architecture_order <- c("Transversal", "Linear", "Bipinnate", "Whorl", "Cluster","Helical")
 
-F6A <- ggplot(COT_with_means %>% 
+F5A <- ggplot(COT_with_means %>% 
                 filter(COT.abs.ml>-1000000 & Architecture != "Whorl chain"), 
        aes(factor(Species %>% as.character(), levels = unique(Species[order(factor(Architecture, levels = architecture_order))])), 
            y=COT.abs.ml, fill=Architecture)) +
@@ -843,10 +843,10 @@ F6A <- ggplot(COT_with_means %>%
   ylab("Cost of Transport (pgO2/ml per mm moved)") + guides(fill="none",color="none")+
   xlab("Species")
 
-#### Figure 6B #####
+#### Figure 5B #####
 
 #COT by biovolume per bodylength across Species
-F6B <- ggplot(COT_with_means %>% 
+F5B <- ggplot(COT_with_means %>% 
                 filter(COT.rel.ml>-10000000 & Architecture != "Whorl chain"), 
        aes(factor(Species %>% as.character(), levels = unique(Species[order(factor(Architecture, levels = architecture_order))])), 
            y=COT.rel.ml, fill=Architecture)) +
@@ -856,13 +856,13 @@ F6B <- ggplot(COT_with_means %>%
                                "Bipinnate" = "cyan4", "Helical" = "gold1", "Whorl" = "darkorchid4", 
                                "Cluster" = "magenta")) +
   theme_bw()+theme(axis.text.x = element_text(angle = 90, hjust=1))+
-  ylab("Cost of Transport (pgO2/ml per body length moved)")+ guides(fill="none",color="none")+
+  ylab("Cost of Transport (pgO2/ml per zooid length moved)")+ guides(fill="none",color="none")+
   xlab("Species")
 
-#### Figure 6C #####
+#### Figure 5C #####
 architecture_order <- c("Transversal", "Linear", "Bipinnate", "Whorl", "Cluster","Helical")
 
-F6C <- ggplot(COT_with_means %>% 
+F5C <- ggplot(COT_with_means %>% 
                 filter(COT.abs.ml>-1000000 & Architecture != "Whorl chain"), 
               aes(Architecture, 
                   y=COT.abs.ml, fill=Architecture)) +
@@ -873,16 +873,16 @@ F6C <- ggplot(COT_with_means %>%
                                "Cluster" = "magenta")) +
   theme_bw()+theme(axis.text.x = element_text(angle = 90, hjust=1))+
   geom_signif(comparisons = list(c("Bipinnate","Cluster"), c("Linear","Bipinnate"), 
-                                 c("Linear","Helical"),c("Linear","Transversal"),
+                                 c("Linear","Helical"),c("Linear","Transversal"),c("Oblique","Transversal"),
                                  c("Linear","Whorl"),c("Whorl","Transversal")
                                  ), map_signif_level=TRUE, test="t.test")+
   ylab("Cost of Transport (pgO2/ml per mm moved)") + guides(fill="none",color="none")+
   xlab("Architecture")
 
-#### Figure 6D #####
+#### Figure 5D #####
 
 #COT by biovolume per bodylength across Species
-F6D <- ggplot(COT_with_means %>% 
+F5D <- ggplot(COT_with_means %>% 
                 filter(COT.rel.ml>-10000000 & Architecture != "Whorl chain"), 
               aes(Architecture, 
                   y=COT.rel.ml, fill=Architecture)) +
@@ -896,20 +896,21 @@ F6D <- ggplot(COT_with_means %>%
                                  c("Linear","Bipinnate"), 
                                  c("Linear","Helical"),
                                  c("Linear","Transversal"),
+                                 c("Oblique","Transversal"),
                                  c("Linear","Whorl"), c("Whorl","Transversal")
                                  ), map_signif_level=TRUE, test="t.test")+
-  ylab("Cost of Transport (pgO2/ml per body length moved)")+
+  ylab("Cost of Transport (pgO2/ml per zooid length moved)")+
   xlab("Architecture")
 
-wrap_plots(F6A, F6B, F6C, F6D)
+wrap_plots(F5A, F5B, F5C, F5D)
 
 ####################
 
-#### Figure 7A ####
+#### Figure 6A ####
 
 #COT by biovolume per mm across absolute speeds
 
-F7A <- ggplot(COT_with_means %>% 
+F6A <- ggplot(COT_with_means %>% 
                 filter(COT.abs.ml>-10 & Architecture != "Whorl chain"), 
               aes(x=Speed_mm_s,y=COT.abs.ml)) +
   geom_smooth(method="lm", color="black", formula = y ~ log(x)) +
@@ -924,11 +925,11 @@ F7A <- ggplot(COT_with_means %>%
   theme_bw()+ ylim(0,NA)+
   guides(color = "none") 
 
-##### Figure 7B #####
+##### Figure 6B #####
 
 #COT by biovolume per cm across relative speeds
 
-F7B <- ggplot(COT_with_means %>% 
+F6B <- ggplot(COT_with_means %>% 
                 filter(COT.abs.ml>-10 & Architecture != "Whorl chain"), 
               aes(x=BLperSecond,y=COT.rel.ml)) +
   geom_smooth(method="lm", color="black", formula = y ~ log(x)) +
@@ -938,11 +939,11 @@ F7B <- ggplot(COT_with_means %>%
   scale_color_manual(values = c("Transversal" = "green4", "Oblique" = "red1", "Linear" = "darkorange1", 
                                 "Bipinnate" = "cyan4", "Helical" = "gold1", "Whorl" = "darkorchid4", 
                                 "Cluster" = "magenta")) +
-  ylab("Cost of Transport (pgO2/ml per body length moved)") +
-  xlab("Speed (Body lengths per second)")+ ylim(0,NA)+
+  ylab("Cost of Transport (pgO2/ml per zooid length moved)") +
+  xlab("Speed (zooids/s)")+ ylim(0,NA)+
   theme_bw()
 
-wrap_plots(F7A, F7B)
+wrap_plots(F6A, F6B)
 
 glm(log(COT.abs.ml) ~ Speed_mm_s, data=COT_with_means %>% filter(!is.na(COT.abs.ml) & Architecture != "Whorl chain")) %>% summary()
 glm(log(COT.rel.ml) ~ BLperSecond, data=COT_with_means %>% filter(!is.na(COT.rel.ml) & Architecture != "Whorl chain")) %>% summary()
@@ -967,7 +968,7 @@ ggplot(COT_species %>% filter(!is.na(COT.rel.ml)), aes(x=BLperSecond,y=log(COT.r
   theme(axis.text.x = element_text(angle = 90))+
   ylab("Cost of Transport (pgO2/ml per body length moved)")
 
-#### SM Figure 5 ####
+#### SM Figure 6 ####
 
 # % cost (by biovolume) invested in swimming across species order: COT.p, color: Speed_cm
 architecture_order <- c("Transversal", "Oblique", "Linear", "Bipinnate", "Helical", "Whorl", "Cluster")
