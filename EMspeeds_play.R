@@ -16,6 +16,7 @@ require(data.table)
 library(purrr)
 library(ggsignif)
 library(ggpubr)
+library(reshape2)
 
 ## Acquire list of filenames with speed data in your folder ##
 
@@ -257,6 +258,72 @@ speed_annotated %>%
   group_by(Architecture) %>%
   t.test(Speed_mm_s ~ Architecture, data = .) %>% list() %>% .[[1]] %>% print()
 
+anova_mms_arch <- aov(Speed_mm_s ~ Architecture, data=speed_annotated %>% filter(Architecture != "Whorl chain"))
+summary(anova_mms_arch)
+TukeyHSD(anova_mms_arch, conf.level=.95) -> tukey_mms_arch
+tukey_mms_arch$Architecture[, "p adj"] %>% format(scientific = FALSE) %>% as.data.frame() -> tukey_mms_arch_p
+tukey_mms_arch_p %>% rownames() %>% strsplit("-") -> tukey_mms_arch_split
+tukey_mms_arch_plot <- data.frame(
+  Comparison1 = sapply(tukey_mms_arch_split, `[`, 1),
+  Comparison2 = sapply(tukey_mms_arch_split, `[`, 2),
+  p_value = tukey_mms_arch_p$.
+)
+tukey_mms_arch_plot$p_value %>% as.character() %>%  as.numeric() -> tukey_mms_arch_plot$p_value
+
+ggplot(tukey_mms_arch_plot, aes(Comparison1, Comparison2, fill = p_value)) +
+  geom_tile() +
+  scale_fill_gradient(low = "green", high = "red", 
+                      breaks = c(0, 0.05, max(tukey_mms_arch_plot$p_value, na.rm = TRUE)),
+                      labels = c("<= 0.05", "0.05", "> 0.05")) +
+  labs(x = "Architecture 1", y = "Architecture 2", fill = "p-value") +
+  theme_minimal()+
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+
+anova_blp_arch <- aov(BLperPulse ~ Architecture, data=speed_annotated)
+summary(anova_blp_arch)
+TukeyHSD(anova_blp_arch, conf.level=.95) -> tukey_blp_arch
+tukey_blp_arch$Architecture[, "p adj"] %>% format(scientific = FALSE) %>% as.data.frame() -> tukey_blp_arch_p
+tukey_blp_arch_p %>% rownames() %>% strsplit("-") -> tukey_blp_arch_split
+tukey_blp_arch_plot <- data.frame(
+  Comparison1 = sapply(tukey_blp_arch_split, `[`, 1),
+  Comparison2 = sapply(tukey_blp_arch_split, `[`, 2),
+  p_value = tukey_blp_arch_p$.
+)
+tukey_blp_arch_plot$p_value %>% as.character() %>%  as.numeric() -> tukey_blp_arch_plot$p_value
+
+ggplot(tukey_blp_arch_plot, aes(Comparison1, Comparison2, fill = p_value)) +
+  geom_tile() +
+  scale_fill_gradient(low = "green", high = "red", 
+                      breaks = c(0, 0.05, max(tukey_blp_arch_plot$p_value, na.rm = TRUE)),
+                      labels = c("<= 0.05", "0.05", "> 0.05")) +
+  labs(x = "Architecture 1", y = "Architecture 2", fill = "p-value") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+
+# Combine results for plotting
+combined_plot <- rbind(
+  data.frame(tukey_mms_arch_p, type = "MMS"),
+  data.frame(tukey_blp_arch_p, type = "BLP")
+)
+
+# Ensure proper factor levels
+combined_plot <- combined_plot %>%
+  mutate(Comparison1 = factor(Comparison1, levels = unique(c(Comparison1, Comparison2))),
+         Comparison2 = factor(Comparison2, levels = unique(c(Comparison1, Comparison2))))
+
+ggplot() +
+  # Plot the upper triangle for MMS
+  geom_tile(data = subset(combined_plot, type == "MMS"), aes(Comparison1, Comparison2, fill = fill_color), color = "white") +
+  geom_text(data = subset(combined_plot, type == "MMS"), aes(Comparison1, Comparison2, label = round(diff, 3)), size = 3) +
+  # Plot the lower triangle for BLP
+  geom_tile(data = subset(combined_plot, type == "BLP"), aes(Comparison2, Comparison1, fill = fill_color), color = "white") +
+  geom_text(data = subset(combined_plot, type == "BLP"), aes(Comparison2, Comparison1, label = round(diff, 3)), size = 3) +
+  # Define the color scale and labels
+  scale_fill_manual(values = c("green", "red", "gray"), 
+                    labels = c("Positive and Significant", "Negative and Significant", "Not Significant")) +
+  labs(x = "Speed (mm/s)", y = "Speed (zooids/pulse)", fill = "Difference") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ##############
 
 #### SM Figure 1A #####
@@ -298,8 +365,8 @@ wrap_plots(Sm1A, Sm1B)
 
 # GLMs of speed vs pulsation rate
 
-lm(Speed_mms_abs ~ Pulses_per_second, data = speed_annotated, family = gaussian(link = "identity")) %>% summary()
-lm(BLperSecond ~ Pulses_per_second, data = speed_annotated, family = gaussian(link = "identity")) %>% summary()
+lm(Speed_mms_abs ~ Pulses_per_second, data = speed_collapsed, family = gaussian(link = "identity")) %>% summary()
+lm(BLperSecond ~ Pulses_per_second, data = speed_collapsed, family = gaussian(link = "identity")) %>% summary()
 
 #### SM Figure 2A #####
 
@@ -310,7 +377,7 @@ speed_annotated %>% filter(!is.na(Species) & Architecture != "Whorl chain") %>%
   theme( text = element_text(color = "white"), axis.text = element_text(color = "white"),  # Set text color to white
          panel.background = element_rect(fill = "black"))
 
-Sm2A <- speed_annotated %>%
+Sm2A <- speed_collpased %>%
   filter(!is.na(Species) & Architecture != "Whorl chain") %>%
   ggplot(aes(x = Zooid_length_mm, y = Speed_mms_abs)) +
   stat_summary(fun = mean, geom = "point", aes(col = Architecture), size = 3) +
@@ -330,7 +397,7 @@ speed_annotated %>% filter(!is.na(Species) & Architecture != "Whorl chain") %>%
   theme( text = element_text(color = "white"), axis.text = element_text(color = "white"),  # Set text color to white
          panel.background = element_rect(fill = "black"))
 
-Sm2B <- speed_annotated %>%
+Sm2B <- speed_collapsed %>%
   filter(!is.na(Species) & Architecture != "Whorl chain") %>%
   ggplot(aes(x = Zooid_length_mm, y=Speed_mms_abs/Pulses_per_second)) +
   stat_summary(fun = mean, geom = "point", aes(col = Architecture), size = 3) +
@@ -347,8 +414,8 @@ wrap_plots(Sm2A, Sm2B)
 
 # GLMs of speed vs zooid length
 
-glm(Speed_mms_abs ~ Zooid_length_mm, data = speed_annotated, family = gaussian(link = "identity")) %>% summary()
-glm(Speed_mms_abs/Pulses_per_second ~ Zooid_length_mm, data = speed_annotated, family = gaussian(link = "identity")) %>% summary()
+lm(Speed_mms_abs ~ Zooid_length_mm, data = speed_annotated, family = gaussian(link = "identity")) %>% summary()
+lm(Speed_mms_abs/Pulses_per_second ~ Zooid_length_mm, data = speed_annotated, family = gaussian(link = "identity")) %>% summary()
 
 ### EXPORT ALL SPEEDS ####
 
@@ -379,8 +446,8 @@ speed_annotated %>%
   xlab("Number of zooids")+
   facet_wrap(~CSAmode, scales = "free_x")
 
-glm(BLperPulse ~ Zooid.number, data=speed_annotated %>% filter(Architecture %in% c("Linear","Bipinnate", "Helical"))) %>% summary()
-glm(BLperPulse ~ Zooid.number, data=speed_annotated %>% filter(!(Architecture %in% c("Linear","Bipinnate", "Helical")))) %>% summary()
+lm(BLperPulse ~ Zooid.number, data=speed_annotated %>% filter(Architecture %in% c("Linear","Bipinnate", "Helical"))) %>% summary()
+lm(BLperPulse ~ Zooid.number, data=speed_annotated %>% filter(!(Architecture %in% c("Linear","Bipinnate", "Helical")))) %>% summary()
 
 #########
 
@@ -625,3 +692,17 @@ names(sp_inv) <- c("Video file", "Type", "FPS", "Species", "Architecture", "Numb
                    "Mean swimming speed (mm/s)")
 sp_inv %>% arrange(Architecture, Species) -> sp_inv
 write_csv(sp_inv, "SMTable1_Specimens.csv")
+
+#postreview summary table
+
+spp_inv <- sp_inv %>% filter(!is.na(Species)) %>% .[,c(4,5,6,8:12)]
+spp_inv %>% group_by(Species) %>% summarise(
+  Architecture = first(Architecture),
+  `Mean Number of zooids` = mean(`Number of zooids`),
+  `Mean zooid length (mm)` = mean(`Mean zooid length (mm)`, na.rm = T),
+  `Pulsation rate (pulses/s)` = mean(`Pulsation rate (pulses/s)`, na.rm = T),
+  `Mean swimming speed (mm/s)` = mean(`Mean swimming speed (mm/s)`, na.rm = T),
+  `Number of Speed Specimens` = n(),
+  `Number of Speed Measurements` = sum(`Number of measurements`, na.rm = T)
+) -> species_table
+

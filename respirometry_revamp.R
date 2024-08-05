@@ -236,11 +236,28 @@ summary_table <- presens %>%
     Colony.volume..ml. = first(Colony.volume..ml.),
     Container.volume..ml. = first(Container.volume..ml.),
     Organism.notes = first(Organism.notes),
-    is.paired = first(is.paired)
+    is.paired = first(is.paired),
+    Number.of.measurements = n()
   )
 
 # Print the summary table
+summary_table[which(summary_table$Species == "Iasis (Weelia) cylindrica"),"Species"]<-"Iasis cylindrica"
+summary_table[which(summary_table$Species == "Ritteriella retracta"),"Species"]<-"Ritteriella sp."
+summary_table[which(summary_table$Species == "Thalia cicar"),"Species"]<-"Thalia sp."
 print(summary_table)
+
+#Species level summary table
+summary_table %>% group_by(Species) %>% summarise(
+  `Mean Number of zooids respirometry` = mean(Number.of.zooids, na.rm = T),
+  `Mean zooid length (mm) respirometry` = mean(Zooid.length..mm., na.rm = T),
+  `Mean Colony volume (ml)` = mean(`Colony.volume..ml.`, na.rm = T),
+  `Number of Respirometry Specimens` = n(),
+  `Number of Respirometry Measurements` = sum(Number.of.measurements, na.rm = T)
+) -> resp_spp
+
+full_join(species_table, resp_spp, by=c("Species")) -> whole_summary
+whole_summary[18,2]<-"Linear"
+write_csv(whole_summary, "SMTable3_Species.csv")
 
 #Raw O2 plots for swim
 rawControlswim <- ggplot(presens, aes(x=Time.point..min., y=abs_O2.mg._control)) +
@@ -904,10 +921,13 @@ F5D <- ggplot(COT_with_means %>%
 
 wrap_plots(F5A, F5B, F5C, F5D)
 
-COT_with_means %>%
-  filter(Architecture %in% c("Oblique", "Transversal")) %>%
-  group_by(Architecture) %>%
-  t.test(COT.abs.ml ~ Architecture, data = .) %>% list() %>% .[[1]] %>% print()
+anova_COTa_arch <- aov(COT.abs.ml ~ Architecture, data=COT_with_means %>% filter(Architecture != "Whorl chain"))
+summary(anova_COTa_arch)
+TukeyHSD(anova_COTa_arch, conf.level=.95) -> tukey_COTa_arch
+
+anova_COTr_arch <- aov(COT.rel.ml ~ Architecture, data=COT_with_means %>% filter(Architecture != "Whorl chain"))
+summary(anova_COTr_arch)
+TukeyHSD(anova_COTr_arch, conf.level=.95) -> tukey_COTr_arch
 
 ####################
 
@@ -1016,7 +1036,7 @@ ggplot(COT_with_means %>%
   ylab("Proportion of Metabolic Cost Spent on Swimming (%)") + 
   theme_bw()
 
-glm(COT.p.ml ~ Pulses_per_second, 
+lm(COT.p.ml ~ Pulses_per_second, 
     data = COT_with_means %>% 
       filter(COT.p.ml>0 & !is.na(Species) & Architecture != "Whorl chain"), 
     family = gaussian(link = "identity")) %>% summary()
@@ -1072,11 +1092,11 @@ Sm8B <- ggplot(COT_with_means %>%  filter(!is.na(COT.p.ml) & !is.na(Species)), a
 
 wrap_plots(Sm8A, Sm8B)
 
-glm(COT.p.ml ~ COT.abs.ml, data = COT_with_means %>%  
+lm(COT.p.ml ~ COT.abs.ml, data = COT_with_means %>%  
       filter(!is.na(COT.p.ml) & !is.na(Species)), 
     family = gaussian(link = "identity")) %>% summary()
 
-glm(COT.p.ml ~ COT.rel.ml, data = COT_with_means %>%  
+lm(COT.p.ml ~ COT.rel.ml, data = COT_with_means %>%  
       filter(!is.na(COT.p.ml) & !is.na(Species)), 
     family = gaussian(link = "identity")) %>% summary()
 
