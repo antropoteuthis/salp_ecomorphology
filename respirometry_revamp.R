@@ -851,11 +851,15 @@ F5A <- ggplot(COT_with_means %>%
                 filter(COT.abs.ml>-1000000 & Architecture != "Whorl chain"), 
        aes(factor(Species %>% as.character(), levels = unique(Species[order(factor(Architecture, levels = architecture_order))])), 
            y=COT.abs.ml, fill=Architecture)) +
-  stat_summary(fun = "mean", geom = "bar", position = "dodge") +
+  geom_jitter(aes(color=Architecture),alpha=0.7)+
+  stat_summary(fun = "mean", geom = "bar", position = "dodge", alpha=0.5) +
   stat_summary(fun.data = "mean_se", geom = "errorbar", position = "dodge", width = 0.25) +  # Add error bars
   scale_fill_manual(values = c("Transversal" = "green4", "Oblique" = "red1", "Linear" = "darkorange1", 
                                "Bipinnate" = "cyan4", "Helical" = "gold1", "Whorl" = "darkorchid4", 
                                "Cluster" = "magenta")) +
+  scale_color_manual(values = c("Transversal" = "green4", "Oblique" = "red1", "Linear" = "darkorange1", 
+                                "Bipinnate" = "cyan4", "Helical" = "gold1", "Whorl" = "darkorchid4", 
+                                "Cluster" = "magenta")) +
   theme_bw()+theme(axis.text.x = element_text(angle = 90, hjust=1))+
   ylab("Cost of Transport (pgO2/ml per mm moved)") + guides(fill="none",color="none")+
   xlab("Species")
@@ -867,11 +871,15 @@ F5B <- ggplot(COT_with_means %>%
                 filter(COT.rel.ml>-10000000 & Architecture != "Whorl chain"), 
        aes(factor(Species %>% as.character(), levels = unique(Species[order(factor(Architecture, levels = architecture_order))])), 
            y=COT.rel.ml, fill=Architecture)) +
-  stat_summary(fun = "mean", geom = "bar", position = "dodge") +
+  geom_jitter(aes(color=Architecture),alpha=0.7)+
+  stat_summary(fun = "mean", geom = "bar", position = "dodge", alpha=0.5) +
   stat_summary(fun.data = "mean_se", geom = "errorbar", position = "dodge", width = 0.25) +  # Add error bars
   scale_fill_manual(values = c("Transversal" = "green4", "Oblique" = "red1", "Linear" = "darkorange1", 
                                "Bipinnate" = "cyan4", "Helical" = "gold1", "Whorl" = "darkorchid4", 
                                "Cluster" = "magenta")) +
+  scale_color_manual(values = c("Transversal" = "green4", "Oblique" = "red1", "Linear" = "darkorange1", 
+                                "Bipinnate" = "cyan4", "Helical" = "gold1", "Whorl" = "darkorchid4", 
+                                "Cluster" = "magenta")) +
   theme_bw()+theme(axis.text.x = element_text(angle = 90, hjust=1))+
   ylab("Cost of Transport (pgO2/ml per zooid length moved)")+ guides(fill="none",color="none")+
   xlab("Species")
@@ -880,20 +888,20 @@ F5B <- ggplot(COT_with_means %>%
 architecture_order <- c("Transversal", "Linear", "Bipinnate", "Whorl", "Cluster","Helical")
 
 F5C <- ggplot(COT_with_means %>% 
-                filter(COT.abs.ml>-1000000 & Architecture != "Whorl chain"), 
+                filter(COT.abs.ml>-10000000 & Architecture != "Whorl chain"), 
               aes(Architecture, 
                   y=COT.abs.ml, fill=Architecture)) +
-  stat_summary(fun = "mean", geom = "bar", position = "dodge") +
+  geom_jitter(aes(color=Architecture),alpha=0.7)+
+  stat_summary(fun = "mean", geom = "bar", position = "dodge", alpha=0.5) +
   stat_summary(fun.data = "mean_se", geom = "errorbar", position = "dodge", width = 0.25) +  # Add error bars
   scale_fill_manual(values = c("Transversal" = "green4", "Oblique" = "red1", "Linear" = "darkorange1", 
                                "Bipinnate" = "cyan4", "Helical" = "gold1", "Whorl" = "darkorchid4", 
                                "Cluster" = "magenta")) +
+  scale_color_manual(values = c("Transversal" = "green4", "Oblique" = "red1", "Linear" = "darkorange1", 
+                                "Bipinnate" = "cyan4", "Helical" = "gold1", "Whorl" = "darkorchid4", 
+                                "Cluster" = "magenta")) +
   theme_bw()+theme(axis.text.x = element_text(angle = 90, hjust=1))+
-  geom_signif(comparisons = list(c("Bipinnate","Cluster"), c("Linear","Bipinnate"), 
-                                 c("Linear","Helical"),c("Linear","Transversal"),c("Oblique","Transversal"),
-                                 c("Linear","Whorl"),c("Whorl","Transversal")
-                                 ), map_signif_level=TRUE, test="t.test")+
-  ylab("Cost of Transport (pgO2/ml per mm moved)") + guides(fill="none",color="none")+
+  ylab("Cost of Transport (pgO2/ml per zooid length moved)")+
   xlab("Architecture")
 
 #### Figure 5D #####
@@ -903,19 +911,16 @@ F5D <- ggplot(COT_with_means %>%
                 filter(COT.rel.ml>-10000000 & Architecture != "Whorl chain"), 
               aes(Architecture, 
                   y=COT.rel.ml, fill=Architecture)) +
-  stat_summary(fun = "mean", geom = "bar", position = "dodge") +
+  geom_jitter(aes(color=Architecture),alpha=0.9)+
+  stat_summary(fun = "mean", geom = "bar", position = "dodge", alpha=0.5) +
   stat_summary(fun.data = "mean_se", geom = "errorbar", position = "dodge", width = 0.25) +  # Add error bars
   scale_fill_manual(values = c("Transversal" = "green4", "Oblique" = "red1", "Linear" = "darkorange1", 
                                "Bipinnate" = "cyan4", "Helical" = "gold1", "Whorl" = "darkorchid4", 
                                "Cluster" = "magenta")) +
+  scale_color_manual(values = c("Transversal" = "green4", "Oblique" = "red1", "Linear" = "darkorange1", 
+                               "Bipinnate" = "cyan4", "Helical" = "gold1", "Whorl" = "darkorchid4", 
+                               "Cluster" = "magenta")) +
   theme_bw()+theme(axis.text.x = element_text(angle = 90, hjust=1))+
-  geom_signif(comparisons = list(c("Bipinnate","Cluster"), 
-                                 c("Linear","Bipinnate"), 
-                                 c("Linear","Helical"),
-                                 c("Linear","Transversal"),
-                                 c("Oblique","Transversal"),
-                                 c("Linear","Whorl"), c("Whorl","Transversal")
-                                 ), map_signif_level=TRUE, test="t.test")+
   ylab("Cost of Transport (pgO2/ml per zooid length moved)")+
   xlab("Architecture")
 
@@ -936,45 +941,51 @@ TukeyHSD(anova_COTr_arch, conf.level=.95) -> tukey_COTr_arch
 #COT by biovolume per mm across absolute speeds
 
 F6A <- ggplot(COT_with_means %>% 
-                filter(COT.abs.ml>-10 & Architecture != "Whorl chain"), 
-              aes(x=Speed_mm_s,y=COT.abs.ml)) +
-  geom_smooth(method="lm", color="black", formula = y ~ log(x)) +
-  #geom_smooth(method="lm", color="black") +
+                       filter(COT.abs.ml > -10 & Architecture != "Whorl chain"), 
+                     aes(x = Speed_mm_s, y = COT.abs.ml)) +
+  geom_smooth(method = "lm", color = "black", formula = y ~ log(x)) +
   stat_summary(fun = mean, geom = "point", aes(col = Architecture), size = 3) +
   stat_summary(fun.data = mean_se, geom = "errorbar", aes(col = Architecture), width = 0.2) +
+  geom_point(data = COT_with_means %>% filter(COT.abs.ml > -10 & Architecture != "Whorl chain"), 
+              aes(x = Speed_mm_s, y = COT.abs.ml, col = Architecture), 
+              width = 0.2, height = 0, alpha = 0.2) +
   scale_color_manual(values = c("Transversal" = "green4", "Oblique" = "red1", "Linear" = "darkorange1", 
                                 "Bipinnate" = "cyan4", "Helical" = "gold1", "Whorl" = "darkorchid4", 
                                 "Cluster" = "magenta")) +
   ylab("Cost of Transport (pgO2/ml per mm moved)") + 
   xlab("Speed (mm/s)") + 
-  theme_bw()+ ylim(0,NA)+
-  guides(color = "none") 
+  theme_bw() + 
+  ylim(0, NA) + 
+  guides(color = "none")
 
 ##### Figure 6B #####
 
 #COT by biovolume per cm across relative speeds
 
 F6B <- ggplot(COT_with_means %>% 
-                filter(COT.abs.ml>-10 & Architecture != "Whorl chain"), 
-              aes(x=BLperSecond,y=COT.rel.ml)) +
-  geom_smooth(method="lm", color="black", formula = y ~ log(x)) +
-  #geom_smooth(method="lm", color="black") +
+                filter(COT.abs.ml > -10 & Architecture != "Whorl chain"), 
+              aes(x = BLperSecond, y = COT.rel.ml)) +
+  geom_smooth(method = "lm", color = "black", formula = y ~ log(x)) +
   stat_summary(fun = mean, geom = "point", aes(col = Architecture), size = 3) +
   stat_summary(fun.data = mean_se, geom = "errorbar", aes(col = Architecture), width = 0.2) +
+  geom_point(data = COT_with_means %>% filter(COT.abs.ml > -10 & Architecture != "Whorl chain"), 
+              aes(x = BLperSecond, y = COT.rel.ml, col = Architecture), 
+              width = 0.2, height = 0, alpha = 0.2) +
   scale_color_manual(values = c("Transversal" = "green4", "Oblique" = "red1", "Linear" = "darkorange1", 
                                 "Bipinnate" = "cyan4", "Helical" = "gold1", "Whorl" = "darkorchid4", 
                                 "Cluster" = "magenta")) +
-  ylab("Cost of Transport (pgO2/ml per zooid length moved)") +
-  xlab("Speed (zooids/s)")+ ylim(0,NA)+
-  theme_bw()
+  ylab("Cost of Transport (pgO2/ml per zooid length moved)") + 
+  xlab("Speed (zooids/s)") + 
+  theme_bw() + 
+  ylim(0, NA)
 
 wrap_plots(F6A, F6B)
 
-glm(log(COT.abs.ml) ~ Speed_mm_s, data=COT_with_means %>% filter(!is.na(COT.abs.ml) & Architecture != "Whorl chain")) %>% summary()
-glm(log(COT.rel.ml) ~ BLperSecond, data=COT_with_means %>% filter(!is.na(COT.rel.ml) & Architecture != "Whorl chain")) %>% summary()
+lm(log(COT.abs.ml) ~ Speed_mm_s, data=COT_with_means %>% filter(!is.na(COT.abs.ml) & Architecture != "Whorl chain")) %>% summary()
+lm(log(COT.rel.ml) ~ BLperSecond, data=COT_with_means %>% filter(!is.na(COT.rel.ml) & Architecture != "Whorl chain")) %>% summary()
 
-glm(COT.abs.ml ~ Speed_mm_s, data=COT_with_means %>% filter(!is.na(COT.abs.ml) & Architecture != "Whorl chain")) %>% summary()
-glm(COT.rel.ml ~ BLperSecond, data=COT_with_means %>% filter(!is.na(COT.rel.ml) & Architecture != "Whorl chain")) %>% summary()
+lm(COT.abs.ml ~ Speed_mm_s, data=COT_with_means %>% filter(!is.na(COT.abs.ml) & Architecture != "Whorl chain")) %>% summary()
+lm(COT.rel.ml ~ BLperSecond, data=COT_with_means %>% filter(!is.na(COT.rel.ml) & Architecture != "Whorl chain")) %>% summary()
 
 #########################
 
@@ -1138,11 +1149,11 @@ Sm9B <- ggplot(COT_with_means %>%  filter(!is.na(COT.p.ml) & !is.na(Species)), a
 
 wrap_plots(Sm9A, Sm9B)
 
-glm(COT.p.ml ~ Speed_mm_s, data = COT_with_means %>%  
+lm(COT.p.ml ~ Speed_mm_s, data = COT_with_means %>%  
       filter(!is.na(COT.p.ml) & !is.na(Species)), 
     family = gaussian(link = "identity")) %>% summary()
 
-glm(COT.p.ml ~ BLperSecond, data = COT_with_means %>%  
+lm(COT.p.ml ~ BLperSecond, data = COT_with_means %>%  
       filter(!is.na(COT.p.ml) & !is.na(Species)), 
     family = gaussian(link = "identity")) %>% summary()
 

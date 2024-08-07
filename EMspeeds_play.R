@@ -435,6 +435,7 @@ speed_annotated %>%
   )) %>% 
   group_by(CSAmode) %>% 
   ggplot(aes(Zooid.number, BLperPulse)) +
+  geom_point(alpha=0.5,aes(color=Architecture))+
   stat_summary(fun = mean, geom = "point", aes(col = Architecture), size = 3) +
   stat_summary(fun.data = mean_se, geom = "errorbar", aes(col = Architecture), width = 0.2) +
   scale_color_manual(values = c("Transversal" = "green4", "Oblique" = "red1", "Linear" = "darkorange1", 
@@ -569,21 +570,19 @@ DVR <- speed_dvzs %>%
   ) %>%
   ggplot(aes(x = mean_Dorsoventral_Zooid_Stolon_Angle, y = mean_BLperPulse, col = Architecture)) +
   geom_smooth(method = 'lm', se = TRUE, color = "black") +
-  geom_point(cex=3) +
-  geom_errorbar(aes(ymin = mean_BLperPulse - sd_BLperPulse, ymax = mean_BLperPulse + sd_BLperPulse),
-    width = 2.5,
-    position = position_dodge(0.2)
-  ) +
+  geom_point(cex = 3) +
+  geom_errorbar(aes(ymin = mean_BLperPulse - sd_BLperPulse, ymax = mean_BLperPulse + sd_BLperPulse), width = 2.5, position = position_dodge(0.2)) +
+  geom_point(data = speed_dvzs %>% filter(!is.na(Speed_mms_abs)), aes(x = Dorsoventral_Zooid_Stolon_Angle, y = BLperPulse), width = 0.2, height = 0.2, alpha = 0.3) +
   scale_color_manual(values = c("Transversal" = "green4", "Oblique" = "red1", "Linear" = "darkorange1", 
                                 "Bipinnate" = "cyan4", "Helical" = "gold1", "Whorl" = "darkorchid4", 
                                 "Cluster" = "magenta")) +
   theme_bw() +
   xlab("Dorsoventral Zooid Rotation Angle") +
-  ylab("Speed (body lengths/pulsation)") 
+  ylab("Speed (body lengths/pulsation)")
 
 ## means with crossbars absolute speed #
 
-DVA <- speed_dvzs %>%
+DVA <- DVA <- speed_dvzs %>%
   filter(!is.na(Speed_mms_abs)) %>%
   group_by(Species, Architecture) %>%
   summarise(
@@ -593,14 +592,16 @@ DVA <- speed_dvzs %>%
   ) %>%
   ggplot(aes(x = mean_Dorsoventral_Zooid_Stolon_Angle, y = mean_Speed_mm_s, col = Architecture)) +
   geom_smooth(method = 'lm', se = TRUE, color = "black") +
-  geom_point(cex=3) +
-  geom_errorbar(aes(ymin = mean_Speed_mm_s - sd_Speed_mm_s, ymax = mean_Speed_mm_s + sd_Speed_mm_s),width = 2.5, position = position_dodge(0.2)) +
+  geom_point(cex = 3) +
+  geom_errorbar(aes(ymin = mean_Speed_mm_s - sd_Speed_mm_s, ymax = mean_Speed_mm_s + sd_Speed_mm_s), width = 2.5, position = position_dodge(0.2)) +
+  geom_point(data = speed_dvzs %>% filter(!is.na(Speed_mms_abs)), aes(x = Dorsoventral_Zooid_Stolon_Angle, y = Speed_mms_abs), width = 0.2, height = 0.2, alpha = 0.3) +
   scale_color_manual(values = c("Transversal" = "green4", "Oblique" = "red1", "Linear" = "darkorange1", 
                                 "Bipinnate" = "cyan4", "Helical" = "gold1", "Whorl" = "darkorchid4", 
                                 "Cluster" = "magenta")) +
   theme_bw() +
   xlab("Dorsoventral Zooid Rotation Angle") +
-  ylab("Speed (mm/s)")+ guides(color="none")
+  ylab("Speed (mm/s)") + 
+  guides(color = "none")
 
 wrap_plots(DVA,DVR)
 
