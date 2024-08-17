@@ -457,7 +457,7 @@ speed_annotated %>%
     Architecture %in% c("Transversal", "Cluster", "Whorl", "Oblique") ~ "CSA_Scaling",
     Architecture %in% c("Linear", "Bipinnate","Helical") ~ "CSA_Constant",
     TRUE ~ as.character(Architecture)
-  )) -> speed_groupedArch
+  )) -> speed_groupedArch 
 
 
 ### GLM mega-analysis
@@ -706,4 +706,15 @@ spp_inv %>% group_by(Species) %>% summarise(
   `Number of Speed Specimens` = n(),
   `Number of Speed Measurements` = sum(`Number of measurements`, na.rm = T)
 ) -> species_table
+
+spp_inv %>% group_by(Architecture) %>% summarise(
+  Architecture = first(Architecture),
+  `Mean Number of zooids` = mean(`Number of zooids`),
+  `Mean zooid length (mm)` = mean(`Mean zooid length (mm)`, na.rm = T),
+  `Pulsation rate (pulses/s)` = mean(`Pulsation rate (pulses/s)`, na.rm = T),
+  `Mean swimming speed (mm/s)` = mean(`Mean swimming speed (mm/s)`, na.rm = T),
+  `Number of Species` = n_distinct(Species),
+  `Number of Speed Specimens` = n(),
+  `Number of Speed Measurements` = sum(`Number of measurements`, na.rm = T)
+)
 
