@@ -926,11 +926,11 @@ F5D <- ggplot(COT_with_means %>%
 
 wrap_plots(F5A, F5B, F5C, F5D)
 
-anova_COTa_arch <- aov(COT.abs.ml ~ Architecture, data=COT_with_means %>% filter(Architecture != "Whorl chain"))
+anova_COTa_arch <- aov(COT.abs.ml ~ Architecture, data=COT_with_means %>% filter(!(Architecture %in% c("Whorl chain","Helical"))))
 summary(anova_COTa_arch)
 TukeyHSD(anova_COTa_arch, conf.level=.95) -> tukey_COTa_arch
 
-anova_COTr_arch <- aov(COT.rel.ml ~ Architecture, data=COT_with_means %>% filter(Architecture != "Whorl chain"))
+anova_COTr_arch <- aov(COT.rel.ml ~ Architecture, data=COT_with_means %>% filter(!(Architecture %in% c("Whorl chain","Helical"))))
 summary(anova_COTr_arch)
 TukeyHSD(anova_COTr_arch, conf.level=.95) -> tukey_COTr_arch
 

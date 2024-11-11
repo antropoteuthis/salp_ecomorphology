@@ -189,23 +189,29 @@ architecture_order <- c("Transversal", "Oblique", "Linear", "Bipinnate", "Helica
 
 F2A <- speed_annotated %>% filter(!is.na(Species) & Architecture != "Whorl chain") %>%  
   ggplot(aes(x = factor(Species %>% as.character(), levels = unique(Species[order(factor(Architecture, levels = architecture_order))])), 
-             y=Speed_mms_abs)) + geom_boxplot(aes(fill=Architecture))+guides(fill = "none") +
+             y=Speed_mms_abs)) + geom_boxplot(aes(fill=Architecture)) + geom_jitter(alpha=0.2,aes(color=Architecture)) +guides(fill = "none") +
   scale_fill_manual(values = c("Transversal" = "green4", "Oblique" = "red1", "Linear" = "darkorange1", 
                                "Bipinnate" = "cyan4", "Helical" = "gold1", "Whorl" = "darkorchid4", 
                                "Cluster" = "magenta")) +
+  scale_color_manual(values = c("Transversal" = "green4", "Oblique" = "red1", "Linear" = "darkorange1", 
+                               "Bipinnate" = "cyan4", "Helical" = "gold1", "Whorl" = "darkorchid4", 
+                               "Cluster" = "magenta")) +
   ylab("Speed (mm/s)") + xlab("Species")+
-  theme_bw()+theme(axis.text.x = element_text(angle = 90, hjust=1,vjust=1))
+  theme_bw()+theme(axis.text.x = element_text(angle = 90, hjust=1,vjust=1))+ guides(fill = "none", color="none") 
 
 ### FIG 2B ###
 
 F2B <- speed_annotated %>% filter(!is.na(Species) & !is.na(BLperPulse) & Architecture != "Whorl chain") %>%  
   ggplot(aes(x = factor(Species %>% as.character(), levels = unique(Species[order(factor(Architecture, levels = architecture_order))])), 
-             y=BLperPulse)) + geom_boxplot(aes(fill=Architecture))+guides(fill = "none") +
+             y=BLperPulse)) + geom_boxplot(aes(fill=Architecture)) + geom_jitter(alpha=0.2,aes(color=Architecture)) +guides(fill = "none") +
   scale_fill_manual(values = c("Transversal" = "green4", "Oblique" = "red1", "Linear" = "darkorange1", 
                                "Bipinnate" = "cyan4", "Helical" = "gold1", "Whorl" = "darkorchid4", 
                                "Cluster" = "magenta")) +
-  theme(axis.text.x = element_text(angle = 90)) + ylab("Speed (zooids/pulse)") +
-  xlab("Species") +theme_bw()+theme(axis.text.x = element_text(angle = 90, hjust=1))
+  scale_color_manual(values = c("Transversal" = "green4", "Oblique" = "red1", "Linear" = "darkorange1", 
+                                "Bipinnate" = "cyan4", "Helical" = "gold1", "Whorl" = "darkorchid4", 
+                                "Cluster" = "magenta")) + guides("none")+
+  theme(axis.text.x = element_text(angle = 90)) + ylab("Speed (zooid lengths/pulse)") +
+  xlab("Species") +theme_bw()+theme(axis.text.x = element_text(angle = 90, hjust=1))+ guides(fill = "none", color="none") 
 
 
 ###############
@@ -213,23 +219,27 @@ F2B <- speed_annotated %>% filter(!is.na(Species) & !is.na(BLperPulse) & Archite
 ### FIG 2C ###
 
 F2C <- speed_annotated %>% filter(!is.na(Architecture) & Architecture != "Whorl chain") %>% 
-  ggplot(aes(x=Architecture, y=Speed_mms_abs)) + 
-  geom_boxplot(aes(fill=Architecture))+
+  ggplot(aes(x=Architecture, y=Speed_mms_abs)) + geom_boxplot(aes(fill=Architecture)) + 
+   geom_jitter(alpha=0.2,aes(color=Architecture)) +guides(fill = "none") +
   scale_fill_manual(values = c("Transversal" = "green4", "Oblique" = "red1", "Linear" = "darkorange1", 
                                "Bipinnate" = "cyan4", "Helical" = "gold1", "Whorl" = "darkorchid4", 
-                               "Cluster" = "magenta")) + theme_bw()+
- theme(axis.text.x = element_text(angle = 90, hjust=1)) + ylab("Speed (mm/s)")+ guides(fill = "none") +
-  geom_signif(comparisons = list(c("Bipinnate","Cluster"), c("Linear","Bipinnate"), c("Linear","Helical")), map_signif_level=TRUE, test="t.test")
+                               "Cluster" = "magenta")) +
+  scale_color_manual(values = c("Transversal" = "green4", "Oblique" = "red1", "Linear" = "darkorange1", 
+                                "Bipinnate" = "cyan4", "Helical" = "gold1", "Whorl" = "darkorchid4", 
+                                "Cluster" = "magenta")) + theme_bw()+
+ theme(axis.text.x = element_text(angle = 90, hjust=1)) + ylab("Speed (mm/s)")+ guides(fill = "none", color="none") 
 
 ### FIG 3B ###
 
-F2D <- speed_annotated %>% filter(!is.na(Architecture) & BLperPulse<5 & Architecture != "Whorl chain") %>%  ggplot(aes(x=Architecture, y=BLperPulse)) + 
-  geom_boxplot(aes(fill=Architecture))+
+F2D <- speed_annotated %>% filter(!is.na(Architecture) & BLperPulse<5 & Architecture != "Whorl chain") %>% ggplot(aes(x=Architecture, y=BLperPulse)) + 
+  geom_boxplot(aes(fill=Architecture)) + geom_jitter(alpha=0.2,aes(color=Architecture)) +
   scale_fill_manual(values = c("Transversal" = "green4", "Oblique" = "red1", "Linear" = "darkorange1", 
                                "Bipinnate" = "cyan4", "Helical" = "gold1", "Whorl" = "darkorchid4", 
-                               "Cluster" = "magenta")) +theme_bw()+
-  theme(axis.text.x = element_text(angle = 90, hjust=1)) + ylab("Speed (zooids/pulse)") +
-  geom_signif(comparisons = list(c("Bipinnate","Cluster"), c("Linear","Bipinnate"), c("Linear","Cluster"), c("Linear","Helical")), map_signif_level=TRUE, test="t.test")
+                               "Cluster" = "magenta")) +
+  scale_color_manual(values = c("Transversal" = "green4", "Oblique" = "red1", "Linear" = "darkorange1", 
+                                "Bipinnate" = "cyan4", "Helical" = "gold1", "Whorl" = "darkorchid4", 
+                                "Cluster" = "magenta")) + theme_bw()+
+  theme(axis.text.x = element_text(angle = 90, hjust=1)) + ylab("Speed (zooid lengths/pulse)") + guides(fill = "none", color="none") 
 
 wrap_plots(F2A, F2B, F2C, F2D)
 
@@ -258,7 +268,7 @@ speed_annotated %>%
   group_by(Architecture) %>%
   t.test(Speed_mm_s ~ Architecture, data = .) %>% list() %>% .[[1]] %>% print()
 
-anova_mms_arch <- aov(Speed_mm_s ~ Architecture, data=speed_annotated %>% filter(Architecture != "Whorl chain"))
+anova_mms_arch <- aov(Speed_mm_s ~ Architecture, data=speed_annotated %>% filter(!(Architecture %in% c("Whorl chain","Helical","Oblique"))))
 summary(anova_mms_arch)
 TukeyHSD(anova_mms_arch, conf.level=.95) -> tukey_mms_arch
 tukey_mms_arch$Architecture[, "p adj"] %>% format(scientific = FALSE) %>% as.data.frame() -> tukey_mms_arch_p
@@ -279,7 +289,7 @@ ggplot(tukey_mms_arch_plot, aes(Comparison1, Comparison2, fill = p_value)) +
   theme_minimal()+
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 
-anova_blp_arch <- aov(BLperPulse ~ Architecture, data=speed_annotated)
+anova_blp_arch <- aov(BLperPulse ~ Architecture, data=speed_annotated %>% filter(!(Architecture %in% c("Whorl chain","Helical","Oblique"))))
 summary(anova_blp_arch)
 TukeyHSD(anova_blp_arch, conf.level=.95) -> tukey_blp_arch
 tukey_blp_arch$Architecture[, "p adj"] %>% format(scientific = FALSE) %>% as.data.frame() -> tukey_blp_arch_p
@@ -578,7 +588,7 @@ DVR <- speed_dvzs %>%
                                 "Cluster" = "magenta")) +
   theme_bw() +
   xlab("Dorsoventral Zooid Rotation Angle") +
-  ylab("Speed (body lengths/pulsation)")
+  ylab("Speed (zooid lengths/pulsation)")
 
 ## means with crossbars absolute speed #
 
