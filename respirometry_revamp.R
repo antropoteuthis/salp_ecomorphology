@@ -939,23 +939,47 @@ TukeyHSD(anova_COTr_arch, conf.level=.95) -> tukey_COTr_arch
 #### Figure 6A ####
 
 #COT by biovolume per mm across absolute speeds
+COT_aggregated_F6A <- COT_with_means %>%
+  filter(COT.abs.ml > -10, Architecture != "Whorl chain") %>%
+  group_by(Species, Architecture) %>%
+  summarize(
+    mean_COT = mean(COT.abs.ml, na.rm = TRUE),
+    se_COT = sd(COT.abs.ml, na.rm = TRUE) / sqrt(n()),
+    mean_Speed_mm_s = mean(Speed_mm_s, na.rm = TRUE),
+    .groups = "drop"
+  )
 
-F6A <- ggplot(COT_with_means %>% 
-                       filter(COT.abs.ml > -10 & Architecture != "Whorl chain"), 
-                     aes(x = Speed_mm_s, y = COT.abs.ml)) +
-  geom_smooth(method = "lm", color = "black", formula = y ~ log(x)) +
-  stat_summary(fun = mean, geom = "point", aes(col = Architecture), size = 3) +
-  stat_summary(fun.data = mean_se, geom = "errorbar", aes(col = Architecture), width = 0.2) +
-  geom_point(data = COT_with_means %>% filter(COT.abs.ml > -10 & Architecture != "Whorl chain"), 
-              aes(x = Speed_mm_s, y = COT.abs.ml, col = Architecture), 
-              width = 0.2, height = 0, alpha = 0.2) +
-  scale_color_manual(values = c("Transversal" = "green4", "Oblique" = "red1", "Linear" = "darkorange1", 
-                                "Bipinnate" = "cyan4", "Helical" = "gold1", "Whorl" = "darkorchid4", 
+F6A <- ggplot() +
+  # Raw data layer for individual points, ensuring we specify the full dataset
+  geom_point(data = COT_with_means %>% 
+               filter(COT.abs.ml > -10, Architecture != "Whorl chain"), 
+             aes(x = Speed_mm_s, y = COT.abs.ml, col = Architecture), 
+             alpha = 0.2) +
+  
+  # Smoothed line layer
+  geom_smooth(data = COT_with_means %>% 
+                filter(COT.abs.ml > -10, Architecture != "Whorl chain"),
+              aes(x = Speed_mm_s, y = COT.abs.ml), 
+              method = "lm", color = "black", formula = y ~ log(x)) +
+  
+  # Mean points and error bars from pre-aggregated data
+  geom_point(data = COT_aggregated_F6A, 
+             aes(x = mean_Speed_mm_s, y = mean_COT, col = Architecture), 
+             size = 3) +
+  geom_errorbar(data = COT_aggregated_F6A, 
+                aes(x = mean_Speed_mm_s, y = mean_COT, ymin = mean_COT - se_COT, 
+                    ymax = mean_COT + se_COT, col = Architecture), 
+                width = 0.2) +
+  
+  # Color, labels, and theme
+  scale_color_manual(values = c("Transversal" = "green4", "Oblique" = "red1", 
+                                "Linear" = "darkorange1", "Bipinnate" = "cyan4", 
+                                "Helical" = "gold1", "Whorl" = "darkorchid4", 
                                 "Cluster" = "magenta")) +
-  ylab("Cost of Transport (pgO2/ml per mm moved)") + 
-  xlab("Speed (mm/s)") + 
-  theme_bw() + 
-  ylim(0, NA) + 
+  ylab("Cost of Transport (pgO2/ml per mm moved)") +
+  xlab("Speed (mm/s)") +
+  theme_bw() +
+  ylim(0, NA) +
   guides(color = "none")
 
 ##### Figure 6B #####
@@ -963,11 +987,11 @@ F6A <- ggplot(COT_with_means %>%
 #COT by biovolume per cm across relative speeds
 
 F6B <- ggplot(COT_with_means %>% 
-                filter(COT.abs.ml > -10 & Architecture != "Whorl chain"), 
+                filter(COT.abs.ml > -10 & Architecture != "Whorl chain" & !is.na(Speed_mm_s) & !is.na(Species)) %>% group_by(Species), 
               aes(x = BLperSecond, y = COT.rel.ml)) +
   geom_smooth(method = "lm", color = "black", formula = y ~ log(x)) +
-  stat_summary(fun = mean, geom = "point", aes(col = Architecture), size = 3) +
-  stat_summary(fun.data = mean_se, geom = "errorbar", aes(col = Architecture), width = 0.2) +
+  stat_summary(fun = mean, geom = "point", aes(col = Architecture, group = Species), size = 2.7, alpha = 0.7) +
+  stat_summary(fun.data = mean_se, geom = "errorbar", aes(col = Architecture, group = Species), width = 0.2, alpha = 0.7) +
   geom_point(data = COT_with_means %>% filter(COT.abs.ml > -10 & Architecture != "Whorl chain"), 
               aes(x = BLperSecond, y = COT.rel.ml, col = Architecture), 
               width = 0.2, height = 0, alpha = 0.2) +
