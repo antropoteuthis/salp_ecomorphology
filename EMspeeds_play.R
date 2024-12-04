@@ -375,8 +375,8 @@ wrap_plots(Sm1A, Sm1B)
 
 # GLMs of speed vs pulsation rate
 
-lm(Speed_mms_abs ~ Pulses_per_second, data = speed_collapsed, family = gaussian(link = "identity")) %>% summary()
-lm(BLperSecond ~ Pulses_per_second, data = speed_collapsed, family = gaussian(link = "identity")) %>% summary()
+lm(Speed_mms_abs ~ Pulses_per_second, data = speed_annotated, family = gaussian(link = "identity")) %>% summary()
+lm(BLperSecond ~ Pulses_per_second, data = speed_annotated, family = gaussian(link = "identity")) %>% summary()
 
 #### SM Figure 2A #####
 
