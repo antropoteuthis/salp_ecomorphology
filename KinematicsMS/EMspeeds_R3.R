@@ -270,7 +270,7 @@ speed_collapsed %>%
   group_by(Architecture) %>%
   t.test(Speed_mm_s ~ Architecture, data = .) %>% list() %>% .[[1]] %>% print()
 
-anova_mms_arch <- aov(Speed_mm_s ~ Architecture, data=speed_collapsed %>% filter(!(Architecture %in% c("Whorl chain","Helical","Oblique"))))
+anova_mms_arch <- aov(Speed_mm_s ~ Architecture, data=speed_annotated %>% filter(!(Architecture %in% c("Whorl chain","Helical","Oblique"))))
 summary(anova_mms_arch)
 TukeyHSD(anova_mms_arch, conf.level=.95) -> tukey_mms_arch
 tukey_mms_arch$Architecture[, "p adj"] %>% format(scientific = FALSE) %>% as.data.frame() -> tukey_mms_arch_p
@@ -282,7 +282,14 @@ tukey_mms_arch_plot <- data.frame(
 )
 tukey_mms_arch_plot$p_value %>% as.character() %>%  as.numeric() -> tukey_mms_arch_plot$p_value
 
-anova_blp_arch <- aov(BLperPulse ~ Architecture, data=speed_collapsed %>% filter(!(Architecture %in% c("Whorl chain","Helical","Oblique"))))
+fixed_model <- lmer(Speed_mm_s ~ (1 | Architecture), data = speed_annotated %>% filter(!(Architecture %in% c("Whorl chain", "Helical", "Oblique"))))
+specimen_model <- lmer(Speed_mm_s ~ (1 | Architecture) + (1 | Filename), data = speed_annotated %>% filter(!(Architecture %in% c("Whorl chain", "Helical", "Oblique"))))
+species_model <- lmer(Speed_mm_s ~ (1 | Architecture) + (1 | Species), data = speed_annotated %>% filter(!(Architecture %in% c("Whorl chain", "Helical", "Oblique"))))
+mixed_model <- lmer(Speed_mm_s ~ (1 | Architecture) + (1 | Species) + (1 | Filename), data = speed_annotated %>% filter(!(Architecture %in% c("Whorl chain", "Helical", "Oblique"))))
+AIC(fixed_model, mixed_model, species_model, specimen_model)
+#mixed model wins
+
+anova_blp_arch <- aov(BLperPulse ~ Architecture, data=speed_annotated %>% filter(!(Architecture %in% c("Whorl chain","Helical","Oblique"))))
 summary(anova_blp_arch)
 TukeyHSD(anova_blp_arch, conf.level=.95) -> tukey_blp_arch
 tukey_blp_arch$Architecture[, "p adj"] %>% format(scientific = FALSE) %>% as.data.frame() -> tukey_blp_arch_p
@@ -293,6 +300,13 @@ tukey_blp_arch_plot <- data.frame(
   p_value = tukey_blp_arch_p$.
 )
 tukey_blp_arch_plot$p_value %>% as.character() %>%  as.numeric() -> tukey_blp_arch_plot$p_value
+
+fixed_model <- lmer(BLperPulse ~ (1 | Architecture), data = speed_annotated %>% filter(!(Architecture %in% c("Whorl chain", "Helical", "Oblique"))))
+specimen_model <- lmer(BLperPulse ~ (1 | Architecture) + (1 | Filename), data = speed_annotated %>% filter(!(Architecture %in% c("Whorl chain", "Helical", "Oblique"))))
+species_model <- lmer(BLperPulse ~ (1 | Architecture) + (1 | Species), data = speed_annotated %>% filter(!(Architecture %in% c("Whorl chain", "Helical", "Oblique"))))
+mixed_model <- lmer(BLperPulse ~ (1 | Architecture) + (1 | Filename) + (1 | Filename), data = speed_annotated %>% filter(!(Architecture %in% c("Whorl chain", "Helical", "Oblique"))))
+AIC(fixed_model, mixed_model, species_model, specimen_model)
+#mixed model wins
 
 # Combine results for plotting
 combined_plot <- rbind(
@@ -579,6 +593,14 @@ AIC(fixed_model, mixed_model, species_model, specimen_model)
 #specimen and mixed are equal, specimen model wins by simplicity
 
 lm(BLperPulse ~ Zooid.number, data=speed_annotated %>% filter(Architecture=="Bipinnate")) %>% summary()
+lmer(BLperPulse ~ Zooid.number + (1 | Filename), data = speed_annotated %>% filter(Architecture=="Bipinnate")) %>% summary()
+
+fixed_model <- lm(BLperPulse ~ Zooid.number, data = speed_annotated %>% filter(Architecture=="Bipinnate"))
+mixed_model <- lmer(BLperPulse ~ Zooid.number + (1 | Species) + (1 | Filename), data = speed_annotated %>% filter(Architecture=="Bipinnate"))
+species_model <- lmer(BLperPulse ~ Zooid.number + (1 | Species), data = speed_annotated %>% filter(Architecture=="Bipinnate"))
+specimen_model <- lmer(BLperPulse ~ Zooid.number + (1 | Filename), data = speed_annotated %>% filter(Architecture=="Bipinnate"))
+AIC(fixed_model, mixed_model, species_model, specimen_model)
+#specimen model wins 
 
 #####
 ### SM FIGURE 3 ###
@@ -667,32 +689,26 @@ DVA <- DVA <- speed_dvzs %>%
 wrap_plots(DVA,DVR)
 
 lm(Speed_mms_abs ~ Dorsoventral_Zooid_Stolon_Angle , data = speed_dvzs) %>% summary()
+lmer(Speed_mms_abs ~ Dorsoventral_Zooid_Stolon_Angle + (1 | Species) + (1 | Filename), data = speed_dvzs) %>% summary()
+
+fixed_model <- lm(Speed_mms_abs ~ Dorsoventral_Zooid_Stolon_Angle, data = speed_dvzs)
+mixed_model <- lmer(Speed_mms_abs ~ Dorsoventral_Zooid_Stolon_Angle + (1 | Species) + (1 | Filename), data = speed_dvzs)
+species_model <- lmer(Speed_mms_abs ~ Dorsoventral_Zooid_Stolon_Angle + (1 | Species), data = speed_dvzs)
+specimen_model <- lmer(Speed_mms_abs ~ Dorsoventral_Zooid_Stolon_Angle + (1 | Filename), data = speed_dvzs)
+AIC(fixed_model, mixed_model, species_model, specimen_model)
+#specimen model wins 
+
 lm(BLperPulse ~ Dorsoventral_Zooid_Stolon_Angle , data = speed_dvzs) %>% summary()
+lmer(BLperPulse ~ Dorsoventral_Zooid_Stolon_Angle + (1 | Species) + (1 | Filename), data = speed_dvzs) %>% summary()
+
+fixed_model <- lm(BLperPulse ~ Dorsoventral_Zooid_Stolon_Angle, data = speed_dvzs)
+mixed_model <- lmer(BLperPulse ~ Dorsoventral_Zooid_Stolon_Angle + (1 | Species) + (1 | Filename), data = speed_dvzs)
+species_model <- lmer(BLperPulse ~ Dorsoventral_Zooid_Stolon_Angle + (1 | Species), data = speed_dvzs)
+specimen_model <- lmer(BLperPulse ~ Dorsoventral_Zooid_Stolon_Angle + (1 | Filename), data = speed_dvzs)
+AIC(fixed_model, mixed_model, species_model, specimen_model)
+#mixed model wins
 
 ############## ## ###
-
-### JET motion
-
-speed_annotated %>% filter(Architecture != "Whorl chain" & !is.na(Architecture) ) %>% 
-  glm(Speed_mms_abs ~ Jet_motion_angle, data=.) %>% summary()
-
-speed_annotated %>% filter(Architecture != "Whorl chain" & !is.na(Architecture) ) %>% 
-  ggplot(aes(x=Jet_motion_angle, y=Speed_mm_s)) +
-  geom_point(aes(col=Architecture)) +
-  geom_smooth(method = 'lm', se = TRUE)+ylim(0,250)
-
-speed_annotated %>% filter(Architecture != "Whorl chain" & !is.na(Architecture) ) %>% 
-  glm(BLperPulse ~ Jet_motion_angle, data=.) %>% summary()
-
-speed_annotated %>% filter(Architecture != "Whorl chain" & !is.na(Architecture) ) %>% 
-  ggplot(aes(x=Jet_motion_angle, y=BLperSecond)) +
-  geom_point(aes(col=Architecture)) +
-  geom_smooth(method = 'lm', se = TRUE)+ylim(0,25)
-
-speed_annotated %>% filter(Architecture != "Whorl chain" & !is.na(Architecture) ) %>% 
-  ggplot(aes(x=Jet_motion_angle, y=BLperPulse)) +
-  geom_point(aes(col=Architecture)) +
-  geom_smooth(method = 'lm', se = TRUE)+ylim(0,7)
 
 ## SUMMARY TABLES ##
 

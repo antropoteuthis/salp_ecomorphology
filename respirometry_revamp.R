@@ -930,9 +930,23 @@ anova_COTa_arch <- aov(COT.abs.ml ~ Architecture, data=COT_with_means %>% filter
 summary(anova_COTa_arch)
 TukeyHSD(anova_COTa_arch, conf.level=.95) -> tukey_COTa_arch
 
+fixed_model <- lmer(COT.abs.ml ~ (1 | Architecture), data = COT_with_means %>% filter(!(Architecture %in% c("Whorl chain", "Helical", "Oblique"))))
+specimen_model <- lmer(COT.abs.ml ~ (1 | Architecture) + (1 | Specimen), data = COT_with_means %>% filter(!(Architecture %in% c("Whorl chain", "Helical", "Oblique"))))
+species_model <- lmer(COT.abs.ml ~ (1 | Architecture) + (1 | Species), data = COT_with_means %>% filter(!(Architecture %in% c("Whorl chain", "Helical", "Oblique"))))
+mixed_model <- lmer(COT.abs.ml ~ (1 | Architecture) + (1 | Species) + (1 | Specimen), data = COT_with_means %>% filter(!(Architecture %in% c("Whorl chain", "Helical", "Oblique"))))
+AIC(fixed_model, mixed_model, species_model, specimen_model)
+#specimen model wins
+
 anova_COTr_arch <- aov(COT.rel.ml ~ Architecture, data=COT_with_means %>% filter(!(Architecture %in% c("Whorl chain","Helical"))))
 summary(anova_COTr_arch)
 TukeyHSD(anova_COTr_arch, conf.level=.95) -> tukey_COTr_arch
+
+fixed_model <- lmer(COT.rel.ml ~ (1 | Architecture), data = COT_with_means %>% filter(!(Architecture %in% c("Whorl chain", "Helical", "Oblique"))))
+specimen_model <- lmer(COT.rel.ml ~ (1 | Architecture) + (1 | Specimen), data = COT_with_means %>% filter(!(Architecture %in% c("Whorl chain", "Helical", "Oblique"))))
+species_model <- lmer(COT.rel.ml ~ (1 | Architecture) + (1 | Species), data = COT_with_means %>% filter(!(Architecture %in% c("Whorl chain", "Helical", "Oblique"))))
+mixed_model <- lmer(COT.rel.ml ~ (1 | Architecture) + (1 | Species) + (1 | Specimen), data = COT_with_means %>% filter(!(Architecture %in% c("Whorl chain", "Helical", "Oblique"))))
+AIC(fixed_model, mixed_model, species_model, specimen_model)
+#specimen model wins
 
 ####################
 
@@ -1006,10 +1020,43 @@ F6B <- ggplot(COT_with_means %>%
 wrap_plots(F6A, F6B)
 
 lm(log(COT.abs.ml) ~ Speed_mm_s, data=COT_with_means %>% filter(!is.na(COT.abs.ml) & Architecture != "Whorl chain")) %>% summary()
+lmer(log(COT.abs.ml) ~ Speed_mm_s + (1 | Species), data = COT_with_means %>% filter(!is.na(COT.abs.ml) & Architecture != "Whorl chain")) %>% summary()
+
+fixed_model <- lm(log(COT.abs.ml) ~ Speed_mm_s, data=COT_with_means %>% filter(!is.na(COT.abs.ml) & Architecture != "Whorl chain"))
+mixed_model <- lmer(log(COT.abs.ml) ~ Speed_mm_s + (1 | Species) + (1 | Specimen), data = COT_with_means %>% filter(!is.na(COT.abs.ml) & Architecture != "Whorl chain"))
+species_model <- lmer(log(COT.abs.ml) ~ Speed_mm_s + (1 | Species), data = COT_with_means %>% filter(!is.na(COT.abs.ml) & Architecture != "Whorl chain"))
+specimen_model <- lmer(log(COT.abs.ml) ~ Speed_mm_s + (1 | Specimen), data = COT_with_means %>% filter(!is.na(COT.abs.ml) & Architecture != "Whorl chain"))
+AIC(fixed_model, mixed_model, species_model, specimen_model)
+#species model wins
+
 lm(log(COT.rel.ml) ~ BLperSecond, data=COT_with_means %>% filter(!is.na(COT.rel.ml) & Architecture != "Whorl chain")) %>% summary()
 
+fixed_model <- lm(log(COT.rel.ml) ~ BLperSecond, data=COT_with_means %>% filter(!is.na(COT.rel.ml) & Architecture != "Whorl chain"))
+mixed_model <- lmer(log(COT.rel.ml) ~ BLperSecond + (1 | Species) + (1 | Specimen), data = COT_with_means %>% filter(!is.na(COT.rel.ml) & Architecture != "Whorl chain"))
+species_model <- lmer(log(COT.rel.ml) ~ BLperSecond + (1 | Species), data = COT_with_means %>% filter(!is.na(COT.rel.ml) & Architecture != "Whorl chain"))
+specimen_model <- lmer(log(COT.rel.ml) ~ BLperSecond + (1 | Specimen), data = COT_with_means %>% filter(!is.na(COT.rel.ml) & Architecture != "Whorl chain"))
+AIC(fixed_model, mixed_model, species_model, specimen_model)
+#species model wins
+
 lm(COT.abs.ml ~ Speed_mm_s, data=COT_with_means %>% filter(!is.na(COT.abs.ml) & Architecture != "Whorl chain")) %>% summary()
+lmer(COT.abs.ml ~ Speed_mm_s + (1 | Species), data = COT_with_means %>% filter(!is.na(COT.abs.ml) & Architecture != "Whorl chain")) %>% summary()
+
+fixed_model <- lm(COT.abs.ml ~ Speed_mm_s, data=COT_with_means %>% filter(!is.na(COT.abs.ml) & Architecture != "Whorl chain"))
+mixed_model <- lmer(COT.abs.ml ~ Speed_mm_s + (1 | Species) + (1 | Specimen), data = COT_with_means %>% filter(!is.na(COT.abs.ml) & Architecture != "Whorl chain"))
+species_model <- lmer(COT.abs.ml ~ Speed_mm_s + (1 | Species), data = COT_with_means %>% filter(!is.na(COT.abs.ml) & Architecture != "Whorl chain"))
+specimen_model <- lmer(COT.abs.ml ~ Speed_mm_s + (1 | Specimen), data = COT_with_means %>% filter(!is.na(COT.abs.ml) & Architecture != "Whorl chain"))
+AIC(fixed_model, mixed_model, species_model, specimen_model)
+#species model wins
+
 lm(COT.rel.ml ~ BLperSecond, data=COT_with_means %>% filter(!is.na(COT.rel.ml) & Architecture != "Whorl chain")) %>% summary()
+lmer(COT.rel.ml ~ BLperSecond + (1 | Species), data = COT_with_means %>% filter(!is.na(COT.rel.ml) & Architecture != "Whorl chain")) %>% summary()
+
+fixed_model <- lm(COT.rel.ml ~ BLperSecond, data=COT_with_means %>% filter(!is.na(COT.rel.ml) & Architecture != "Whorl chain"))
+mixed_model <- lmer(COT.rel.ml ~ BLperSecond + (1 | Species) + (1 | Specimen), data = COT_with_means %>% filter(!is.na(COT.rel.ml) & Architecture != "Whorl chain"))
+species_model <- lmer(COT.rel.ml ~ BLperSecond + (1 | Species), data = COT_with_means %>% filter(!is.na(COT.rel.ml) & Architecture != "Whorl chain"))
+specimen_model <- lmer(COT.rel.ml ~ BLperSecond + (1 | Specimen), data = COT_with_means %>% filter(!is.na(COT.rel.ml) & Architecture != "Whorl chain"))
+AIC(fixed_model, mixed_model, species_model, specimen_model)
+#species model wins
 
 #########################
 
@@ -1130,10 +1177,26 @@ wrap_plots(Sm8A, Sm8B)
 lm(COT.p.ml ~ COT.abs.ml, data = COT_with_means %>%  
       filter(!is.na(COT.p.ml) & !is.na(Species)), 
     family = gaussian(link = "identity")) %>% summary()
+lmer(COT.p.ml ~ COT.abs.ml + (1 | Species), data = COT_with_means %>% filter(!is.na(COT.p.ml) & !is.na(Species))) %>% summary()
+
+fixed_model <- lm(COT.p.ml ~ COT.abs.ml, data=COT_with_means %>% filter(!is.na(COT.p.ml) & !is.na(Species)))
+mixed_model <- lmer(COT.p.ml ~ COT.abs.ml + (1 | Species) + (1 | Specimen), data = COT_with_means %>% filter(!is.na(COT.p.ml) & !is.na(Species)))
+species_model <- lmer(COT.p.ml ~ COT.abs.ml + (1 | Species), data = COT_with_means %>% filter(!is.na(COT.p.ml) & !is.na(Species)))
+specimen_model <- lmer(COT.p.ml ~ COT.abs.ml + (1 | Specimen), data = COT_with_means %>% filter(!is.na(COT.p.ml) & !is.na(Species)))
+AIC(fixed_model, mixed_model, species_model, specimen_model)
+#species model wins
 
 lm(COT.p.ml ~ COT.rel.ml, data = COT_with_means %>%  
       filter(!is.na(COT.p.ml) & !is.na(Species)), 
     family = gaussian(link = "identity")) %>% summary()
+lmer(COT.p.ml ~ COT.rel.ml + (1 | Species), data = COT_with_means %>% filter(!is.na(COT.p.ml) & !is.na(Species))) %>% summary()
+
+fixed_model <- lm(COT.p.ml ~ COT.rel.ml, data=COT_with_means %>% filter(!is.na(COT.p.ml) & !is.na(Species)))
+mixed_model <- lmer(COT.p.ml ~ COT.rel.ml + (1 | Species) + (1 | Specimen), data = COT_with_means %>% filter(!is.na(COT.p.ml) & !is.na(Species)))
+species_model <- lmer(COT.p.ml ~ COT.rel.ml + (1 | Species), data = COT_with_means %>% filter(!is.na(COT.p.ml) & !is.na(Species)))
+specimen_model <- lmer(COT.p.ml ~ COT.rel.ml + (1 | Specimen), data = COT_with_means %>% filter(!is.na(COT.p.ml) & !is.na(Species)))
+AIC(fixed_model, mixed_model, species_model, specimen_model)
+#species model wins
 
 ##########################
 
@@ -1174,12 +1237,26 @@ Sm9B <- ggplot(COT_with_means %>%  filter(!is.na(COT.p.ml) & !is.na(Species)), a
 wrap_plots(Sm9A, Sm9B)
 
 lm(COT.p.ml ~ Speed_mm_s, data = COT_with_means %>%  
-      filter(!is.na(COT.p.ml) & !is.na(Species)), 
-    family = gaussian(link = "identity")) %>% summary()
+      filter(!is.na(COT.p.ml) & !is.na(Species))) %>% summary()
+lmer(COT.p.ml ~ Speed_mm_s + (1 | Species), data = COT_with_means %>% filter(!is.na(COT.p.ml) & !is.na(Species))) %>% summary()
+
+fixed_model <- lm(COT.p.ml ~ Speed_mm_s, data=COT_with_means %>% filter(!is.na(COT.p.ml) & !is.na(Species)))
+mixed_model <- lmer(COT.p.ml ~ Speed_mm_s + (1 | Species) + (1 | Specimen), data = COT_with_means %>% filter(!is.na(COT.p.ml) & !is.na(Species)))
+species_model <- lmer(COT.p.ml ~ Speed_mm_s + (1 | Species), data = COT_with_means %>% filter(!is.na(COT.p.ml) & !is.na(Species)))
+specimen_model <- lmer(COT.p.ml ~ Speed_mm_s + (1 | Specimen), data = COT_with_means %>% filter(!is.na(COT.p.ml) & !is.na(Species)))
+AIC(fixed_model, mixed_model, species_model, specimen_model)
+#species model wins
 
 lm(COT.p.ml ~ BLperSecond, data = COT_with_means %>%  
-      filter(!is.na(COT.p.ml) & !is.na(Species)), 
-    family = gaussian(link = "identity")) %>% summary()
+      filter(!is.na(COT.p.ml) & !is.na(Species))) %>% summary()
+lmer(COT.p.ml ~ BLperSecond + (1 | Species), data = COT_with_means %>% filter(!is.na(COT.p.ml) & !is.na(Species))) %>% summary()
+
+fixed_model <- lm(COT.p.ml ~ BLperSecond, data=COT_with_means %>% filter(!is.na(COT.p.ml) & !is.na(Species)))
+mixed_model <- lmer(COT.p.ml ~ BLperSecond + (1 | Species) + (1 | Specimen), data = COT_with_means %>% filter(!is.na(COT.p.ml) & !is.na(Species)))
+species_model <- lmer(COT.p.ml ~ BLperSecond + (1 | Species), data = COT_with_means %>% filter(!is.na(COT.p.ml) & !is.na(Species)))
+specimen_model <- lmer(COT.p.ml ~ BLperSecond + (1 | Specimen), data = COT_with_means %>% filter(!is.na(COT.p.ml) & !is.na(Species)))
+AIC(fixed_model, mixed_model, species_model, specimen_model)
+#species model wins
 
 ##################
 
