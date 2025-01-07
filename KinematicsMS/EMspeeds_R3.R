@@ -19,6 +19,7 @@ library(ggpubr)
 library(reshape2)
 library(lme4)
 library(lmerTest)
+library(emmeans)
 
 ## Acquire list of filenames with speed data in your folder ##
 
@@ -270,49 +271,37 @@ speed_collapsed %>%
   group_by(Architecture) %>%
   t.test(Speed_mm_s ~ Architecture, data = .) %>% list() %>% .[[1]] %>% print()
 
-anova_mms_arch <- aov(Speed_mm_s ~ Architecture, data=speed_annotated %>% filter(!(Architecture %in% c("Whorl chain","Helical","Oblique"))))
-summary(anova_mms_arch)
-TukeyHSD(anova_mms_arch, conf.level=.95) -> tukey_mms_arch
-tukey_mms_arch$Architecture[, "p adj"] %>% format(scientific = FALSE) %>% as.data.frame() -> tukey_mms_arch_p
-tukey_mms_arch_p %>% rownames() %>% strsplit("-") -> tukey_mms_arch_split
-tukey_mms_arch_plot <- data.frame(
-  Comparison1 = sapply(tukey_mms_arch_split, `[`, 1),
-  Comparison2 = sapply(tukey_mms_arch_split, `[`, 2),
-  p_value = tukey_mms_arch_p$.
-)
-tukey_mms_arch_plot$p_value %>% as.character() %>%  as.numeric() -> tukey_mms_arch_plot$p_value
+### ANOVAS SPeed vs Architecture ###
 
-fixed_model <- lmer(Speed_mm_s ~ (1 | Architecture), data = speed_annotated %>% filter(!(Architecture %in% c("Whorl chain", "Helical", "Oblique"))))
-specimen_model <- lmer(Speed_mm_s ~ (1 | Architecture) + (1 | Filename), data = speed_annotated %>% filter(!(Architecture %in% c("Whorl chain", "Helical", "Oblique"))))
-species_model <- lmer(Speed_mm_s ~ (1 | Architecture) + (1 | Species), data = speed_annotated %>% filter(!(Architecture %in% c("Whorl chain", "Helical", "Oblique"))))
-mixed_model <- lmer(Speed_mm_s ~ (1 | Architecture) + (1 | Species) + (1 | Filename), data = speed_annotated %>% filter(!(Architecture %in% c("Whorl chain", "Helical", "Oblique"))))
+speed_annotated$Architecture <- as.factor(speed_annotated$Architecture)
+
+#Absolute Speed mms
+
+fixed_model <- lm(Speed_mm_s ~ Architecture, data = speed_annotated %>% filter(!(Architecture %in% c("Whorl chain", "Helical", "Oblique", NA))))
+specimen_model <- lmer(Speed_mm_s ~ Architecture + (1 | Filename), data = speed_annotated %>% filter(!(Architecture %in% c("Whorl chain", "Helical", "Oblique", NA))))
+species_model <- lmer(Speed_mm_s ~ Architecture + (1 | Species), data = speed_annotated %>% filter(!(Architecture %in% c("Whorl chain", "Helical", "Oblique", NA))))
+mixed_model <- lmer(Speed_mm_s ~ Architecture + (1 | Species/Filename), data = speed_annotated %>% filter(!(Architecture %in% c("Whorl chain", "Helical", "Oblique", NA))))
 AIC(fixed_model, mixed_model, species_model, specimen_model)
 #mixed model wins
+lmer(Speed_mm_s ~ Architecture + (1 | Species/Filename), data = speed_annotated %>% filter(!(Architecture %in% c("Whorl chain", "Helical", "Oblique", NA)))) %>% summary()
+emmeans(mixed_model, "Architecture") %>% contrast(method = "pairwise", adjust = "tukey") %>% summary()
+null_model <- lmer(Speed_mm_s ~ 1 + (1 | Species/Filename), data = speed_annotated %>% filter(!(Architecture %in% c("Whorl chain", "Helical", "Oblique", NA))), REML = FALSE)
+anova(null_model, mixed_model)
 
-anova_blp_arch <- aov(BLperPulse ~ Architecture, data=speed_annotated %>% filter(!(Architecture %in% c("Whorl chain","Helical","Oblique"))))
-summary(anova_blp_arch)
-TukeyHSD(anova_blp_arch, conf.level=.95) -> tukey_blp_arch
-tukey_blp_arch$Architecture[, "p adj"] %>% format(scientific = FALSE) %>% as.data.frame() -> tukey_blp_arch_p
-tukey_blp_arch_p %>% rownames() %>% strsplit("-") -> tukey_blp_arch_split
-tukey_blp_arch_plot <- data.frame(
-  Comparison1 = sapply(tukey_blp_arch_split, `[`, 1),
-  Comparison2 = sapply(tukey_blp_arch_split, `[`, 2),
-  p_value = tukey_blp_arch_p$.
-)
-tukey_blp_arch_plot$p_value %>% as.character() %>%  as.numeric() -> tukey_blp_arch_plot$p_value
+#Relative speed BLperPulse
 
-fixed_model <- lmer(BLperPulse ~ (1 | Architecture), data = speed_annotated %>% filter(!(Architecture %in% c("Whorl chain", "Helical", "Oblique"))))
-specimen_model <- lmer(BLperPulse ~ (1 | Architecture) + (1 | Filename), data = speed_annotated %>% filter(!(Architecture %in% c("Whorl chain", "Helical", "Oblique"))))
-species_model <- lmer(BLperPulse ~ (1 | Architecture) + (1 | Species), data = speed_annotated %>% filter(!(Architecture %in% c("Whorl chain", "Helical", "Oblique"))))
-mixed_model <- lmer(BLperPulse ~ (1 | Architecture) + (1 | Filename) + (1 | Filename), data = speed_annotated %>% filter(!(Architecture %in% c("Whorl chain", "Helical", "Oblique"))))
+fixed_model <- lm(BLperPulse ~ Architecture, data = speed_annotated %>% filter(!(Architecture %in% c("Whorl chain", "Helical", "Oblique", NA))))
+specimen_model <- lmer(BLperPulse ~ Architecture + (1 | Filename), data = speed_annotated %>% filter(!(Architecture %in% c("Whorl chain", "Helical", "Oblique", NA))))
+species_model <- lmer(BLperPulse ~ Architecture + (1 | Species), data = speed_annotated %>% filter(!(Architecture %in% c("Whorl chain", "Helical", "Oblique", NA))))
+mixed_model <- lmer(BLperPulse ~ Architecture + (1 | Species/Filename), data = speed_annotated %>% filter(!(Architecture %in% c("Whorl chain", "Helical", "Oblique", NA))))
 AIC(fixed_model, mixed_model, species_model, specimen_model)
 #mixed model wins
+lmer(BLperPulse ~ Architecture + (1 | Species/Filename), data = speed_annotated %>% filter(!(Architecture %in% c("Whorl chain", "Helical", "Oblique", NA)))) %>% summary()
+emmeans(mixed_model, "Architecture") %>% contrast(method = "pairwise", adjust = "tukey") %>% summary()
+null_model <- lmer(BLperPulse ~ 1 + (1 | Species/Filename), data = speed_annotated %>% filter(!(Architecture %in% c("Whorl chain", "Helical", "Oblique", NA))), REML = FALSE)
+anova(null_model, mixed_model)
 
-# Combine results for plotting
-combined_plot <- rbind(
-  data.frame(tukey_mms_arch_p, type = "MMS"),
-  data.frame(tukey_blp_arch_p, type = "BLP")
-)
+###
 
 ##############
 
