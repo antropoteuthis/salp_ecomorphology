@@ -20,6 +20,7 @@ library(reshape2)
 library(lme4)
 library(lmerTest)
 library(emmeans)
+library(performance)
 
 ## Acquire list of filenames with speed data in your folder ##
 
@@ -246,31 +247,6 @@ F2D <- speed_annotated %>% filter(!is.na(Architecture) & BLperPulse<5 & Architec
 
 wrap_plots(F2A, F2B, F2C, F2D)
 
-speed_collapsed %>%
-  filter(Architecture %in% c("Linear", "Cluster")) %>%
-  group_by(Architecture) %>%
-  t.test(BLperPulse ~ Architecture, data = .) %>% list() %>% .[[1]] %>% print()
-
-speed_collapsed %>%
-  filter(Architecture %in% c("Linear", "Bipinnate")) %>%
-  group_by(Architecture) %>%
-  t.test(BLperPulse ~ Architecture, data = .) %>% list() %>% .[[1]] %>% print()
-
-speed_collapsed %>%
-  filter(Architecture %in% c("Helical", "Bipinnate")) %>%
-  group_by(Architecture) %>%
-  t.test(BLperPulse ~ Architecture, data = .) %>% list() %>% .[[1]] %>% print()
-
-speed_collapsed %>%
-  filter(Architecture %in% c("Transversal", "Whorl")) %>%
-  group_by(Architecture) %>%
-  t.test(BLperPulse ~ Architecture, data = .) %>% list() %>% .[[1]] %>% print()
-
-speed_collapsed %>%
-  filter(Architecture %in% c("Helical", "Bipinnate")) %>%
-  group_by(Architecture) %>%
-  t.test(Speed_mm_s ~ Architecture, data = .) %>% list() %>% .[[1]] %>% print()
-
 ### ANOVAS SPeed vs Architecture ###
 
 speed_annotated$Architecture <- as.factor(speed_annotated$Architecture)
@@ -284,7 +260,7 @@ mixed_model <- lmer(Speed_mm_s ~ Architecture + (1 | Species/Filename), data = s
 AIC(fixed_model, mixed_model, species_model, specimen_model)
 #mixed model wins
 lmer(Speed_mm_s ~ Architecture + (1 | Species/Filename), data = speed_annotated %>% filter(!(Architecture %in% c("Whorl chain", "Helical", "Oblique", NA)))) %>% summary()
-emmeans(mixed_model, "Architecture") %>% contrast(method = "pairwise", adjust = "tukey") %>% summary()
+emmeans(mixed_model, "Architecture") %>% contrast(method = "pairwise", adjust = "tukey") %>% summary() %>% .[,c("contrast","estimate","p.value")]
 null_model <- lmer(Speed_mm_s ~ 1 + (1 | Species/Filename), data = speed_annotated %>% filter(!(Architecture %in% c("Whorl chain", "Helical", "Oblique", NA))), REML = FALSE)
 anova(null_model, mixed_model)
 
@@ -297,7 +273,7 @@ mixed_model <- lmer(BLperPulse ~ Architecture + (1 | Species/Filename), data = s
 AIC(fixed_model, mixed_model, species_model, specimen_model)
 #mixed model wins
 lmer(BLperPulse ~ Architecture + (1 | Species/Filename), data = speed_annotated %>% filter(!(Architecture %in% c("Whorl chain", "Helical", "Oblique", NA)))) %>% summary()
-emmeans(mixed_model, "Architecture") %>% contrast(method = "pairwise", adjust = "tukey") %>% summary()
+emmeans(mixed_model, "Architecture") %>% contrast(method = "pairwise", adjust = "tukey") %>% summary() %>% .[,c("contrast","estimate","p.value")]
 null_model <- lmer(BLperPulse ~ 1 + (1 | Species/Filename), data = speed_annotated %>% filter(!(Architecture %in% c("Whorl chain", "Helical", "Oblique", NA))), REML = FALSE)
 anova(null_model, mixed_model)
 
@@ -346,6 +322,7 @@ wrap_plots(Sm1A, Sm1B)
 
 lm(Speed_mms_abs ~ Pulses_per_second, data = speed_annotated, family = gaussian(link = "identity")) %>% summary()
 lmer(Speed_mms_abs ~ Pulses_per_second + (1 | Species/Filename), data = speed_annotated) %>% summary()
+r2(lmer(Speed_mms_abs ~ Pulses_per_second + (1 | Species/Filename), data = speed_annotated))
 
 fixed_model <- lm(Speed_mms_abs ~ Pulses_per_second, data = speed_annotated)
 mixed_model <- lmer(Speed_mms_abs ~ Pulses_per_second + (1 | Species/Filename), data = speed_annotated)
@@ -356,6 +333,7 @@ AIC(fixed_model, mixed_model, species_model, specimen_model)
 
 lm(BLperSecond ~ Pulses_per_second, data = speed_annotated, family = gaussian(link = "identity")) %>% summary()
 lmer(BLperSecond ~ Pulses_per_second + (1 | Species/Filename), data = speed_annotated) %>% summary()
+r2(lmer(BLperSecond ~ Pulses_per_second + (1 | Species/Filename), data = speed_annotated))
 
 fixed_model <- lm(BLperSecond ~ Pulses_per_second, data = speed_annotated)
 mixed_model <- lmer(BLperSecond ~ Pulses_per_second + (1 | Species/Filename), data = speed_annotated)
@@ -412,6 +390,7 @@ wrap_plots(Sm2A, Sm2B)
 
 lm(Speed_mms_abs ~ Zooid_length_mm, data = speed_annotated, family = gaussian(link = "identity")) %>% summary()
 lmer(Speed_mms_abs ~ Zooid_length_mm + (1 | Species/Filename), data = speed_annotated) %>% summary()
+r2(lmer(Speed_mms_abs ~ Zooid_length_mm + (1 | Species/Filename), data = speed_annotated))
 
 fixed_model <- lm(Speed_mms_abs ~ Zooid_length_mm, data = speed_annotated)
 mixed_model <- lmer(Speed_mms_abs ~ Zooid_length_mm + (1 | Species/Filename), data = speed_annotated)
@@ -422,6 +401,7 @@ AIC(fixed_model, mixed_model, species_model, specimen_model)
 
 lm(Speed_mms_abs/Pulses_per_second ~ Zooid_length_mm, data = speed_annotated, family = gaussian(link = "identity")) %>% summary()
 lmer(Speed_mms_abs/Pulses_per_second ~ Zooid_length_mm + (1 | Species/Filename), data = speed_annotated) %>% summary()
+r2(lmer(Speed_mms_abs/Pulses_per_second ~ Zooid_length_mm + (1 | Species/Filename), data = speed_annotated))
 
 fixed_model <- lm(Speed_mms_abs/Pulses_per_second ~ Zooid_length_mm, data = speed_annotated)
 mixed_model <- lmer(Speed_mms_abs/Pulses_per_second ~ Zooid_length_mm + (1 | Species/Filename), data = speed_annotated)
@@ -460,6 +440,7 @@ speed_annotated %>%
 
 lm(Speed_mms_abs ~ Zooid.number, data=speed_annotated %>% filter(Architecture %in% c("Linear","Bipinnate", "Helical"))) %>% summary()
 lmer(Speed_mms_abs ~ Zooid.number + (1 | Species), data = speed_annotated %>% filter(!(Architecture %in% c("Linear","Bipinnate", "Helical")))) %>% summary()
+lmer(Speed_mms_abs ~ Zooid.number + (1 | Species), data = speed_annotated %>% filter(!(Architecture %in% c("Linear","Bipinnate", "Helical")))) %>% r2()
 
 fixed_model <- lm(Speed_mms_abs ~ Zooid.number, data = speed_annotated %>% filter(!(Architecture %in% c("Linear","Bipinnate", "Helical"))))
 mixed_model <- lmer(Speed_mms_abs ~ Zooid.number + (1 | Species/Filename), data = speed_annotated %>% filter(!(Architecture %in% c("Linear","Bipinnate", "Helical"))))
@@ -470,6 +451,7 @@ AIC(fixed_model, mixed_model, species_model, specimen_model)
 
 lm(BLperPulse ~ Zooid.number, data=speed_annotated %>% filter(!(Architecture %in% c("Linear","Bipinnate", "Helical")))) %>% summary()
 lmer(BLperPulse ~ Zooid.number + (1 | Filename), data = speed_annotated %>% filter(!(Architecture %in% c("Linear","Bipinnate", "Helical")))) %>% summary()
+lmer(BLperPulse ~ Zooid.number + (1 | Filename), data = speed_annotated %>% filter(!(Architecture %in% c("Linear","Bipinnate", "Helical")))) %>% r2()
 
 fixed_model <- lm(BLperPulse ~ Zooid.number, data = speed_annotated %>% filter(!(Architecture %in% c("Linear","Bipinnate", "Helical"))))
 mixed_model <- lmer(BLperPulse ~ Zooid.number + (1 | Species/Filename), data = speed_annotated %>% filter(!(Architecture %in% c("Linear","Bipinnate", "Helical"))))
@@ -487,16 +469,7 @@ speed_annotated %>%
     TRUE ~ as.character(Architecture)
   )) -> speed_groupedArch 
 
-
 ### GLM mega-analysis
-
-# glm(Speed_mms_abs ~ Zooid_length_mm + Pulses_per_second + Zooid.number + CSAmode, data=speed_groupedArch) %>% summary() #significant
-# glm(Speed_mms_abs ~ Zooid_length_mm + Pulses_per_second + Zooid.number * CSAmode, data=speed_groupedArch) %>% summary()
-# glm(Speed_mms_abs ~ Zooid_length_mm + Zooid.number:CSAmode, data=speed_groupedArch) %>% summary()
-# glm(Speed_mms_abs ~ Pulses_per_second + Zooid.number:CSAmode, data=speed_groupedArch) %>% summary()
-
-# glm(Speed_mms_abs ~ Zooid_length_mm + Pulses_per_second + Zooid.number:CSAmode, data=speed_groupedArch) %>% summary()
-# glm(Speed_mms_abs ~ Zooid_length_mm + Pulses_per_second + Zooid.number + CSAmode + Zooid.number:CSAmode, data=speed_groupedArch) %>% summary()
 
 fixed_model <- glm(Speed_mms_abs ~ Zooid_length_mm + Pulses_per_second + Zooid.number + CSAmode, data=speed_groupedArch)
 mixed_model <- lmer(Speed_mms_abs ~ Zooid_length_mm + Pulses_per_second + Zooid.number + CSAmode + (1 | Species/Filename), data = speed_groupedArch)
@@ -507,20 +480,10 @@ AIC(fixed_model, mixed_model, species_model, specimen_model)
 
 lmer(Speed_mms_abs ~ Zooid_length_mm + Pulses_per_second + Zooid.number + CSAmode + (1 | Species/Filename), data = speed_groupedArch) %>% summary()
 lmer(Speed_mms_abs ~ Zooid_length_mm + Pulses_per_second + Zooid.number + CSAmode + (1 | Species/Filename), data = speed_groupedArch) %>% anova()
-
-# Assuming 'model' is your GLM model
-null_deviance <- 1213636
-
-# Deviance reduction by each factor
-deviance_reduction <- c(70229, 42748, 9859, 323369) #edit with anova values
-
-# Calculate the percentage of deviance explained for each factor
-percentage_deviance_explained <- deviance_reduction / null_deviance * 100
-
-# Display the results
-for (i in seq_along(percentage_deviance_explained)) {
-  cat(paste("Percentage of Deviance Explained by factor", i, ":", percentage_deviance_explained[i], "%\n"))
-}
+lmer(Speed_mms_abs ~ Zooid_length_mm + Pulses_per_second + Zooid.number + CSAmode + (1 | Species/Filename), data = speed_groupedArch) %>% r2()
+library(partR2)
+lmer(Speed_mms_abs ~ Zooid_length_mm + Pulses_per_second + Zooid.number + CSAmode + (1 | Species/Filename), data = speed_groupedArch) %>% 
+  partR2(partvars = c("Zooid_length_mm", "Pulses_per_second", "Zooid.number", "CSAmode"), R2_type = "marginal")
 
 #### FIGURE S4 ####
 
@@ -541,6 +504,8 @@ speed_annotated %>%
 
 lm(BLperPulse ~ Zooid.number, data=speed_annotated %>% filter(Architecture=="Whorl")) %>% summary()
 lmer(BLperPulse ~ Zooid.number + (1 | Filename), data = speed_annotated %>% filter(Architecture=="Whorl")) %>% summary()
+lmer(BLperPulse ~ Zooid.number + (1 | Filename), data = speed_annotated %>% filter(Architecture=="Whorl")) %>% r2()
+
 
 fixed_model <- lm(BLperPulse ~ Zooid.number, data = speed_annotated %>% filter(Architecture=="Whorl"))
 mixed_model <- lmer(BLperPulse ~ Zooid.number + (1 | Species/Filename), data = speed_annotated %>% filter(Architecture=="Whorl"))
@@ -551,6 +516,7 @@ AIC(fixed_model, mixed_model, species_model, specimen_model)
 
 lm(BLperPulse ~ Zooid.number, data=speed_annotated %>% filter(Architecture=="Cluster")) %>% summary()
 lmer(BLperPulse ~ Zooid.number + (1 | Filename), data = speed_annotated %>% filter(Architecture=="Cluster")) %>% summary()
+lmer(BLperPulse ~ Zooid.number + (1 | Filename), data = speed_annotated %>% filter(Architecture=="Cluster")) %>% r2()
 
 fixed_model <- lm(BLperPulse ~ Zooid.number, data = speed_annotated %>% filter(Architecture=="Cluster"))
 mixed_model <- lmer(BLperPulse ~ Zooid.number + (1 | Species/Filename), data = speed_annotated %>% filter(Architecture=="Cluster"))
@@ -560,6 +526,7 @@ AIC(fixed_model, mixed_model, species_model, specimen_model)
 #specimen model wins
 
 lm(BLperPulse ~ Zooid.number, data=speed_annotated %>% filter(Architecture=="Transversal")) %>% summary()
+lm(BLperPulse ~ Zooid.number, data=speed_annotated %>% filter(Architecture=="Transversal")) %>% r2()
 
 fixed_model <- lm(BLperPulse ~ Zooid.number, data = speed_annotated %>% filter(Architecture=="Transversal"))
 mixed_model <- lmer(BLperPulse ~ Zooid.number + (1 | Species/Filename), data = speed_annotated %>% filter(Architecture=="Transversal"))
@@ -570,6 +537,7 @@ AIC(fixed_model, mixed_model, species_model, specimen_model)
 
 lm(BLperPulse ~ Zooid.number, data=speed_annotated %>% filter(Architecture=="Linear")) %>% summary()
 lmer(BLperPulse ~ Zooid.number + (1 | Species), data = speed_annotated %>% filter(Architecture=="Linear")) %>% summary()
+lmer(BLperPulse ~ Zooid.number + (1 | Species), data = speed_annotated %>% filter(Architecture=="Linear")) %>% r2()
 
 fixed_model <- lm(BLperPulse ~ Zooid.number, data = speed_annotated %>% filter(Architecture=="Linear"))
 mixed_model <- lmer(BLperPulse ~ Zooid.number + (1 | Species/Filename), data = speed_annotated %>% filter(Architecture=="Linear"))
@@ -580,6 +548,8 @@ AIC(fixed_model, mixed_model, species_model, specimen_model)
 
 lm(BLperPulse ~ Zooid.number, data=speed_annotated %>% filter(Architecture=="Bipinnate")) %>% summary()
 lmer(BLperPulse ~ Zooid.number + (1 | Filename), data = speed_annotated %>% filter(Architecture=="Bipinnate")) %>% summary()
+lmer(BLperPulse ~ Zooid.number + (1 | Filename), data = speed_annotated %>% filter(Architecture=="Bipinnate")) %>% r2()
+
 
 fixed_model <- lm(BLperPulse ~ Zooid.number, data = speed_annotated %>% filter(Architecture=="Bipinnate"))
 mixed_model <- lmer(BLperPulse ~ Zooid.number + (1 | Species/Filename), data = speed_annotated %>% filter(Architecture=="Bipinnate"))
@@ -676,6 +646,7 @@ wrap_plots(DVA,DVR)
 
 lm(Speed_mms_abs ~ Dorsoventral_Zooid_Stolon_Angle , data = speed_dvzs) %>% summary()
 lmer(Speed_mms_abs ~ Dorsoventral_Zooid_Stolon_Angle + (1 | Species/Filename), data = speed_dvzs) %>% summary()
+lmer(Speed_mms_abs ~ Dorsoventral_Zooid_Stolon_Angle + (1 | Species/Filename), data = speed_dvzs) %>% r2()
 
 fixed_model <- lm(Speed_mms_abs ~ Dorsoventral_Zooid_Stolon_Angle, data = speed_dvzs)
 mixed_model <- lmer(Speed_mms_abs ~ Dorsoventral_Zooid_Stolon_Angle + (1 | Species/Filename), data = speed_dvzs)
@@ -686,6 +657,7 @@ AIC(fixed_model, mixed_model, species_model, specimen_model)
 
 lm(BLperPulse ~ Dorsoventral_Zooid_Stolon_Angle , data = speed_dvzs) %>% summary()
 lmer(BLperPulse ~ Dorsoventral_Zooid_Stolon_Angle + (1 | Species/Filename), data = speed_dvzs) %>% summary()
+lmer(BLperPulse ~ Dorsoventral_Zooid_Stolon_Angle + (1 | Species/Filename), data = speed_dvzs) %>% r2()
 
 fixed_model <- lm(BLperPulse ~ Dorsoventral_Zooid_Stolon_Angle, data = speed_dvzs)
 mixed_model <- lmer(BLperPulse ~ Dorsoventral_Zooid_Stolon_Angle + (1 | Species/Filename), data = speed_dvzs)
