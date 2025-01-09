@@ -438,7 +438,21 @@ speed_annotated %>%
   xlab("Number of zooids")+
   facet_wrap(~CSAmode, scales = "free_x")
 
+#LMER Speed ~ Zooid number vs Constant species
 lm(Speed_mms_abs ~ Zooid.number, data=speed_annotated %>% filter(Architecture %in% c("Linear","Bipinnate", "Helical"))) %>% summary()
+lmer(Speed_mms_abs ~ Zooid.number + (1 | Species/Filename), data = speed_annotated %>% filter((Architecture %in% c("Linear","Bipinnate", "Helical")))) %>% summary()
+lmer(Speed_mms_abs ~ Zooid.number + (1 | Species/Filename), data = speed_annotated %>% filter((Architecture %in% c("Linear","Bipinnate", "Helical")))) %>% r2()
+
+fixed_model <- lm(Speed_mms_abs ~ Zooid.number, data = speed_annotated %>% filter((Architecture %in% c("Linear","Bipinnate", "Helical"))))
+mixed_model <- lmer(Speed_mms_abs ~ Zooid.number + (1 | Species/Filename), data = speed_annotated %>% filter((Architecture %in% c("Linear","Bipinnate", "Helical"))))
+species_model <- lmer(Speed_mms_abs ~ Zooid.number + (1 | Species), data = speed_annotated %>% filter((Architecture %in% c("Linear","Bipinnate", "Helical"))))
+specimen_model <- lmer(Speed_mms_abs ~ Zooid.number + (1 | Filename), data = speed_annotated %>% filter((Architecture %in% c("Linear","Bipinnate", "Helical"))))
+AIC(fixed_model, mixed_model, species_model, specimen_model)
+#mixed model wins
+
+#LMER Speed ~ Zooid number vs Scaling species
+
+lm(Speed_mms_abs ~ Zooid.number, data=speed_annotated %>% filter(!(Architecture %in% c("Linear","Bipinnate", "Helical")))) %>% summary()
 lmer(Speed_mms_abs ~ Zooid.number + (1 | Species), data = speed_annotated %>% filter(!(Architecture %in% c("Linear","Bipinnate", "Helical")))) %>% summary()
 lmer(Speed_mms_abs ~ Zooid.number + (1 | Species), data = speed_annotated %>% filter(!(Architecture %in% c("Linear","Bipinnate", "Helical")))) %>% r2()
 
@@ -448,6 +462,21 @@ species_model <- lmer(Speed_mms_abs ~ Zooid.number + (1 | Species), data = speed
 specimen_model <- lmer(Speed_mms_abs ~ Zooid.number + (1 | Filename), data = speed_annotated %>% filter(!(Architecture %in% c("Linear","Bipinnate", "Helical"))))
 AIC(fixed_model, mixed_model, species_model, specimen_model)
 #species mixed and specimen and mixed have equal footing., species chosen for simplicity.
+
+#LMER BLperPulse ~ Zooid number vs Constant species
+
+lm(BLperPulse ~ Zooid.number, data=speed_annotated %>% filter(Architecture %in% c("Linear","Bipinnate", "Helical"))) %>% summary()
+lmer(BLperPulse ~ Zooid.number + (1 | Species/Filename), data = speed_annotated %>% filter((Architecture %in% c("Linear","Bipinnate", "Helical")))) %>% summary()
+lmer(BLperPulse ~ Zooid.number + (1 | Species/Filename), data = speed_annotated %>% filter((Architecture %in% c("Linear","Bipinnate", "Helical")))) %>% r2()
+
+fixed_model <- lm(BLperPulse ~ Zooid.number, data = speed_annotated %>% filter((Architecture %in% c("Linear","Bipinnate", "Helical"))))
+mixed_model <- lmer(BLperPulse ~ Zooid.number + (1 | Species/Filename), data = speed_annotated %>% filter((Architecture %in% c("Linear","Bipinnate", "Helical"))))
+species_model <- lmer(BLperPulse ~ Zooid.number + (1 | Species), data = speed_annotated %>% filter((Architecture %in% c("Linear","Bipinnate", "Helical"))))
+specimen_model <- lmer(BLperPulse ~ Zooid.number + (1 | Filename), data = speed_annotated %>% filter((Architecture %in% c("Linear","Bipinnate", "Helical"))))
+AIC(fixed_model, mixed_model, species_model, specimen_model)
+#mixed model wins
+
+#LMER BLperPulse ~ Zooid number vs Scaling species
 
 lm(BLperPulse ~ Zooid.number, data=speed_annotated %>% filter(!(Architecture %in% c("Linear","Bipinnate", "Helical")))) %>% summary()
 lmer(BLperPulse ~ Zooid.number + (1 | Filename), data = speed_annotated %>% filter(!(Architecture %in% c("Linear","Bipinnate", "Helical")))) %>% summary()
@@ -506,7 +535,6 @@ lm(BLperPulse ~ Zooid.number, data=speed_annotated %>% filter(Architecture=="Who
 lmer(BLperPulse ~ Zooid.number + (1 | Filename), data = speed_annotated %>% filter(Architecture=="Whorl")) %>% summary()
 lmer(BLperPulse ~ Zooid.number + (1 | Filename), data = speed_annotated %>% filter(Architecture=="Whorl")) %>% r2()
 
-
 fixed_model <- lm(BLperPulse ~ Zooid.number, data = speed_annotated %>% filter(Architecture=="Whorl"))
 mixed_model <- lmer(BLperPulse ~ Zooid.number + (1 | Species/Filename), data = speed_annotated %>% filter(Architecture=="Whorl"))
 species_model <- lmer(BLperPulse ~ Zooid.number + (1 | Species), data = speed_annotated %>% filter(Architecture=="Whorl"))
@@ -549,7 +577,6 @@ AIC(fixed_model, mixed_model, species_model, specimen_model)
 lm(BLperPulse ~ Zooid.number, data=speed_annotated %>% filter(Architecture=="Bipinnate")) %>% summary()
 lmer(BLperPulse ~ Zooid.number + (1 | Filename), data = speed_annotated %>% filter(Architecture=="Bipinnate")) %>% summary()
 lmer(BLperPulse ~ Zooid.number + (1 | Filename), data = speed_annotated %>% filter(Architecture=="Bipinnate")) %>% r2()
-
 
 fixed_model <- lm(BLperPulse ~ Zooid.number, data = speed_annotated %>% filter(Architecture=="Bipinnate"))
 mixed_model <- lmer(BLperPulse ~ Zooid.number + (1 | Species/Filename), data = speed_annotated %>% filter(Architecture=="Bipinnate"))

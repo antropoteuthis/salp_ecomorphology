@@ -1,0 +1,149 @@
+Reviewer 3: I have read through the manuscript again. Here are, hopefully, the final comments needed.
+
+Fig 1: In the figure caption, refer to the rows by name to reduce confusion. This is particularly important for the row labeled “scaling”. As written is it not clear how scaling relates to this statement “expected frontal area increase factor”. Please ensure that the figure caption is clearly written and explanatory.
+
+>Done
+
+Figure 2: It is not clear how the view could be dorsoventral - this seems impossible. Please label dorsal, ventral, anterior, posterior, distal, proximal, lateral, etc., as appropriate. Fix the blue dashed line so that the arrow is pointing to the blue angle wedge. Otherwise, it appears that this dashed line is the angle being indicated. This could also be achieved by stating in the figure caption that the zooid-colony rotation angle is formed by the colony and zooid axe and is indicated by the blue wedge. It is also not clear whether this is an actual rotation or just an angle. Could the word “rotation” be removed for clarity?
+
+>Labeled oral and aboral. The view is dorsal for the top row of zooids, but ventral for the bottom row. The angle remains regardless of how you flip the colony around the stolon axis, regardless of which row of zooids presents as dorsal and which is ventral. We also labeled dorsal and ventral on the exposed sides of said zooids.
+>Fixed the dashed line arrow direction.
+>Rotation is the developmental process that wanes the angle.
+
+> ! New Caption: "Figure 2. Schematic of an oblique chain from the dorsoventral perspective (dorsal for the top row, ventral for the bottom row) showing the zooid and stolon axes and the zooid-colony angle (degree of linearity) relative to those axes, reduced by zooid rotation during colonial development (Damian-Serrano & Sutherland 2024). Black lines indicate gill bars (mostly occluded by the zooid axis) while gray lines represent endostyles."
+
+Line 84-85: Please change to, “to our knowledge, the effect of varying numbers…has never been investigated..” It is not possible to know with certainty that a topic has or has not been investigated throughout scientific history and throughout international journals.
+
+> ! change it
+
+Line 106: This paragraph spans multiple topics and is difficult to follow, especially given that the topic sentence includes “linearity of colonies” and “pulsation rates” which have not been defined yet and are not clearly defined at all (linearity of colonies) or not until later in the paragraph. I recommend splitting this paragraph into multiple paragraphs so that these terms and their relevance can be clearly explained to the reader.
+Line 107: Define degree of linearity and degree of parallelism or rephrase so that this is more clear. This is not made more clear in Figure 2. If the goal of Fig 2 is to explain these terms, then please include those terms, define them, and illustrate them in Figure 2. One way to do this is, if I understand this correctly, to simply state that linearity increases as the zooid-colony rotation angle decreases. It is not clear how parallelism could be achieved or how it could express linearity. These are different terms with different meanings.
+Line 109: State which angle is being referred to as “this angle”. Explain “developmental dorsoventral rotation”. It is not clear how this relates to the topic of this paragraph.
+
+>We labeled Fig. 2 with 90 - the degree of linearity. 
+> ! Reword: "The angle formed by the zooid and colony axes (Fig. 2), which is 90° - the degree of linearity of colonies, could influence swimming performance. This angle is determined by the degree of developmental dorsoventral zooid rotation, which can span from 90°, in transversal chains with no rotation, to 0° (perfect linearity), in some linear chains such as those from the species Soestia zonaria (Damian-Serrano & Sutherland, 2023). Strong reductions in the dorsoventral zooid rotation angle toward linear forms have evolved multiple times independently (Damian-Serrano et al. 2023), possibly due to adaptive advantages related to their swimming efficiency. 
+Body size generally predicts swimming velocity in many animals (Andersen et al. 2016). However, colonial animals with multiple swimming units may circumvent this size-speed relationship by having multiple propellers. Nonetheless, we hypothesize that zooid size could also influence swimming speed. 
+Finally, pulsation rates (the number of times a zooid in the colony exhales water out of the posterior excurrent siphon) may also influence swimming speed as has been shown in solitary salps (Madin 1990). Pulsation by salps serves the dual role of locomotion and filter feeding. The relationship between pulsation and speed might therefore be particularly relevant for species that undergo diel vertical migration (Madin et al. 1996) and in other species pulsation may serve to maximize filtration rates. Considering the tradeoffs between swimming and filtering, the eco-evolutionary relevance of swimming speed, and the hydrodynamic efficiency likely varies between species (Damian-Serrano et al. 2023)."
+
+Line 199-207: Define the variables t and n and connect them to your dataset (i.e., frame number, duration). Ensure that subscripts are correctly coded and formatted. Note that in lines 166-168 n was defined as sample size.
+
+> ! Add: "In Eq. 1, the subscript n refers to the iteration over each frame of the video analyzed. In Eq. 2, the variable t refers to instantaneous time points corresponding with frames where n = t1 and n+1 = t2. The conversion from frames to time points was carried out using the frame rate of the video and the spacing between chosen frames for analysis."
+
+Line 211: Ensure that in the preceding paragraphs that the resolution of the ruler used to make these measurements is included and then ensure that the accuracy of the measurements are correctly reported relative to the resolution to the calibration ruler. If the accuracy is low relative to the measurements, then include a statement of measurement uncertainty that carries through to the reported calculations, such as speed (line 206).
+
+> ??? gonna depend of 3D vs 2D, panama vs pieace of wire...
+
+Line 216: State the temporal resolution of the respiration measurements based on image sampling and ensure that reporting of these measurements reflects this accuracy.
+
+> ??? We did not base the respiration measurements on image sampling. Mean temporal interval spacing: 11.1 min, sd = 14.6 min, median = 7.3 min
+
+Include all test statistics and df. For example, in a linear regression, R^2 values should be included as the test statistic. This is missing on line 318 but present on line 320. Test statistics are also missing on lines 337 and 339, and subsequent paragraphs. Line 379, etc. All reported statistics are missing degrees of freedom, which obscures the actual tested sample sizes. 
+
+>Lines 337 and 339 were Tukey tests, what R2??? the sample sizes are provided above! 
+> ! Anywho, now we'll give them all the stats they want and more
+
+Line 318: Ensure that resolution of values matches resolution of instruments. Then, represent that resolution in the graphs and tables.
+
+> ! round every intercept to the nearest mm unit?
+
+Figure 3: The graphs are not labeled with A,B,C,D which makes it difficult to use the caption to understand the graphs. Ensure that the y-axis label for Species is aligned such that it does not look like the title for the lower graphs.
+
+>Done.
+
+Lines 347-340: Following on from early comment for Introduction and Figure 2, please use one term, e.g., zooid rotation angle or just zooid angle, and avoid switching between degree of linearity and parallelism (which seem to me to be addressing a more perpendicular position, not parallel).
+
+> ! change to zooid-colony angle. Parallelism means between the zooid axis and the colony axis, more linear = more parallel, less perpendicular
+
+Figure 4: Missing A, and B labels.
+
+>Done.
+
+Figure 5: explain “scaling frontal motion-orthogonal frontal area scaling modes” - this does not make sense to me and needs clarity and explanation here and in the text.
+
+> ! rework caption: "Figure 5. Linear relationships between relative swimming speed (zooid lengths per pulsation, specimen mean with standard errors) and number of zooids in the colony. (A) shows species with constant frontal area (N = 71). (B) shows species with a frontal area that is expected to scale with the number of zooids in the colony (N=29). Gray areas represent the 95% confidence intervals of the regressions.""
+
+Line 448: Take care with phrasing - “linear species” is nonsensical. Presumably, the intent here is that species with a low colony-zooid angle (or perhaps rotation angle? See comment relative to introduction and fig 2).
+
+> ! change it to ", where species presenting a linear colonial architecture had the fastest swiming speed (Fig. 3)"
+
+Line 539: Define “autoecology” or just use “ecology”.
+
+> ! change to "ecology"
+
+Line 550-551: Define “biological carbon pump”.
+
+> ! start the paragraph with the definiton: i.e. "The biological pump refers to the process by which biological activity (such as the feeding and defecation of salps) in the ocean moves carbon from the atmosphere and land runoff into the ocean's depths and seafloor sediments. Essentially, it's a mechanism driven by marine organisms that helps store carbon in the deep ocean, keeping it separate from shallow layers adjacent to the atmosphere where it could be remineralized and returned as carbon dioxide."
+> ! maybe cite "Décima, M., M. R. Stukel, S. D. Nodder, A. Gutiérrez-Rodríguez, K. E. Selph, A. L. Dos Santos, K. Safi, T. B. Kelly, F. Deans, S. E. Morales et al. 2023. Salp blooms drive strong increases in passive carbon export in the Southern Ocean. Nat. Commun. 14: 425."
+
+Throughout the study, the issue of lumping all data together looms large as contributing to many statistically significant findings which may simply be due to type I error - inflated sample sizes and pseudoreplication.
+Lines 388-399: Statistical modeling should be presented in Methods in the statistics section. Please include individual, colony and species in this model. Otherwise, it seems likely that the analysis will yield a statistically significant result due to type I error (pseudoreplication). Applying the AIC approach would work well here, because the models could be compared across these factors. This will also allow for or not allow for later claims that species is irrelevant.
+Line 616: Some of this issue would be addressed if species and individual colony were included as predictors in the linear models of the present study. If they do not improve the statistical model, then, at the very least, it would offer support for this statement even if the phylogenetic analyses were not performed at all. There seems to be a conflation of issues here.
+Separately, the lumping of data together for many of the statistics in this study, violates many statistical assumptions, regardless of discussions about phylogenetic comparative methods.
+
+>Rework statisctics methods paragraph: "Statistical Analyses – All data wrangling and statistics were carried out in R 3.6.3 (R Core Team 2021). Before each quantitative statistical analysis, we compared an array of linear mixed random-and-fixed effects models, where the main predictors were coded as fixed effects. One of the models would have only the fixed effects, while another would also incorporate the random effects of the specimen and/or those of the species to control for pseudoreplication. The random effects term of the mixed model where both species and specimen terms were included had specimen coded as a nested  term within species. We then used Akaike’s Information Criterion (AIC) to identify the best fitting model. When two or more models had a delta within 2 units, they were considered to have a comparable goodness-of-fit. In such cases, the simplest model with least number of parameters was chosen. To test for differences between architectures, we used linear mixed models with Tukey’s post-hoc pairwise contrasts calculated using estimated marginal means, reporting the difference magnitude and the p-value in supplementary tables S2A and S2B. We tested the significance of the effect of architecture by comparing the mixed model to a null model without the fixed effects of architecture using an ANOVA. To test the relationships between pairs of continuous variables across architectures (e.g. swimming speed vs. number of zooids), we used linear mixed model regressions. We evaluated the significance of the slope parameter when compared against a flat slope (one-tailed t-test) to test whether changes in the independent variable (e.g. number of zooids) were associated with changes in the dependent variable (e.g. swimming speed). Owing to the patchiness of some species despite 80+ hours spent underwater (Table S1), we used replicate measurements (n) from each specimen (N) in swimming speed ANOVAs and regressions.  We used an exponential regression to test the relationship between speed and COT. Specimen means (N) were used for all COT comparisons and regressions. Individual measurements (n) were used up to determine oxygen consumption rates. To evaluate the relative contribution of zooid size, pulsation rate, zooid number, and architecture type on swimming speed, we fitted a linear mixed model and evaluated the significance and proportion of variance explained by each factor using their marginal R2." 
+>Speed_abs and BLperSecond vs Pulsation_rate. AIC - mixed effects wins. Neither have pulsation rate as a significant predictor anymore.
+	Abs: cR2 0.88, mR2 = 0, p = 0.97, df = 128.2, slope = -0.072, intercept = 47.37
+	BL/S: cR2 0.83, mR2 = 0.002, p = 0.64, df = 131.6, slope = 0.11, intercept = 2.93
+>Speed (abs and pulsation-corrected) vs zooid_length. AIC - mixed effects wins. Zooid length is no longer a significant predictor except for the case where speed is pulsation-corrected.
+	ABs: cR2 0.87, mR2 = 0.015, p = 0.14, df = 101.3, slope = 0.36, intercept = 39.06
+	Pulsation-corrected: cR2 0.84, mR2 = 0.21, p < 0.0001, df = 97.44, slope = 0.93, intercept = 9.15
+>Speed (abs and rel) vs zooid_# in CONSTANT species
+	Speed_abs AIC - mixed effects wins. Zooid number no longer significant. cR2 0.86, mR2 = 0.01, p = 0.16, df = 78.42, slope = -0.14, intercept = 70.44
+	Speed_rel AIC - mixed effects wins. Zooid number remains significant. cR2 0.80, mR2 = 0.072, p = 0.0062, df = 72.6, slope = 0.016, intercept = 1.68
+>Speed (abs and rel) vs zooid_# in SCALING species
+	Speed_abs AIC - species effects wins for simplicity among the mixed models (all equal footing in AIC). Zooid number remains non significant. cR2 0.28, mR2 = 0.004, p = 0.36, df = 243.9, slope = -0.098, intercept = 20.47
+	Speed_rel AIC - specimen effects wins for simplicity among the mixed models (equal footing to mixed model). Zooid number remains non significant. cR2 0.55, mR2 = 0, p = 0.95, df = 26.18, slope = -0.0015, intercept = 0.99
+>For the large GLM, the mixed effects model with Filename and Species wins (cR2 = 0.86, mR2 = 0.34), CSA_Scalingmode is still strongly significant of a predictor (mR2 = 0.32, cR2 = 0.85, p = 0.00047, df = 19.23, intercept = 63.07). 
+	Partial marginal R2s:
+		Zooid length: 0.027, slope = 0.28
+		Pulsation: 0.0003, slope = 0.30
+		Number of zooids: 0, slope = -0.11
+		CSAmode: 0.32, slope = -48.8
+>Zooid number vs Speed by Architecture:
+	-Whorl: Specimen model. now less significant. cR2 = 0.75, mR2 = 0.34, p = 0.025, df = 7.99, slope = 0.088, intercept = 0.08
+	-Cluster: Specimen model. remains non-significant. cR2 = 0.45, mR2 = 0, p = 0.98, df = 12, slope = 0.0011, intercept = 1.40
+	-Transversal: Fixed model. remains non-significant R2 = 0.11, adjR2 = 0.075, p = 0.09, df = 25, slope = -0.014, intercept = 0.56
+	-Linear: Species model. remains significant cR2 = 0.45, mR2 = 0.11, p < 0.0001, df = 439.2, slope = 0.022, intercept = 1.99
+	-Bipinnate: Specimen model. No longer significant cR2 = 0.79, mR2 = 0.04, p = 0.33, df = 16.2, slope = 0.015, intercept = 1.10
+>DVSZ vs absolute speed: Mixed model. Remains significant. cR2 = 0.87, mR2 = 0.29, p = 0.0014, df = 14.7, slope = -0.75, intercept = 84.37
+>DVSZ vs relative speed: Mixed model. Remains significant, but less. cR2 = 0.77, mR2 = 0.1, p = 0.019, df = 14.5, slope = -0.017, intercept = 2.38
+>log(COT_abs) vs Speed_abs: Species model wins. Remains significant. cR2 = 0.47, mR2 = 0.15, p = 0.0043, df = 39.9, slope = -0.016, intercept = 1.57
+>log(COT_rel) vs Speed_rel: Fixed=Species. Fixed chosen for simplicity. Remains significant. In the Species model, significance is lost. R2 = 0.15, adjR2 = 0.14, p = 0.00043, df = 77, slope = -0.24, intercept = 4.28
+>Linear COT_abs vs Speed_abs: Species model wins. No longer significant. cR2 = 0.48, mR2 = 0.064, p = 0.067, df = 43.4, slope = -0.10, intercept = 12.78
+>Linear COT_rel vs Speed_rel: Species model wins. No longer significant. cR2 = 0.32, mR2 = 0.095, p = 0.091, df = 13.9, slope = -13.9, intercept = 119.2
+>COT_abs vs % energy invested: Species model wins. Now it IS significant. cR2 = 0.54, mR2 = 0.11, p = 0.0023, df = 77, slope = 0.55, intercept = 45.06
+>COT_rel vs % energy invested: Species model wins. Remains significant. cR2 = 0.78, mR2 = 0.34, p < 0.00001, df = 69.4, slope = 0.16, intercept = 36.19
+>Speed_abs vs % energy invested: Species model wins. Remains non-significant. cR2 = 0.33, mR2 = 0.004, p = 0.67, df = 36.4, slope = 0.036, intercept = 45.60
+>Speed_rel vs % energy invested: Species model wins. Remains non-significant. cR2 = 0.35, mR2 = 0.009, p = 0.64, df = 13.3, slope = 1.0, intercept = 45.19
+>Speed abs vs Architecture: Mixed model wins. ANOVA vs null_model is significant. cR2 = 0.88, mR2 = 0.42, p = 0.0009
+	Linear vs. Transversal: Linear is significantly faster than Transversal by 67.10 mm/s (p = 0.0298). As before
+	Linear vs. Whorl: Linear is significantly faster than Whorl by 63.64 mm/s (p = 0.0178). As before
+	Cluster vs. Linear: There's a notable difference (54.56 mm/s) favoring Linear, but it's no longer significant (p = 0.0785).
+	Whorl-Transversal remains non-significant.
+	Other comparisons are no longer statistically significant (p > 0.05): Cluster-Bipinnate, Linear-Bipinnate, Transversal-Bipinnate, Whorl-Bipinnate, Whorl-Cluster.
+>Speed rel vs Architecture: Mixed model wins. ANOVA vs null_model is significant. cR2 = 0.78, mR2 = 0.14, p = 0.019
+	Whorl-Transversal remains non-significant.
+	No longer statistically significant (p > 0.05): L-B, T-B, W-B, L-C, T-C, W-C, T-L, W-L
+>COT abs vs Architecture: Species and specimen models are equal, species model chosen for simplicity. ANOVA vs null_model is significant. mR2 = 0.52, p < 0.000001
+	Significant differences:
+		Oblique architecture has significantly higher COT compared to:
+		Bipinnate (difference: 46.13, p = 0.0015)
+		Cluster (difference: 45.57, p = 0.0019)
+		Linear (difference: 46.24, p = 0.0015)
+		Transversal (difference: -41.13, p = 0.0162)
+		Whorl (difference: -45.95, p = 0.0033)
+	Non-significant differences:
+		There are no significant differences in COT between Bipinnate, Cluster, Linear, Transversal, and Whorl architectures (all p-values > 0.05).
+>COT rel vs Architecture: Species model wins. ANOVA vs null_model is significant. mR2 = 0.29, p = 0.0096
+	No comparisons are statistically significant (p > 0.05). No longer significant: W-T, W-O, T-L, O-L, O-C, O-T
+
+Please clarify in this statement that Uyeda et al (2018) addresses the problems of applying comparative methods to singular events in evolution, not comparative methods, in general. The present study is not about singular events in evolution.
+
+>Well that statement is applicable across ALL comparative methods, not just singular events like most of the paper. I know what this study is about, thank you.
+
+Lastly, these papers may be more useful for this section of the paper
+Autumn, K., Ryan, M. J., & Wake, D. B. (2002). Integrating historical and mechanistic biology enhances the study of adaptation. The Quarterly Review of Biology, 77(4), 383-408.
+Taylor, G. K., & Thomas, A. L. R. (2014). Evolutionary Biomechanics. Oxford University Press.
+Moen, D. S., Cabrera-Guzmán, E., Caviedes-Solis, I. W., González-Bernal, E., & Hanna, A. R. (2022). Phylogenetic analysis of adaptation in comparative physiology and biomechanics: overview and a case study of thermal physiology in treefrogs. Journal of Experimental Biology, 225(Suppl_1). https://doi.org/10.1242/jeb.243292
+
+> ???
