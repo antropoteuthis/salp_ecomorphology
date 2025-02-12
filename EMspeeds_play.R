@@ -728,3 +728,4 @@ spp_inv %>% group_by(Architecture) %>% summarise(
   `Number of Speed Measurements` = sum(`Number of measurements`, na.rm = T)
 )
 
+
